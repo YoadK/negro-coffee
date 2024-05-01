@@ -1,5 +1,8 @@
-node_modules
+# Ignore node_modules in the frontend directory
+frontend/node_modules/
 
-.env
+# Ignore node_modules in the backend directory
+backend/node_modules/
 
-Northwind REST API.postman_collection.json
+# ignore additional files:
+backend/.env
