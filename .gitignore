@@ -4,5 +4,30 @@ frontend/node_modules/
 # Ignore node_modules in the backend directory
 backend/node_modules/
 
-# ignore additional files:
+# Ignore additional files in the backend directory
 backend/.env
+
+# Angular build output
+frontend/dist/
+frontend/build/
+
+# Angular CLI files
+frontend/.angular/
+
+# IDE files
+.idea/
+.vscode/
+
+# Log files
+*.log
+
+# Swap files
+*.swp
+*.swo
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Code coverage
+frontend/coverage/
