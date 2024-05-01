@@ -1,9 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home-area/home/home.component';
-import { ProductListComponent } from './components/products-area/product-list/product-list.component';
-import { AddProductComponent } from './components/products-area/add-product/add-product.component';
-import { Page404Component } from './components/layout-area/page404/page404.component';
+
 import { NgModule } from '@angular/core';
+import { Page404Component } from './components/SharedArea/page404/page404.component';
 // import { DataListComponent } from './components/data-area/data-list/data-list.component';
 // import { AddDataComponent } from './components/data-area/add-data/add-data.component';
 // import { Page404Component } from './components/layout-area/page404/page404.component';

@@ -1,18 +1,28 @@
-<nav  class="navbar">
+<nav class="navbar">
     <div class="navbar-container">
       <div class="navbar-brand">
-        <a class="navbar-item" href="/">My Brand</a>
         <button class="navbar-toggle" (click)="toggleNavbar()">
           <span class="navbar-toggle-icon"></span>
         </button>
+        
+        
       </div>
-      <div class="navbar-menu" [ngClass]="{'is-active': isNavbarOpen}">
-        <div class="navbar-start">
-          <a class="navbar-item" href="/home">Home</a> |
-          <a class="navbar-item" href="/about">About</a> |
-          <a class="navbar-item" href="/services">Services</a> |
-          <a class="navbar-item" href="/contact">Contact</a> |
-        </div>
+      <div class="navbar-menu" [ngClass]="{'is-active': !isSmallScreen()}">
+        <a class="navbar-item" href="/home">Home</a>
+        <a class="navbar-item" href="/about">About</a>
+        <a class="navbar-item" href="/"><img src="assets/images/negro_logo.jpg"></a>
+        <a class="navbar-item" href="/services">Services</a>
+        <a class="navbar-item" href="/contact">Contact</a>
       </div>
     </div>
   </nav>
+  
+  <div class="side-navbar" [ngClass]="{'is-active': isNavbarOpen && isSmallScreen()}">
+    <a class="side-navbar-item" href="/home">Home</a>
+    <a class="side-navbar-item" href="/about">About</a>
+    <a class="navbar-item" href="/"><img src="assets/images/negro_logo.jpg"></a>
+    <a class="side-navbar-item" href="/services">Services</a>
+    <a class="side-navbar-item" href="/contact">Contact</a>
+  </div>
+  
+  <div class="overlay" [ngClass]="{'is-active': isNavbarOpen && isSmallScreen()}" (click)="toggleNavbar()"></div>

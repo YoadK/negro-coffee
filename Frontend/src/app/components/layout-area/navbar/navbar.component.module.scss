@@ -2,6 +2,8 @@
     background-color: #333;
     color: white;
     padding: 10px;
+    position: relative;
+    z-index: 2;
   }
   
   .navbar-container {
@@ -17,18 +19,24 @@
     align-items: center;
   }
   
+  .navbar-menu {
+    display: none;
+    justify-content: center;
+    flex-grow: 1;
+  
+    &.is-active {
+      display: flex;
+    }
+  }
+  
   .navbar-item {
     color: white;
     text-decoration: none;
-    margin: 0 10px; /* Add margin to create spacing between items */
-  }
-  
-  .navbar-item:hover {
-    color: #ccc;
+    margin: 0 10px;
   }
   
   .navbar-toggle {
-    display: none;
+    display: block;
     background: none;
     border: none;
     cursor: pointer;
@@ -70,31 +78,62 @@
     bottom: -6px;
   }
   
-  .navbar-menu {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
+  .side-navbar {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100vh;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 3;
   }
   
-  .navbar-start {
-    display: flex;
-    align-items: center;
-    justify-content: space-around; /* Add space-around alignment */
-    flex-grow: 1; /* Allow the navbar-start to grow and take available space */
+  .side-navbar.is-active {
+    right: 0;
   }
   
-  @media screen and (max-width: 768px) {
-    .navbar-menu {
+  .side-navbar-item {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+  
+  .side-navbar-item:hover {
+    color: #ccc;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1;
+  }
+  
+  .overlay.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .navbar-toggle {
       display: none;
     }
   
-    .navbar-menu.is-active {
+    .navbar-menu {
       display: flex;
-      flex-direction: column;
-      align-items: center;
     }
-  
-    .navbar-toggle {
-      display: block;
-    }
+  }
+  a img {
+    width: 100px;
+    height: fit-content;
   }

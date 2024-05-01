@@ -1,4 +1,4 @@
-// @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 html, body {
     height: 100%;
@@ -9,3 +9,4 @@ html, body {
 }
 html {
     font-family: assistant;
+}
