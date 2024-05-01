@@ -1,7 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home-area/home/home.component';
 
-import { NgModule } from '@angular/core';
 import { Page404Component } from './components/SharedArea/page404/page404.component';
 // import { DataListComponent } from './components/data-area/data-list/data-list.component';
 // import { AddDataComponent } from './components/data-area/add-data/add-data.component';
