@@ -1,0 +1,47 @@
+/* auth-menu.component.scss */
+.pull-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2px; 
+    position: absolute;
+    right: 15px;
+    z-index: 10;
+  
+    .btn-cart {
+      order: 3; // Place the "btn-cart" button to the rightmost side
+    }
+  
+    .login-btn {
+      order: 2; // Place the "login-btn" button near the "btn-cart" button, to the right
+    }
+  
+    .welcome_area {
+      order: 1; // Place the "welcome_area" element near the "login-btn", to the left
+      font-family: inherit;
+      line-height: 1.1;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      vertical-align: baseline;
+      background: 0 0;
+      box-sizing: border-box;
+      color: #bb946b;
+      font-size: 20px;
+      display: block;
+      font-weight: 700;
+      
+    }
+    color: #333;
+    line-height: 1;
+    font-family: assistant;   
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: 0 0;
+    box-sizing: border-box;
+  }
