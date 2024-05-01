@@ -1,0 +1,26 @@
+<div>
+    <h3>Name: {{product?.name}}</h3>
+    <h3>Price:{{product?.price}}</h3>
+   
+
+    <!-- example for two ways to show image -->
+
+    <!-- first way: -->
+    <!-- <img src="{{product?.imageUrl}}"> -->
+
+
+    <!-- second way: -->
+    <img [src]="product?.imageUrl">
+
+    <br><br>
+
+    <a routerLink="/products">back</a>
+    <span> | </span>    
+    
+    <a routerLink="/products/edit/{{product?._id}}">Edit</a> <!-- Use absolute path -->
+    <span> | </span>  
+    <button (click)="deleteMe(product._id)">Delete</button>
+
+    
+
+</div>

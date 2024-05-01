@@ -1,0 +1,674 @@
+Time: Tue Apr 09 2024 11:14:53 GMT+0300 (Israel Daylight Time)
+Message: Route /api/books not found.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Apr 09 2024 11:14:54 GMT+0300 (Israel Daylight Time)
+Message: Route /api/books not found.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Apr 09 2024 11:18:57 GMT+0300 (Israel Daylight Time)
+Message: Route /api/books not found.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Apr 09 2024 11:58:54 GMT+0300 (Israel Daylight Time)
+Message: Route /api/bookshtml not found.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Apr 09 2024 12:00:43 GMT+0300 (Israel Daylight Time)
+Message: Route /api/bookshtml not found.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Apr 09 2024 12:02:02 GMT+0300 (Israel Daylight Time)
+Message: Route /api/booksjs not found.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Apr 09 2024 12:02:36 GMT+0300 (Israel Daylight Time)
+Message: Route /api/bookshtml not found.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Apr 09 2024 12:03:44 GMT+0300 (Israel Daylight Time)
+Message: Route /api/searchhtml not found.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Apr 09 2024 13:13:33 GMT+0300 (Israel Daylight Time)
+Message: Route /api/books/ not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Apr 27 2024 18:46:59 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 12:42:43 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 12:42:44 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 12:42:45 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 12:42:48 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 15:13:32 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: quantity: Missing product quantity
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 16:08:10 GMT+0300 (Israel Daylight Time)
+Message: Cannot set headers after they are sent to the client
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:652:11)
+    at ServerResponse.header (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\express\lib\response.js:278:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\6-controllers\products-controller.ts:65:49
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\6-controllers\products-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Sun Apr 28 2024 16:08:21 GMT+0300 (Israel Daylight Time)
+Message: Cannot set headers after they are sent to the client
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:652:11)
+    at ServerResponse.header (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\express\lib\response.js:278:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\6-controllers\products-controller.ts:65:49
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\6-controllers\products-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Sun Apr 28 2024 16:12:11 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/?=662e4a458d2d8ce29b237281 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 16:15:22 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/rachel not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 16:16:14 GMT+0300 (Israel Daylight Time)
+Message: Cannot populate path `category` because it is not in your schema. Set the `strictPopulate` option to false to override.
+Stack: StrictPopulateError: Cannot populate path `category` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\model.js:4450:21)
+    at _populate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\model.js:4410:5)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\model.js:4382:5
+    at new Promise (<anonymous>)
+    at Function.populate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\model.js:4381:10)
+    at model.Query._find (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\query.js:2282:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async model.Query.exec (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\query.js:4330:63)
+---------------------------------------
+
+Time: Sun Apr 28 2024 17:01:29 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/662cfd55c27bf8f253c47159 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 17:11:48 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/:_id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 17:12:40 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 17:17:47 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 17:17:48 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 17:17:49 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 17:17:56 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/kk not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 17:18:15 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/662cfd55c27bf8f253c47159 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Apr 28 2024 17:30:59 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/662cfd55c27bf8f253c47159 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:41:06 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: image: Missing product image
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:46:45 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/ not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:47:26 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:_id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:48:51 GMT+0300 (Israel Daylight Time)
+Message: id undefined not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:50:29 GMT+0300 (Israel Daylight Time)
+Message: id undefined not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:50:51 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:_id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:51:15 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:_id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:51:16 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:_id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:51:24 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:_id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:51:25 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:_id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:51:26 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:_id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:51:39 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:_id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:51:40 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:_id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:52:32 GMT+0300 (Israel Daylight Time)
+Message: id undefined not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:52:53 GMT+0300 (Israel Daylight Time)
+Message: id undefined not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:53:01 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/%22662e4a3a8d2d8ce29b23727d%22 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:55:49 GMT+0300 (Israel Daylight Time)
+Message: id undefined not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:57:41 GMT+0300 (Israel Daylight Time)
+Message: id undefined not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:57:42 GMT+0300 (Israel Daylight Time)
+Message: id undefined not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 12:58:54 GMT+0300 (Israel Daylight Time)
+Message: id 662f6f5eb9edb24e5262f256 not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 13:02:17 GMT+0300 (Israel Daylight Time)
+Message: id 662f70292d4f35574f51e31e not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 13:04:32 GMT+0300 (Israel Daylight Time)
+Message: id 662f70b02d4f35574f51e322 not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 13:06:13 GMT+0300 (Israel Daylight Time)
+Message: id 662f71152d4f35574f51e325 not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 13:10:35 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:_id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 13:11:02 GMT+0300 (Israel Daylight Time)
+Message: id 662f72362d4f35574f51e328 not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 13:11:11 GMT+0300 (Israel Daylight Time)
+Message: id 662f723f2d4f35574f51e32b not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 13:21:26 GMT+0300 (Israel Daylight Time)
+Message: id 662f74a664fe958461206cad not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 13:55:19 GMT+0300 (Israel Daylight Time)
+Message: id 662f7c97e89d128654452fcf not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 13:55:21 GMT+0300 (Israel Daylight Time)
+Message: id 662f7c99e89d128654452fd2 not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 13:55:23 GMT+0300 (Israel Daylight Time)
+Message: id 662f7c9be89d128654452fd5 not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:15:03 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:81:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:15:10 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:81:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:15:35 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:81:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:27:42 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:27:43 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:27:44 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:28:54 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:28:55 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:28:56 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:28:57 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:28:57 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:28:58 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:29:47 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:29:48 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:29:49 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:31:01 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:31:04 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:31:05 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:31:34 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:31:35 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:31:36 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:54:09 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:54:10 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:54:11 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:54:11 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 14:54:12 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:79:55)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Mon Apr 29 2024 15:04:21 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: image: Missing product image
+Stack: ValidationError: ProductModel validation failed: image: Missing product image
+    at model.Document.invalidate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3289:32)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3050:17
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+---------------------------------------
+
+Time: Mon Apr 29 2024 15:05:15 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: image: Missing product image
+Stack: ValidationError: ProductModel validation failed: image: Missing product image
+    at model.Document.invalidate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3289:32)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3050:17
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+---------------------------------------
+
+Time: Mon Apr 29 2024 15:05:16 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: image: Missing product image
+Stack: ValidationError: ProductModel validation failed: image: Missing product image
+    at model.Document.invalidate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3289:32)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3050:17
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+---------------------------------------
+
+Time: Mon Apr 29 2024 15:05:17 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: image: Missing product image
+Stack: ValidationError: ProductModel validation failed: image: Missing product image
+    at model.Document.invalidate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3289:32)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3050:17
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+---------------------------------------
+
+Time: Mon Apr 29 2024 15:05:18 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: image: Missing product image
+Stack: ValidationError: ProductModel validation failed: image: Missing product image
+    at model.Document.invalidate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3289:32)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3050:17
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+---------------------------------------
+
+Time: Mon Apr 29 2024 15:15:26 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: image: Missing product image
+Stack: ValidationError: ProductModel validation failed: image: Missing product image
+    at model.Document.invalidate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3289:32)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3050:17
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+---------------------------------------
+
+Time: Mon Apr 29 2024 19:56:57 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: imageName: Missing product image name
+Stack: ValidationError: ProductModel validation failed: imageName: Missing product image name
+    at model.Document.invalidate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3289:32)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3050:17
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+---------------------------------------
+
+Time: Tue Apr 30 2024 10:27:49 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: imageName: Missing product image name
+Stack: ValidationError: ProductModel validation failed: imageName: Missing product image name
+    at model.Document.invalidate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3289:32)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3050:17
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+---------------------------------------
+
+Time: Tue Apr 30 2024 10:28:37 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: imageName: Missing product image name
+Stack: ValidationError: ProductModel validation failed: imageName: Missing product image name
+    at model.Document.invalidate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3289:32)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3050:17
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+---------------------------------------
+
+Time: Tue Apr 30 2024 10:28:38 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: imageName: Missing product image name
+Stack: ValidationError: ProductModel validation failed: imageName: Missing product image name
+    at model.Document.invalidate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3289:32)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\document.js:3050:17
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\MongoDB Angular Full Stack Template\Backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+---------------------------------------
+
+Time: Tue Apr 30 2024 12:42:49 GMT+0300 (Israel Daylight Time)
+Message: Route /api/vacations/images/default-image.avif not found.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Apr 30 2024 12:43:01 GMT+0300 (Israel Daylight Time)
+Message: Route /api/vacations/images/default-image.avif not found.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Apr 30 2024 12:57:16 GMT+0300 (Israel Daylight Time)
+Message: Route /api/vacations/images/default-image.avif not found.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Apr 30 2024 14:18:40 GMT+0300 (Israel Daylight Time)
+Message: Route /api/vacations/images/default-image.avif not found.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Apr 30 2024 14:18:44 GMT+0300 (Israel Daylight Time)
+Message: Route /api/vacations/images/default-image.avif not found.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Apr 30 2024 15:57:55 GMT+0300 (Israel Daylight Time)
+Message: Route /api/vacations/images/default-image.avif not found.
+Stack: undefined
+---------------------------------------
+

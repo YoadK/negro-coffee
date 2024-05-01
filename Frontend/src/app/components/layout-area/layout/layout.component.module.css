@@ -1,0 +1,17 @@
+div {
+    height: 100%;
+    
+}
+header{
+    border: 2px dotted blue;
+    margin: 1px;
+}
+main{
+    height: 100%;
+    border: 2px dotted green;
+    margin: 1px;
+}
+footer{
+    border: 2px dotted orange;
+    margin: 1px;
+}
