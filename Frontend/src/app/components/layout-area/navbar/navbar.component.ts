@@ -6,7 +6,7 @@ import { AuthMenuComponent } from '../../Auth-area/auth-menu/auth-menu.component
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink , CommonModule,AuthMenuComponent],
+  imports: [RouterLink, CommonModule, AuthMenuComponent],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.module.scss']
 })

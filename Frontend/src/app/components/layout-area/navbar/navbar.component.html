@@ -1,28 +1,29 @@
+
 <nav class="navbar">
     <div class="navbar-container">
       <div class="navbar-brand">
         <button class="navbar-toggle" (click)="toggleNavbar()">
-          <span class="navbar-toggle-icon"></span>
-        </button>
-        
+            <span class="navbar-toggle-icon"></span>
+          </button>
+        <a class="navbar-item navbar-logo" href="/">
+          <img src="assets/images/negro_logo.jpg">
+        </a>
         
       </div>
-      <div class="navbar-menu" [ngClass]="{'is-active': !isSmallScreen()}">
+      <div class="navbar-menu" [ngClass]="{'is-active': isNavbarOpen || !isSmallScreen()}">
         <a class="navbar-item" href="/home">בית</a>
         <a class="navbar-item" href="/shop">חנות קפה</a>
         <a class="navbar-item" href="/articles">מאמרים</a>
-        <a class="navbar-item" href="/"><img src="assets/images/negro_logo.jpg"></a>
         <a class="navbar-item" href="/about">אודות</a>
         <a class="navbar-item" href="/recommendations">המלצות</a>
         <a class="navbar-item" href="/contact">צור קשר</a>
       </div>
-
-      <app-auth-menu/>
-
     </div>
   </nav>
+
+   <!-- ... (rest of the HTML code remains the same) -->
   
-  <div class="side-navbar" [ngClass]="{'is-active': isNavbarOpen && isSmallScreen()}">
+   <div class="side-navbar" [ngClass]="{'is-active': isNavbarOpen && isSmallScreen()}">
     <a class="side-navbar-item" href="/home">Home</a>
     <a class="side-navbar-item" href="/about">About</a>
     <a class="navbar-item" href="/"><img src="assets/images/negro_logo.jpg"></a>

@@ -1,17 +1,15 @@
 .navbar {
-    background-color: #fefefe;
-    color: white;
-    padding: 10px;
-    position: relative;
-    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
   }
   
   .navbar-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
   }
   
   .navbar-brand {
@@ -19,20 +17,40 @@
     align-items: center;
   }
   
+  .navbar-logo {
+    img {
+      max-width: 100%;
+      max-height: 50px;
+      object-fit: contain;
+    }
+  }
+  
   .navbar-menu {
     display: none;
-    justify-content: center;
-    flex-grow: 1;
   
-    &.is-active {
+    @media screen and (min-width: 768px) {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-grow: 1;
+      margin-left: 2rem;
     }
+  }
+  
+  .navbar-start,
+  .navbar-end {
+    display: flex;
+    align-items: center;
   }
   
   .navbar-item {
     color: #333;
     text-decoration: none;
-    margin: 0 10px;
+    margin-right: 1.5rem;
+  
+    &:last-child {
+      margin-right: 0;
+    }
   }
   
   .navbar-toggle {
@@ -44,6 +62,10 @@
     width: 24px;
     height: 24px;
     position: relative;
+  
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
   }
   
   .navbar-toggle-icon {
@@ -56,26 +78,26 @@
     left: 0;
     transform: translateY(-50%);
     transition: background-color 0.3s ease-in-out;
-  }
   
-  .navbar-toggle-icon::before,
-  .navbar-toggle-icon::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: #333;
-    position: absolute;
-    left: 0;
-    transition: transform 0.3s ease-in-out;
-  }
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #333;
+      position: absolute;
+      left: 0;
+      transition: transform 0.3s ease-in-out;
+    }
   
-  .navbar-toggle-icon::before {
-    top: -6px;
-  }
+    &::before {
+      top: -6px;
+    }
   
-  .navbar-toggle-icon::after {
-    bottom: -6px;
+    &::after {
+      bottom: -6px;
+    }
   }
   
   .side-navbar {
@@ -89,10 +111,10 @@
     padding: 20px;
     transition: right 0.3s ease-in-out;
     z-index: 3;
-  }
   
-  .side-navbar.is-active {
-    right: 0;
+    &.is-active {
+      right: 0;
+    }
   }
   
   .side-navbar-item {
@@ -100,10 +122,10 @@
     color: white;
     text-decoration: none;
     margin-bottom: 10px;
-  }
   
-  .side-navbar-item:hover {
-    color: #ccc;
+    &:hover {
+      color: #ccc;
+    }
   }
   
   .overlay {
@@ -117,23 +139,13 @@
     visibility: hidden;
     transition: opacity 0.3s ease-in-out;
     z-index: 1;
-  }
   
-  .overlay.is-active {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  @media screen and (min-width: 768px) {
-    .navbar-toggle {
-      display: none;
-    }
-  
-    .navbar-menu {
-      display: flex;
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
     }
   }
-  a img {
-    width: 100px;
-    height: fit-content;
+  
+  app-auth-menu {
+    margin-left: auto;
   }
