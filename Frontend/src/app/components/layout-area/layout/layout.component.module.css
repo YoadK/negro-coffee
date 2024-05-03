@@ -5,11 +5,13 @@ div {
 header{
     border: 2px dotted blue;
     margin: 1px;
+    
 }
 main{
     height: 100%;
     border: 2px dotted green;
     margin: 1px;
+    overflow: auto;
 }
 footer{
     border: 2px dotted orange;
