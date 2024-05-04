@@ -12,7 +12,7 @@ import { ProductModel } from '../../../models/product.model';
 @Component({
     selector: 'app-product-list',
     standalone: true,
-    imports: [CommonModule,ProductCardComponent],
+    imports: [CommonModule, ProductCardComponent],
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.module.scss'
 })

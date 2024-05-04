@@ -1,12 +1,22 @@
+
+/* Global settings to ensure consistent sizing */
+* {
+    box-sizing: border-box; // Includes padding and borders in the width and height calculations
+    margin: 0; // Resets margin
+    padding: 0; // Resets padding
+    
+}
+
 /* Container for both sides */
 .home-container {
     display: flex; // Ensures flexbox layout
     flex-direction: row; // Arranges children in a row
     width: 100vw; // Full viewport width
     height: 100vh; // Full viewport height
-    overflow: hidden; // Prevents any overflow from the container
-    margin: 0; // Removes any default margin
-    padding: 0; // Removes any default padding
+    overflow:hidden; // Prevents any overflow from the container
+    
+    // margin: 0; // Removes any default margin
+    // padding: 0; // Removes any default padding
 }
 
 /* Styles for the left and right side */
@@ -16,12 +26,16 @@
     flex-direction: column;
     align-items: center; // Centers the content in the middle of the columns
     justify-content: center; // Vertically centers the content in the columns
+    padding: 0px; // Consistent padding
 }
 
 /* Specific styles for the right side */
 .side-right {
     align-items: flex-start; // Aligns items to the start of the flex container
-    padding: 10px;
+    background-color: #2b2b2b;
+    
+    
+    // padding: 20px;
 }
 
 /* Styling for the colored bar */
@@ -30,25 +44,26 @@
     width: 183px; // Width as specified
     height: 10px; // Height as specified
     margin-bottom: 10px; // Space below the bar
+    
 }
 
 /* Styling for the welcome text */
 .welcome-text {
     font-size: 16px; // Set the font size for the welcome text
-    color: #333; // Dark color for text, adjust as needed
-    margin-bottom: 10px; // Space below the text
+    color:  white;; // Dark color for text, adjust as needed
+    // margin-bottom: 10px; // Space below the text
 }
 
 /* Styling for the expert description in h2 */
 .expertise {
     font-size: 18px; // Slightly larger font size for emphasis
-    color: #555; // Slightly lighter than the h1 text
-    margin-bottom: 20px; // Space below the h2 text
+    color: #ba946d; // Slightly lighter than the h1 text
+    // margin-bottom: 20px; // Space below the h2 text
 }
 
 /* Styling for the button */
 .big_slider_button {
-    padding: 10px 20px; // Padding inside the button
+    // padding: 10px 20px; // Padding inside the button
     background-color: #ba946d; // Background color matches the colored bar
     color: white; // Text color for the button
     border: none; // No border for a cleaner look

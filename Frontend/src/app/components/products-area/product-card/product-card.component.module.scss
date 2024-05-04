@@ -2,24 +2,93 @@ div.card {
     width: 300px;
     display: inline-flex;
     text-align: left;
-    background-image: linear-gradient(90deg, lightgreen, white);
+    background-image: linear-gradient(90deg, lightgray, white);
     margin: 10px;
     padding: 10px;
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 5px 5px 10px;
-    font-size: smaller;
+    font-size: small;
+    margin: 15px 15px 15px 15px;
 }
 
-img {
-    width: 60px;
-    height: 60px;
-    border: 1px solid black;
-    border-radius: 10px;
-    vertical-align: middle;
+
+
+.card-image img {
+    display: block; // Change the img from inline to block-level
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 150px;
 }
+
+
+
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    .input-quantity-group {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        .input_amount_btn, .input_amount {
+            height: 30px; // Set a consistent height for buttons and input
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0px; // Adds a small margin on the sides for spacing
+        }
+
+        .input_amount_btn {
+            width: 30px; // Ensures the buttons are square
+            border: 1px solid #ccc; // Standard border for visual consistency
+            background-color: #f9f9f9; // Button background color
+            cursor: pointer;
+
+            &:hover {
+                background-color: #e9e9e9; // Slightly darker on hover
+            }
+
+            &:active {
+                background-color: #d9d9d9; // Even darker when clicked
+            }
+        }
+
+        .input_amount {
+            width: 50px; // Ensures the input is not too wide
+            text-align: center; // Centers the text inside the input
+            border: 1px solid #ccc; // Matches the button border
+            background-color: #fff; // Keeps the input white or light
+        }
+    }
+
+    .add-to-cart-btn {
+        width: 90%;
+        margin-top: 10px;
+        padding: 10px 0;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
+}
+
+
+
+
+
+
+
 
 div:last-child {
     margin-left: auto;
 }
-

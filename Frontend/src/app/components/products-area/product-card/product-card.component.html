@@ -1,17 +1,22 @@
 <div class="card">
-
-    <div>
-        {{product.name}}
-        <br />
-        Price: {{product.price}}
-       
+    <div class="card-content">
+        <strong>Name:</strong> {{product.name}}<br>
+        <strong>Price:</strong> {{product.price}}<br>
+        <strong>Description:</strong> {{product.description}}<br>
+        <span><strong>Quantity:</strong>{{product.quantity}} | <strong>Price:</strong> {{product.price}}</span>
     </div>
-
-    <div>
-        <a routerLink="/products//details/{{product._id}}">
-            <img src={{product.imageUrl}} />
+    <div class="card-image">
+        <a routerLink="/products/details/{{product._id}}">
+            <img src="https://negro.co.il/wp-content/uploads/2018/07/%D7%94%D7%93%D7%9E%D7%99%D7%94-%D7%A9%D7%A7%D7%99%D7%AA-250-%D7%90%D7%97%D7%A8%D7%95%D7%9F-270x255.png"
+                alt="Image of {{product.name}}">
         </a>
-`    </div>
-
+    </div>
+    <div class="card-actions">
+        <div class="input-quantity-group">
+            <div class="input_amount_btn minus" aria-label="Decrease quantity">-</div>            
+            <input id="item-{{product._id}}" type="number" name="amount" min="1" value="1" class="input_amount">
+            <div class="input_amount_btn plus" aria-label="Increase quantity">+</div>
+        </div>
+        <button class="add-to-cart-btn">הוספה לסל</button>
+    </div>
 </div>
-
