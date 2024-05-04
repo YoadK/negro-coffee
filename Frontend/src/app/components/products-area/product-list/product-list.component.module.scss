@@ -1,0 +1,10 @@
+
+.product-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; // This will distribute space evenly between the cards
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    overflow: visible;
+}

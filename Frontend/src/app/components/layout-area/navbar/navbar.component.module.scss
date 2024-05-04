@@ -43,20 +43,14 @@
     align-items: center;
 }
 
-//   .navbar-item {
-//     color: #333;
-//     text-decoration: none;
-//     margin-right: 1.5rem;
-
-//     &:last-child {
-//       margin-right: 0;
-//     }
-//   }
 
 .navbar-item {
     text-decoration: none; // This removes the default underline
     transition: border-bottom-color 0.6s; // Smooth transition for the border color
     border-bottom: 3px solid transparent; // Use transparent border to avoid shifting content
+    color: #25262a;
+    font-size: 20px;
+    font-weight: 700;
 
     &:hover {
         border-bottom-color: #333; // Replace #somecolor with the desired color

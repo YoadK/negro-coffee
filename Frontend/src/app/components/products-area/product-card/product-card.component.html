@@ -1,9 +1,8 @@
 <div class="card">
     <div class="card-content">
-        <strong>Name:</strong> {{product.name}}<br>
-        <strong>Price:</strong> {{product.price}}<br>
-        <strong>Description:</strong> {{product.description}}<br>
-        <span><strong>Quantity:</strong>{{product.quantity}} | <strong>Price:</strong> {{product.price}}</span>
+        <div class="product-name">  {{product.name}} </div>        
+        <div class="product-description"> {{product.description}}</div>
+        <div class="product-quantity-price"> {{product.quantity}} |  ₪{{product.price}}</div> 
     </div>
     <div class="card-image">
         <a routerLink="/products/details/{{product._id}}">
