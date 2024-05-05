@@ -10,7 +10,7 @@ header{
 main{   
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start; 
+    justify-content: center; 
     align-items: flex-start; 
     gap: 1px; 
     /* margin-bottom: 20px;  */

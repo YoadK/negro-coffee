@@ -115,12 +115,22 @@ div:last-child {
     
 }
 
-.product-quantity-price{
-    font-family: 'assistant', sans-serif;
-    font-size: 20px;
-    color:black;
+
+
+.product-quantity-price {
+   
+  
     
-}
+    direction: rtl; 
+  
+    // Specific class for Hebrew or RTL content
+    .hebrew-text {
+      direction: rtl; // Right-to-left
+      unicode-bidi: bidi-override; // Ensures the text is treated as a cohesive right-to-left block
+    }
+  }
+
+  
 .add-to-cart-btn{
     font-family: 'assistant', david, sans-serif;
     font-size: 18px;

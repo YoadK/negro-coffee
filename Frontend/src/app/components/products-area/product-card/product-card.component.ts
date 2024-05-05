@@ -1,6 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ProductModel } from '../../../models/product.model';
+import { CommonModule } from '@angular/common';
+
+import { SharedModule } from '../../SharedArea/shared-module';
 
 
 //ng g c components/products-area/product-card
@@ -8,13 +11,15 @@ import { ProductModel } from '../../../models/product.model';
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,CommonModule, SharedModule],
   templateUrl: './product-card.component.html',
-  styleUrl: './product-card.component.module.scss'
+  styleUrls: ['./product-card.component.module.scss']
 })
 export class ProductCardComponent {
 
     @Input() //Props
     public product: ProductModel;
+
+  
 
 }
