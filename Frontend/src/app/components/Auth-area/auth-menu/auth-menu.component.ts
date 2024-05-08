@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './auth-menu.component.html',
-  styleUrl: './auth-menu.component.module.scss'
+  styleUrl: './auth-menu.component.module.css'
 })
 export class AuthMenuComponent {
 
