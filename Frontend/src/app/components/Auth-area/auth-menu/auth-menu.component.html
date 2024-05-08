@@ -2,23 +2,27 @@
 <!-- auth-menu.component.html -->
 <div class="auth-menu toggle-open header_flow">
 
+    
     <button type="button" class="btn-cart ajax-cart">
+       
       <span class="text">סל קניות</span>
-      
+     
         <img src="https://negro.co.il/wp-content/themes/matat-child/images/cart_icon.png" alt="cart" class="img-on-button-top">
         <span class="number">0</span>
-      
+    
     </button>
+
 
     <button type="button" class="login-btn open_popup_login_btn">
       <span class="open_popup_login_btn text" href="#" title="My account">חשבון שלי</span>
      
         <img src="https://negro.co.il/wp-content/themes/matat-child/images/user_icon.png" alt="user" class="img-on-button-top">
-      
+    
     </button>
 
     <div class="welcome_area">
       <h6>התחבר לאזור האישי שלך</h6>
-      <a class="open_popup_login_btn" href="#" title="התחבר">התחבר</a>
+      <a class="open_popup_login_btn" [routerLink]="['/login']" title="התחבר">התחבר</a> |
+      <a class="open_popup_login_btn_2" [routerLink]="['/register']" title="הירשם">הירשם</a>
     </div>
   </div>
