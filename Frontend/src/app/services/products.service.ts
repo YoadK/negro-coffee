@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { CategoryModel  } from '../models/category.model';
+import { CategoryModel } from '../models/category.model';
 import { appConfig } from '../app.config';
 import { firstValueFrom } from 'rxjs';
 import { ProductModel } from '../models/product.model';
@@ -12,9 +12,7 @@ import { ProductModel } from '../models/product.model';
 export class ProductsService {
 
 
-    constructor(private http: HttpClient) {
-
-    }
+    constructor(private http: HttpClient) { } // DI for an 'axios' like object.
 
     // get All Products
     public async getAllProducts(): Promise<ProductModel[]> {
@@ -29,7 +27,6 @@ export class ProductsService {
         const product = await firstValueFrom(observable);
         return product;
     }
-
 
 
     //get All Categories
@@ -49,7 +46,7 @@ export class ProductsService {
 
     //add product:
     public async addProduct(product: ProductModel): Promise<void> {
-        const observable = this.http.post<ProductModel>(appConfig.productsUrl, product);
+        const observable = this.http.post<ProductModel>(appConfig.productAddUrl, product);
         const addedProduct = await firstValueFrom(observable);
         console.log(addedProduct);
     }
@@ -60,7 +57,7 @@ export class ProductsService {
         const updatedProduct = await firstValueFrom(observable);
         console.log(updatedProduct);
     }
-    
+
 
     //delete product:
     public async deleteProduct(_id: string): Promise<void> {

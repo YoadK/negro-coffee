@@ -10,12 +10,13 @@
 
         </div>
         <div class="navbar-menu" [ngClass]="{'is-active': isNavbarOpen || !isSmallScreen()}">
+            <a class="navbar-item"  [routerLink]="['/new']">הוסף מוצר חדש</a>
             <a class="navbar-item" [routerLink]="['/contact']">צור קשר</a>     
 
             <a class="navbar-item"  [routerLink]="['/recommendations']">המלצות</a>
             <a class="navbar-item"  [routerLink]="['/about']">אודות</a>
             <a class="navbar-item"  [routerLink]="['/articles']">מאמרים</a>
-            <a class="navbar-item"  [routerLink]="['/shop']">חנות קפה</a>
+            <a class="navbar-item"  [routerLink]="['/products']">חנות קפה</a>
             <a class="navbar-item"  [routerLink]="['/home']">בית</a>
         </div>
     </div>
@@ -25,12 +26,13 @@
 
 <div class="side-navbar" [ngClass]="{'is-active': isNavbarOpen && isSmallScreen()}">
     <a class="side-navbar-item"  [routerLink]="['/home']">בית</a>
-    <a class="side-navbar-item"  [routerLink]="['/shop']">חנות קפה</a>
+    <a class="side-navbar-item"  [routerLink]="['/products']">חנות קפה</a>
     <a class="side-navbar-item"  [routerLink]="['/articles']">מאמרים</a>
     <a class="navbar-item navbar-logo" [routerLink]=""><img src="assets/images/negro_logo.jpg"></a>
     <a class="side-navbar-item"  [routerLink]="['/about']">אודות</a>
     <a class="side-navbar-item"  [routerLink]="['/recommendations']">המלצות</a>
     <a class="side-navbar-item"  [routerLink]="['/contact']">צור קשר</a>
+    <a class="side-navbar-item"  [routerLink]="['/new']">הוסף מוצר חדש</a>
 </div>
 
 <div class="overlay" [ngClass]="{'is-active': isNavbarOpen && isSmallScreen()}" (click)="toggleNavbar()"></div>

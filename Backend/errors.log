@@ -1117,3 +1117,88 @@ Message: Route /login not found.
 Stack: undefined
 ---------------------------------------
 
+Time: Thu May 09 2024 18:05:15 GMT+0300 (Israel Daylight Time)
+Message: Route / not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 18:05:16 GMT+0300 (Israel Daylight Time)
+Message: Route /favicon.ico not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 18:38:52 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/ not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 18:52:15 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/ not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 19:00:11 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/ not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 19:02:13 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: imageName: Missing product image name, quantity: Missing product quantity
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 19:07:12 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: imageName: Missing product image name, quantity: Missing product quantity
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 19:09:02 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: imageName: Missing product image name
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 19:09:52 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: imageName: Missing product image name
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 19:20:37 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: imageName: Missing product image name
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 19:20:38 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: imageName: Missing product image name
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 19:20:42 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: imageName: Missing product image name
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 19:20:56 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: imageName: Missing product image name
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 19:21:00 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: imageName: Missing product image name
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 19:23:49 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/default-image.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 19:23:50 GMT+0300 (Israel Daylight Time)
+Message: Route /favicon.ico not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 09 2024 19:41:33 GMT+0300 (Israel Daylight Time)
+Message: ProductModel validation failed: quantity: Missing product quantity
+Stack: undefined
+---------------------------------------
+

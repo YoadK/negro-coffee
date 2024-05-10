@@ -28,7 +28,7 @@ export class AddProductComponent {
     public async send(): Promise<void> {
         try {
             console.log(this.product);
-            //console.log(this.product);
+           
             this.product.image=this.myImage.nativeElement.files[0];           
 
             //a. add product to backend

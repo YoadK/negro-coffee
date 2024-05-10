@@ -47,7 +47,7 @@ export const ProductSchema = new Schema<IProductModel>({
 
     imageName: {
         type: String,
-        required: [true, "Missing product image name"],
+        required: [false, "Missing product image name"],
         maxlength: [100, "Image name is too long"],
     },
     imageUrl: {

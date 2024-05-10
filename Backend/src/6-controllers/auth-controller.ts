@@ -20,6 +20,7 @@ class AuthController {
     // POST http://localhost:4000/api/register --> Register new user, return token:
     private async register(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
+            alert ("test register");
             const user = new UserModel(request.body);
             const token = await authService.register(user);
             response.status(StatusCode.Created).json(token);

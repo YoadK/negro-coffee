@@ -17,28 +17,22 @@ import { ProductsService } from '../../../services/products.service';
 export class ProductDetailsComponent implements OnInit {
 
     public product: ProductModel;
-    
-    
-    
+
+
     public constructor(
         private title: Title,
         private productsService: ProductsService,
         private router: Router, // Inject the Router service
-        private activatedRoute: ActivatedRoute) {}
-
-    
-
+        private activatedRoute: ActivatedRoute) { }
 
     // activatedRoute --> service for getting route parameters (and more....) on the current route
     // activatedRoute.snapshot --> current route format.
     // activatedRoute.snapshot.params --> current route parameters.
     public async ngOnInit(): Promise<void> {
         try {
-            
             const id = this.activatedRoute.snapshot.params["id"];
             this.product = await this.productsService.getOneProduct(id);
-            this.title.setTitle("Coffee shop | " +this.product.name);
-
+            this.title.setTitle("Coffee shop | " + this.product.name);
         }
         catch (err: any) {
             alert(err.message);
@@ -49,17 +43,17 @@ export class ProductDetailsComponent implements OnInit {
         try {
             // ask the user to confirm...
             const sure = window.confirm("Are you sure?");
-            if(!sure) return;
+            if (!sure) return;
 
             await this.productsService.deleteProduct(id);
-           
+
             console.log("Product has been deleted.");
-            
+
             // Navigate to 'products' page after deleting the product
             this.router.navigateByUrl("/products");
-            
+
         }
-        catch(err: any) {
+        catch (err: any) {
             console.log(err.message);
         }
     }

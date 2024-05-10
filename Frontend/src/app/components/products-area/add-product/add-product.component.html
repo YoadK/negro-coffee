@@ -11,20 +11,28 @@
         <span *ngIf="nameBox.touched && nameBox.errors?.['minlength']">Name is too short.</span>
         <span *ngIf="nameBox.touched && nameBox.errors?.['maxlength']">Name is too long.</span>
         
+        <label>Description: </label>
+        <input type="text" name="description" [(ngModel)]="product.description" #descriptionBox="ngModel" required minlength="2" maxlength="50">
+        <span *ngIf="descriptionBox.touched && descriptionBox.errors?.['required']">Missing description.</span>
+        <span *ngIf="descriptionBox.touched && descriptionBox.errors?.['minlength']">description is too short.</span>
+        <span *ngIf="descriptionBox.touched && descriptionBox.errors?.['maxlength']">description is too long.</span>
 
         <label>Price: </label>
-        <input type="number" name="price" step="0.01" [(ngModel)]="product.price" required min="0" max="1000">
-        <span *ngIf="nameBox.touched && nameBox.errors?.['min']">Price can't be negative.</span>
-        <span *ngIf="nameBox.touched && nameBox.errors?.['max']">Price can't exceed 1000.</span>
+        <input type="number" name="price" step="1" [(ngModel)]="product.price" #priceBox="ngModel" required min="0" max="1000">
+        <span *ngIf="priceBox.touched && priceBox.errors?.['min']">Price can't be negative.</span>
+        <span *ngIf="priceBox.touched && priceBox.errors?.['max']">Price can't exceed 1000.</span>
        
-
+        <label>Quantity: </label>
+        <input type="number" name="price" step="1" [(ngModel)]="product.quantity" #quantityBox="ngModel" required min="0" max="1000">
+        <span *ngIf="quantityBox.touched && quantityBox.errors?.['min']">quantity can't be negative.</span>
+        <span *ngIf="quantityBox.touched && quantityBox.errors?.['max']">quantity can't exceed 1000.</span>
         
 
         <label>Image: </label>
-        <input type="file" name="image" [(ngModel)]="product.image"  #myImage #imageBox="ngModel" required>
-        <span *ngIf="imageBox.touched && imageBox.errors?.['required']">Missing image.</span>
+        <input type="file" name="image" [(ngModel)]="product.image"  #myImage #imageBox="ngModel" optional>
+        <span *ngIf="imageBox.touched && imageBox.errors?.['optional']">Missing image.</span>
 
-         <button [disabled]="myForm.invalid"> Add</button>
+         <button [disabled]="myForm.invalid">Add</button>
 
     </form>
 
