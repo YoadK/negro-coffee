@@ -4,6 +4,7 @@ import { ResourceNotFoundError, ValidationError } from "../3-models/client-error
 import { IProductModel, ProductModel } from "../3-models/product-model";
 import mongoose, { ObjectId } from "mongoose";
 import { UploadedFile } from "express-fileupload";
+import { Conflict } from 'http-errors';
 
 class ProductsService {
 
@@ -35,22 +36,30 @@ class ProductsService {
     //add product:
     public async addProduct(product: IProductModel): Promise<IProductModel> {
         try {
-            // Create a new product document
-            const newProduct = new ProductModel(product);
+            const newProduct = new ProductModel(product);//await this.getProductByName(product.name);
+
 
             // Check if an image file is provided
-    if (product.image) {
-        // Save the image file
-        const imageFile = product.image as UploadedFile;
-        const imageName = await fileSaver.add(product.image);
-        newProduct.imageName = imageName;
-        newProduct.imageUrl = appConfig.baseImageUrl + imageName;
-      } else {
-        // If no image is provided, assign a default image name
-        const defaultImageName = "default-image.jpg";
-        newProduct.imageName = defaultImageName;
-        newProduct.imageUrl = appConfig.baseImageUrl + defaultImageName;
-      }
+            if (product.image) {
+                // Save the image file
+               
+                const imageFile = product.image as UploadedFile;
+                const imageName = await fileSaver.add(imageFile);
+                newProduct.imageName = imageName;
+                newProduct.imageUrl = appConfig.baseImageUrl + imageName;
+                newProduct.image=product.image;
+                console.log("image name is: " +   newProduct.imageName);
+                console.log("image url  is: " + newProduct.imageUrl);
+
+            } else {
+                // If no image is provided, assign a default image name
+                console.warn("else: image name set to: " + 'default-image.jpg');
+                console.log("else: image name is: " + product.imageName);
+                console.log("else: image url  is: " + product.imageUrl);
+                const defaultImageName = "default-image.jpg";
+                newProduct.imageName = defaultImageName;
+                newProduct.imageUrl = appConfig.baseImageUrl +  newProduct.imageName;
+            }
 
 
             // Save the new product to the database

@@ -1202,3 +1202,237 @@ Message: ProductModel validation failed: quantity: Missing product quantity
 Stack: undefined
 ---------------------------------------
 
+Time: Fri May 10 2024 18:54:44 GMT+0300 (Israel Daylight Time)
+Message: Cannot set headers after they are sent to the client
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:652:11)
+    at ServerResponse.header (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\response.js:795:10)
+    at ServerResponse.send (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\response.js:175:12)
+    at ServerResponse.json (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\response.js:279:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:95:49
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Fri May 10 2024 20:15:00 GMT+0300 (Israel Daylight Time)
+Message: Cannot set headers after they are sent to the client
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:652:11)
+    at ServerResponse.header (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\response.js:795:10)
+    at ServerResponse.send (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\response.js:175:12)
+    at ServerResponse.json (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\response.js:279:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:95:49
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Sat May 11 2024 17:24:38 GMT+0300 (Israel Daylight Time)
+Message: Cannot set headers after they are sent to the client
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:652:11)
+    at ServerResponse.header (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\response.js:795:10)
+    at ServerResponse.send (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\response.js:175:12)
+    at ServerResponse.json (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\response.js:279:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:97:49
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Sat May 11 2024 17:27:19 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/default-image.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat May 11 2024 17:33:24 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/default-image.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat May 11 2024 17:33:30 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/default-image.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat May 11 2024 17:33:58 GMT+0300 (Israel Daylight Time)
+Message: ENOENT: no such file or directory, mkdir 'C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\http:\localhost:4000\api\products\images\hqdefault.jpg'
+Stack: Error: ENOENT: no such file or directory, mkdir 'C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\http:\localhost:4000\api\products\images\hqdefault.jpg'
+    at Object.mkdirSync (node:fs:1380:26)
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:38:30)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:4:12)
+    at FileSaver.add (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:32:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:90:55
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:8:71
+---------------------------------------
+
+Time: Sat May 11 2024 17:50:01 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/default-image.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat May 11 2024 17:55:22 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/default-image.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat May 11 2024 17:55:34 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/default-image.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat May 11 2024 17:55:43 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/default-image.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat May 11 2024 18:34:32 GMT+0300 (Israel Daylight Time)
+Message: newUploadedFile can't be empty.
+Stack: Error: newUploadedFile can't be empty.
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:34:23)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:4:12)
+    at FileSaver.add (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:32:16)
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:48:51)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+
+Time: Sat May 11 2024 18:39:52 GMT+0300 (Israel Daylight Time)
+Message: newUploadedFile can't be empty.
+Stack: Error: newUploadedFile can't be empty.
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:34:23)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:4:12)
+    at FileSaver.add (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:32:16)
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:49:51)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+
+Time: Sat May 11 2024 18:40:38 GMT+0300 (Israel Daylight Time)
+Message: newUploadedFile can't be empty.
+Stack: Error: newUploadedFile can't be empty.
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:34:23)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:4:12)
+    at FileSaver.add (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:32:16)
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:49:51)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+
+Time: Sat May 11 2024 18:44:09 GMT+0300 (Israel Daylight Time)
+Message: newUploadedFile can't be empty.
+Stack: Error: newUploadedFile can't be empty.
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:34:23)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:4:12)
+    at FileSaver.add (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:32:16)
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:49:51)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+
+Time: Sat May 11 2024 18:44:49 GMT+0300 (Israel Daylight Time)
+Message: newUploadedFile can't be empty.
+Stack: Error: newUploadedFile can't be empty.
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:34:23)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:4:12)
+    at FileSaver.add (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:32:16)
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:49:51)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+
+Time: Sat May 11 2024 19:43:51 GMT+0300 (Israel Daylight Time)
+Message: Route /favicon.ico not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat May 11 2024 19:43:55 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat May 11 2024 19:44:01 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/imgs not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun May 12 2024 12:44:28 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/01ebcca4-307e-4752-bd3a-0e5faa9fc9ce.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun May 12 2024 12:49:19 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/01ebcca4-307e-4752-bd3a-0e5faa9fc9ce.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun May 12 2024 13:06:49 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/01ebcca4-307e-4752-bd3a-0e5faa9fc9ce.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun May 12 2024 13:06:56 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/01ebcca4-307e-4752-bd3a-0e5faa9fc9ce.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun May 12 2024 13:12:44 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/01ebcca4-307e-4752-bd3a-0e5faa9fc9ce.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun May 12 2024 13:12:45 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/images/01ebcca4-307e-4752-bd3a-0e5faa9fc9ce.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun May 12 2024 13:14:18 GMT+0300 (Israel Daylight Time)
+Message: Route /api/prpoducts/images/01ebcca4-307e-4752-bd3a-0e5faa9fc9ce.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun May 12 2024 13:14:39 GMT+0300 (Israel Daylight Time)
+Message: Route /api/prpoducts/images/01ebcca4-307e-4752-bd3a-0e5faa9fc9ce.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun May 12 2024 13:45:57 GMT+0300 (Israel Daylight Time)
+Message: Route /api/prpoducts/images/01ebcca4-307e-4752-bd3a-0e5faa9fc9ce.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun May 12 2024 13:45:58 GMT+0300 (Israel Daylight Time)
+Message: Route /api/prpoducts/images/01ebcca4-307e-4752-bd3a-0e5faa9fc9ce.jpg not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun May 12 2024 14:36:39 GMT+0300 (Israel Daylight Time)
+Message: Route /products not found.
+Stack: undefined
+---------------------------------------
+

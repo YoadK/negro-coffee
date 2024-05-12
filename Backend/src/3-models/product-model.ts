@@ -44,6 +44,10 @@ export const ProductSchema = new Schema<IProductModel>({
         min: [0, "Price can't be negative"],
         max: [1000, "Price can't exceed 1000"],
     },
+    image: {
+        type: Object,
+        required: false,
+    },
 
     imageName: {
         type: String,

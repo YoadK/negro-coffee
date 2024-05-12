@@ -5,6 +5,8 @@ import { ValidationError } from "../3-models/client-errors";
 import mongoose from "mongoose";
 import { ProductModel } from "../3-models/product-model";
 import { UploadedFile } from "express-fileupload";
+import { Conflict } from 'http-errors';
+import { fileSaver } from "uploaded-file-saver";
 
 // Product controller:
 class ProductsController {
@@ -25,6 +27,7 @@ class ProductsController {
         this.router.post("/products/new", this.addProduct);
         this.router.put("/products/edit/:_id([0-9a-fA-F]{24})", this.updateProduct);
         this.router.delete("/products/:_id([0-9a-fA-F]{24})", this.deleteProduct);
+        this.router.get("/products/images/:imageName",this.getImageFile);
 
     }
 
@@ -43,7 +46,7 @@ class ProductsController {
     private async getOneProductById(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
             const productToSearchFor = await productsService.getOneProductById(request.params._id);
-            //if 'productToSearchFor' was not found by its repspective id...
+            //if 'productToSearchFor' was not found by its respective id...
             if (!productToSearchFor) {
                 response.status(StatusCode.NotFound).json({ message: "Product not found" });
 
@@ -69,81 +72,77 @@ class ProductsController {
     // POST http://localhost:4000/api/Products/new
     private async addProduct(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
-            const product = new ProductModel(request.body);
-
-            const error = product.validateSync();
-            if (error) throw new ValidationError(error.message);
-
-            const imageFile = request.files?.image as UploadedFile;
-
-            if (imageFile) {
-                product.imageName = imageFile.name;
-                // Save the image file separately (e.g., using a file storage service)
-                // and set the imageUrl field accordingly
-                // product.imageUrl = "path/to/saved/image";
-            }
-
-
-            // Check if the product already exists in the database
-            const existingProduct = await productsService.getProductByName(product.name.toLowerCase().trim());
-            if (existingProduct) {
-                // If the product already exists, return a response indicating that
-                response.status(StatusCode.Conflict).json({ message: "Product already exists" });
-            }
-
-            const addedProduct = await productsService.addProduct(product);
-            response.status(StatusCode.Created).json(addedProduct);
-
-        }
-        catch (err: any) { next(err); }
-    }
-    // PUT http://localhost:4000/api/products/edit/:_id
-    private async updateProduct(request: Request, response: Response, next: NextFunction): Promise<void> {
-
-        try {
-            const productId = request.params._id;
-            console.log("product id is: " + productId);
+            console.log('Request Body:', request.body);
+            console.log('Request Files:', request.files);
 
             const productData = {
                 ...request.body,
-                _id: new mongoose.Types.ObjectId(productId)
+                image: request.files?.image as UploadedFile // Include the uploaded image file
             };
 
             const product = new ProductModel(productData);
-
-
-            // Check if a new image file is provided
-            if (request.files && request.files.image) {
-                const imageFile = request.files.image as UploadedFile;
-                product.imageName = imageFile.name;
-
-            }
-
-            const updatedProduct = await productsService.updateProduct(product);
-            response.json(updatedProduct);
+            const addedProduct = await productsService.addProduct(product);
+            response.status(StatusCode.Created).json(addedProduct);
         }
-
-
-
         catch (err: any) {
-            if (err instanceof ValidationError) {
-                // Handle the ValidationError
-                response.status(StatusCode.BadRequest).json({ message: err.message });
+            if (err instanceof Conflict) {
+                response.status(StatusCode.Conflict).json({ message: err.message });
             } else {
-                // Pass other errors to the error handling middleware
                 next(err);
             }
         }
     }
 
+    // PUT http://localhost:4000/api/products/edit/:_id
+    private async updateProduct(request: Request, response: Response, next: NextFunction): Promise < void> {
+
+    try {
+        const productId = request.params._id;
+        console.log("product id is: " + productId);
+        const productData = {
+            ...request.body,
+            _id: new mongoose.Types.ObjectId(productId)
+        };
+        const product = new ProductModel(productData);
+
+        // Check if a new image file is provided
+        if(request.files && request.files.image) {
+    const imageFile = request.files.image as UploadedFile;
+    product.imageName = imageFile.name;
+}
+const updatedProduct = await productsService.updateProduct(product);
+response.json(updatedProduct);
+        }
+        catch (err: any) {
+    if (err instanceof ValidationError) {
+        // Handle the ValidationError
+        response.status(StatusCode.BadRequest).json({ message: err.message });
+    } else {
+        // Pass other errors to the error handling middleware
+        next(err);
+    }
+}
+    }
+
 
 
     // DELETE http://localhost:4000/api/Products/:_id
-    private async deleteProduct(request: Request, response: Response, next: NextFunction): Promise<void> {
+    private async deleteProduct(request: Request, response: Response, next: NextFunction): Promise < void> {
+    try {
+        const _id = request.params._id;
+        const deletedProduct = await productsService.deleteProduct(_id);
+        response.sendStatus(StatusCode.NoContent)
+    }
+        catch(err: any) { next(err); }
+}
+
+
+     // GET http://localhost:4000/api/products/images/:imageName
+     private async getImageFile(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
-            const _id = request.params._id;
-            const deletedProduct = await productsService.deleteProduct(_id);
-            response.sendStatus(StatusCode.NoContent)
+            const imageName= request.params.imageName;
+            const imagePath = fileSaver.getFilePath(imageName, true);
+            response.sendFile(imagePath); //response the actual image file
         }
         catch (err: any) { next(err); }
     }

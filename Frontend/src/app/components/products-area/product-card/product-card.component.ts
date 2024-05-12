@@ -4,6 +4,7 @@ import { ProductModel } from '../../../models/product.model';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../../SharedArea/shared-module';
+import { appConfig } from '../../../app.config';
 
 
 //ng g c components/products-area/product-card
@@ -21,5 +22,9 @@ export class ProductCardComponent {
     public product: ProductModel;
 
   
+    setDefaultImage(event: any): void {
+        event.target.src = "http://localhost:4000/api/products/images/default-Image.jpg";
+    }
+    
 
 }

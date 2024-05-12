@@ -23,7 +23,7 @@ export class ProductsService {
 
     //get one product
     public async getOneProduct(_id: string): Promise<ProductModel> {
-        const observable = this.http.get<ProductModel>(appConfig.productsUrl + _id);
+        const observable = this.http.get<ProductModel>(appConfig.productsUrl + _id); // returns an observable object object
         const product = await firstValueFrom(observable);
         return product;
     }
@@ -46,9 +46,24 @@ export class ProductsService {
 
     //add product:
     public async addProduct(product: ProductModel): Promise<void> {
-        const observable = this.http.post<ProductModel>(appConfig.productAddUrl, product);
+        const formData = new FormData();
+        formData.append('name', product.name);
+        formData.append('description', product.description);
+        formData.append('price', product.price.toString());
+        formData.append('quantity', product.quantity.toString());
+        formData.append('image', product.image);
+
+        console.log("added product name is: "+product.name);
+        console.log("added product description is: "+product.description);
+        console.log("added product price is: "+product.price);
+        console.log("added product quantity is: "+product.quantity);
+        console.log("added product image name is: "+product.image.name);
+
+
+        const observable = this.http.post<ProductModel>(appConfig.productAddUrl, formData);// returns an observable object 
         const addedProduct = await firstValueFrom(observable);
-        console.log(addedProduct);
+
+        console.log("added product is: "+addedProduct);
     }
 
     //update product

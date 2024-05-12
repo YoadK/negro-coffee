@@ -1,6 +1,7 @@
-div {
+.layout {
     height: 100%;
-    
+    border: 3px red dashed;
+    overflow: auto;
 }
 header{
     border: 2px dotted blue;

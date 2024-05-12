@@ -7,6 +7,7 @@ import { ProductListComponent } from './components/products-area/product-list/pr
 import { LoginComponent } from './components/Auth-area/login/login.component';
 import { RegisterComponent } from './components/Auth-area/register/register.component';
 import { ProductDetailsComponent } from './components/products-area/product-details/product-details.component';
+import { EditProductComponent } from './components/products-area/edit-product/edit-product.component';
 
 export const routes: Routes = [
    
@@ -15,7 +16,7 @@ export const routes: Routes = [
     { path: "home", component: HomeComponent },
     { path: "products", component: ProductListComponent },
     { path: "products/details/:id", component: ProductDetailsComponent },
-
+    { path: "products/edit/{{product?._id}}", component: EditProductComponent },    
     { path: "new", component: AddProductComponent },  
     { path: "login", component: LoginComponent },   
     { path: "register", component: RegisterComponent },   

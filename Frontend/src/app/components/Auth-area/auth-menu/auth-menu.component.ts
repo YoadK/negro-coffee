@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-auth-menu',
@@ -9,5 +11,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './auth-menu.component.module.css'
 })
 export class AuthMenuComponent {
-
+   
 }

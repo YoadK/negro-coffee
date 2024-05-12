@@ -159,3 +159,33 @@
 app-auth-menu {
     margin-left: auto;
 }
+
+// design for the dropdown menu:
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none; // Hide the dropdown by default
+    position: absolute;
+    left: 0; // Align to the left of the .navbar-item
+    background-color: #fff; // Match your design
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 10;
+
+    .dropdown-item {
+        display: block;
+        padding: 10px 20px;
+        color: #25262a; // Keep the font color consistent
+        text-decoration: none;
+
+        &:hover {
+            background-color: #f1f1f1;
+        }
+    }
+}
+
+.navbar-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+

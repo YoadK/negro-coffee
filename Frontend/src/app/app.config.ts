@@ -11,6 +11,7 @@ export const appConfig = {
     productAddUrl: "http://localhost:4000/api/products/new",
     registerUrl: "http://localhost:4000/api/register/",
     loginUrl: "http://localhost:4000/api/login/",
+    // imagesUrl: "http://localhost:4000/api/products/images/"
 
 
 };
