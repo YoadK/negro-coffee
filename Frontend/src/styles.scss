@@ -23,6 +23,7 @@ html, body {
     padding: 0;
     margin: 0;
     text-align: center;
+    box-sizing: border-box; // Ensure this is set globally if not already by Bootstrap
     // font-family: assistant; //dancing_script
     /* direction: rtl; */
     background-image: linear-gradient(90deg, white, rgb(229, 226, 226),white);

@@ -5,9 +5,11 @@
     justify-content: flex-end;
     gap: 2px;
     margin-left: auto;
+     
   
     .btn-cart {
       order: 3;
+      
     }
   
     .login-btn {
