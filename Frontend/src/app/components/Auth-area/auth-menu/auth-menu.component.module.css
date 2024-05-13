@@ -1,49 +1,17 @@
-/* auth-menu.component.scss */
 .auth-menu {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 2px;
-    margin-left: auto;
-     
-  
-    .btn-cart {
-      order: 3;
-      
-    }
-  
-    .login-btn {
-      order: 2;
-    }
-  
-    .welcome_area {
-      order: 1;
-      font-family: inherit;
-      line-height: 1.1;
-      margin: 0;
-      padding: 0;
-      border: 0;
-      outline: 0;
-      vertical-align: baseline;
-      background: 0 0;
-      box-sizing: border-box;
-      color: #bb946b;
-      font-size: 20px;
-      display: block;
-      font-weight: 700;
-    }
-  
-    color: #333;
-    line-height: 1;
-    font-family: assistant;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: 0 0;
-    box-sizing: border-box;
+    display: flex;             /* Aligns children in a row */
+    align-items: center;       /* Vertically centers the items in the container */
+    justify-content: space-between; /* Distributes space between items */
+    flex-wrap: wrap;           /* Allows items to wrap onto the next line if space is insufficient */
+    padding: 10px;             /* Optional: Adds some padding around the container */
+}
 
-    
-  }
+.btn-cart, .login-btn {
+    margin-right: 10px;        /* Adds some space to the right of each button */
+}
+
+.welcome_area {
+    flex-grow: 1;              /* Allows the welcome area to fill the remaining space */
+    display: flex;             /* Optional: Makes internal elements of welcome_area align in a row */
+    align-items: center;       /* Vertically centers the items inside welcome_area */
+}

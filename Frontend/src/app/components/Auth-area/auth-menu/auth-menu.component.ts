@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './auth-menu.component.html',
-  styleUrl: './auth-menu.component.module.css'
+  styleUrl: './auth-menu.component.module.scss'
 })
 export class AuthMenuComponent {
    

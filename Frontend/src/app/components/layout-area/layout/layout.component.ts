@@ -6,11 +6,13 @@ import { AuthMenuComponent } from '../../Auth-area/auth-menu/auth-menu.component
 
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from '../../HeaderArea/header/header.component';
+import { FooterComponent } from '../../FooterArea/footer/footer.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterLink,RouterModule,AuthMenuComponent ,CommonModule, NavbarComponent ],  
+  imports: [RouterLink,RouterModule ,CommonModule, HeaderComponent,FooterComponent ],  
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.module.scss']  
 })
