@@ -16,13 +16,14 @@
                   פעולות נוספות                </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" [routerLink]="['/new']">הוספת מוצר</a>
-                  <a class="dropdown-item" [routerLink]="['/option2']">אופציה 2</a>
+                  <a class="dropdown-item" [routerLink]="['/edit']">עריכת/עדכון מוצר</a>
+                  <a class="dropdown-item" [routerLink]="['/option2']">מחיקת מוצר</a>
                   <a class="dropdown-item" [routerLink]="['/option3']">אופציה 3</a>
+                  <a class="dropdown-item" [routerLink]="['/option3']">אופציה 4</a>
                 </div>
               </div>
               
-            <a class="navbar-item" [routerLink]="['/contact']">צור קשר</a>    
-
+            <a class="navbar-item" [routerLink]="['/contact']">צור קשר</a> 
             <a class="navbar-item"  [routerLink]="['/recommendations']">המלצות</a>
             <a class="navbar-item"  [routerLink]="['/about']">אודות</a>
             <a class="navbar-item"  [routerLink]="['/articles']">מאמרים</a>
@@ -41,8 +42,7 @@
     <a class="navbar-item navbar-logo" [routerLink]=""><img src="assets/images/negro_logo.jpg"></a>
     <a class="side-navbar-item"  [routerLink]="['/about']">אודות</a>
     <a class="side-navbar-item"  [routerLink]="['/recommendations']">המלצות</a>
-    <a class="side-navbar-item"  [routerLink]="['/contact']">צור קשר</a>
-    <a class="side-navbar-item"  [routerLink]="['/new']">הוסף מוצר חדש</a>
+    <a class="side-navbar-item"  [routerLink]="['/contact']">צור קשר</a>    
 </div>
 
 <div class="overlay" [ngClass]="{'is-active': isNavbarOpen && isSmallScreen()}" (click)="toggleNavbar()"></div>

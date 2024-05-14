@@ -5,6 +5,9 @@
     flex-direction: column;
     min-height: 100vh; //height: 100vh;
     border: 3px red dashed;
+    padding: 0;
+    width: 100%;     
+    margin: 0 auto;   // Keeps it centered
 }
 
 header {
@@ -21,6 +24,8 @@ main {
     overflow: visible;
     border: 3px dotted green;    
     flex: 1;
+
+    
 }
 
 footer {
