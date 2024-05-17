@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { ProductsService } from '../../../services/products.service';
 import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from '../product-card/product-card.component';
-import { ProductModel } from '../../../models/product.model';
+import { IProductModel } from '../../../models/product.model';
 
 
 
@@ -18,7 +18,7 @@ import { ProductModel } from '../../../models/product.model';
 })
 export class ProductListComponent implements OnInit {
 
-    public products: ProductModel[];
+    public products: IProductModel[];
 
 
     //DI- Dependancy injection

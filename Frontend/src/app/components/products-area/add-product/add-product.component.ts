@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ProductModel } from '../../../models/product.model';
+import { IProductModel } from '../../../models/product.model';
 import { ProductsService } from '../../../services/products.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { ProductsService } from '../../../services/products.service';
 })
 export class AddProductComponent {
 
-    public product = new ProductModel();
+    public product = new IProductModel();
 
     public constructor(private productsService: ProductsService, private router: Router) {    }
 

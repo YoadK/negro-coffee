@@ -1,14 +1,14 @@
+import { IUserModel } from "../3-models/user-model";
 import jwt, { SignOptions } from "jsonwebtoken";
 import { appConfig } from "./app-config";
 import { RoleModel } from "../3-models/role-model";
-import { IUserModel } from "../3-models/user-model";
 import crypto from "crypto";
 
 class Cyber {
 
     public getNewToken(user: IUserModel): string {
 
-        // Remove password from user: 
+        // Remove password from user:
         delete user.password;
 
         // Create container object containing the user: (jwt token)
@@ -59,13 +59,22 @@ class Cyber {
     public hashPassword(plainText: string): string {
 
         // SHA = Secured Hashing Algorithm.
-        // HMAC = Hash-Based Message Authentication Code 
+        // HMAC = Hash-Based Message Authentication Code
         const hashedPassword = crypto.createHmac("sha512", appConfig.passwordSalt).update(plainText).digest("hex");
 
         // Return:
         return hashedPassword;
     }
 
+    // Validate password:
+    public validatePassword(plainText: string, hashedPassword: string): boolean {
+
+        // Hash the plain text password:
+        const hash = crypto.createHmac("sha512", appConfig.passwordSalt).update(plainText).digest("hex");
+
+        // Compare hashed passwords:
+        return hash === hashedPassword;
+    }
 }
 
 export const cyber = new Cyber();

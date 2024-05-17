@@ -1,6 +1,6 @@
 import { ObjectId } from "mongoose"
 
-export class CategoryModel {
+export interface ICategoryModel {
   _id: ObjectId
  name: string
  description: string

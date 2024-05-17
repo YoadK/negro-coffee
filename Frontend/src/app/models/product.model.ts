@@ -1,9 +1,9 @@
-import { ObjectId } from "mongoose";
+ import { ObjectId } from "mongoose";
 // //@ts-ignore
 // import { UploadedFile } from "express-fileupload";
 
-export class ProductModel {
-    _id: string;
+export class IProductModel {
+    _id: ObjectId;
     name: string;
     description: string;
     quantity: number;

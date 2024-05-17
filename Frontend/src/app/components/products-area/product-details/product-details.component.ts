@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
-import { ProductModel } from '../../../models/product.model';
+import { IProductModel } from '../../../models/product.model';
 import { ProductsService } from '../../../services/products.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { ProductsService } from '../../../services/products.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
-    public product: ProductModel;
+    public product: IProductModel;
 
 
     public constructor(

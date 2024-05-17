@@ -1,10 +1,10 @@
 import { Component, Input, NgModule } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ProductModel } from '../../../models/product.model';
+import { IProductModel} from '../../../models/product.model';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../../SharedArea/shared-module';
-import { appConfig } from '../../../app.config';
+
 
 
 //ng g c components/products-area/product-card
@@ -19,7 +19,7 @@ import { appConfig } from '../../../app.config';
 export class ProductCardComponent {
 
     @Input() //Props
-    public product: ProductModel;
+    public product: IProductModel;
 
   
     setDefaultImage(event: any): void {

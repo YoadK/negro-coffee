@@ -1,6 +1,6 @@
 import { Document, Schema, model } from "mongoose";
-import { ProductModel } from "./product-model";
-import { CategoryModel } from "./category-model";
+import { ProductModel } from "../3-models/product-model";
+import { CategoryModel } from  "../3-models/category-model";
 
 export interface IProductCategoryModel extends Document {
   productId: Schema.Types.ObjectId;

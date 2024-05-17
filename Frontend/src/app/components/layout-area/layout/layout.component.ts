@@ -2,9 +2,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 
-import { AuthMenuComponent } from '../../Auth-area/auth-menu/auth-menu.component';
 
-import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../HeaderArea/header/header.component';
 import { FooterComponent } from '../../FooterArea/footer/footer.component';

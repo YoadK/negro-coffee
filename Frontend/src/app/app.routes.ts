@@ -1,13 +1,12 @@
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home-area/home/home.component';
-
 import { Page404Component } from './components/SharedArea/page404/page404.component';
 import { AddProductComponent } from './components/products-area/add-product/add-product.component';
-import { ProductListComponent } from './components/products-area/product-list/product-list.component';
 import { LoginComponent } from './components/Auth-area/login/login.component';
 import { RegisterComponent } from './components/Auth-area/register/register.component';
 import { ProductDetailsComponent } from './components/products-area/product-details/product-details.component';
 import { EditProductComponent } from './components/products-area/edit-product/edit-product.component';
+import { ProductListComponent } from './components/products-area/product-list/product-list.component';
 
 export const routes: Routes = [
    
