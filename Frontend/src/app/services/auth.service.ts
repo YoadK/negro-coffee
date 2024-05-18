@@ -3,19 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { appConfig } from '../Utils/app.config';
+import {UserModel} from '../../../../Frontend/src/app/models/user.model';
+import {CredentialsModel} from '../../../../Frontend/src/app/models/credentials.model';
 
-export interface CredentialsModel {
-  email: string;
-  password: string;
-}
-
-export interface UserModel {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  // Add other user properties as needed
-}
 
 @Injectable({
   providedIn: 'root'

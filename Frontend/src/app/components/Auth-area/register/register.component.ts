@@ -15,13 +15,8 @@ import { UserModel } from '../../../models/user.model';
   styleUrls: ['./register.component.module.scss']
 })
 export class RegisterComponent {
-    user: UserModel;
-//    user: UserModel;  ={
-//     firstName: '',
-//     lastName: '',
-//     email: '',
-//     password: ''
-//   };
+    
+    public user: UserModel = new UserModel(); // Instantiate using the new keyword
 
   constructor(
     private authService: AuthService,
@@ -40,7 +35,7 @@ export class RegisterComponent {
     }
 
     try {
-      await this.authService.register(user);
+      await this.authService.register(this.user);
       notify.success(`Welcome ${this.user.firstName}!`);
       this.router.navigate(['/home']);
     } catch (error:any) {

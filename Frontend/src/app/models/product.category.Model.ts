@@ -1,5 +1,5 @@
 
-export interface ProductCategoryModel {
+export class ProductCategoryModel {
   
          productId: string;
          categoryId: string;
