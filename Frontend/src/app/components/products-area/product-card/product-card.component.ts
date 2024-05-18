@@ -1,6 +1,6 @@
 import { Component, Input, NgModule } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { IProductModel} from '../../../models/product.model';
+import { ProductModel} from '../../../models/product.model';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../../SharedArea/shared-module';
@@ -19,7 +19,7 @@ import { SharedModule } from '../../SharedArea/shared-module';
 export class ProductCardComponent {
 
     @Input() //Props
-    public product: IProductModel;
+    public product: ProductModel;
 
   
     setDefaultImage(event: any): void {

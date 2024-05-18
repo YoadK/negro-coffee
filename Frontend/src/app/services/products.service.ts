@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 // import { CategoryModel } from '../models/category.model';
-import { appConfig } from '../app.config';
+import { appConfig } from '../Utils/app.config';
 import { firstValueFrom } from 'rxjs';
-import { IProductModel} from '../models/product.model';
-import { ICategoryModel } from '../models/category.model';
+import { ProductModel} from '../models/product.model';
+import { CategoryModel } from '../models/category.model';
 
 @Injectable({
     providedIn: 'root'
@@ -16,37 +16,37 @@ export class ProductsService {
     constructor(private http: HttpClient) { } // DI for an 'axios' like object.
 
     // get All Products
-    public async getAllProducts(): Promise<IProductModel[]> {
-        const observable = this.http.get<IProductModel[]>(appConfig.productsUrl);
+    public async getAllProducts(): Promise<ProductModel[]> {
+        const observable = this.http.get<ProductModel[]>(appConfig.productsUrl);
         const Products = await firstValueFrom(observable);
         return Products;
     }
 
     //get one product
-    public async getOneProduct(_id: string): Promise<IProductModel> {
-        const observable = this.http.get<IProductModel>(appConfig.productsUrl + _id); // returns an observable object object
+    public async getOneProduct(_id: string): Promise<ProductModel> {
+        const observable = this.http.get<ProductModel>(appConfig.productsUrl + _id); // returns an observable object object
         const product = await firstValueFrom(observable);
         return product;
     }
 
 
     //get All Categories
-    public async getAllCategories(): Promise<ICategoryModel[]> {
-        const observable = this.http.get<ICategoryModel[]>(appConfig.categoriesUrl);
+    public async getAllCategories(): Promise<CategoryModel[]> {
+        const observable = this.http.get<CategoryModel[]>(appConfig.categoriesUrl);
         const Categories = await firstValueFrom(observable);
         return Categories;
     }
 
 
     //search products
-    public async searchProducts(text: string): Promise<IProductModel[]> {
-        const observable = this.http.get<IProductModel[]>(appConfig.searchUrl + text);
+    public async searchProducts(text: string): Promise<ProductModel[]> {
+        const observable = this.http.get<ProductModel[]>(appConfig.searchUrl + text);
         const products = await firstValueFrom(observable);
         return products;
     }
 
     //add product:
-    public async addProduct(product: IProductModel): Promise<void> {
+    public async addProduct(product: ProductModel): Promise<void> {
         const formData = new FormData();
         formData.append('name', product.name);
         formData.append('description', product.description);
@@ -61,15 +61,15 @@ export class ProductsService {
         console.log("added product image name is: "+product.image.name);
 
 
-        const observable = this.http.post<IProductModel>(appConfig.productAddUrl, formData);// returns an observable object 
+        const observable = this.http.post<ProductModel>(appConfig.productAddUrl, formData);// returns an observable object 
         const addedProduct = await firstValueFrom(observable);
 
         console.log("added product is: "+addedProduct);
     }
 
     //update product
-    public async updateProduct(product: IProductModel): Promise<void> {
-        const observable = this.http.put<IProductModel>(appConfig.productsUrl + product._id, product);
+    public async updateProduct(product: ProductModel): Promise<void> {
+        const observable = this.http.put<ProductModel>(appConfig.productsUrl + product._id, product);
         const updatedProduct = await firstValueFrom(observable);
         console.log(updatedProduct);
     }
@@ -77,7 +77,7 @@ export class ProductsService {
 
     //delete product:
     public async deleteProduct(_id: string): Promise<void> {
-        const observable = this.http.delete<IProductModel>(appConfig.productsUrl + _id);
+        const observable = this.http.delete<ProductModel>(appConfig.productsUrl + _id);
         await firstValueFrom(observable);
     }
 }

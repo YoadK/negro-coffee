@@ -1,8 +1,8 @@
 import { ValidationError } from "../3-models/client-errors";
-import { CredentialsModel } from "../3-models/credentials-model";
+import { ICredentialsModel } from "../3-models/credentials-model";
 import { IUserModel } from "../3-models/user-model";
 
-export function validateCredentials(credentials: CredentialsModel): string[] {
+export function validateCredentials(credentials: ICredentialsModel): string[] {
     const errors: string[] = [];
   
     if (!credentials.email) {

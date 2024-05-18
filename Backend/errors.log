@@ -1436,3 +1436,9 @@ Message: Route /products not found.
 Stack: undefined
 ---------------------------------------
 
+Time: Sat May 18 2024 16:15:53 GMT+0300 (Israel Daylight Time)
+Message: First name must be between 1 and 50 characters long.
+Last name must be between 1 and 50 characters long.
+Stack: undefined
+---------------------------------------
+

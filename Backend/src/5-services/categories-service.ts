@@ -1,4 +1,4 @@
-import { CategoryModel, ICategoryModel } from "../3-models/category-model";
+import { ICategoryModel } from "../3-models/category-model";
 
 
 class CategoriesService {
@@ -7,7 +7,7 @@ class CategoriesService {
     
     // get All categories
     public getAllCategories(): Promise<ICategoryModel[]> {
-        return CategoryModel.find().exec();
+        return ICategoryModel.find().exec();
     }
 
 }

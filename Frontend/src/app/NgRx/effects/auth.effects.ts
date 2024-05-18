@@ -8,6 +8,12 @@ import * as AuthActions from '../../NgRx/actions/auth.actions';
 @Injectable()
 export class AuthEffects {
 
+    constructor(
+        private actions$: Actions,
+        private authService: AuthService
+      ) {}
+
+
   register$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.register),
@@ -23,7 +29,7 @@ export class AuthEffects {
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.login),
-      mergeMap(action =>
+      switchMap(action =>
         this.authService.login(action.credentials).pipe(
           map(user => AuthActions.loginSuccess({ user })),
           catchError(error => of(AuthActions.loginFailure({ error })))
@@ -44,8 +50,5 @@ export class AuthEffects {
     )
   );
 
-  constructor(
-    private actions$: Actions,
-    private authService: AuthService
-  ) {}
+ 
 }

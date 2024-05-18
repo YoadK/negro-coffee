@@ -1,8 +1,8 @@
 import express, { Request, Response, NextFunction } from "express";
-import { IUserModel, UserModel } from "../3-models/user-model";
+import { IUserModel } from "../3-models/user-model";
 import { StatusCode } from "../3-models/enums";
 import { authService } from "../5-services/auth-service";
-import { CredentialsModel } from "../3-models/credentials-model";
+import { ICredentialsModel } from "../3-models/credentials-model";
 import { validateInsert } from "../2-utils/validation";
 import { validateCredentials } from "../2-utils/validation";
 
@@ -37,7 +37,7 @@ class AuthController {
     // POST http://localhost:4000/api/login --> Login existing user, return token:
     private async login(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
-            const credentials: CredentialsModel = request.body;
+            const credentials: ICredentialsModel = request.body;
             validateCredentials(credentials);
             const token = await authService.login(credentials);
             response.json(token);

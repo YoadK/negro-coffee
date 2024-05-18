@@ -3,7 +3,7 @@ import { UploadedFile } from "express-fileupload";
 import mongoose, { Document, ObjectId, Schema, model, Types } from "mongoose";
 
 
-// Interface for ProductModel
+// Interface for IProductModel
 export interface IProductModel extends Document {
     _id: ObjectId;
     name: string;
@@ -15,7 +15,7 @@ export interface IProductModel extends Document {
     imageUrl: string; // full url of the image
 }
 
-// Schema for ProductModel
+// Schema for IProductModel
 export const ProductSchema = new Schema<IProductModel>({
     _id: {
         type: mongoose.Schema.ObjectId,
@@ -68,5 +68,5 @@ export const ProductSchema = new Schema<IProductModel>({
 
 
 
-// Model for ProductModel
-export const ProductModel = model<IProductModel>("ProductModel", ProductSchema, "products");
+// Model for IProductModel
+export const IProductModel = model<IProductModel>("Product", ProductSchema, "products");

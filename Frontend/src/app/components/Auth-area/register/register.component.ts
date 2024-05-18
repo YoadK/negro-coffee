@@ -1,38 +1,50 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+import { notify } from '../../../Utils/Notify';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { appConfig } from '../../../app.config';
+import { UserModel } from '../../../models/user.model';
 
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+    imports:  [FormsModule, CommonModule],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.module.scss']
 })
 export class RegisterComponent {
-  email: string = '';
-  password: string = '';
+    user: UserModel;
+//    user: UserModel;  ={
+//     firstName: '',
+//     lastName: '',
+//     email: '',
+//     password: ''
+//   };
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
-  onSubmit(): void {
-    if (this.email && this.password) {
-      this.http.post(appConfig.registerUrl, {
-        email: this.email,
-        password: this.password
-      }).subscribe(
-        response => {
-          console.log('Registration successful', response);
-          this.router.navigate(['/login']); // Redirect to login page on success
-        },
-        error => {
-          console.error('Registration failed', error);
-        }
-      );
+  async onSubmit() {
+    // Client-side validation
+    if (this.user.firstName.length < 1 || this.user.firstName.length > 50) {
+      notify.error('First name must be between 1 and 50 characters long.');
+      return;
+    }
+    if (this.user.lastName.length < 1 || this.user.lastName.length > 50) {
+      notify.error('Last name must be between 1 and 50 characters long.');
+      return;
+    }
+
+    try {
+      await this.authService.register(user);
+      notify.success(`Welcome ${this.user.firstName}!`);
+      this.router.navigate(['/home']);
+    } catch (error:any) {
+      notify.error(error.message || 'Registration failed');
     }
   }
 }

@@ -1,7 +1,7 @@
 import { cyber } from "../2-utils/cyber";
 import { UnauthorizedError, ValidationError } from "../3-models/client-errors";
-import { CredentialsModel } from "../3-models/credentials-model";
-import { IUserModel, UserModel } from "../3-models/user-model";
+import { ICredentialsModel } from "../3-models/credentials-model";
+import { IUserModel } from "../3-models/user-model";
 import { RoleModel } from "../3-models/role-model";
 import { validateCredentials, validateInsert } from "../2-utils/validation";
 
@@ -22,7 +22,7 @@ class AuthService {
     user.password = cyber.hashPassword(user.password);
 
     // Save new user:
-    const newUser = new UserModel(user);
+    const newUser = new IUserModel(user);
     await newUser.save();
 
     // Create new token:
@@ -31,12 +31,12 @@ class AuthService {
   }
 
   // Login existing user:
-  public async login(credentials: CredentialsModel): Promise<string> {
+  public async login(credentials: ICredentialsModel): Promise<string> {
     // Validate credentials:
     validateCredentials(credentials);
 
     // Find user by email:
-    const user = await UserModel.findOne({ email: credentials.email });
+    const user = await IUserModel.findOne({ email: credentials.email });
     if (!user) throw new UnauthorizedError("User not found.");
 
     // Validate password:
@@ -51,7 +51,7 @@ class AuthService {
   // Is email taken:
   private async isEmailTaken(email: string): Promise<boolean> {
     // Check if email is taken:
-    const existingUser = await UserModel.findOne({ email });
+    const existingUser = await IUserModel.findOne({ email });
     return !!existingUser;
   }
 }

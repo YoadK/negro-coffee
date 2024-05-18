@@ -16,4 +16,4 @@ const UserSchema = new Schema<IUserModel>({
   roleId: { type: Number, required: true }
 });
 
-export const UserModel = model<IUserModel>('UserModel', UserSchema, 'users');
+export const IUserModel = model<IUserModel>('UserModel', UserSchema, 'users');

@@ -1,7 +1,7 @@
 
 
-export class ICredentialsModel {
+export interface CredentialsModel {
 
-    public email: string;
-    public password: string;
+     email: string;
+     password: string;
 }

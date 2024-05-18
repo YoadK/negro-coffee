@@ -1,7 +1,7 @@
 import { fileSaver } from "uploaded-file-saver";
 import { appConfig } from "../2-utils/app-config";
 import { ResourceNotFoundError, ValidationError } from "../3-models/client-errors";
-import { IProductModel, ProductModel } from "../3-models/product-model";
+import { IProductModel } from "../3-models/product-model";
 import mongoose, { ObjectId } from "mongoose";
 import { UploadedFile } from "express-fileupload";
 import { Conflict } from 'http-errors';
@@ -10,16 +10,16 @@ class ProductsService {
 
     // get All products
     public getAllProducts(): Promise<IProductModel[]> {
-        return ProductModel.find().exec();
+        return IProductModel.find().exec();
     }
 
     //get  a product by name
     public async getProductByName(name: string): Promise<IProductModel | null> {
-        return ProductModel.findOne({ name }).exec();
+        return IProductModel.findOne({ name }).exec();
     }
 
     public async getOneProductById(id: string): Promise<IProductModel | null> {
-        const product = await ProductModel.findById(id).exec();
+        const product = await IProductModel.findById(id).exec();
         if (!product) {
             throw new ValidationError("Product not found");
         }
@@ -30,13 +30,13 @@ class ProductsService {
     //Search products
     public searchProducts(text: string): Promise<IProductModel[]> {
         const regex = new RegExp(text, 'i');
-        return ProductModel.find({ name: { $regex: regex } }).exec();
+        return IProductModel.find({ name: { $regex: regex } }).exec();
     }
 
     //add product:
     public async addProduct(product: IProductModel): Promise<IProductModel> {
         try {
-            const newProduct = new ProductModel(product);//await this.getProductByName(product.name);
+            const newProduct = new IProductModel(product);//await this.getProductByName(product.name);
 
 
             // Check if an image file is provided
@@ -78,7 +78,7 @@ class ProductsService {
             console.log("Updating product with ID:", product._id);
 
             // Find the product by ID
-            const existingProduct = await ProductModel.findById(product._id);
+            const existingProduct = await IProductModel.findById(product._id);
             console.log("Existing product:", existingProduct);
 
 
@@ -127,14 +127,14 @@ class ProductsService {
     public async deleteProduct(_id: string): Promise<void> {
         try {
             // Find the product by ID
-            const product = await ProductModel.findById(_id);
+            const product = await IProductModel.findById(_id);
 
             if (product) {
                 // Delete the image file
                 await fileSaver.delete(product.imageName);
 
                 // Delete the product from the database
-                await ProductModel.findByIdAndDelete(_id).exec();
+                await IProductModel.findByIdAndDelete(_id).exec();
             }
         }
         catch (err: any) {
@@ -147,7 +147,7 @@ class ProductsService {
     private async getImageName(_id: ObjectId): Promise<string> {
         try {
             // Find the product by ID
-            const product = await ProductModel.findById(_id).select('imageName').exec();
+            const product = await IProductModel.findById(_id).select('imageName').exec();
 
             // If product doesn't exist, return null
             if (!product) {

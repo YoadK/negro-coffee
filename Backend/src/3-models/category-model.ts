@@ -1,12 +1,12 @@
 import { Document, Schema, model } from "mongoose";
 
-// Interface for CategoryModel
+
 export interface ICategoryModel extends Document {
   name: string;
   description: string;
 }
 
-// Schema for CategoryModel
+// Schema for ICategoryModel
 export const CategorySchema = new Schema<ICategoryModel>({
   name: {
     type: String,
@@ -23,5 +23,5 @@ export const CategorySchema = new Schema<ICategoryModel>({
   versionKey: false,
 });
 
-// Model for CategoryModel
-export const CategoryModel = model<ICategoryModel>("CategoryModel", CategorySchema, "categories");
+// Model for ICategoryModel
+export const ICategoryModel = model<ICategoryModel>("Category", CategorySchema, "categories");

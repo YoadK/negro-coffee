@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {  Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { IProductModel } from '../../../models/product.model';
+import {ProductModel} from '../../../models/product.model';
 import { ProductsService } from '../../../services/products.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { ProductsService } from '../../../services/products.service';
 })
 export class EditProductComponent implements OnInit {
 
-    public product = new IProductModel();
+    public product = new ProductModel();
 
     public constructor(private productsService: ProductsService, private router: Router,private activatedRoute: ActivatedRoute) { }
 

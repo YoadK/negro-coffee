@@ -3,7 +3,7 @@ import { StatusCode } from "../3-models/enums";
 import { productsService } from "../5-services/products-service";
 import { ValidationError } from "../3-models/client-errors";
 import mongoose from "mongoose";
-import { ProductModel } from "../3-models/product-model";
+import { IProductModel } from "../3-models/product-model";
 import { UploadedFile } from "express-fileupload";
 import { Conflict } from 'http-errors';
 import { fileSaver } from "uploaded-file-saver";
@@ -80,7 +80,7 @@ class ProductsController {
                 image: request.files?.image as UploadedFile // Include the uploaded image file
             };
 
-            const product = new ProductModel(productData);
+            const product = new IProductModel(productData);
             const addedProduct = await productsService.addProduct(product);
             response.status(StatusCode.Created).json(addedProduct);
         }
@@ -103,7 +103,7 @@ class ProductsController {
             ...request.body,
             _id: new mongoose.Types.ObjectId(productId)
         };
-        const product = new ProductModel(productData);
+        const product = new IProductModel(productData);
 
         // Check if a new image file is provided
         if(request.files && request.files.image) {

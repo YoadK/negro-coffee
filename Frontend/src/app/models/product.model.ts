@@ -2,7 +2,7 @@
 // //@ts-ignore
 // import { UploadedFile } from "express-fileupload";
 
-export class IProductModel {
+export interface ProductModel {
     _id: ObjectId;
     name: string;
     description: string;
@@ -10,7 +10,5 @@ export class IProductModel {
     price: number;
     image: File;
     imageUrl: string;
-
-
 
 }

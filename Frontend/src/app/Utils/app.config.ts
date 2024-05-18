@@ -1,6 +1,6 @@
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
-import { routes } from './app.routes';
+import { routes } from '../app.routes';
 
 export const appConfig = {
     providers: [provideRouter(routes), provideHttpClient()],//provideHttpClient() is similar to 'axios', but it doesnt return 'promise' it returns 'observable'

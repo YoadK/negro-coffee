@@ -1,35 +1,33 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { ICredentialsModel } from '../../../models/credentials.model';
-import { validateCredentials } from '../../../Utils/validation';
-import { appConfig } from '../../../app.config';
+import { CredentialsModel } from '../../../models/credentials.model';
+import { notify } from '../../../Utils/Notify';
+
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    standalone: true,
+    imports: [FormsModule, CommonModule],
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.module.scss']
 })
 export class LoginComponent {
-  credentials: ICredentialsModel = { email: '', password: '' };
+    credentials: CredentialsModel = { email: '', password: '' };
 
-  constructor(private http: HttpClient, private router: Router) {}
+    constructor(private authService:AuthService ,private http: HttpClient, private router: Router) { }
 
-  onSubmit(): void {
-    const errors = validateCredentials(this.credentials);
-    if (errors.length > 0) {
-      alert(errors.join('\n'));
-      return;
+    async onSubmit() {
+        try {
+            await this.authService.login(this.credentials);
+            const user = this.authService.getCurrentUser();
+            notify.success(`Welcome back ${user.firstName}!`);
+            this.router.navigate(['/home']);
+        } catch (error: any) {
+            notify.error(error);
+        }
     }
-
-    this.http.post(appConfig.loginUrl, this.credentials).subscribe(
-      response => {
-        console.log('Login successful', response);
-        this.router.navigate(['/products']); // Redirect to products page on success
-      },
-      error => {
-        console.error('Login failed', error);
-      }
-    );
-  }
 }
