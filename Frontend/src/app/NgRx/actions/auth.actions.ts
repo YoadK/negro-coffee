@@ -1,14 +1,14 @@
 import { createAction, props } from '@ngrx/store';
-import { ICredentialsModel } from '../../models/credentials.model';
-import { IUserModel } from '../../models/user.model';
+import { CredentialsModel } from '../../models/credentials.model';
+import { UserModel } from '../../models/user.model';
 
 
-export const register = createAction('[Auth] Register', props<{ credentials: ICredentialsModel }>());
-export const registerSuccess = createAction('[Auth] Register Success', props<{ user: IUserModel }>());
+export const register = createAction('[Auth] Register', props<{ user: UserModel }>());
+export const registerSuccess = createAction('[Auth] Register Success', props<{ user: UserModel }>());
 export const registerFailure = createAction('[Auth] Register Failure', props<{ error: any }>());
 
-export const login = createAction('[Auth] Login', props<{ credentials: ICredentialsModel }>());
-export const loginSuccess = createAction('[Auth] Login Success', props<{ user: IUserModel }>());
+export const login = createAction('[Auth] Login', props<{ credentials: CredentialsModel }>());
+export const loginSuccess = createAction('[Auth] Login Success', props<{ user: UserModel }>());
 export const loginFailure = createAction('[Auth] Login Failure', props<{ error: any }>());
 
 export const logout = createAction('[Auth] Logout');

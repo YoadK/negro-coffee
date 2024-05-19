@@ -1442,3 +1442,153 @@ Last name must be between 1 and 50 characters long.
 Stack: undefined
 ---------------------------------------
 
+Time: Sun May 19 2024 20:54:21 GMT+0300 (Israel Daylight Time)
+Message: alert is not defined
+Stack: ReferenceError: alert is not defined
+    at AuthController.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\auth-controller.ts:33:9)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:47:12)
+---------------------------------------
+
+Time: Sun May 19 2024 21:05:35 GMT+0300 (Israel Daylight Time)
+Message: alert is not defined
+Stack: ReferenceError: alert is not defined
+    at AuthController.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\auth-controller.ts:33:9)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:47:12)
+---------------------------------------
+
+Time: Sun May 19 2024 21:06:36 GMT+0300 (Israel Daylight Time)
+Message: alert is not defined
+Stack: ReferenceError: alert is not defined
+    at AuthController.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\auth-controller.ts:33:9)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:47:12)
+---------------------------------------
+
+Time: Sun May 19 2024 21:07:24 GMT+0300 (Israel Daylight Time)
+Message: alert is not defined
+Stack: ReferenceError: alert is not defined
+    at AuthController.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\auth-controller.ts:33:9)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:47:12)
+---------------------------------------
+
+Time: Sun May 19 2024 21:08:20 GMT+0300 (Israel Daylight Time)
+Message: alert is not defined
+Stack: ReferenceError: alert is not defined
+    at AuthService.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\auth-service.ts:51:9)
+    at AuthController.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\auth-controller.ts:36:21)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:175:3)
+---------------------------------------
+
+Time: Sun May 19 2024 21:09:26 GMT+0300 (Israel Daylight Time)
+Message: alert is not defined
+Stack: ReferenceError: alert is not defined
+    at AuthService.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\auth-service.ts:51:9)
+    at AuthController.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\auth-controller.ts:36:21)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:175:3)
+---------------------------------------
+
+Time: Sun May 19 2024 21:11:47 GMT+0300 (Israel Daylight Time)
+Message: alert is not defined
+Stack: ReferenceError: alert is not defined
+    at AuthService.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\auth-service.ts:51:9)
+    at AuthController.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\auth-controller.ts:37:21)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:175:3)
+---------------------------------------
+
+Time: Sun May 19 2024 21:17:31 GMT+0300 (Israel Daylight Time)
+Message: alert is not defined
+Stack: ReferenceError: alert is not defined
+    at AuthService.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\auth-service.ts:51:9)
+    at AuthController.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\auth-controller.ts:37:21)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:175:3)
+---------------------------------------
+
+Time: Sun May 19 2024 21:48:31 GMT+0300 (Israel Daylight Time)
+Message: alert is not defined
+Stack: ReferenceError: alert is not defined
+    at AuthService.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\auth-service.ts:51:9)
+    at AuthController.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\auth-controller.ts:37:21)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:175:3)
+---------------------------------------
+
+Time: Sun May 19 2024 22:01:38 GMT+0300 (Israel Daylight Time)
+Message: alert is not defined
+Stack: ReferenceError: alert is not defined
+    at AuthService.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\auth-service.ts:51:9)
+    at AuthController.login (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\auth-controller.ts:37:21)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:175:3)
+---------------------------------------
+

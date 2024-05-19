@@ -18,7 +18,7 @@ export function validateCredentials(credentials: ICredentialsModel): string[] {
     } else if (credentials.password.length > 50) {
       errors.push('Password must be less than 50 characters long.');
     }
-  
+    console.log ("<validateCredentials> are there any errors? ", (errors.length)>0 ? "true" : "false");
     return errors;
   }
   

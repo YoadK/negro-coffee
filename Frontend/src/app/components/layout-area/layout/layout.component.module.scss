@@ -8,7 +8,7 @@
     padding: 0;
     width: 100%;     
     margin: 0 auto;   // Keeps it centered
-}
+
 
 header {
     border: 2px dotted blue;
@@ -31,4 +31,12 @@ main {
 footer {
     border: 3px dotted orange;  
     flex: 0 0 15%;
+}
+
+.notyf {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 9999; // Ensure it's on top of other elements
+  }
 }

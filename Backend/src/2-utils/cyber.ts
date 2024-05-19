@@ -19,7 +19,7 @@ class Cyber {
 
         // Create token:
         const token = jwt.sign(container, appConfig.jwtSecretKey, options);
-
+        console.log("token is: ",token);
         // Return:
         return token;
     }
@@ -35,9 +35,11 @@ class Cyber {
             jwt.verify(token, appConfig.jwtSecretKey);
 
             // All is good:
+            console.log("token is valid ",token);
             return true;
         }
         catch (err: any) { // Token is not valid.
+            console.log("token is invalid ",token);
             return false;
         }
     }

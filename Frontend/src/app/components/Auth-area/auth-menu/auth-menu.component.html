@@ -16,10 +16,15 @@
         <span class="number">0</span> 
     </button>
 
-    <div class="welcome_area"> |
+    <div class="welcome_area" *ngIf="!isAuthenticated"> |
         <h6> התחבר לאזור האישי שלך </h6> 
-        <a class="login_hyperlink" click [routerLink]="['/login']" title="התחבר">התחבר </a> |
+        <a class="login_hyperlink" [routerLink]="['/login']" title="התחבר">התחבר </a> |
         <a class="register_hyperlink" [routerLink]="['/register']" title="הירשם">הירשם </a>
+    </div>
+
+    <div class="welcome_area" *ngIf="isAuthenticated"> |
+        <h6> ברוך הבא, {{ user?.firstName }} </h6>
+        <button (click)="logout()">Logout</button>
     </div>
 
 

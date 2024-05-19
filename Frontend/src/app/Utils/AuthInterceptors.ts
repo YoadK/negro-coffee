@@ -1,0 +1,43 @@
+import { Injectable } from '@angular/core';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { StatusCode } from '../../../../Backend/src/3-models/enums';
+
+
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+  constructor(private router: Router) {}
+
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+        request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+    }
+
+    return next.handle(request).pipe(
+        catchError((error: HttpErrorResponse) => {
+          switch (error.status) {
+            case StatusCode.Unauthorized:
+              // Handle unauthorized error
+              this.router.navigate(['/login']);
+              break;
+            case StatusCode.Forbidden:
+              // Handle forbidden error
+              alert('Access denied');
+              break;
+            // Handle other status codes as needed
+            default:
+              break;
+          }
+          return throwError(error);
+        })
+      );
+  }
+}
