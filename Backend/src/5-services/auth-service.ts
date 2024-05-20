@@ -5,7 +5,7 @@ import { IUserModel } from "../3-models/user-model";
 import { RoleModel } from "../3-models/role-model";
 import { validateCredentials, validateInsert } from "../2-utils/validation";
 import { from, Observable, map } from 'rxjs';
-import { securityMiddleware } from "../4-middleware/security-middleware";
+
 
 
 class AuthService {

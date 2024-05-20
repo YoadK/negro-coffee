@@ -19,7 +19,8 @@ import { AuthInterceptor } from './Utils/AuthInterceptors';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    StoreModule.forRoot({ auth: authReducer }),   
+    StoreModule.forRoot({ auth: authReducer }), 
+    StoreModule.forFeature('auth', authReducer), // Include StoreModule for the feature  
     EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
     HttpClientModule

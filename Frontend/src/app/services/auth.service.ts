@@ -14,16 +14,22 @@ export class AuthService {
     public currentAuthStatus = new BehaviorSubject<UserModel | null>(null);
 
     constructor(private http: HttpClient) {
-        const token =this.getToken ();
-        if (token) { 
-            const loggedInUser = jwtDecode<{ user: UserModel }>(token).user;
-            this.currentAuthStatus.next(loggedInUser);
-        }
+        this.loadStoredToken();
     }
 
-    getToken(): string | null {
-        return sessionStorage.getItem('token');
-      }
+    private loadStoredToken(): void {
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const decodedToken = jwtDecode<{ user: UserModel }>(token);
+                const loggedInUser = decodedToken.user;
+                this.currentAuthStatus.next(loggedInUser);
+            } catch (error) {
+                console.error('Invalid token:', error);
+                this.currentAuthStatus.next(null);
+            }
+        }
+    }
 
     getCurrentUser(): UserModel | null {
         return this.currentAuthStatus.value;
