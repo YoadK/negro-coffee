@@ -17,8 +17,11 @@ export class ProductsService {
 
     // get All Products
     public async getAllProducts(): Promise<ProductModel[]> {
+        console.log('Inside getAllProducts()');
         const observable = this.http.get<ProductModel[]>(appConfig.productsUrl);
+        console.log('After making the HTTP request');
         const Products = await firstValueFrom(observable);
+        console.log('Products retrieved:', Products);
         return Products;
     }
 

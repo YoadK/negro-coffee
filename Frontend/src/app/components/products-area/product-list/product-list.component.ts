@@ -28,6 +28,7 @@ export class ProductListComponent implements OnInit {
     public async ngOnInit(): Promise<void> {
         try{
         this.title.setTitle("Negro's espresso shop | Products");
+        console.log('Calling getAllProducts()');
         this.products = await this.productsService.getAllProducts();
         // console.log(this.products);
         // console.log("'product-list' component ready for use");

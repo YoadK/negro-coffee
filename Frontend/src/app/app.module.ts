@@ -8,15 +8,18 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { authReducer } from '../../src/app/NgRx/reducers/auth.reducer';
 import { AuthEffects } from '../../src/app/NgRx/effects/auth.effects';
 import { AuthInterceptor } from './Utils/AuthInterceptors';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
 
 
 
 @NgModule({
-  declarations: [    
+  declarations: [       
     
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     StoreModule.forRoot({ auth: authReducer }), 
@@ -26,7 +29,7 @@ import { AuthInterceptor } from './Utils/AuthInterceptors';
     HttpClientModule
 
   ],
-  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
+  providers: [AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
   bootstrap: []
 })
 export class AppModule { }

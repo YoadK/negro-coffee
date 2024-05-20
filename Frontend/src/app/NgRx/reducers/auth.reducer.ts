@@ -1,35 +1,40 @@
 import { createReducer, on } from '@ngrx/store';
-import { UserModel } from '../../models/user.model';
 import * as AuthActions from '../../NgRx/actions/auth.actions';
+import { UserModel } from '../../models/user.model';
 
 export interface AuthState {
   user: UserModel | null;
-  isAuthenticated: boolean;
+  token: string | null;
+  isLoggedIn: boolean;
   error: string | null;
 }
 
 export const initialState: AuthState = {
   user: null,
-  isAuthenticated: false,
+  token: null,
+  isLoggedIn: false,
   error: null,
 };
 
 export const authReducer = createReducer(
   initialState,
-  on(AuthActions.registerSuccess, AuthActions.loginSuccess, (state, { user }) => ({
+  on(AuthActions.loginSuccess, (state, { user }) => ({
     ...state,
     user,
-    isAuthenticated: true,
-    error: null,
+    // token: user.token,
+    isLoggedIn: true,
+    error: null
   })),
-  on(AuthActions.registerFailure, AuthActions.loginFailure, (state, { error }) => ({
+  on(AuthActions.loginFailure, (state, { error }) => ({
     ...state,
     error,
+    isLoggedIn: false
   })),
-  on(AuthActions.logoutSuccess, state => ({
+  on(AuthActions.logout, state => ({
     ...state,
     user: null,
-    isAuthenticated: false,
-    error: null,
+    // token: null,
+    isLoggedIn: false,
+    error: null
   }))
 );

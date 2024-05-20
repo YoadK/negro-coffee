@@ -13,14 +13,14 @@ import { selectUser } from '../../../NgRx/Selectors/auth.selectors';
 @Component({
     selector: 'app-layout',
     standalone: true,
-    imports: [
-        RouterLink, RouterModule, CommonModule, HeaderComponent, FooterComponent
-     
-        ],
+    imports: 
+    [        RouterLink, RouterModule, CommonModule, HeaderComponent, FooterComponent ],
+    // [  RouterLink, RouterModule, CommonModule],
       
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.module.scss']
 })
+
 export class LayoutComponent implements OnInit {
     isAuthenticated: boolean = false;
     user: UserModel | null = null;

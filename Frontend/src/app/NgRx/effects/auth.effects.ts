@@ -26,7 +26,8 @@ export class AuthEffects {
       ofType(AuthActions.login),
       mergeMap(action =>
         this.authService.login(action.credentials).pipe(
-          map(user => AuthActions.loginSuccess({ user })),
+          map(user => 
+            AuthActions.loginSuccess({ user })),
           catchError(error => of(AuthActions.loginFailure({ error })))
         )
       )
@@ -44,9 +45,9 @@ export class AuthEffects {
   //init$ effect  checks for a stored token on application initialization and dispatch the appropriate 
   //action based on the token's presence.
   init$ = createEffect(() =>
-    of(this.authService.getToken()).pipe(
+    of(this.authService.loadStoredToken()).pipe(
       map(token => {
-        if (token) {
+        if (token!==null) {
           const user = this.authService.getCurrentUser();
           return AuthActions.loginSuccess({ user });
         } else {
