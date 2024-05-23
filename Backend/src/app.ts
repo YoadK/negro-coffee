@@ -3,13 +3,13 @@ import express from "express";
 import expressFileUpload from "express-fileupload";
 import path from "path";
 import { fileSaver } from "uploaded-file-saver";
-import { appConfig } from "./2-utils/app-config";
 import { errorsMiddleware } from "./4-middleware/errors-middleware";
 import { loggerMiddleware } from "./4-middleware/logger-middleware";
 import { productsRouter } from "./6-controllers/products-controller";
 import { dal } from "./2-utils/dal";
 import { authRouter } from "./6-controllers/auth-controller";
 import { categoriesRouter } from "./6-controllers/categories-controller";
+import {environment}  from '../../Frontend/src/environments/environment';
 
 // Main application class:
 class App {
@@ -48,7 +48,7 @@ class App {
         await dal.connect();
 
         // Run server:
-        this.server.listen(appConfig.port, () => console.log("Listening on http://localhost:" + appConfig.port));
+        this.server.listen(environment.PORT, () => console.log("Listening on http://localhost:" + environment.PORT));
     }
 
 }

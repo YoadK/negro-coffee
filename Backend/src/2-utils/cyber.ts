@@ -1,6 +1,6 @@
 import { IUserModel } from "../3-models/user-model";
 import jwt, { SignOptions } from "jsonwebtoken";
-import { appConfig } from "./app-config";
+import { environment } from "../../../Frontend/src/environments/environment";
 import { RoleModel } from "../3-models/role-model";
 import crypto from "crypto";
 
@@ -18,7 +18,7 @@ class Cyber {
         const options: SignOptions = { expiresIn: "5h" };
 
         // Create token:
-        const token = jwt.sign(container, appConfig.jwtSecretKey, options);
+        const token = jwt.sign(container, environment.JWT_SECRET_KEY, options);
         console.log("token is: ",token);
         // Return:
         return token;
@@ -32,7 +32,7 @@ class Cyber {
             if (!token) return false;
 
             // Verify token:
-            jwt.verify(token, appConfig.jwtSecretKey);
+            jwt.verify(token, environment.JWT_SECRET_KEY);
 
             // All is good:
             console.log("token is valid ",token);
@@ -62,7 +62,7 @@ class Cyber {
 
         // SHA = Secured Hashing Algorithm.
         // HMAC = Hash-Based Message Authentication Code
-        const hashedPassword = crypto.createHmac("sha512", appConfig.passwordSalt).update(plainText).digest("hex");
+        const hashedPassword = crypto.createHmac("sha512", environment.PASSWORD_SALT).update(plainText).digest("hex");
 
         // Return:
         return hashedPassword;
@@ -72,7 +72,7 @@ class Cyber {
     public validatePassword(plainText: string, hashedPassword: string): boolean {
 
         // Hash the plain text password:
-        const hash = crypto.createHmac("sha512", appConfig.passwordSalt).update(plainText).digest("hex");
+        const hash = crypto.createHmac("sha512", environment.PASSWORD_SALT).update(plainText).digest("hex");
 
         // Compare hashed passwords:
         return hash === hashedPassword;

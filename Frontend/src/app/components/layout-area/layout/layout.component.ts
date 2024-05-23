@@ -1,12 +1,12 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
-import { HeaderComponent } from '../../HeaderArea/header/header.component';
-import { FooterComponent } from '../../FooterArea/footer/footer.component';
 import { AuthService } from '../../../services/auth.service';
 import { UserModel } from '../../../models/user.model';
-import { selectUser } from '../../../NgRx/Selectors/auth.selectors';
+import { CommonModule } from '@angular/common';
 // import { Store } from '@ngrx/store';
+import { HeaderComponent } from '../../HeaderArea/header/header.component';
+import { FooterComponent } from '../../FooterArea/footer/footer.component';
+
 
 
 
@@ -14,9 +14,10 @@ import { selectUser } from '../../../NgRx/Selectors/auth.selectors';
     selector: 'app-layout',
     standalone: true,
     imports: 
-    [        RouterLink, RouterModule, CommonModule, HeaderComponent, FooterComponent ],
-    // [  RouterLink, RouterModule, CommonModule],
-      
+    //  [RouterLink, RouterModule, CommonModule, HeaderComponent, FooterComponent ],
+    //   [RouterLink, RouterModule, CommonModule ],
+    [HeaderComponent,FooterComponent,RouterModule,CommonModule],
+        // [],  
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.module.scss']
 })
@@ -33,10 +34,8 @@ export class LayoutComponent implements OnInit {
             this.user = this.authService.getCurrentUser();
             console.log('Auth status:', status); // Debug log
             console.log('Current user:', this.user); // Debug log
+            
         });
-
-       
-    
     }
 
     logout() {

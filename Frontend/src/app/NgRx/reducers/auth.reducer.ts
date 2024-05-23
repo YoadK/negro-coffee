@@ -1,40 +1,33 @@
-import { createReducer, on } from '@ngrx/store';
-import * as AuthActions from '../../NgRx/actions/auth.actions';
-import { UserModel } from '../../models/user.model';
+// src/app/ngrx/reducers/auth.reducer.ts
 
-export interface AuthState {
-  user: UserModel | null;
-  token: string | null;
-  isLoggedIn: boolean;
-  error: string | null;
-}
+import { createReducer, on, Action } from '@ngrx/store';
+import * as AuthActions from '../actions/auth.actions';
+import { AuthState, initialState } from '../state/auth.state';
 
-export const initialState: AuthState = {
-  user: null,
-  token: null,
-  isLoggedIn: false,
-  error: null,
-};
 
-export const authReducer = createReducer(
+const _authReducer = createReducer(
   initialState,
   on(AuthActions.loginSuccess, (state, { user }) => ({
     ...state,
     user,
-    // token: user.token,
+    // token: user.token, // Assuming the token is part of the user model
     isLoggedIn: true,
-    error: null
+    error: null,
   })),
   on(AuthActions.loginFailure, (state, { error }) => ({
     ...state,
     error,
-    isLoggedIn: false
+    isLoggedIn: false,
   })),
   on(AuthActions.logout, state => ({
     ...state,
     user: null,
     // token: null,
     isLoggedIn: false,
-    error: null
+    error: null,
   }))
 );
+
+export function authReducer(state: AuthState | undefined, action: Action) {
+  return _authReducer(state, action);
+}

@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { StatusCode } from "../3-models/enums";
 import { RouteNotFoundError, ValidationError } from "../3-models/client-errors";
 import { logger } from "../2-utils/logger";
-import { appConfig } from "../2-utils/app-config";
+import { environment } from "../../../Frontend/src/environments/environment";
 
 class ErrorsMiddleware {
 
@@ -34,7 +34,7 @@ class ErrorsMiddleware {
         const status = err.status || StatusCode.InternalServerError;
 
         // Take error message: 
-        const message = (status === StatusCode.InternalServerError && appConfig.isProduction) ? "Some error, please try again later." : err.message;
+        const message = (status === StatusCode.InternalServerError && environment.PRODUCTION) ? "Some error, please try again later." : err.message;
 
         // Response the error:
         response.status(status).send(message);

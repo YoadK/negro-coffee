@@ -7,11 +7,10 @@ import { RegisterComponent } from './components/Auth-area/register/register.comp
 import { ProductDetailsComponent } from './components/products-area/product-details/product-details.component';
 import { EditProductComponent } from './components/products-area/edit-product/edit-product.component';
 import { ProductListComponent } from './components/products-area/product-list/product-list.component';
+import { LayoutComponent } from './components/layout-area/layout/layout.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
-   
-
-
     { path: "home", component: HomeComponent },
     { path: "products", component: ProductListComponent },
     { path: "products/details/:id", component: ProductDetailsComponent },
@@ -21,5 +20,21 @@ export const routes: Routes = [
     { path: "register", component: RegisterComponent },   
     { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "**", component: Page404Component },
+    {
+        path: '',
+        component: LayoutComponent,
+        children: [
+          { path: 'home', component: HomeComponent },
+          // other routes
+        ]
+      }
 ];
+
+
+@NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+  })
+  export class AppRoutingModule { }
+
 

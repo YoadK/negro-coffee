@@ -1,5 +1,5 @@
 import { fileSaver } from "uploaded-file-saver";
-import { appConfig } from "../2-utils/app-config";
+import { environment } from "../../../Frontend/src/environments/environment";
 import { ResourceNotFoundError, ValidationError } from "../3-models/client-errors";
 import { IProductModel } from "../3-models/product-model";
 import mongoose, { ObjectId } from "mongoose";
@@ -46,7 +46,7 @@ class ProductsService {
                 const imageFile = product.image as UploadedFile;
                 const imageName = await fileSaver.add(imageFile);
                 newProduct.imageName = imageName;
-                newProduct.imageUrl = appConfig.baseImageUrl + imageName;
+                newProduct.imageUrl = environment.BASE_IMAGE_URL + imageName;
                 newProduct.image=product.image;
                 console.log("image name is: " +   newProduct.imageName);
                 console.log("image url  is: " + newProduct.imageUrl);
@@ -58,7 +58,7 @@ class ProductsService {
                 console.log("else: image url  is: " + product.imageUrl);
                 const defaultImageName = "default-image.jpg";
                 newProduct.imageName = defaultImageName;
-                newProduct.imageUrl = appConfig.baseImageUrl +  newProduct.imageName;
+                newProduct.imageUrl = environment.BASE_IMAGE_URL +  newProduct.imageName;
             }
 
 
@@ -98,14 +98,14 @@ class ProductsService {
                 const imageFile = product.image as UploadedFile;
                 const updatedImageName = await fileSaver.update(existingProduct.imageName, product.image);
                 existingProduct.imageName = updatedImageName;
-                existingProduct.imageUrl = appConfig.baseImageUrl + updatedImageName;
+                existingProduct.imageUrl = environment.BASE_IMAGE_URL + updatedImageName;
             } else if (!existingProduct.imageName) {
                 // If no image is provided and the existing product doesn't have an image name,
                 // set a default image name
                 const defaultImageName = "default-image.avif";
                 const defaultImagePath = fileSaver.getFilePath(defaultImageName, true);
                 existingProduct.imageName = defaultImageName;
-                existingProduct.imageUrl = appConfig.baseImageUrl + defaultImageName;
+                existingProduct.imageUrl = environment.BASE_IMAGE_URL + defaultImageName;
             }
 
             // Manually trigger validation
