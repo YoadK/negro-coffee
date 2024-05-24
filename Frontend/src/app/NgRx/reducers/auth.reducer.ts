@@ -4,27 +4,31 @@ import { createReducer, on, Action } from '@ngrx/store';
 import * as AuthActions from '../actions/auth.actions';
 import { AuthState, initialState } from '../state/auth.state';
 
-
 const _authReducer = createReducer(
   initialState,
-  on(AuthActions.loginSuccess, (state, { user }) => ({
-    ...state,
-    user,
-    // token: user.token, // Assuming the token is part of the user model
-    isLoggedIn: true,
-    error: null,
-  })),
+
+  on(AuthActions.loginSuccess, (state, { user }) => {
+    const newState = {
+      ...state,
+      user,
+      isLoggedIn: true,
+      error: null as string | null, // Explicitly specify the type as string | null
+    };
+    console.log('Login Success State:', newState);
+    return newState;
+  }),
+
   on(AuthActions.loginFailure, (state, { error }) => ({
     ...state,
     error,
     isLoggedIn: false,
   })),
-  on(AuthActions.logout, state => ({
+  
+  on(AuthActions.logout, (state) => ({
     ...state,
     user: null,
-    // token: null,
     isLoggedIn: false,
-    error: null,
+    error: null as string | null, // Explicitly specify the type as string | null
   }))
 );
 

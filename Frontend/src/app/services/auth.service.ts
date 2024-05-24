@@ -11,11 +11,14 @@ import { CredentialsModel } from '../models/credentials.model';
     providedIn: 'root'
 })
 export class AuthService {
-    public currentAuthStatus = new BehaviorSubject<UserModel | null>(null);
- 
+  
+    private currentUserSubject: BehaviorSubject<UserModel | null>;
+    public currentAuthStatus: Observable<UserModel | null>;
 
     constructor(private http: HttpClient) {
-        this.loadStoredToken();
+        const storedUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    this.currentUserSubject = new BehaviorSubject<UserModel | null>(storedUser);
+    this.currentAuthStatus = this.currentUserSubject.asObservable();
     }
 
     // loads the token and updates the currentAuthStatus. returns token.
@@ -26,12 +29,12 @@ export class AuthService {
             try {
                 const decodedToken = jwtDecode<{ user: UserModel }>(token);
                 const loggedInUser = decodedToken.user;
-                this.currentAuthStatus.next(loggedInUser);
+                this.currentUserSubject.next(loggedInUser);
                 console.log('Decoded and set currentAuthStatus:', loggedInUser); // Log the decoded user
                 return token;
             } catch (error) {
                 console.error('Invalid token:', error);
-                this.currentAuthStatus.next(null);
+                this.currentUserSubject.next(null);
             }
         }
         return null;
@@ -39,15 +42,15 @@ export class AuthService {
 
    
 
-    getCurrentUser(): UserModel | null {
-        return this.currentAuthStatus.value;
-    }
+    public get currentUserValue(): UserModel | null {
+        return this.currentUserSubject.value;
+      }
 
     register(user: UserModel): Observable<UserModel> {
         return this.http.post<string>(`${appConfig.registerUrl}`, user).pipe(
             map(token => {
                 const registeredUser = jwtDecode<{ user: UserModel }>(token).user;
-                this.currentAuthStatus.next(registeredUser);
+                this.currentUserSubject.next(registeredUser);
                 localStorage.setItem('token', token);
                 return registeredUser;
             })
@@ -59,7 +62,7 @@ export class AuthService {
         
         return this.http.post<any>(`${appConfig.loginUrl}`, credentials).pipe(
             tap(response => {
-                console.log('Login response:', response); // Log the API response
+                console.log('Login API response:', response); // Log the API response
             }),
             map(response => {
                 const token = response.token; // Ensure response contains token
@@ -69,7 +72,7 @@ export class AuthService {
                 console.log('Received token:', token); // Log the received token
                 const loggedInUser = jwtDecode<{ user: UserModel }>(token).user;
                 console.log('Decoded token:', loggedInUser); // Log the decoded token
-                this.currentAuthStatus.next(loggedInUser);
+                this.currentUserSubject.next(loggedInUser);
                 localStorage.setItem('token', token);
                 console.log('Token stored in localStorage:', token); // Log the stored token
                 return loggedInUser;
@@ -83,13 +86,14 @@ export class AuthService {
     }
 
     logout(): void {
-        this.currentAuthStatus.next(null);
+      
         localStorage.removeItem('token');
+        this.currentUserSubject.next(null);
     }
 
     isAuthenticated(): Observable<boolean> {
         
-        return this.currentAuthStatus.asObservable().pipe(
+        return this.currentAuthStatus.pipe(
             map(user => !!user)
         );
     }

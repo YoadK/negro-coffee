@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth.service';
 import { UserModel } from '../../../models/user.model';
+import { Store } from '@ngrx/store';
+import * as AuthActions from '../../../NgRx/actions/auth.actions';
+
 
 @Component({
     selector: 'app-login',
@@ -17,7 +20,7 @@ import { UserModel } from '../../../models/user.model';
 export class LoginComponent {
     credentials: CredentialsModel = { email: '', password: '' };
 
-    constructor(private authService: AuthService, private router: Router) {}
+    constructor(private authService: AuthService, private router: Router, private store: Store) {}
 
     onSubmit() {
         
@@ -27,6 +30,7 @@ export class LoginComponent {
                 
                 console.log('Login successful, current user:', user);
                 notify.success(`Welcome back ${user.firstName}!`);
+                this.store.dispatch(AuthActions.loginSuccess({ user }));
                 this.router.navigate(['/home']);
             },
             (err: any) => {
