@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
+
 import { UserModel } from '../../../models/user.model';
 import { CommonModule } from '@angular/common';
 import { Store, select } from '@ngrx/store';
@@ -9,7 +9,7 @@ import { selectIsLoggedIn, selectUser } from '../../../NgRx/Selectors/auth.selec
 import { AuthState } from '../../../NgRx/state/auth.state';
 import { AppState } from '../../../NgRx/reducers';
 import * as AuthActions from '../../../NgRx/actions/auth.actions';
-
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-auth-menu',
@@ -22,27 +22,16 @@ export class AuthMenuComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
   user$: Observable<UserModel | null>;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private store: Store<AppState>
-  ) {}
-
-  ngOnInit(): void {
+  constructor( private router: Router,  private authService: AuthService, private store: Store<AppState>) {
     this.isLoggedIn$ = this.store.select(selectIsLoggedIn);
-    this.user$ = this.authService.currentAuthStatus;
-   
-    this.isLoggedIn$.subscribe((isLoggedIn) => {
-      console.log('Is Logged In:', isLoggedIn);
-    });
+    this.user$ = this.store.select(selectUser);}
 
-    this.user$.subscribe((user) => {
-        console.log('Current User:', user);
-      });
-  }
+    ngOnInit(): void {
+        this.store.dispatch(AuthActions.loadUserFromLocalStorage());
+      }
 
   logout() {
-    this.store.dispatch(AuthActions.logout());
+    this.authService.logout();;
     this.router.navigate(['/']);
   }
 }

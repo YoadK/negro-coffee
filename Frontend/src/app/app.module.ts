@@ -1,5 +1,6 @@
 
 import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -23,7 +24,6 @@ import { AppComponent } from './app.component';
 
 
 
-
 @NgModule({
   declarations: [ 
     
@@ -36,8 +36,9 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     StoreModule.forRoot({ auth: authReducer }),
     StoreModule.forRoot({}), 
-    StoreModule.forFeature('auth', authReducer), // Include StoreModule for the feature  
     EffectsModule.forRoot([AuthEffects]),
+    StoreModule.forFeature('auth', authReducer), // Include StoreModule for the feature  
+   
     StoreDevtoolsModule.instrument({
 	name: 'Negro coffee shop',
         maxAge: 25, // Retains last 25 states
@@ -50,7 +51,7 @@ import { AppComponent } from './app.component';
 
   ],
 //   exports:[HeaderComponent,FooterComponent],
-  providers: [AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
+  providers: [AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: []
 })
 export class AppModule { }

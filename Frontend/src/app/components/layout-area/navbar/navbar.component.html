@@ -11,7 +11,7 @@
         </div>
         <div class="navbar-menu" [ngClass]="{'is-active': isNavbarOpen || !isSmallScreen()}">
             
-            <div class="navbar-item dropdown">
+            <div class="navbar-item dropdown"  *ngIf="(userRole$ | async) ==='Admin'">
                 <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   פעולות נוספות                </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

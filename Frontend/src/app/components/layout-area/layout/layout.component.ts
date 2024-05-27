@@ -15,11 +15,11 @@ import * as AuthActions from '../../../NgRx/actions/auth.actions';
 @Component({
     selector: 'app-layout',
     standalone: true,
-    imports: 
-    //  [RouterLink, RouterModule, CommonModule, HeaderComponent, FooterComponent ],
-    //   [RouterLink, RouterModule, CommonModule ],
-    [HeaderComponent,FooterComponent,RouterModule,CommonModule],
-        // [],  
+    imports:
+        //  [RouterLink, RouterModule, CommonModule, HeaderComponent, FooterComponent ],
+        //   [RouterLink, RouterModule, CommonModule ],
+        [HeaderComponent, FooterComponent, RouterModule, CommonModule],
+    // [],  
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.module.scss']
 })
@@ -27,27 +27,27 @@ import * as AuthActions from '../../../NgRx/actions/auth.actions';
 export class LayoutComponent implements OnInit {
     isLoggedIn$: Observable<boolean>;
     user$: Observable<UserModel | null>;
-    
 
-    constructor(private authService: AuthService,private router: Router,  private store: Store<AppState>) { }
+
+    constructor(private authService: AuthService, private router: Router, private store: Store<AppState>) { }
 
     ngOnInit(): void {
         this.isLoggedIn$ = this.store.select(selectIsLoggedIn);
-        this.user$ = this.authService.currentAuthStatus;
-    
-        this.isLoggedIn$.subscribe(status => {
-          console.log('Auth status:', status); // Debug log
+        this.user$ = this.store.select(selectUser);
+
+        this.isLoggedIn$.subscribe((isLoggedIn) => {
+            console.log('Is Logged In:', isLoggedIn);
         });
-    
+
         this.user$.subscribe(user => {
-          console.log('Current user:', user); // Debug log
+            console.log('Current user (layout):', user); // Debug log
         });
-      }
+    }
 
     logout() {
         this.store.dispatch(AuthActions.logout());
-    this.router.navigate(['/']);
-}
+        this.router.navigate(['/']);
+    }
 
 
 }

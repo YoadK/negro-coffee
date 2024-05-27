@@ -33,7 +33,7 @@ class AuthController {
     
     // POST http://localhost:4000/api/login --> Login existing user, return token:
     private login(request: Request, response: Response, next: NextFunction): void {
-        debugger
+        
         console.log ("login- backend (auth controller-backend)");
         const credentials: ICredentialsModel = request.body;
         console.log ("request body is: " + JSON.stringify(request.body));

@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "66293bc08900f5681d2ab564"
+  },
+  "name": "espresso",
+  "description": "coffee for 'espresso' extraction."
+},
+{
+  "_id": {
+    "$oid": "662bc3e8c27bf8f253c47124"
+  },
+  "name": "Automatic machines",
+  "description": "coffee for  extraction using an automatic espresso machine."
+},
+{
+  "_id": {
+    "$oid": "662bc78bc27bf8f253c47126"
+  },
+  "name": "Cappuccino",
+  "description": "coffee beans for 'Cappuccino' beverages."
+},
+{
+  "_id": {
+    "$oid": "662bc7f2c27bf8f253c47128"
+  },
+  "name": "Moka Pot",
+  "description": "coffee beans for 'Moka Pot'."
+},
+{
+  "_id": {
+    "$oid": "662bc86dc27bf8f253c4712a"
+  },
+  "name": "Filter coffee",
+  "description": "coffee beans for 'Filter coffee'."
+},
+{
+  "_id": {
+    "$oid": "662bc88ec27bf8f253c4712c"
+  },
+  "name": "Turkish",
+  "description": "coffee beans for 'Turkish' coffee."
+},
+{
+  "_id": {
+    "$oid": "662bc8ecc27bf8f253c4712e"
+  },
+  "name": "Misc",
+  "description": "coffee- Miscelnaneous category"
+}]

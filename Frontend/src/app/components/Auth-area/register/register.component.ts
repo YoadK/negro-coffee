@@ -32,13 +32,14 @@ export class RegisterComponent {
         }
 
         this.authService.register(this.user).subscribe(
-            (user: UserModel) => {
-                notify.success(`Welcome ${user.firstName}!`);
-                this.router.navigate(['/home']);
+            (response: { user: UserModel; token: string }) => {
+              console.log('User registered successfully:', response.user);
+              // You can navigate to a different page or update the UI as needed
+              this.router.navigate(['/home']);
             },
             (error) => {
-                notify.error(error.message || 'Registration failed');
+              console.error('Registration error:', error);
             }
-        );
+          );
     }
 }

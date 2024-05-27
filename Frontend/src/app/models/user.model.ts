@@ -6,7 +6,7 @@ export class UserModel {
     lastName: string;
     email: string;
     password: string;
-    role: string;
+    roleId:number;
 
 
 constructor(init?: Partial<UserModel>) {

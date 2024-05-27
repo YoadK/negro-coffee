@@ -4,8 +4,9 @@
 //This makes it easier to import them in other parts of your application
 //By organizing your index.ts file this way, you make it easier to manage and import your NgRx-related code
 import { ActionReducerMap } from '@ngrx/store';
-import { authReducer } from './auth.reducer';
-import { AuthState } from '../state/auth.state';
+// import { authReducer } from './auth.reducer';
+// import { AuthState } from '../state/auth.state';
+import { authReducer, AuthState } from './auth.reducer';
 
 // Define the shape of your application's state
 export interface AppState {
@@ -21,7 +22,6 @@ export const reducers: ActionReducerMap<AppState> = {
 export * from '../actions/auth.actions'
 export * from '../effects/auth.effects';
 export * from '../Selectors/auth.selectors';
-export * from '../state/auth.state';
 export * from './auth.reducer';
 
 
