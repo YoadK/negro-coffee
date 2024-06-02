@@ -12,6 +12,7 @@ export const appConfig = {
     registerUrl: "http://localhost:4000/api/register/",
     loginUrl: "http://localhost:4000/api/login/",
     // imagesUrl: "http://localhost:4000/api/products/images/"
+    statusUrl: "http://localhost:4000/api/status/"
 
 
 };

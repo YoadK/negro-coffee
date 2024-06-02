@@ -1,4 +1,3 @@
-<!-- auth-menu.component.html -->
 <div class="auth-menu">
     <button type="button" class="login-btn">
       <span class="open_popup_login_btn text" href="#" title="My account">חשבון שלי</span>
@@ -8,11 +7,11 @@
     <button type="button" class="btn-cart">
       <span class="text"></span>
       <img src="https://negro.co.il/wp-content/themes/matat-child/images/cart_icon.png" alt="cart" class="img-on-button-top">
-      <span class="number">0</span> 
+      <span class="number">0</span>
     </button>
   
     <div class="welcome_area" *ngIf="!(isLoggedIn$ | async)">
-      <h6> התחבר לאזור האישי שלך </h6> 
+      <h6> התחבר לאזור האישי שלך </h6>
       <a class="login_hyperlink" [routerLink]="['/login']" title="התחבר">התחבר </a> |
       <a class="register_hyperlink" [routerLink]="['/register']" title="הירשם">הירשם </a>
     </div>
@@ -25,4 +24,14 @@
     <div>
       Is Logged In: {{ isLoggedIn$ | async }}
     </div>
+
+    <div *ngIf="errorMessage$ | async as errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+      <div *ngIf="successMessage$ | async as successMessage" class="success-message">
+        {{ successMessage }}
+      </div>
+
+      
   </div>
+  

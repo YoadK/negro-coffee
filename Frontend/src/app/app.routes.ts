@@ -9,6 +9,8 @@ import { EditProductComponent } from './components/products-area/edit-product/ed
 import { ProductListComponent } from './components/products-area/product-list/product-list.component';
 import { LayoutComponent } from './components/layout-area/layout/layout.component';
 import { NgModule } from '@angular/core';
+import { StatusComponent } from './components/SharedArea/status/status.component';
+import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 
 export const routes: Routes = [
     { path: "home", component: HomeComponent },
@@ -18,6 +20,7 @@ export const routes: Routes = [
     { path: "new", component: AddProductComponent },  
     { path: "login", component: LoginComponent },   
     { path: "register", component: RegisterComponent },   
+    { path: 'status', component: StatusComponent, canActivate: [AuthGuard] },
     { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "**", component: Page404Component },
     {

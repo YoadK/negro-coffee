@@ -8,25 +8,22 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { authReducer } from './NgRx/reducers/auth.reducer';
+// import { authReducer } from './NgRx/reducers/auth.reducer';
 import { AuthEffects } from './NgRx/effects/auth.effects';
 
 import { AuthInterceptor } from './Utils/AuthInterceptors';
 
 import { AuthService } from './services/auth.service';
-import { LayoutComponent } from './components/layout-area/layout/layout.component';
-import { Router , RouterModule, RouterOutlet} from '@angular/router';
+
+import { RouterModule} from '@angular/router';
 import {routes} from '../../src/app/app.routes';
 import { environment } from '../../src/environments/environment';
-import { HeaderComponent } from './components/HeaderArea/header/header.component';
-import { FooterComponent } from './components/FooterArea/footer/footer.component';
-import { AppComponent } from './app.component';
-
+import { reducers } from './NgRx/state/app.states';
+import { provideStore } from '@ngrx/store';
 
 
 @NgModule({
-  declarations: [ 
-    
+  declarations: [     
     
   ],
   imports: [
@@ -34,10 +31,10 @@ import { AppComponent } from './app.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    StoreModule.forRoot({ auth: authReducer }),
-    StoreModule.forRoot({}), 
+    // StoreModule.forRoot({ auth: authReducer }),
+    StoreModule.forRoot(reducers , {}), 
     EffectsModule.forRoot([AuthEffects]),
-    StoreModule.forFeature('auth', authReducer), // Include StoreModule for the feature  
+    // StoreModule.forFeature('auth', authReducer), // Include StoreModule for the feature  
    
     StoreDevtoolsModule.instrument({
 	name: 'Negro coffee shop',
@@ -51,7 +48,7 @@ import { AppComponent } from './app.component';
 
   ],
 //   exports:[HeaderComponent,FooterComponent],
-  providers: [AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },provideStore(reducers)],
   bootstrap: []
 })
 export class AppModule { }

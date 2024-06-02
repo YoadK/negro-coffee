@@ -1,127 +1,112 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, throwError } from 'rxjs';
-import { tap, map, catchError } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { UserModel } from '../models/user.model';
 import { appConfig } from '../Utils/app.config';
-import { jwtDecode } from "jwt-decode";
-import { CredentialsModel } from '../models/credentials.model';
 import { Store } from '@ngrx/store';
+import { AppState } from '../NgRx/state/app.states';
 import * as AuthActions from '../NgRx/actions/auth.actions';
-
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class AuthService {
-  
-    private currentUserSubject: BehaviorSubject<UserModel | null>;
-    public currentAuthStatus: Observable<UserModel | null>;
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
-    constructor(private http: HttpClient, private store: Store) {
+  private userSubject = new BehaviorSubject<UserModel | null>(null);
+  user$ = this.userSubject.asObservable();
 
-    const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
-    console.log("stored user is: "+storedUser);
-    this.currentUserSubject = new BehaviorSubject<UserModel | null>(storedUser);
-    this.currentAuthStatus = this.currentUserSubject.asObservable();
+  private token: string | null = null;
+
+  constructor(private http: HttpClient, private store: Store<AppState>) {
+    // Check if a token exists in local storage
+    this.token = localStorage.getItem('token');
+    if (this.token) {
+      this.isLoggedInSubject.next(true);
+      const user = this.decodeToken(this.token);
+      this.userSubject.next(user);
     }
+  }
 
-    // loads the token and updates the currentAuthStatus. returns token.
-     loadStoredToken(): string | null {
-        const token = localStorage.getItem('token');
-        console.log('Loaded token from localStorage:', token); // Log the loaded token
-        if (token) {
-            try {
-                const decodedToken = jwtDecode<{ user: UserModel }>(token);
-                const loggedInUser = decodedToken.user;
-                this.currentUserSubject.next(loggedInUser);
-                console.log('Decoded and set currentAuthStatus:', loggedInUser); // Log the decoded user
-                return token;
-            } catch (error) {
-                console.error('Invalid token:', error);
-                this.currentUserSubject.next(null);
-            }
-        }
-        return null;
-    }
+  getToken(): string {
+    return this.token!;
+  }
 
-   
+  setToken(token: string): void {
+    this.token = token;
+    localStorage.setItem('token', token);
+  }
 
-    public geCurrentUserValue(): UserModel | null {
-        return this.currentUserSubject.value;
-      }
+  removeToken(): void {
+    this.token = null;
+    localStorage.removeItem('token');
+  }
 
-    register(user: UserModel): Observable<{ user: UserModel; token: string }> {
-    return this.http.post<{ user: UserModel; token: string }>(`${appConfig.registerUrl}`, user).pipe(
-      tap(response => {
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(response.user));
-        this.currentUserSubject.next(response.user);
-        this.store.dispatch(AuthActions.registerSuccess({ user: response.user, token: response.token }));
+  login(email: string, password: string): Observable<UserModel> {
+    const url = `${appConfig.loginUrl}`;
+    return this.http.post<UserModel>(url, { email, password }).pipe(
+      map(user => {
+        // Update the subjects with the new user data
+        this.userSubject.next(user);
+        this.isLoggedInSubject.next(true);
+        // Store the token in local storage
+        localStorage.setItem('token', user.token);
+        this.setToken(user.token);
+        return user;
       })
     );
   }
 
-    login(credentials: CredentialsModel): Observable<{ user: UserModel, token: string }> {
-        console.log('Login method called with credentials:', credentials);
-        return this.http.post<{ user: UserModel, token: string }>(`${appConfig.loginUrl}`, credentials).pipe(
-          tap(response => {
-            console.log('Login API response:', response);
-          }),
-          map(response => {
-            const token = response.token;
-            if (typeof token !== 'string') {
-              throw new Error('Invalid token format');
-            }
-            console.log('Received token:', token);
-            const loggedInUser = jwtDecode<{ user: UserModel }>(token).user;
-            console.log('Decoded token:', loggedInUser);
-            this.currentUserSubject.next(loggedInUser);
-            localStorage.setItem('token', token);
-            localStorage.setItem('user', JSON.stringify(loggedInUser));
-            console.log('Token stored in localStorage:', token);
-            console.log('User stored in localStorage:', loggedInUser);
-            this.currentUserSubject.next(response.user);
-            this.store.dispatch(AuthActions.loginSuccess({ user: response.user, token: response.token }));
-            return { user: loggedInUser, token: token }; // Return an object with user and token properties
-          }),
-          catchError(err => {
-            console.error('Login error:', err);
-            console.error('Error details:', err.error);
-            return throwError(err);
-          })
-        );
-      }
+  register(email: string, password: string): Observable<UserModel> {
+    const url = `${appConfig.registerUrl}`;
+    return this.http.post<UserModel>(url, { email, password }).pipe(
+      map(user => {
+        return {
+          _id: user._id,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+          password: user.password,
+          roleId: user.roleId,
+          token: user.token
+        };
+      })
+    );
+  }
 
-    logout(): void {
-        console.log('Logout method called');
-        localStorage.removeItem('token');
-        localStorage.removeItem('user'); // Remove user object from local storage
-        console.log('Token and user removed from localStorage');
-        this.currentUserSubject.next(null);
-        this.store.dispatch(AuthActions.logoutSuccess());
+  getStatus(): Observable<UserModel> {
+    const url = `${appConfig.statusUrl}`;
+    return this.http.get<UserModel>(url);
+  }
+
+  logout() {
+    // Clear the subjects and local storage
+    this.userSubject.next(null);
+    this.isLoggedInSubject.next(false);
+    this.removeToken();
+    localStorage.removeItem('token');
+
+    // Dispatch a logout action
+    this.store.dispatch(AuthActions.Logout());
+  }
+
+  private decodeToken(token: string): UserModel {
+    try {
+      const decoded: any = jwt_decode(token);
+      return {
+        _id: decoded._id,
+        firstName: decoded.firstName,
+        lastName: decoded.lastName,
+        email: decoded.email,
+        roleId: decoded.roleId,
+        token: token
+      };
+    } catch (error) {
+      console.error('Error decoding token', error);
+      return null;
     }
-
-    isAuthenticated(): Observable<boolean> {
-        
-        return this.currentAuthStatus.pipe(
-            map(user => !!user)
-        );
-    }
-
-
-    getUserFromLocalStorage(): UserModel | null {
-        const userJson = localStorage.getItem('user');
-   
-        console.log('User retrieved from localStorage:', userJson);
-
-        return userJson ? JSON.parse(userJson) : null;
-      }
-    
-      getTokenFromLocalStorage(): string | null {
-        const token = localStorage.getItem('token');
-        console.log('Token retrieved from localStorage:', token);
-
-        return token;
-      }
-    }
+  }
+}

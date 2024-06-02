@@ -1,17 +1,19 @@
 // src/app/ngrx/state/auth.state.ts
-
 import { UserModel } from '../../models/user.model';
 
 export interface AuthState {
+  isAuthenticated: boolean;
   user: UserModel | null;
-  token: string | null;
-  isLoggedIn: boolean;
-  error: string | null;
+  userToken: string | null;
+  errorMessage: string | null;
+  successMessage: string | null;
 }
 
-export const initialState: AuthState = {
+export const initialAuthState: AuthState = {
+  isAuthenticated: false,
   user: null,
-  token: null,
-  isLoggedIn: false,
-  error: null,
+  userToken: null,
+  errorMessage: null,
+  successMessage: null
 };
+

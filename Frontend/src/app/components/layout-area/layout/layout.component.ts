@@ -8,8 +8,8 @@ import { HeaderComponent } from '../../HeaderArea/header/header.component';
 import { FooterComponent } from '../../FooterArea/footer/footer.component';
 import { Observable } from 'rxjs';
 import { selectIsLoggedIn, selectUser } from '../../../NgRx/Selectors/auth.selectors';
-import { AppState } from '../../../NgRx/reducers';
-import * as AuthActions from '../../../NgRx/actions/auth.actions';
+import { AppState } from '../../../NgRx/state/app.states';
+// import * as AuthActions from '../../../NgRx/actions/auth.actions';
 
 
 @Component({
@@ -30,6 +30,7 @@ export class LayoutComponent implements OnInit {
 
 
     constructor(private authService: AuthService, private router: Router, private store: Store<AppState>) { }
+    // constructor(private authService: AuthService, private router: Router, private store: Store<AppState>) { }
 
     ngOnInit(): void {
         this.isLoggedIn$ = this.store.select(selectIsLoggedIn);
@@ -45,7 +46,7 @@ export class LayoutComponent implements OnInit {
     }
 
     logout() {
-        this.store.dispatch(AuthActions.logout());
+        // this.store.dispatch(AuthActions.logout());
         this.router.navigate(['/']);
     }
 

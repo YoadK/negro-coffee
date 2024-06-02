@@ -1,4 +1,4 @@
-<div class="home-container">
+<!-- <div class="home-container">
     <div class="side-left">
         <a href="/home" title="לחנות הקפה" tabindex="0">
             <img src="assets/images/Espresso_Shop_Logo.png">
@@ -16,4 +16,40 @@
         <br>
         <button class="big_slider_button" tabindex="0">לחנות הקפה</button>
     </div>
-</div>
+</div> -->
+
+<div class="row">
+    <div class="col-md-4">
+  
+      <h1>Angular + NGRX</h1>
+      <hr><br>
+  
+      <div *ngIf="isAuthenticated; else doSomethingElse">
+        <p>You logged in <em>{{user.email}}!</em></p>
+        <button class="btn btn-primary" (click)="logout()">Log out</button>
+      </div>
+      
+      <ng-template #doSomethingElse>
+        <a [routerLink]="['/login']" class="btn btn-primary">Log in</a>
+        <a [routerLink]="['/signup']" class="btn btn-primary">Sign up</a>
+      </ng-template>
+      
+      <a [routerLink]="['/status']" class="btn btn-primary">Status</a>
+  
+      <br><br><br>
+  
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Current State</h5>
+          <ul>
+            <li><strong>isAuthenticated</strong> - {{isAuthenticated}}</li>
+            <li><strong>user.email</strong> - {{ user?.email || 'null'}}</li>
+            <li><strong>user.token</strong> - {{ user?.token || 'null'}}</li>
+            <li><strong>errorMessage</strong> - {{ errorMessage || 'null'}}</li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
