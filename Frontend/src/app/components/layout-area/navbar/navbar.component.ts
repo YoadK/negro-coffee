@@ -3,9 +3,9 @@ import { Component, HostListener, OnChanges, OnDestroy, OnInit } from '@angular/
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
-import { AppState } from '../../../NgRx/reducers';
+// import { AppState } from '../../../NgRx/reducers';
 import { takeUntil } from 'rxjs/operators';
-import { selectUserRole, selectIsLoggedIn } from '../../../NgRx/Selectors/auth.selectors';
+// import { selectUserRole, selectIsLoggedIn } from '../../../NgRx/Selectors/auth.selectors';
 
 
 @Component({
@@ -21,11 +21,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   userRole$: Observable<string | null>;
   private unsubscribe$ = new Subject<void>();
 
-  constructor(private store: Store<AppState>) {}
+//   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.userRole$ = this.store.select(selectUserRole);
-    this.isLoggedIn$ = this.store.select(selectIsLoggedIn);
+    // this.userRole$ = this.store.select(selectUserRole);
+    // this.isLoggedIn$ = this.store.select(selectIsLoggedIn);
 
     if (this.userRole$) {
       this.userRole$.pipe(takeUntil(this.unsubscribe$)).subscribe(role => {

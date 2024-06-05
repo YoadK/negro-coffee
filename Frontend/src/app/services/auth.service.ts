@@ -57,7 +57,7 @@ export class AuthService {
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', JSON.stringify(response.user));
         this.currentUserSubject.next(response.user);
-        this.store.dispatch(AuthActions.registerSuccess({ user: response.user, token: response.token }));
+        // this.store.dispatch(AuthActions.registerSuccess({ user: response.user, token: response.token }));
       })
     );
   }
@@ -82,7 +82,7 @@ export class AuthService {
             console.log('Token stored in localStorage:', token);
             console.log('User stored in localStorage:', loggedInUser);
             this.currentUserSubject.next(response.user);
-            this.store.dispatch(AuthActions.loginSuccess({ user: response.user, token: response.token }));
+            // this.store.dispatch(AuthActions.loginSuccess({ user: response.user, token: response.token }));
             return { user: loggedInUser, token: token }; // Return an object with user and token properties
           }),
           catchError(err => {
@@ -99,7 +99,7 @@ export class AuthService {
         localStorage.removeItem('user'); // Remove user object from local storage
         console.log('Token and user removed from localStorage');
         this.currentUserSubject.next(null);
-        this.store.dispatch(AuthActions.logoutSuccess());
+        // this.store.dispatch(AuthActions.logoutSuccess());
     }
 
     isAuthenticated(): Observable<boolean> {

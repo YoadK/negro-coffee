@@ -10,6 +10,9 @@ import { Store } from '@ngrx/store';
 import * as AuthActions from '../../../NgRx/actions/auth.actions';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+ import { login } from '../../../NgRx/actions/auth.actions';
+ import { selectToken, selectError, selectIsLoading } from '../../../NgRx/Selectors/auth.selectors';
+
 
 @Component({
   selector: 'app-login',
@@ -19,34 +22,39 @@ import { Subject } from 'rxjs';
   styleUrls: ['./login.component.module.scss']
 })
 export class LoginComponent implements OnDestroy{
-  credentials: CredentialsModel = { email: '', password: '' };
-  private unsubscribe$ = new Subject<void>();
+//     username = '';
+//     password = '';
+//     token = '';
+//     error = '';
+//     isLoading = false;
+  
+//     constructor(private store: Store<AppState>) {
+//     //   this.store.select(selectToken).subscribe(token => (this.token = token));
+//     //   this.store.select(selectError).subscribe(error => (this.error = error));
+//       this.store.select(selectIsLoading).subscribe(isLoading => (this.isLoading = isLoading));
+//     }
+   
+  
 
-  constructor(private authService: AuthService, private router: Router, private store: Store) {}
-    
+//     // login.component.ts
+//     this.store.select(selectIsLoading).subscribe(isLoading => {
+//     this.isLoading = isLoading as boolean; // Ensure this is boolean
+//   });
+  
+//     this.store.select(selectToken).subscribe(token => {
+//     this.token = token as string; // Ensure this is string
+//   });
+  
+//     this.store.select(selectError).subscribe(error => {
+//     this.error = error as string; // Ensure this is string
+//   });
 
-  onSubmit() {
-    console.log('------------------------------------------------------------------------');
-    console.log('Login button clicked');
-    this.authService.login(this.credentials).pipe(takeUntil(this.unsubscribe$)).subscribe(
-      (response: { user: UserModel, token: string }) => {
-        const { user, token } = response;
-        console.log('Login successful, current user:', user);
-        notify.success(`Welcome back ${user.firstName}!`);
-        this.store.dispatch(AuthActions.loginSuccess({ user, token }));
-        this.router.navigate(['/home']);
-      },
-      (err: any) => {
-        console.error('Login failed:', err);
-        console.error('Error details:', err.error);
-        notify.error(err.message || 'Login failed');
-      }
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
-}
-
+  
+    ngOnDestroy(): void {
+        console.log('ngOnDestroy');
+    }
+  
+//     onSubmit() {
+//     //   this.store.dispatch(login({ username: this.username, password: this.password }));
+//     }
 }

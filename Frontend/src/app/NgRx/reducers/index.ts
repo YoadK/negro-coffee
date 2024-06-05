@@ -1,28 +1,29 @@
-// src/app/ngrx/reducers/index.ts
 
-//Serves as a central place to export your NgRx-related modules and interfaces. 
-//This makes it easier to import them in other parts of your application
-//By organizing your index.ts file this way, you make it easier to manage and import your NgRx-related code
-import { ActionReducerMap } from '@ngrx/store';
-// import { authReducer } from './auth.reducer';
-// import { AuthState } from '../state/auth.state';
-import { authReducer, AuthState } from './auth.reducer';
+import * as fromLayout from './layout.reducer';
+import * as fromRouter  from '@ngrx/router-store';
+/**
+ * Our state is composed of a map of action reducer functions.
+ * These reducer functions are called with each dispatched action
+ * and the current or initial state and return a new immutable state.
+ */
 
-// Define the shape of your application's state
-export interface AppState {
-  auth: AuthState;
-}
+import {Action, ActionReducerMap} from "@ngrx/store";
+import {InjectionToken} from "@angular/core";
 
-// Map of reducers to manage your application's state
-export const reducers: ActionReducerMap<AppState> = {
-  auth: authReducer,
-};
+/**
+ * As mentioned, we treat each reducer like a table in a database. This means
+ * our top level state interface is just a map of keys to inner state types.
+ */
+export interface State {
+    [fromLayout.layoutFeatureKey]: fromLayout.State;
+    router: fromRouter.RouterReducerState<any>;
+  }
 
-// Exporting the necessary modules, interfaces, and actions
-export * from '../actions/auth.actions'
-export * from '../effects/auth.effects';
-export * from '../Selectors/auth.selectors';
-export * from './auth.reducer';
-
-
-
+export const ROOT_REDUCERS = new InjectionToken<
+  ActionReducerMap<State, Action>
+  >('Root reducers token', {
+  factory: () => ({
+    [fromLayout.layoutFeatureKey]: fromLayout.reducer,
+    router: fromRouter.routerReducer,
+  }),
+});

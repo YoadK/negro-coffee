@@ -12,14 +12,14 @@
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div data-mdb-input-init class="form-outline flex-fill mb-0">
                         <label class="form-label">אימייל</label>
-                        <input type="email" name="email" class="form-control" [(ngModel)]="credentials.email" required email />
+                        <input type="email" name="email" class="form-control" [(ngModel)]="username" required email />
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div data-mdb-input-init class="form-outline flex-fill mb-0">
                         <label class="form-label">סיסמה</label>
-                        <input type="password" name="password" class="form-control" [(ngModel)]="credentials.password" required minlength="4" maxlength="50" />
+                        <input type="password" name="password" class="form-control" [(ngModel)]="password" required minlength="4" maxlength="50" />
                       </div>
                     </div>
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -36,5 +36,10 @@
         </div>
       </div>
     </div>
+
+    <div *ngIf="error">{{ error }}</div>
+    <div *ngIf="token">Welcome, {{ username }}! Your token is {{ token }}</div>
+
+
   </section>
   
