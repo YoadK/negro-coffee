@@ -7,7 +7,7 @@ import { appConfig } from '../Utils/app.config';
 import { jwtDecode } from "jwt-decode";
 import { CredentialsModel } from '../models/credentials.model';
 import { Store } from '@ngrx/store';
-import * as AuthActions from '../NgRx/actions/auth.actions';
+import * as AuthActions from '../NgXs/actions/auth.actions';
 
 
 @Injectable({

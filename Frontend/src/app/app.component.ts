@@ -3,7 +3,7 @@ import { LayoutComponent } from './components/layout-area/layout/layout.componen
 import { RouterOutlet } from '@angular/router';
 import {RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
-import * as AuthActions from './NgRx/actions/auth.actions';
+import * as AuthActions from './NgXs/actions/auth.actions';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +14,6 @@ import * as AuthActions from './NgRx/actions/auth.actions';
 })
 
 
-export class AppComponent implements OnInit {
-    constructor(private store: Store) {}
-  
-    ngOnInit() {
-      this.store.dispatch(AuthActions.loadUserFromLocalStorage());
-      console.log('Dispatched loadUserFromLocalStorage action');
-    }
+export class AppComponent{
+    
   }

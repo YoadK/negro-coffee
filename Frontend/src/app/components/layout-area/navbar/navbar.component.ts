@@ -3,9 +3,9 @@ import { Component, HostListener, OnChanges, OnDestroy, OnInit } from '@angular/
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
-import { AppState } from '../../../NgRx/reducers';
+import { AppState } from '../../../NgXs/reducers';
 import { takeUntil } from 'rxjs/operators';
-import { selectUserRole, selectIsLoggedIn } from '../../../NgRx/Selectors/auth.selectors';
+import { selectUserRole, selectIsLoggedIn } from '../../../NgXs/Selectors/auth.selectors';
 
 
 @Component({

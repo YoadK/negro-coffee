@@ -7,9 +7,9 @@ import { Store } from '@ngrx/store';
 import { HeaderComponent } from '../../HeaderArea/header/header.component';
 import { FooterComponent } from '../../FooterArea/footer/footer.component';
 import { Observable } from 'rxjs';
-import { selectIsLoggedIn, selectUser } from '../../../NgRx/Selectors/auth.selectors';
-import { AppState } from '../../../NgRx/reducers';
-import * as AuthActions from '../../../NgRx/actions/auth.actions';
+import { selectIsLoggedIn, selectUser } from '../../../NgXs/Selectors/auth.selectors';
+import { AppState } from '../../../NgXs/reducers';
+import * as AuthActions from '../../../NgXs/actions/auth.actions';
 
 
 @Component({
