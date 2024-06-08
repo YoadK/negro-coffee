@@ -33,6 +33,7 @@ export class AuthEffects {
             })
         )
     );
+    
     register$ = createEffect(() =>
         this.actions$.pipe(
           ofType(AuthActions.register),
@@ -51,7 +52,6 @@ export class AuthEffects {
         )
       );
 
-    // The login$ effect handles the login process and dispatches the loginSuccess action upon successful login
     login$ = createEffect(() =>
         this.actions$.pipe(
             ofType(AuthActions.login),
@@ -85,10 +85,7 @@ export class AuthEffects {
         )
     );
 
-    //The init$ effect is responsible for checking the presence of the user and token in the local
-    // storage when the application starts. 
     init$ = createEffect(() =>
-      
         of(null).pipe(
             tap(() => {
                 console.log('init$ effect triggered');

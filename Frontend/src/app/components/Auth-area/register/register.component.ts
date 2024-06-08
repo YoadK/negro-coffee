@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-register',
-    standalone: true,
-    imports: [FormsModule, CommonModule],
+    // standalone: true,
+    // imports: [FormsModule, CommonModule],
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.module.scss']
 })
@@ -37,8 +37,9 @@ export class RegisterComponent {
               // You can navigate to a different page or update the UI as needed
               this.router.navigate(['/home']);
             },
-            (error) => {
+            (error:any) => {
               console.error('Registration error:', error);
+              notify.error('Registration failed. Please try again.');
             }
           );
     }

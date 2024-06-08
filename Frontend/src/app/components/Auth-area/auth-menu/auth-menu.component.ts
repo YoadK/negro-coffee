@@ -13,8 +13,8 @@ import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-auth-menu',
-  standalone: true,
-  imports: [RouterLink, CommonModule],
+//   standalone: true,
+//  imports: [RouterLink, CommonModule],
   templateUrl: './auth-menu.component.html',
   styleUrls: ['./auth-menu.component.module.scss'],
 })
@@ -27,7 +27,8 @@ export class AuthMenuComponent implements OnInit {
     this.user$ = this.store.select(selectUser);}
 
     ngOnInit(): void {
-        this.store.dispatch(AuthActions.loadUserFromLocalStorage());
+        this.isLoggedIn$ = this.store.select(selectIsLoggedIn);
+        this.user$ = this.store.select(selectUser);
       }
 
   logout() {

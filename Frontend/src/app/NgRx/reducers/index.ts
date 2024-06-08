@@ -14,7 +14,7 @@ export interface AppState {
 }
 
 // Map of reducers to manage your application's state
-export const reducers: ActionReducerMap<AppState> = {
+export const AllReducers: ActionReducerMap<AppState> = {
   auth: authReducer,
 };
 

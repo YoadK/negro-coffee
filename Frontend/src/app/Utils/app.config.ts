@@ -1,9 +1,9 @@
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
-import { routes } from '../app.routes';
+import { APP_ROUTES  } from '../app.routes';
 
 export const appConfig = {
-    providers: [provideRouter(routes), provideHttpClient()],//provideHttpClient() is similar to 'axios', but it doesnt return 'promise' it returns 'observable'
+    providers: [provideRouter(APP_ROUTES ), provideHttpClient()],//provideHttpClient() is similar to 'axios', but it doesnt return 'promise' it returns 'observable'
 
     categoriesUrl: "http://localhost:4000/api/categories/",
     searchUrl: "http://localhost:4000/api/search/",

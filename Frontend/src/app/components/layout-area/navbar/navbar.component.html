@@ -4,45 +4,43 @@
             <button class="navbar-toggle" (click)="toggleNavbar()" aria-label="Toggle navigation">
                 <span class="navbar-toggle-icon"></span>
             </button>
-            <a class="navbar-item navbar-logo"  [routerLink]="">
-                <img src="assets/images/negro_logo.jpg"  alt="Logo">
+            <a class="navbar-item navbar-logo" routerLink="/">
+                <img src="assets/images/negro_logo.jpg" alt="Logo">
             </a>
-
         </div>
-        <div class="navbar-menu" [ngClass]="{'is-active': isNavbarOpen || !isSmallScreen()}">
-            
-            <div class="navbar-item dropdown"  *ngIf="(userRole$ | async) ==='Admin'">
+        <div class="navbar-menu" [class.is-active]="isNavbarOpen || !isSmallScreen()">
+            <div class="navbar-item dropdown" *ngIf="(userRole$ | async) === 'Admin'">
                 <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  פעולות נוספות                </a>
+                    פעולות נוספות
+                </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" [routerLink]="['/new']">הוספת מוצר</a>
-                  <a class="dropdown-item" [routerLink]="['/edit']">עריכת/עדכון מוצר</a>
-                  <a class="dropdown-item" [routerLink]="['/option2']">מחיקת מוצר</a>
-                  <a class="dropdown-item" [routerLink]="['/option3']">אופציה 3</a>
-                  <a class="dropdown-item" [routerLink]="['/option3']">אופציה 4</a>
+                    <a class="dropdown-item" routerLink="/new">הוספת מוצר</a>
+                    <a class="dropdown-item" routerLink="/edit">עריכת/עדכון מוצר</a>
+                    <a class="dropdown-item" routerLink="/option2">מחיקת מוצר</a>
+                    <a class="dropdown-item" routerLink="/option3">אופציה 3</a>
+                    <a class="dropdown-item" routerLink="/option3">אופציה 4</a>
                 </div>
-              </div>
-              
-            <a class="navbar-item" [routerLink]="['/contact']">צור קשר</a> 
-            <a class="navbar-item"  [routerLink]="['/recommendations']">המלצות</a>
-            <a class="navbar-item"  [routerLink]="['/about']">אודות</a>
-            <a class="navbar-item"  [routerLink]="['/articles']">מאמרים</a>
-            <a class="navbar-item"  [routerLink]="['/products']">חנות קפה</a>
-            <a class="navbar-item"  [routerLink]="['/home']">בית</a>
+            </div>
+            <a class="navbar-item" routerLink="/contact">צור קשר</a>
+            <a class="navbar-item" routerLink="/recommendations">המלצות</a>
+            <a class="navbar-item" routerLink="/about">אודות</a>
+            <a class="navbar-item" routerLink="/articles">מאמרים</a>
+            <a class="navbar-item" routerLink="/products">חנות קפה</a>
+            <a class="navbar-item" routerLink="/home">בית</a>
         </div>
     </div>
 </nav>
 
-<!-- ... (rest of the HTML code remains the same) -->
-
-<div class="side-navbar" [ngClass]="{'is-active': isNavbarOpen && isSmallScreen()}">
-    <a class="side-navbar-item"  [routerLink]="['/home']">בית</a>
-    <a class="side-navbar-item"  [routerLink]="['/products']">חנות קפה</a>
-    <a class="side-navbar-item"  [routerLink]="['/articles']">מאמרים</a>
-    <a class="navbar-item navbar-logo" [routerLink]=""><img src="assets/images/negro_logo.jpg"></a>
-    <a class="side-navbar-item"  [routerLink]="['/about']">אודות</a>
-    <a class="side-navbar-item"  [routerLink]="['/recommendations']">המלצות</a>
-    <a class="side-navbar-item"  [routerLink]="['/contact']">צור קשר</a>    
+<div class="side-navbar" [class.is-active]="isNavbarOpen && isSmallScreen()">
+    <a class="side-navbar-item" routerLink="/home">בית</a>
+    <a class="side-navbar-item" routerLink="/products">חנות קפה</a>
+    <a class="side-navbar-item" routerLink="/articles">מאמרים</a>
+    <a class="navbar-item navbar-logo" routerLink="/">
+        <img src="assets/images/negro_logo.jpg" alt="Logo">
+    </a>
+    <a class="side-navbar-item" routerLink="/about">אודות</a>
+    <a class="side-navbar-item" routerLink="/recommendations">המלצות</a>
+    <a class="side-navbar-item" routerLink="/contact">צור קשר</a>
 </div>
 
-<div class="overlay" [ngClass]="{'is-active': isNavbarOpen && isSmallScreen()}" (click)="toggleNavbar()"></div>
+<div class="overlay" [class.is-active]="isNavbarOpen && isSmallScreen()" (click)="toggleNavbar()"></div>

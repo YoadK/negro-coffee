@@ -8,7 +8,9 @@ export const registerSuccess = createAction('[Auth] Register Success', props<{ u
 export const registerFailure = createAction('[Auth] Register Failure', props<{ error: any }>());
 
 export const login = createAction('[Auth] Login', props<{ credentials: CredentialsModel }>());
-export const loginSuccess = createAction('[Auth] Login Success', props<{ user: UserModel, token: string }>());
+export const loginSuccess = createAction('[Auth] Login Success',
+    props<{ user: UserModel; token: string }>()
+);
 export const loginFailure = createAction('[Auth] Login Failure', props<{ error: any }>());
 
 export const logout = createAction('[Auth] Logout');
@@ -25,4 +27,5 @@ export const loadUserFromLocalStorageSuccess = createAction(
 export const loadUserFromLocalStorageFailure = createAction('[Auth] Load User From Local Storage Failure');
 
 
-
+export const setUser = createAction('[Auth] Set User', props<{ user: UserModel }>());
+export const clearUser = createAction('[Auth] Clear User');

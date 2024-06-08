@@ -10,29 +10,22 @@ import { ProductListComponent } from './components/products-area/product-list/pr
 import { LayoutComponent } from './components/layout-area/layout/layout.component';
 import { NgModule } from '@angular/core';
 
-export const routes: Routes = [
+export const APP_ROUTES : Routes = [
     { path: "home", component: HomeComponent },
     { path: "products", component: ProductListComponent },
     { path: "products/details/:id", component: ProductDetailsComponent },
-    { path: "products/edit/{{product?._id}}", component: EditProductComponent },    
+    { path: "products/edit/:productId", component: EditProductComponent },    
     { path: "new", component: AddProductComponent },  
     { path: "login", component: LoginComponent },   
     { path: "register", component: RegisterComponent },   
     { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "**", component: Page404Component },
-    {
-        path: '',
-        component: LayoutComponent,
-        children: [
-          { path: 'home', component: HomeComponent },
-          // other routes
-        ]
-      }
+   
 ];
 
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(APP_ROUTES )],
     exports: [RouterModule]
   })
   export class AppRoutingModule { }
