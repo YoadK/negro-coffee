@@ -21,6 +21,7 @@
     "@ngrx/effects": "^17.2.0",
     "@ngrx/store": "^17.2.0",
     "@ngrx/store-devtools": "^17.2.0",
+    "@ngxs/store": "^3.8.2",
     "@types/jwt-decode": "^3.1.0",
     "bootstrap": "^5.3.3",
     "mongoose": "^8.3.1",
