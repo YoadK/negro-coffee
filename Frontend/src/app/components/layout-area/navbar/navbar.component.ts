@@ -1,12 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
-import { AppState } from '../../../NgXs/reducers';
 import { takeUntil } from 'rxjs/operators';
-import { selectUserRole, selectIsLoggedIn } from '../../../NgXs/Selectors/auth.selectors';
-
+import { AuthSelectors } from '../../../NgXs/Selectors/auth.selectors';
 
 @Component({
   selector: 'app-navbar',
@@ -15,32 +13,25 @@ import { selectUserRole, selectIsLoggedIn } from '../../../NgXs/Selectors/auth.s
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.module.scss']
 })
-export class NavbarComponent implements OnInit, OnDestroy {  
+export class NavbarComponent implements OnInit, OnDestroy {
   isNavbarOpen = false;
-  isLoggedIn$: Observable<boolean>;
-  userRole$: Observable<string | null>;
+
+  @Select(AuthSelectors.isLoggedIn) isLoggedIn$: Observable<boolean>;
+  @Select(AuthSelectors.userRole) userRole$: Observable<string | null>;
+
   private unsubscribe$ = new Subject<void>();
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.userRole$ = this.store.select(selectUserRole);
-    this.isLoggedIn$ = this.store.select(selectIsLoggedIn);
+    this.isLoggedIn$.pipe(takeUntil(this.unsubscribe$)).subscribe((isLoggedIn) => {
+      console.log('Is Logged In:', isLoggedIn);
+    });
 
-    if (this.userRole$) {
-      this.userRole$.pipe(takeUntil(this.unsubscribe$)).subscribe(role => {
-        console.log('User Role:', role);
-      });
-    }
-
-    if (this.isLoggedIn$) {
-      this.isLoggedIn$.pipe(takeUntil(this.unsubscribe$)).subscribe((isLoggedIn) => {
-        console.log('Is Logged In:', isLoggedIn);
-      });
-    }
+    this.userRole$.pipe(takeUntil(this.unsubscribe$)).subscribe((role) => {
+      console.log('User Role:', role);
+    });
   }
-
-
 
   toggleNavbar() {
     this.isNavbarOpen = !this.isNavbarOpen;

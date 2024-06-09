@@ -1,9 +1,14 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/Utils/app.config';
-
-
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app.routes';
+import { NgxsModule } from '@ngxs/store';
+import { AuthState } from './app/NgXs/state/auth.state';
 import { AppComponent } from './app/app.component';
+import { importProvidersFrom } from '@angular/core';
 
-bootstrapApplication(AppComponent, appConfig)
-    .catch((err) => console.error(err));
-
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideRouter(routes),
+    importProvidersFrom(NgxsModule.forRoot([AuthState]))
+  ]
+}).catch(err => console.error(err));

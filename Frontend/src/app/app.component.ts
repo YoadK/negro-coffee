@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutComponent } from './components/layout-area/layout/layout.component';
-import { RouterOutlet } from '@angular/router';
-import {RouterModule } from '@angular/router';
-import { Store } from '@ngrx/store';
-import * as AuthActions from './NgXs/actions/auth.actions';
+
+
 
 @Component({
   selector: 'app-root',
@@ -15,5 +13,5 @@ import * as AuthActions from './NgXs/actions/auth.actions';
 
 
 export class AppComponent{
-    
+    title = 'AppComponent ';
   }

@@ -1,30 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-
-import { UserModel } from '../../../models/user.model';
-import { CommonModule } from '@angular/common';
-import { Store, select } from '@ngrx/store';
+import { Component } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { Logout } from '../../../NgXs/actions/auth.actions';
 import { Observable } from 'rxjs';
-import { selectIsLoggedIn, selectUser } from '../../../NgXs/Selectors/auth.selectors';
 import { AuthState } from '../../../NgXs/state/auth.state';
-import { AppState } from '../../../NgXs/reducers';
-import * as AuthActions from '../../../NgXs/actions/auth.actions';
-import { AuthService } from '../../../services/auth.service';
+import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-auth-menu',
-//   standalone: true,
-//   imports: [RouterLink, CommonModule],
-  templateUrl: './auth-menu.component.html',
-  styleUrls: ['./auth-menu.component.module.scss'],
+  standalone: true,
+  imports: [RouterLink,FormsModule,CommonModule],
+  templateUrl: './auth-menu.component.html'
 })
 export class AuthMenuComponent {
-    isLoggedIn$ = this.store.select(state => state.auth.token != null);
-    user$ = this.store.select(state => state.auth.user);
-  
-    constructor(private store: Store) {}
-  
-    logout() {
-      this.store.dispatch(new Logout());
-    }
+  isLoggedIn$: Observable<boolean>;
+  user$: Observable<any>;
+
+  constructor(private store: Store) {
+    this.isLoggedIn$ = this.store.select(AuthState.isAuthenticated);
+    this.user$ = this.store.select(AuthState.user);
   }
+
+  logout() {
+    this.store.dispatch(new Logout());
+  }
+}

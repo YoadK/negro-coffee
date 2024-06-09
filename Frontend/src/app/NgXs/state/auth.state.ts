@@ -1,7 +1,5 @@
-// auth.state.ts
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { Login, Logout, Register, AuthSuccess, AuthFailure } from '../actions/auth.actions';
-
 
 export interface AuthStateModel {
   user: any;
@@ -21,22 +19,22 @@ export interface AuthStateModel {
 })
 export class AuthState {
   @Selector()
-  static isAuthenticated(state: AuthStateModel) {
+  static isAuthenticated(state: AuthStateModel): boolean {
     return state.token != null;
   }
 
   @Selector()
-  static user(state: AuthStateModel) {
+  static user(state: AuthStateModel): any {
     return state.user;
   }
 
   @Selector()
-  static error(state: AuthStateModel) {
+  static error(state: AuthStateModel): any {
     return state.error;
   }
 
   @Selector()
-  static loading(state: AuthStateModel) {
+  static loading(state: AuthStateModel): boolean {
     return state.loading;
   }
 
@@ -48,7 +46,7 @@ export class AuthState {
       // Simulate success or failure
       const success = true; // replace with real API logic
       if (success) {
-        const user = { username: payload.username }; // replace with real user data
+        const user = { email: payload.email, firstName: 'John', lastName: 'Doe' }; // replace with real user data
         const token = 'fake-jwt-token'; // replace with real token
         dispatch(new AuthSuccess({ user, token }));
       } else {
@@ -65,7 +63,7 @@ export class AuthState {
       // Simulate success or failure
       const success = true; // replace with real API logic
       if (success) {
-        const user = { username: payload.username }; // replace with real user data
+        const user = { email: payload.email, firstName: payload.firstName, lastName: payload.lastName }; // replace with real user data
         const token = 'fake-jwt-token'; // replace with real token
         dispatch(new AuthSuccess({ user, token }));
       } else {

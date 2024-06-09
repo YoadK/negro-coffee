@@ -6,8 +6,8 @@ import { UserModel } from '../models/user.model';
 import { appConfig } from '../Utils/app.config';
 import { jwtDecode } from "jwt-decode";
 import { CredentialsModel } from '../models/credentials.model';
-import { Store } from '@ngrx/store';
-import * as AuthActions from '../NgXs/actions/auth.actions';
+import { Store } from '@ngxs/store';
+import { AuthSuccess, AuthFailure, Logout } from '../NgXs/actions/auth.actions';
 
 
 @Injectable({
@@ -17,13 +17,12 @@ export class AuthService {
   
     private currentUserSubject: BehaviorSubject<UserModel | null>;
     public currentAuthStatus: Observable<UserModel | null>;
-
+  
     constructor(private http: HttpClient, private store: Store) {
-
-    const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
-    console.log("stored user is: "+storedUser);
-    this.currentUserSubject = new BehaviorSubject<UserModel | null>(storedUser);
-    this.currentAuthStatus = this.currentUserSubject.asObservable();
+      const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
+      console.log("stored user is: " + storedUser);
+      this.currentUserSubject = new BehaviorSubject<UserModel | null>(storedUser);
+      this.currentAuthStatus = this.currentUserSubject.asObservable();
     }
 
     // loads the token and updates the currentAuthStatus. returns token.
@@ -51,18 +50,20 @@ export class AuthService {
         return this.currentUserSubject.value;
       }
 
-    register(user: UserModel): Observable<{ user: UserModel; token: string }> {
-    return this.http.post<{ user: UserModel; token: string }>(`${appConfig.registerUrl}`, user).pipe(
-      tap(response => {
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(response.user));
-        this.currentUserSubject.next(response.user);
-        this.store.dispatch(AuthActions.registerSuccess({ user: response.user, token: response.token }));
-      })
-    );
-  }
+   
 
-    login(credentials: CredentialsModel): Observable<{ user: UserModel, token: string }> {
+      register(user: UserModel): Observable<{ user: UserModel; token: string }> {
+        return this.http.post<{ user: UserModel; token: string }>(`${appConfig.registerUrl}`, user).pipe(
+          tap(response => {
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('user', JSON.stringify(response.user));
+            this.currentUserSubject.next(response.user);
+            this.store.dispatch(new AuthSuccess({ user: response.user, token: response.token }));
+          })
+        );
+      }
+    
+      login(credentials: CredentialsModel): Observable<{ user: UserModel, token: string }> {
         console.log('Login method called with credentials:', credentials);
         return this.http.post<{ user: UserModel, token: string }>(`${appConfig.loginUrl}`, credentials).pipe(
           tap(response => {
@@ -82,25 +83,26 @@ export class AuthService {
             console.log('Token stored in localStorage:', token);
             console.log('User stored in localStorage:', loggedInUser);
             this.currentUserSubject.next(response.user);
-            this.store.dispatch(AuthActions.loginSuccess({ user: response.user, token: response.token }));
-            return { user: loggedInUser, token: token }; // Return an object with user and token properties
+            this.store.dispatch(new AuthSuccess({ user: response.user, token: response.token }));
+            return { user: loggedInUser, token: token };
           }),
           catchError(err => {
             console.error('Login error:', err);
             console.error('Error details:', err.error);
+            this.store.dispatch(new AuthFailure({ error: err.error }));
             return throwError(err);
           })
         );
       }
-
-    logout(): void {
+    
+      logout(): void {
         console.log('Logout method called');
         localStorage.removeItem('token');
-        localStorage.removeItem('user'); // Remove user object from local storage
+        localStorage.removeItem('user');
         console.log('Token and user removed from localStorage');
         this.currentUserSubject.next(null);
-        this.store.dispatch(AuthActions.logoutSuccess());
-    }
+        this.store.dispatch(new Logout());
+      }
 
     isAuthenticated(): Observable<boolean> {
         
