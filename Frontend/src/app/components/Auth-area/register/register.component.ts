@@ -1,14 +1,16 @@
 
 
-import { Store } from '@ngrx/store';
+import { Store } from '@ngxs/store';
 
 import { Component } from '@angular/core';
 import { Register  } from '../../../NgXs/actions/auth.actions';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-register',
-    // standalone: true,
-    // imports: [FormsModule, CommonModule],
+     standalone: true,
+     imports: [FormsModule, CommonModule],
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.module.scss']
 })

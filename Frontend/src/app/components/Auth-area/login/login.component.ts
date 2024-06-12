@@ -3,10 +3,14 @@ import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Login } from '../../../NgXs/actions/auth.actions';
 import { AuthState } from '../../../NgXs/state/auth.state';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-login',
+  standalone: true,
+     imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.module.scss']
 })

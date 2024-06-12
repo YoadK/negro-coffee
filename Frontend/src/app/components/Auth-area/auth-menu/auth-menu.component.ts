@@ -11,7 +11,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-auth-menu',
   standalone: true,
   imports: [RouterLink,FormsModule,CommonModule],
-  templateUrl: './auth-menu.component.html'
+  templateUrl: './auth-menu.component.html',
+  styleUrls: ['./auth-menu.component.module.scss']
 })
 export class AuthMenuComponent {
   isLoggedIn$: Observable<boolean>;

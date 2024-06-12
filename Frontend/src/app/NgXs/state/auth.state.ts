@@ -1,14 +1,14 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { Login, Logout, Register, AuthSuccess, AuthFailure } from '../actions/auth.actions';
 
-export interface AuthStateModel {
+export interface IAuthState {
   user: any;
   token: string;
-  error: any;
+  error: string | null;
   loading: boolean;
 }
 
-@State<AuthStateModel>({
+@State<IAuthState>({
   name: 'auth',
   defaults: {
     user: null,
@@ -19,27 +19,27 @@ export interface AuthStateModel {
 })
 export class AuthState {
   @Selector()
-  static isAuthenticated(state: AuthStateModel): boolean {
+  static isAuthenticated(state: IAuthState): boolean {
     return state.token != null;
   }
 
   @Selector()
-  static user(state: AuthStateModel): any {
+  static user(state: IAuthState): any {
     return state.user;
   }
 
   @Selector()
-  static error(state: AuthStateModel): any {
+  static error(state: IAuthState): any {
     return state.error;
   }
 
   @Selector()
-  static loading(state: AuthStateModel): boolean {
+  static loading(state: IAuthState): boolean {
     return state.loading;
   }
 
   @Action(Login)
-  login({ patchState, dispatch }: StateContext<AuthStateModel>, { payload }: Login) {
+  login({ patchState, dispatch }: StateContext<IAuthState>, { payload }: Login) {
     patchState({ loading: true });
     // Simulate an API call
     setTimeout(() => {
@@ -56,7 +56,7 @@ export class AuthState {
   }
 
   @Action(Register)
-  register({ patchState, dispatch }: StateContext<AuthStateModel>, { payload }: Register) {
+  register({ patchState, dispatch }: StateContext<IAuthState>, { payload }: Register) {
     patchState({ loading: true });
     // Simulate an API call
     setTimeout(() => {
@@ -73,7 +73,7 @@ export class AuthState {
   }
 
   @Action(Logout)
-  logout({ setState }: StateContext<AuthStateModel>) {
+  logout({ setState }: StateContext<IAuthState>) {
     setState({
       user: null,
       token: null,
@@ -83,7 +83,7 @@ export class AuthState {
   }
 
   @Action(AuthSuccess)
-  authSuccess({ patchState }: StateContext<AuthStateModel>, { payload }: AuthSuccess) {
+  authSuccess({ patchState }: StateContext<IAuthState>, { payload }: AuthSuccess) {
     patchState({
       user: payload.user,
       token: payload.token,
@@ -93,7 +93,7 @@ export class AuthState {
   }
 
   @Action(AuthFailure)
-  authFailure({ patchState }: StateContext<AuthStateModel>, { payload }: AuthFailure) {
+  authFailure({ patchState }: StateContext<IAuthState>, { payload }: AuthFailure) {
     patchState({
       error: payload.error,
       loading: false
