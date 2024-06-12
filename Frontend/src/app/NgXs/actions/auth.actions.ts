@@ -1,19 +1,22 @@
+import { CredentialsModel } from "../../models/credentials.model";
+import { UserModel } from "../../models/user.model";
+
 // auth.actions.ts
 export class Login {
     static readonly type = '[Auth] Login';
-    constructor(public payload: { email: string; password: string }) {}
+    constructor(public payload: CredentialsModel) {}
   }
   
 
   
   export class Register {
     static readonly type = '[Auth] Register';
-    constructor(public payload: { firstName: string; lastName: string; email: string; password: string }) {}
+    constructor(public payload: UserModel) {}
   }
   
   export class AuthSuccess {
     static readonly type = '[Auth] Success';
-    constructor(public payload: { user: any; token: string }) {}
+    constructor(public payload: { user: UserModel; token: string }) {}
   }
   
   export class AuthFailure {

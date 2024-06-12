@@ -1,0 +1,33 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  border: 3px red dashed;
+  padding: 0;
+  width: 100%;
+  margin: 0 auto;
+}
+.layout header {
+  border: 2px dotted blue;
+  margin: 1px;
+  flex: 0 0 20%;
+}
+.layout main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: visible;
+  border: 3px dotted green;
+  flex: 1;
+}
+.layout footer {
+  border: 3px dotted orange;
+  flex: 0 0 15%;
+}
+.layout .notyf {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+}/*# sourceMappingURL=layout.component.module.css.map */

@@ -1,0 +1,61 @@
+.footer {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 40px 0;
+}
+.footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  direction: rtl;
+}
+.footer .footer-section {
+  flex: 1;
+  padding: 0 20px;
+}
+.footer .footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.footer .footer-section p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.footer .footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+.footer .footer-section ul li {
+  margin-bottom: 8px;
+}
+.footer .footer-section ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+.footer .footer-section ul li a:hover {
+  text-decoration: underline;
+}
+.footer .social-links {
+  display: flex;
+  justify-content: center;
+}
+.footer .social-links a {
+  margin-right: 10px;
+}
+.footer .social-links a img {
+  width: 24px;
+  height: auto;
+}
+.footer .footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+}
+.footer .footer-bottom p {
+  font-size: 12px;
+}/*# sourceMappingURL=footer.component.module.css.map */

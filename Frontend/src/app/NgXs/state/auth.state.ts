@@ -1,9 +1,14 @@
+import { tap, map, catchError } from 'rxjs/operators';
+import { AuthService } from '../../services/auth.service';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
+import { Injectable } from '@angular/core';
 import { Login, Logout, Register, AuthSuccess, AuthFailure } from '../actions/auth.actions';
+import { UserModel } from '../../models/user.model'; // Adjust the import path as necessary
+import { of } from 'rxjs';
 
 export interface IAuthState {
-  user: any;
-  token: string;
+  user: UserModel | null; // Use UserModel type
+  token: string | null;
   error: string | null;
   loading: boolean;
 }
@@ -11,20 +16,23 @@ export interface IAuthState {
 @State<IAuthState>({
   name: 'auth',
   defaults: {
-    user: null,
-    token: null,
+    token: localStorage.getItem('token'),
+    user: JSON.parse(localStorage.getItem('user')),
     error: null,
     loading: false
   }
 })
+@Injectable()
 export class AuthState {
+  constructor(private authService: AuthService) {}
+
   @Selector()
   static isAuthenticated(state: IAuthState): boolean {
     return state.token != null;
   }
 
   @Selector()
-  static user(state: IAuthState): any {
+  static user(state: IAuthState): UserModel | null {
     return state.user;
   }
 
@@ -41,39 +49,43 @@ export class AuthState {
   @Action(Login)
   login({ patchState, dispatch }: StateContext<IAuthState>, { payload }: Login) {
     patchState({ loading: true });
-    // Simulate an API call
-    setTimeout(() => {
-      // Simulate success or failure
-      const success = true; // replace with real API logic
-      if (success) {
-        const user = { email: payload.email, firstName: 'John', lastName: 'Doe' }; // replace with real user data
-        const token = 'fake-jwt-token'; // replace with real token
+    return this.authService.login(payload).pipe(
+      map(response => {
+        const user = response.user;
+        const token = response.token;
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
         dispatch(new AuthSuccess({ user, token }));
-      } else {
-        dispatch(new AuthFailure({ error: 'Login failed' }));
-      }
-    }, 1000);
+      }),
+      catchError(error => {
+        dispatch(new AuthFailure({ error: error.message }));
+        throw error;
+      })
+    );
   }
 
   @Action(Register)
   register({ patchState, dispatch }: StateContext<IAuthState>, { payload }: Register) {
     patchState({ loading: true });
-    // Simulate an API call
-    setTimeout(() => {
-      // Simulate success or failure
-      const success = true; // replace with real API logic
-      if (success) {
-        const user = { email: payload.email, firstName: payload.firstName, lastName: payload.lastName }; // replace with real user data
-        const token = 'fake-jwt-token'; // replace with real token
+    return this.authService.register(payload).pipe(
+      map(response => {
+        const user = response.user;
+        const token = response.token;
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
         dispatch(new AuthSuccess({ user, token }));
-      } else {
-        dispatch(new AuthFailure({ error: 'Registration failed' }));
-      }
-    }, 1000);
+      }),
+      catchError(error => {
+        dispatch(new AuthFailure({ error: error.message }));
+        throw error;
+      })
+    );
   }
 
   @Action(Logout)
   logout({ setState }: StateContext<IAuthState>) {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     setState({
       user: null,
       token: null,

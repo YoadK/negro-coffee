@@ -8,6 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import { CredentialsModel } from '../models/credentials.model';
 import { Store } from '@ngxs/store';
 import { AuthSuccess, AuthFailure, Logout } from '../NgXs/actions/auth.actions';
+import { RoleModel } from '../../../../Backend/src/3-models/role-model';
 
 
 @Injectable({
@@ -55,10 +56,12 @@ export class AuthService {
       register(user: UserModel): Observable<{ user: UserModel; token: string }> {
         return this.http.post<{ user: UserModel; token: string }>(`${appConfig.registerUrl}`, user).pipe(
           tap(response => {
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('user', JSON.stringify(response.user));
-            this.currentUserSubject.next(response.user);
-            this.store.dispatch(new AuthSuccess({ user: response.user, token: response.token }));
+            const token = response.token;
+            const registeredUser = response.user;
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(registeredUser));
+            
+            this.store.dispatch(new AuthSuccess({ user: registeredUser, token: token }));
           })
         );
       }
@@ -125,5 +128,16 @@ export class AuthService {
         console.log('Token retrieved from localStorage:', token);
 
         return token;
+      }
+
+      getRoleFromRoleId(roleId: number): string {
+        switch (roleId) {
+          case RoleModel.Admin:
+            return 'Admin';
+          case RoleModel.User:
+            return 'User';
+          default:
+            return 'Unknown';
+        }
       }
     }
