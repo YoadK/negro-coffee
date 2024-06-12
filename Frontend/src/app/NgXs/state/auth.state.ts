@@ -3,11 +3,11 @@ import { AuthService } from '../../services/auth.service';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { Login, Logout, Register, AuthSuccess, AuthFailure } from '../actions/auth.actions';
-import { UserModel } from '../../models/user.model'; // Adjust the import path as necessary
+import { UserModel } from '../../models/user.model';
 import { of } from 'rxjs';
 
 export interface IAuthState {
-  user: UserModel | null; // Use UserModel type
+  user: UserModel | null;
   token: string | null;
   error: string | null;
   loading: boolean;
@@ -24,30 +24,37 @@ export interface IAuthState {
 })
 @Injectable()
 export class AuthState {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+    console.log('AuthState constructor called');
+  }
 
   @Selector()
   static isAuthenticated(state: IAuthState): boolean {
+    console.log('AuthState.isAuthenticated called');
     return state.token != null;
   }
 
   @Selector()
   static user(state: IAuthState): UserModel | null {
+    console.log('AuthState.user called');
     return state.user;
   }
 
   @Selector()
   static error(state: IAuthState): any {
+    console.log('AuthState.error called');
     return state.error;
   }
 
   @Selector()
   static loading(state: IAuthState): boolean {
+    console.log('AuthState.loading called');
     return state.loading;
   }
 
   @Action(Login)
   login({ patchState, dispatch }: StateContext<IAuthState>, { payload }: Login) {
+    console.log('AuthState.login called with payload:', payload);
     patchState({ loading: true });
     return this.authService.login(payload).pipe(
       map(response => {
@@ -66,6 +73,7 @@ export class AuthState {
 
   @Action(Register)
   register({ patchState, dispatch }: StateContext<IAuthState>, { payload }: Register) {
+    console.log('AuthState.register called with payload:', payload);
     patchState({ loading: true });
     return this.authService.register(payload).pipe(
       map(response => {
@@ -84,6 +92,7 @@ export class AuthState {
 
   @Action(Logout)
   logout({ setState }: StateContext<IAuthState>) {
+    console.log('AuthState.logout called');
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setState({
@@ -96,6 +105,7 @@ export class AuthState {
 
   @Action(AuthSuccess)
   authSuccess({ patchState }: StateContext<IAuthState>, { payload }: AuthSuccess) {
+    console.log('AuthState.authSuccess called with payload:', payload);
     patchState({
       user: payload.user,
       token: payload.token,
@@ -106,6 +116,7 @@ export class AuthState {
 
   @Action(AuthFailure)
   authFailure({ patchState }: StateContext<IAuthState>, { payload }: AuthFailure) {
+    console.log('AuthState.authFailure called with payload:', payload);
     patchState({
       error: payload.error,
       loading: false

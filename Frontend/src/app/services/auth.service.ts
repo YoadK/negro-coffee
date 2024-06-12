@@ -20,124 +20,121 @@ export class AuthService {
     public currentAuthStatus: Observable<UserModel | null>;
   
     constructor(private http: HttpClient, private store: Store) {
+      console.log('AuthService constructor called');
       const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
       console.log("stored user is: " + storedUser);
       this.currentUserSubject = new BehaviorSubject<UserModel | null>(storedUser);
       this.currentAuthStatus = this.currentUserSubject.asObservable();
     }
 
-    // loads the token and updates the currentAuthStatus. returns token.
-     loadStoredToken(): string | null {
-        const token = localStorage.getItem('token');
-        console.log('Loaded token from localStorage:', token); // Log the loaded token
-        if (token) {
-            try {
-                const decodedToken = jwtDecode<{ user: UserModel }>(token);
-                const loggedInUser = decodedToken.user;
-                this.currentUserSubject.next(loggedInUser);
-                console.log('Decoded and set currentAuthStatus:', loggedInUser); // Log the decoded user
-                return token;
-            } catch (error) {
-                console.error('Invalid token:', error);
-                this.currentUserSubject.next(null);
-            }
+    loadStoredToken(): string | null {
+      console.log('AuthService.loadStoredToken called');
+      const token = localStorage.getItem('token');
+      console.log('Loaded token from localStorage:', token);
+      if (token) {
+        try {
+          const decodedToken = jwtDecode<{ user: UserModel }>(token);
+          const loggedInUser = decodedToken.user;
+          this.currentUserSubject.next(loggedInUser);
+          console.log('Decoded and set currentAuthStatus:', loggedInUser);
+          return token;
+        } catch (error) {
+          console.error('Invalid token:', error);
+          this.currentUserSubject.next(null);
         }
-        return null;
+      }
+      return null;
     }
-
-   
 
     public geCurrentUserValue(): UserModel | null {
-        return this.currentUserSubject.value;
-      }
+      console.log('AuthService.geCurrentUserValue called');
+      return this.currentUserSubject.value;
+    }
 
-   
-
-      register(user: UserModel): Observable<{ user: UserModel; token: string }> {
-        return this.http.post<{ user: UserModel; token: string }>(`${appConfig.registerUrl}`, user).pipe(
-          tap(response => {
-            const token = response.token;
-            const registeredUser = response.user;
-            localStorage.setItem('token', token);
-            localStorage.setItem('user', JSON.stringify(registeredUser));
-            
-            this.store.dispatch(new AuthSuccess({ user: registeredUser, token: token }));
-          })
-        );
-      }
+    register(user: UserModel): Observable<{ user: UserModel; token: string }> {
+      console.log('AuthService.register called with user:', user);
+      return this.http.post<{ user: UserModel; token: string }>(`${appConfig.registerUrl}`, user).pipe(
+        tap(response => {
+          const token = response.token;
+          const registeredUser = response.user;
+          localStorage.setItem('token', token);
+          localStorage.setItem('user', JSON.stringify(registeredUser));
+          this.store.dispatch(new AuthSuccess({ user: registeredUser, token: token }));
+        })
+      );
+    }
     
-      login(credentials: CredentialsModel): Observable<{ user: UserModel, token: string }> {
-        console.log('Login method called with credentials:', credentials);
-        return this.http.post<{ user: UserModel, token: string }>(`${appConfig.loginUrl}`, credentials).pipe(
-          tap(response => {
-            console.log('Login API response:', response);
-          }),
-          map(response => {
-            const token = response.token;
-            if (typeof token !== 'string') {
-              throw new Error('Invalid token format');
-            }
-            console.log('Received token:', token);
-            const loggedInUser = jwtDecode<{ user: UserModel }>(token).user;
-            console.log('Decoded token:', loggedInUser);
-            this.currentUserSubject.next(loggedInUser);
-            localStorage.setItem('token', token);
-            localStorage.setItem('user', JSON.stringify(loggedInUser));
-            console.log('Token stored in localStorage:', token);
-            console.log('User stored in localStorage:', loggedInUser);
-            this.currentUserSubject.next(response.user);
-            this.store.dispatch(new AuthSuccess({ user: response.user, token: response.token }));
-            return { user: loggedInUser, token: token };
-          }),
-          catchError(err => {
-            console.error('Login error:', err);
-            console.error('Error details:', err.error);
-            this.store.dispatch(new AuthFailure({ error: err.error }));
-            return throwError(err);
-          })
-        );
-      }
+    login(credentials: CredentialsModel): Observable<{ user: UserModel, token: string }> {
+      console.log('AuthService.login called with credentials:', credentials);
+      return this.http.post<{ user: UserModel, token: string }>(`${appConfig.loginUrl}`, credentials).pipe(
+        tap(response => {
+          console.log('Login API response:', response);
+        }),
+        map(response => {
+          const token = response.token;
+          if (typeof token !== 'string') {
+            throw new Error('Invalid token format');
+          }
+          console.log('Received token:', token);
+          const loggedInUser = jwtDecode<{ user: UserModel }>(token).user;
+          console.log('Decoded token:', loggedInUser);
+          this.currentUserSubject.next(loggedInUser);
+          localStorage.setItem('token', token);
+          localStorage.setItem('user', JSON.stringify(loggedInUser));
+          console.log('Token stored in localStorage:', token);
+          console.log('User stored in localStorage:', loggedInUser);
+          this.currentUserSubject.next(response.user);
+          this.store.dispatch(new AuthSuccess({ user: response.user, token: response.token }));
+          return { user: loggedInUser, token: token };
+        }),
+        catchError(err => {
+          console.error('Login error:', err);
+          console.error('Error details:', err.error);
+          this.store.dispatch(new AuthFailure({ error: err.error }));
+          return throwError(err);
+        })
+      );
+    }
     
-      logout(): void {
-        console.log('Logout method called');
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        console.log('Token and user removed from localStorage');
-        this.currentUserSubject.next(null);
-        this.store.dispatch(new Logout());
-      }
+    logout(): void {
+      console.log('AuthService.logout called');
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      console.log('Token and user removed from localStorage');
+      this.currentUserSubject.next(null);
+      this.store.dispatch(new Logout());
+    }
 
     isAuthenticated(): Observable<boolean> {
-        
-        return this.currentAuthStatus.pipe(
-            map(user => !!user)
-        );
+      console.log('AuthService.isAuthenticated called');
+      return this.currentAuthStatus.pipe(
+        map(user => !!user)
+      );
     }
-
 
     getUserFromLocalStorage(): UserModel | null {
-        const userJson = localStorage.getItem('user');
-   
-        console.log('User retrieved from localStorage:', userJson);
-
-        return userJson ? JSON.parse(userJson) : null;
-      }
+      console.log('AuthService.getUserFromLocalStorage called');
+      const userJson = localStorage.getItem('user');
+      console.log('User retrieved from localStorage:', userJson);
+      return userJson ? JSON.parse(userJson) : null;
+    }
     
-      getTokenFromLocalStorage(): string | null {
-        const token = localStorage.getItem('token');
-        console.log('Token retrieved from localStorage:', token);
+    getTokenFromLocalStorage(): string | null {
+      console.log('AuthService.getTokenFromLocalStorage called');
+      const token = localStorage.getItem('token');
+      console.log('Token retrieved from localStorage:', token);
+      return token;
+    }
 
-        return token;
-      }
-
-      getRoleFromRoleId(roleId: number): string {
-        switch (roleId) {
-          case RoleModel.Admin:
-            return 'Admin';
-          case RoleModel.User:
-            return 'User';
-          default:
-            return 'Unknown';
-        }
+    getRoleFromRoleId(roleId: number): string {
+      console.log('AuthService.getRoleFromRoleId called with roleId:', roleId);
+      switch (roleId) {
+        case RoleModel.Admin:
+          return 'Admin';
+        case RoleModel.User:
+          return 'User';
+        default:
+          return 'Unknown';
       }
     }
+}
