@@ -30,7 +30,7 @@ export class RegisterComponent {
 
   
   constructor(private store: Store, private authService: AuthService) {
-    this.user.role = this.authService.getRoleFromRoleId(this.user.roleId);
+    this.user.role = this.authService.getRoleNameFromRoleId(this.user.roleId);
   }
 
   onSubmit() {

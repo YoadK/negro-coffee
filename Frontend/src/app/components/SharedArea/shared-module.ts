@@ -4,13 +4,13 @@ import { HebrewQuantityPipe } from './hebrew-quantity.pipe'; // Make sure the pa
 
 @NgModule({
   declarations: [
-    HebrewQuantityPipe // Declare the pipe here
+    HebrewQuantityPipe 
   ],
   imports: [
     CommonModule // CommonModule if you use *ngFor, *ngIf, etc, in your shared components/pipes
   ],
   exports: [
-    HebrewQuantityPipe // Export the pipe so it can be used in other parts of your app
+    HebrewQuantityPipe // Exporting the pipe so it can be used in other parts of the app
   ]
 })
 export class SharedModule {}

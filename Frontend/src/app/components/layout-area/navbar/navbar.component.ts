@@ -6,6 +6,9 @@ import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { AuthState } from '../../../NgXs/state/auth.state';
 import { UserModel } from '../../../models/user.model';
+import { AuthService } from '../../../services/auth.service';
+
+
 
 @Component({
   selector: 'app-navbar',
@@ -22,10 +25,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   private unsubscribe$ = new Subject<void>();
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private authService: AuthService) {
     this.isLoggedIn$ = this.store.select(AuthState.isAuthenticated);
-    this.userRole$ = this.store.select(AuthState.user).pipe(
-      map((user: UserModel | null) => user?.role || null)
+     this.userRole$ = this.store.select(AuthState.user).pipe(
+      map((user: UserModel | null) => user ? this.authService.getRoleNameFromRoleId(user.roleId) : null)
     );
   }
 
@@ -55,7 +58,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+     // Emit a value to complete all observables using takeUntil(this.unsubscribe$)
     this.unsubscribe$.next();
+    // Complete the subject to clean up resources
     this.unsubscribe$.complete();
   }
 }

@@ -124,8 +124,8 @@ export class AuthService {
       return token;
     }
 
-    getRoleFromRoleId(roleId: number): string {
-      console.log('AuthService.getRoleFromRoleId called with roleId:', roleId);
+    getRoleNameFromRoleId(roleId: number): string {
+      console.log('AuthService.getRoleNameFromRoleId called with roleId:', roleId);
       switch (roleId) {
         case RoleModel.Admin:
           return 'Admin';
