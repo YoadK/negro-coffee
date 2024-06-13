@@ -27,4 +27,8 @@ export class Login {
   export class Logout {
     static readonly type = '[Auth] Logout';
   }
+
+  export class LoadStoredTokenAndUser {
+    static readonly type = '[Auth] Load Stored Token and User';
+  }
   

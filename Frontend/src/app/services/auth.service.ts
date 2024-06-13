@@ -21,13 +21,12 @@ export class AuthService {
   
     constructor(private http: HttpClient, private store: Store) {
       console.log('AuthService constructor called');
-      const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
-      console.log("stored user is: " + storedUser);
-      this.currentUserSubject = new BehaviorSubject<UserModel | null>(storedUser);
+      this.currentUserSubject = new BehaviorSubject<UserModel | null>(null);
       this.currentAuthStatus = this.currentUserSubject.asObservable();
+      this.loadStoredToken();  // Ensure token is loaded when service is instantiated
     }
 
-    loadStoredToken(): string | null {
+    loadStoredToken(): void {
       console.log('AuthService.loadStoredToken called');
       const token = localStorage.getItem('token');
       console.log('Loaded token from localStorage:', token);
@@ -37,13 +36,12 @@ export class AuthService {
           const loggedInUser = decodedToken.user;
           this.currentUserSubject.next(loggedInUser);
           console.log('Decoded and set currentAuthStatus:', loggedInUser);
-          return token;
+          this.store.dispatch(new AuthSuccess({ user: loggedInUser, token }));
         } catch (error) {
           console.error('Invalid token:', error);
           this.currentUserSubject.next(null);
         }
       }
-      return null;
     }
 
     public geCurrentUserValue(): UserModel | null {

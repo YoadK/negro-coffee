@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Select, Store } from '@ngxs/store';
+import { Select, Store} from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { AuthSelectors } from '../../../NgXs/Selectors/auth.selectors';
+import { map, takeUntil } from 'rxjs/operators';
+import { AuthState } from '../../../NgXs/state/auth.state';
+import { UserModel } from '../../../models/user.model';
 
 @Component({
   selector: 'app-navbar',
@@ -16,12 +17,17 @@ import { AuthSelectors } from '../../../NgXs/Selectors/auth.selectors';
 export class NavbarComponent implements OnInit, OnDestroy {
   isNavbarOpen = false;
 
-  @Select(AuthSelectors.isLoggedIn) isLoggedIn$: Observable<boolean>;
-  @Select(AuthSelectors.userRole) userRole$: Observable<string | null>;
+  isLoggedIn$: Observable<boolean>;
+  userRole$: Observable<string | null>;
 
   private unsubscribe$ = new Subject<void>();
 
-  constructor(private store: Store) {}
+  constructor(private store: Store) {
+    this.isLoggedIn$ = this.store.select(AuthState.isAuthenticated);
+    this.userRole$ = this.store.select(AuthState.user).pipe(
+      map((user: UserModel | null) => user?.role || null)
+    );
+  }
 
   ngOnInit(): void {
     this.isLoggedIn$.pipe(takeUntil(this.unsubscribe$)).subscribe((isLoggedIn) => {

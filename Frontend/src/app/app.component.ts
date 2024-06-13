@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutComponent } from './components/layout-area/layout/layout.component';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -12,6 +13,15 @@ import { LayoutComponent } from './components/layout-area/layout/layout.componen
 })
 
 
-export class AppComponent{
+export class AppComponent implements OnInit {
     title = 'AppComponent ';
+    constructor(private authService: AuthService) {}
+  
+    ngOnInit() {
+      this.authService.loadStoredToken();
+    }
   }
+
+
+
+

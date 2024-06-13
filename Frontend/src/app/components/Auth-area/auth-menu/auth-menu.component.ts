@@ -6,17 +6,18 @@ import { AuthState } from '../../../NgXs/state/auth.state';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UserModel } from '../../../models/user.model';
 
 @Component({
   selector: 'app-auth-menu',
   standalone: true,
-  imports: [RouterLink,FormsModule,CommonModule],
+  imports: [RouterLink, FormsModule, CommonModule],
   templateUrl: './auth-menu.component.html',
   styleUrls: ['./auth-menu.component.module.scss']
 })
 export class AuthMenuComponent {
   isLoggedIn$: Observable<boolean>;
-  user$: Observable<any>;
+  user$: Observable<UserModel | null>;
 
   constructor(private store: Store) {
     this.isLoggedIn$ = this.store.select(AuthState.isAuthenticated);

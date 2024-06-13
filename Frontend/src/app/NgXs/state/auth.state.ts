@@ -1,8 +1,8 @@
 import { tap, map, catchError } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
-import { State, Action, StateContext, Selector } from '@ngxs/store';
+import { State, Action, StateContext, Selector,Store } from '@ngxs/store';
 import { Injectable } from '@angular/core';
-import { Login, Logout, Register, AuthSuccess, AuthFailure } from '../actions/auth.actions';
+import { Login, Logout, Register, AuthSuccess, AuthFailure, LoadStoredTokenAndUser } from '../actions/auth.actions';
 import { UserModel } from '../../models/user.model';
 import { of } from 'rxjs';
 
@@ -16,22 +16,23 @@ export interface IAuthState {
 @State<IAuthState>({
   name: 'auth',
   defaults: {
-    token: localStorage.getItem('token'),
-    user: JSON.parse(localStorage.getItem('user')),
+    token: null,
+    user: null,
     error: null,
     loading: false
   }
 })
 @Injectable()
 export class AuthState {
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private store: Store) {
     console.log('AuthState constructor called');
+    this.store.dispatch(new LoadStoredTokenAndUser());
   }
 
   @Selector()
   static isAuthenticated(state: IAuthState): boolean {
     console.log('AuthState.isAuthenticated called');
-    return state.token != null;
+    return state.token !== null;
   }
 
   @Selector()
@@ -122,4 +123,15 @@ export class AuthState {
       loading: false
     });
   }
+
+  @Action(LoadStoredTokenAndUser)
+  loadStoredTokenAndUser({ dispatch }: StateContext<IAuthState>) {
+    console.log('AuthState.loadStoredTokenAndUser called');
+    const storedUser = this.authService.getUserFromLocalStorage();
+    const storedToken = this.authService.getTokenFromLocalStorage();
+    if (storedUser && storedToken) {
+      dispatch(new AuthSuccess({ user: storedUser, token: storedToken }));
+    }
+  }
+  
 }
