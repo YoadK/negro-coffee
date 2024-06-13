@@ -21,8 +21,10 @@ export class LoginComponent {
     console.log('LoginComponent constructor called');
     this.error$ = this.store.select(AuthState.error);
     this.error$.subscribe(error => {
-      console.log('AuthState error:', error);
-    });
+        if (error) {
+          console.error('AuthState error:', error);
+        }
+      });
   }
 
   onSubmit() {

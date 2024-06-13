@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
     constructor(private authService: AuthService) {}
   
     ngOnInit() {
+        console.log('AppComponent.ngOnInit called');
       this.authService.loadStoredToken();
     }
   }

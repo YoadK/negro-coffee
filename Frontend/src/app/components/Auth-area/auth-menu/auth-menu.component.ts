@@ -25,6 +25,7 @@ export class AuthMenuComponent {
   }
 
   logout() {
+    console.log('AuthMenuComponent.logout called');
     this.store.dispatch(new Logout());
   }
 }
