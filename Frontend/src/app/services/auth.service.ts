@@ -125,14 +125,10 @@ export class AuthService {
     }
 
     getRoleNameFromRoleId(roleId: number): string {
-      console.log('AuthService.getRoleNameFromRoleId called with roleId:', roleId);
-      switch (roleId) {
-        case RoleModel.Admin:
-          return 'Admin';
-        case RoleModel.User:
-          return 'User';
-        default:
-          return 'Unknown';
+      console.log('AuthService.getRoleNameFromRoleId called with roleId:', roleId);      
+        // Use the enum value directly for readability and type safety
+        return roleId in RoleModel ? RoleModel[roleId] : 'Unknown';
       }
+      
     }
 }
