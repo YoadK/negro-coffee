@@ -6,6 +6,8 @@ import { Login, Logout, Register, AuthSuccess, AuthFailure, LoadStoredTokenAndUs
 import { UserModel } from '../../models/user.model';
 import { of } from 'rxjs';
 
+//AuthState - responsible for managing the authentication state of the application.
+
 export interface IAuthState {
     user: UserModel | null;
     token: string | null;

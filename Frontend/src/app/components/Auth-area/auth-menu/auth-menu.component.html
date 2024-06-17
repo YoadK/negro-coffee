@@ -1,4 +1,4 @@
-<!-- auth-menu.component.html -->
+<!-- auth-menu.component.html  -->
 <div class="auth-menu">
     <button type="button" class="login-btn">
       <span class="open_popup_login_btn text" href="#" title="My account">חשבון שלי</span>
@@ -18,7 +18,7 @@
     </div>
   
     <div class="welcome_area" *ngIf="isLoggedIn$ | async">
-      <h6> ברוך הבא, {{ (user$ | async)?.firstName }} </h6>
+      <h6> ,{{ (user$ | async)?.firstName }}  ברוך הבא</h6>
       <button (click)="logout()">Logout</button>
     </div>
   
