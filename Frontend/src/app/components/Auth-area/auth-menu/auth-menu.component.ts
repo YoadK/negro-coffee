@@ -9,13 +9,14 @@ import { CommonModule } from '@angular/common';
 import { UserModel } from '../../../models/user.model';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
-
+import { ToggleCartModal } from '../../../NgXs/actions/cart.actions';
+import { ShoppingCartModalComponent } from '../../Modals/shopping-cart-modal/shopping.cart.modal.component';
 
 
 @Component({
   selector: 'app-auth-menu',
   standalone: true,
-  imports: [RouterLink, FormsModule, CommonModule],
+  imports: [RouterLink,  CommonModule, ShoppingCartModalComponent],
   templateUrl: './auth-menu.component.html',
   styleUrls: ['./auth-menu.component.module.scss']
 })
@@ -23,6 +24,8 @@ export class AuthMenuComponent {
   isLoggedIn$: Observable<boolean>;
   user$: Observable<UserModel | null>;
   userRole$: Observable<string | null>;
+  isCartModalOpen = false; 
+
 
   constructor(private store: Store,  private authService: AuthService) {
     this.isLoggedIn$ = this.store.select(AuthState.isAuthenticated);
@@ -37,6 +40,12 @@ export class AuthMenuComponent {
       console.log('User Role:', role);
     });
   }
+
+  toggleCartModal() {
+    console.log('toggleCartModal called');
+    this.store.dispatch(new ToggleCartModal());
+  }
+
 
   logout() {
     console.log('AuthMenuComponent.logout called');

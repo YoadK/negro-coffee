@@ -1,0 +1,43 @@
+<div class="popup_cart_open ajax-cart" [ngClass]="{'show': (isCartModalOpen$ | async)}">
+    <div class="all_popup">
+        <div class="top_popup">
+            <div class="head-div">
+                <img src="https://negro.co.il/wp-content/themes/matat-child/images/cart_icon.png" alt="cart" class="head-top-cart">
+                <h2>עגלת קניות</h2>
+                <div class="close close-header-cart" (click)="toggleCartModal()">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+        <div class="middle_popup">
+            <div class="table-on-cart-button"></div>
+        </div>
+        <div class="bottom_popup">
+            <div class="cart-price">
+                <div class="cart-price-text">סה״כ</div>
+                <div class="cart-price-number">
+                    <span class="cart-price-amount">0 ש״ח</span>
+                </div>
+                <div class="cart-note-text">
+                    <span>מומלץ לקנות קפה לצריכה של עד חודש וחצי | משלוח חינם מ450 ש"ח ומעלה |</span>
+                </div>
+                <strong class="mini-cart-subheading">
+                    <strong class="mini-cart-subheading">
+                        <span class="remain-order-notice">חסר לך רק עוד <span class="highlight">
+                            <span class="woocommerce-Price-amount amount">
+                                <bdi><span class="woocommerce-Price-currencySymbol">₪</span>299</bdi></span></span> ש"ח למשלוח חינם ללוקר
+                        </span>
+                    </strong>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-label="סרגל התקדמות הודעת משלוח חינם" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </strong>
+            </div>
+            <a href="#" aria-label="Go to payment page" class="a_checkout">
+                <button type="button" class="btn-checkout">
+                    <span class="continue">תשלום</span>
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
