@@ -4,7 +4,7 @@ import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { Login, Logout, Register, AuthSuccess, AuthFailure, LoadStoredTokenAndUser } from '../actions/auth.actions';
 import { UserModel } from '../../models/user.model';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 //AuthState - responsible for managing the authentication state of the application.
 
@@ -63,17 +63,23 @@ export class AuthState {
     login({ patchState, dispatch }: StateContext<IAuthState>, { payload }: Login) {
         console.log('AuthState.login called with payload:', payload);
         patchState({ loading: true });
+
         return this.authService.login(payload).pipe(
-            map(response => {
-                const user = response.user;
-                const token = response.token;
-                localStorage.setItem('token', token);
-                localStorage.setItem('user', JSON.stringify(user));
-                dispatch(new AuthSuccess({ user, token }));
+            tap((response: { user: UserModel; token: string }) => {
+                try {  // <-- Added try-catch
+                    const user = response.user;
+                    const token = response.token;
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('user', JSON.stringify(user));
+                    dispatch(new AuthSuccess({ user, token }));
+                } catch (error) {
+                    console.error('Error in login tap:', error);
+                    throw error;
+                }
             }),
             catchError(error => {
                 dispatch(new AuthFailure({ error: error.message }));
-                throw error;
+                return throwError(error);  // <-- Fixed throw to return
             })
         );
     }
@@ -82,17 +88,23 @@ export class AuthState {
     register({ patchState, dispatch }: StateContext<IAuthState>, { payload }: Register) {
         console.log('AuthState.register called with payload:', payload);
         patchState({ loading: true });
+
         return this.authService.register(payload).pipe(
-            map(response => {
-                const user = response.user;
-                const token = response.token;
-                localStorage.setItem('token', token);
-                localStorage.setItem('user', JSON.stringify(user));
-                dispatch(new AuthSuccess({ user, token }));
+            tap((response: { user: UserModel; token: string }) => {
+                try {  // <-- Added try-catch
+                    const user = response.user;
+                    const token = response.token;
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('user', JSON.stringify(user));
+                    dispatch(new AuthSuccess({ user, token }));
+                } catch (error) {
+                    console.error('Error in register tap:', error);
+                    throw error;
+                }
             }),
             catchError(error => {
                 dispatch(new AuthFailure({ error: error.message }));
-                throw error;
+                return throwError(error);  // <-- Fixed throw to return
             })
         );
     }
@@ -143,5 +155,4 @@ export class AuthState {
             dispatch(new AuthSuccess({ user: storedUser, token: storedToken }));
         }
     }
-
 }

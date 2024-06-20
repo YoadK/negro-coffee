@@ -5,6 +5,7 @@ import { Login } from '../../../NgXs/actions/auth.actions';
 import { AuthState } from '../../../NgXs/state/auth.state';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent {
   credentials = { email: '', password: '' };
   error$: Observable<any>;
 
-  constructor(private store: Store) {
+  constructor(private store: Store,private router: Router) {
     console.log('LoginComponent constructor called');
     this.error$ = this.store.select(AuthState.error);
     this.error$.subscribe(error => {
@@ -33,6 +34,7 @@ export class LoginComponent {
     this.store.dispatch(new Login(this.credentials)).subscribe(
       () => {
         console.log('Login dispatch successful');
+        this.router.navigate(['/products']); 
       },
       error => {
         console.error('Login dispatch error:', error);
