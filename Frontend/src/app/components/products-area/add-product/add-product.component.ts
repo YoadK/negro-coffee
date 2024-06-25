@@ -17,6 +17,7 @@ import { ProductsService } from '../../../services/products.service';
 export class AddProductComponent {
 
     public product = new ProductModel();
+    public quantity: number = 1; // Add this line
 
     public constructor(private productsService: ProductsService, private router: Router) {    }
 

@@ -6,7 +6,7 @@ export class ProductModel {
     _id: ObjectId;
     name: string;
     description: string;
-    quantity: number;
+    product_weight_grams: number;
     price: number;
     image: File;
     imageUrl: string;

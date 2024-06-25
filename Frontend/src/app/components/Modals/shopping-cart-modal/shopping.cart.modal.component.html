@@ -1,4 +1,5 @@
-<div class="popup_cart_open ajax-cart" [ngClass]="{'show': (isCartModalOpen$ | async)}">
+<div class="popup_cart_open ajax-cart" [ngClass]="{'show': (isCartModalOpen$ | async)}" dir="rtl">
+
     <div class="all_popup">
         <div class="top_popup">
             <div class="head-div">
@@ -10,27 +11,53 @@
             </div>
         </div>
         <div class="middle_popup">
-            <div class="table-on-cart-button"></div>
+            <div class="cart-item">
+                <table class="table">
+                    <thead class="thead">
+                        <tr>
+                            <th>מוצר</th>
+                            <th>מחיר</th>
+                            <th>כמות</th>
+                            <th>מחיקת מוצר</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <tr *ngFor="let item of cartItems$ | async">
+                            <td class="td cart_product_info">
+                                <div class="product-details">
+                                    <h5 class="product-name">{{item?.name}}</h5>
+                                    <p class="product-description">{{item?.description}}</p>
+                                </div>
+                            </td>
+                            <td class="td cart_product_price">
+                                {{item.price | currency:'ILS':'symbol'}} | {{item?.product_weight_grams}}g
+                            </td>
+                            <td class="td cart_product_quantity">
+                                <button class="quantity-btn minus-btn" (click)="decreaseQuantity(item)">-</button>
+                                <input type="number" class="quantity-input" [(ngModel)]="item.quantity" min="1">
+                                <button class="quantity-btn plus-btn" (click)="increaseQuantity(item)">+</button>
+                            </td>
+                            <td class="td cart_delete_row">
+                                <button class="delete-btn" (click)="removeItem(item)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="bottom_popup">
             <div class="cart-price">
                 <div class="cart-price-text">סה״כ</div>
                 <div class="cart-price-number">
-                    <span class="cart-price-amount">0 ש״ח</span>
+                    <span class="cart-price-amount">{{total.price | currency:'ILS':'symbol'}} | {{total.quantity   }} פריטים </span>
                 </div>
                 <div class="cart-note-text">
                     <span>מומלץ לקנות קפה לצריכה של עד חודש וחצי | משלוח חינם מ450 ש"ח ומעלה |</span>
                 </div>
                 <strong class="mini-cart-subheading">
-                    <strong class="mini-cart-subheading">
-                        <span class="remain-order-notice">חסר לך רק עוד <span class="highlight">
-                            <span class="woocommerce-Price-amount amount">
-                                <bdi><span class="woocommerce-Price-currencySymbol">₪</span>299</bdi></span></span> ש"ח למשלוח חינם ללוקר
-                        </span>
-                    </strong>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-label="סרגל התקדמות הודעת משלוח חינם" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
+                    <strong class="mini-cart-subheading"></strong>
                 </strong>
             </div>
             <a href="#" aria-label="Go to payment page" class="a_checkout">

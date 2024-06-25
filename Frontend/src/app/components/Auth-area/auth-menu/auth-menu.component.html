@@ -7,7 +7,7 @@
     <button type="button" class="btn-cart" (click)="toggleCartModal()">
       <span class="text"></span>
       <img src="https://negro.co.il/wp-content/themes/matat-child/images/cart_icon.png" alt="cart" class="img-on-button-top">
-      <span class="number">0</span> 
+      <span class="number-of-cart-items">{{ totalCartItems }}</span> 
     </button>
   
     <div class="welcome_area" *ngIf="!(isLoggedIn$ | async)">

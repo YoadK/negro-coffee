@@ -26,7 +26,7 @@
         <span *ngIf="priceBox.touched && priceBox.errors?.['max']">Price can't exceed 1000.</span>
        
         <label>Quantity: </label>
-        <input type="number" name="price" step="1" [(ngModel)]="product.quantity" #quantityBox="ngModel" required min="0" max="1000">
+        <input type="number" name="price" step="1" [(ngModel)]="quantity" #quantityBox="ngModel" required min="0" max="1000">
         <span *ngIf="quantityBox.touched && quantityBox.errors?.['min']">quantity can't be negative.</span>
         <span *ngIf="quantityBox.touched && quantityBox.errors?.['max']">quantity can't exceed 1000.</span>
         

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Logout } from '../../../NgXs/actions/auth.actions';
 import { Observable } from 'rxjs';
 import { AuthState } from '../../../NgXs/state/auth.state';
@@ -11,7 +11,8 @@ import { map } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
 import { ToggleCartModal } from '../../../NgXs/actions/cart.actions';
 import { ShoppingCartModalComponent } from '../../Modals/shopping-cart-modal/shopping.cart.modal.component';
-
+import { CartState} from '../../../NgXs/state/cart.state';
+import { ProductModel } from '../../../models/product.model';
 
 @Component({
   selector: 'app-auth-menu',
@@ -20,12 +21,17 @@ import { ShoppingCartModalComponent } from '../../Modals/shopping-cart-modal/sho
   templateUrl: './auth-menu.component.html',
   styleUrls: ['./auth-menu.component.module.scss']
 })
+
 export class AuthMenuComponent {
   isLoggedIn$: Observable<boolean>;
   user$: Observable<UserModel | null>;
   userRole$: Observable<string | null>;
   isCartModalOpen = false; 
+  @Select(CartState.isCartModalOpen) isCartModalOpen$: Observable<boolean>;
+  @Select(CartState.cartItems) cartItems$: Observable<Array<ProductModel & { quantity: number }>>;
 
+
+  totalCartItems: number = 0;
 
   constructor(private store: Store,  private authService: AuthService) {
     this.isLoggedIn$ = this.store.select(AuthState.isAuthenticated);
@@ -39,6 +45,9 @@ export class AuthMenuComponent {
     this.userRole$.subscribe(role => {
       console.log('User Role:', role);
     });
+    this.cartItems$.subscribe(items => {
+        this.totalCartItems = items.reduce((sum, item) => sum + item.quantity, 0);
+      });
   }
 
   toggleCartModal() {

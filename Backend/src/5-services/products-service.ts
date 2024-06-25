@@ -89,7 +89,7 @@ class ProductsService {
             // Update the product fields
             existingProduct.name = product.name;;
             existingProduct.description = product.description;
-            existingProduct.quantity = product.quantity;
+            existingProduct.product_weight_grams = product.product_weight_grams;
             existingProduct.price = product.price;
 
 

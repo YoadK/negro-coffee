@@ -2,7 +2,7 @@
     <div class="card-content">
         <div class="product-name">  {{product.name}} </div>        
         <div class="product-description"> {{product.description}}</div>
-        <div class="product-quantity-price">{{product.price| currency:'ILS':'symbol'}} | {{product.quantity  | hebrewQuantity }}</div> 
+        <div class="product-quantity-price">{{product.price| currency:'ILS':'symbol'}} | {{product.product_weight_grams  | hebrewQuantity }}</div> 
     </div>
     <div class="card-image">
         <a routerLink="/products/details/{{product._id}}">
@@ -16,6 +16,6 @@
             <input id="item-{{product._id}}" type="number" name="amount" min="1" value="1" class="input_amount">
             <div class="input_amount_btn plus" aria-label="Increase quantity">+</div>
         </div>
-        <button class="add-to-cart-btn">הוספה לסל</button>
+        <button class="add-to-cart-btn" (click)="addToCart()">הוספה לסל</button>
     </div>
 </div>

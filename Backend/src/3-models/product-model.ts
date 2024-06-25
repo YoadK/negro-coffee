@@ -8,7 +8,7 @@ export interface IProductModel extends Document {
     _id: ObjectId;
     name: string;
     description: string;
-    quantity: number; // quantity in 'Grams'
+   product_weight_grams: number; // quantity in 'Grams'
     price: number; //price per one bag of coffee beans
     image: UploadedFile;//the image file itself
     imageName: string; // image name only, i.e: "13a41d43-14c8-4e6f-93dc-c652647991ef.jpg"
@@ -32,11 +32,11 @@ export const ProductSchema = new Schema<IProductModel>({
         type: String,
         maxlength: [500, "Product description is too long"],
     },
-    quantity: {
+    product_weight_grams: {
         type: Number,
-        required: [true, "Missing product quantity"],
-        min: [0, "quantity can't be negative"],
-        max: [1000, "quantity can't exceed 1000"],
+        required: [true, "Missing product weight in grams"],
+        min: [0, "product weight in grams can't be negative"],
+        max: [1000, "product weight in grams can't exceed 1000"],
     },
     price: {
         type: Number,

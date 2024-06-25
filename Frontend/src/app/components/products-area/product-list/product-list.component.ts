@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit {
     public products: ProductModel[];
 
 
-    //DI- Dependancy injection
+    //DI- Dependency injection
     public constructor(private title: Title, private productsService: ProductsService) {
     }
 
