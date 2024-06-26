@@ -1,10 +1,11 @@
 import { tap, map, catchError } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
-import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
+import { State, Action, StateContext, Selector, Store, dispatch } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { Login, Logout, Register, AuthSuccess, AuthFailure, LoadStoredTokenAndUser } from '../actions/auth.actions';
 import { UserModel } from '../../models/user.model';
 import { of, throwError } from 'rxjs';
+import { ClearCart, LoadUserCart } from '../actions/cart.actions';
 
 //AuthState - responsible for managing the authentication state of the application.
 
@@ -110,7 +111,7 @@ export class AuthState {
     }
 
     @Action(Logout)
-    logout({ setState, getState }: StateContext<IAuthState>) {
+    logout({ setState, getState,dispatch }: StateContext<IAuthState>) {
         console.log('AuthState.logout called');
         localStorage.removeItem('token');
         localStorage.removeItem('user');
@@ -124,10 +125,13 @@ export class AuthState {
         const state = getState();
         const status = state.user ? 'signed-in' : 'signed-out';
         console.log(`User status: ${status}`);
+
+        localStorage.removeItem('auth'); // Remove auth data from localStorage
+        dispatch(new ClearCart()); // Dispatch ClearCart action
     }
 
     @Action(AuthSuccess)
-    authSuccess({ patchState }: StateContext<IAuthState>, { payload }: AuthSuccess) {
+    authSuccess({ patchState, dispatch }: StateContext<IAuthState>, { payload }: AuthSuccess) {
         console.log('AuthState.authSuccess called with payload:', payload);
         patchState({
             user: payload.user,
@@ -135,6 +139,11 @@ export class AuthState {
             error: null,
             loading: false
         });
+        if (payload.user && payload.user._id) {
+            dispatch(new LoadUserCart(payload.user._id.toString()));
+        } else {
+            console.error('User or user ID is undefined in AuthSuccess payload');
+        }
     }
 
     @Action(AuthFailure)

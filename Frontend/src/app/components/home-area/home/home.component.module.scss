@@ -56,7 +56,13 @@
     color: white;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.4s;
+    a{
+        font-family: inherit;
+        font-size: inherit;
+        text-decoration: none ;
+        color: white;
+    }
   }
   
   .big_slider_button:hover {

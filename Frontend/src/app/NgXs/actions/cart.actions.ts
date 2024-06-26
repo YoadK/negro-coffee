@@ -30,6 +30,14 @@ export class UpdateCartItem {
     constructor(public payload: { item: CartItem }) {}
 }
 
+export class ClearCart {
+    static readonly type = '[Cart] Clear Cart';
+  }
+  
+  export class LoadUserCart {
+    static readonly type = '[Cart] Load User Cart';
+    constructor(public userId: string) {}
+  }
 
   
   

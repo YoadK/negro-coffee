@@ -13,6 +13,8 @@ import { ToggleCartModal } from '../../../NgXs/actions/cart.actions';
 import { ShoppingCartModalComponent } from '../../Modals/shopping-cart-modal/shopping.cart.modal.component';
 import { CartState} from '../../../NgXs/state/cart.state';
 import { ProductModel } from '../../../models/product.model';
+import { ClearCart } from '../../../NgXs/actions/cart.actions';
+
 
 @Component({
   selector: 'app-auth-menu',
@@ -59,5 +61,7 @@ export class AuthMenuComponent {
   logout() {
     console.log('AuthMenuComponent.logout called');
     this.store.dispatch(new Logout());
+    this.store.dispatch(new ClearCart());
   }
+
 }
