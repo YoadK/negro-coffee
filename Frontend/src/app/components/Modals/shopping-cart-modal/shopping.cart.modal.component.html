@@ -1,4 +1,4 @@
-<div class="popup_cart_open ajax-cart" [ngClass]="{'show': (isCartModalOpen$ | async)}" dir="rtl">
+<div class="popup_cart_open ajax-cart" [ngClass]="{'show': (isCartModalOpen$ | async)}" >
 
     <div class="all_popup">
         <div class="top_popup">
@@ -33,9 +33,9 @@
                                 {{item.price | currency:'ILS':'symbol'}} | {{item?.product_weight_grams}}g
                             </td>
                             <td class="td cart_product_quantity">
-                                <button class="quantity-btn minus-btn" (click)="decreaseQuantity(item)">-</button>
-                                <input type="number" class="quantity-input" [(ngModel)]="item.quantity" min="1">
                                 <button class="quantity-btn plus-btn" (click)="increaseQuantity(item)">+</button>
+                                <input type="number" class="quantity-input" [(ngModel)]="item.quantity" min="1">
+                                <button class="quantity-btn minus-btn" (click)="decreaseQuantity(item)">-</button>
                             </td>
                             <td class="td cart_delete_row">
                                 <button class="delete-btn" (click)="removeItem(item)">

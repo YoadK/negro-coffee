@@ -7,11 +7,14 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9999;
+    direction: rtl;
+    overflow-y: auto; // Allow scrolling if modal becomes too tall
   
     &.show {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; // Changed from center to allow scrolling
+      padding: 20px 0; // Add some padding at the top and bottom
     }
   }
   
@@ -19,13 +22,18 @@
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    max-width: 90%;
+    width: 90%;
+    max-width: 600px; // Increased max-width for better readability
+    margin: auto; // Center the popup
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 40px); // Maximum height with some space at top and bottom
   }
   
   .top_popup {
     padding: 20px;
     border-bottom: 1px solid #e0e0e0;
+    flex-shrink: 0; // Prevent shrinking
   }
   
   .head-div {
@@ -60,19 +68,22 @@
   
   .middle_popup {
     padding: 20px;
-    max-height: 300px;
-    overflow-y: auto;
+    overflow-y: auto; // Allow scrolling within this section
+    flex-grow: 1; // Allow this section to grow
+    max-height: calc(100vh - 200px); // Adjust based on your top and bottom section heights
   }
+  
   
   .table {
     width: 100%;
     border-collapse: collapse;
   
     .thead th {
-      padding: 1rem;
-      text-align: right;
-      border-bottom: 2px solid #e0e0e0;
-    }
+        position: sticky; // Make table header sticky
+        top: 0; // Stick to the top
+        background-color: #ffffff; // Ensure the header is not transparent
+        z-index: 1; // Ensure the header is above the table body
+      }
   
     .tbody td {
       padding: 1rem;
@@ -83,9 +94,12 @@
   .cart_product_info {
     display: flex;
     align-items: center;
+    justify-content: center; //  centers the content horizontally
+    text-align: center; //  centers the text within the element
   }
   
   .product-details {
+   
     .product-name {
       margin: 0 0 0.5rem;
       font-size: 1.1rem;
@@ -132,6 +146,7 @@
   .bottom_popup {
     padding: 20px;
     border-top: 1px solid #e0e0e0;
+    flex-shrink: 0; // Prevent shrinking
   }
   
   .cart-price {
