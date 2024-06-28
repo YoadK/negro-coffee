@@ -15,7 +15,7 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log('AuthInterceptor: Intercepting request', request);
     const token = this.authService.loadStoredToken();
-    console.log('Retrieved token from localStorage:', token); // Debugging
+    console.log('Retrieved token from localStorage:', token); 
 
     if (token) {
       console.log('AuthInterceptor: Adding token to Authorization header');
@@ -25,7 +25,7 @@ export class AuthInterceptor implements HttpInterceptor {
         }
       });
    
-      console.log('Added Authorization header:', authRequest.headers); // Debugging
+      console.log('Added Authorization header:', authRequest.headers);
       
       return next.handle(authRequest).pipe(
         catchError((error: HttpErrorResponse) => {

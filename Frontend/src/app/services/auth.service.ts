@@ -25,9 +25,9 @@ export class AuthService {
         this.loadStoredToken();  // Ensure token is loaded when service is instantiated
     }
 
-    loadStoredToken(): void {
+    loadStoredToken(): string | null {
         console.log('AuthService.loadStoredToken called');
-        const token = localStorage.getItem('token');
+        const token:string | null = localStorage.getItem('token')?.toString();
         console.log('Loaded token from localStorage:', token);
         if (token) {
             try {
@@ -40,6 +40,7 @@ export class AuthService {
                 this.store.dispatch(new Logout());
             }
         }
+        return token
     }
 
     public getCurrentUserValue(): UserModel | null {

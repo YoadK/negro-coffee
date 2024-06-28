@@ -42,7 +42,7 @@ private loadCartState(userId: string): ICartState {
 }
 
 
-    //Selectors
+    //Selectors (Selectors are functions that extract specific data slices from the global state.)
 
     @Selector()
     static isCartModalOpen(state: ICartState): boolean {
