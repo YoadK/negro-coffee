@@ -6,6 +6,7 @@ import {  RouterModule} from '@angular/router';
 import {routes} from '../../src/app/app.routes';
 import { NgxsModule } from '@ngxs/store';
 import { AuthState } from './NgXs/state/auth.state';
+import { SpinnerComponent } from './components/SharedArea/spinner/spinner.component';
 
 @NgModule({
   declarations: [     

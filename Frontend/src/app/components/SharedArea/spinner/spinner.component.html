@@ -1,0 +1,19 @@
+<!-- spinner.component.html -->
+ 
+
+<!-- spinner.component.html -->
+<div class="spinner-overlay" [class.hidden]="!(isLoading$ | async)">
+    <div class="spinner">
+      <p>Loading...</p>
+      <img src="assets/spinners/coffee_pitcher.gif" alt="Loading..." />
+    </div>
+  </div>
+   
+ 
+   
+ <!-- <div class="spinner-overlay">
+    <div class="spinner">
+        <p>Loading...</p>       
+        <img src="assets/spinners/coffee_pitcher.gif"  />       
+    </div>
+</div>    -->

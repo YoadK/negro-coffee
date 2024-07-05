@@ -1,70 +1,59 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, throwError, timer } from 'rxjs';
+import { catchError, finalize, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { StatusCode } from '../../../../Backend/src/3-models/enums';
 import { AuthService } from '../services/auth.service';
+import { Store } from '@ngxs/store';
+import { SetLoading } from '../NgXs/actions/auth.actions';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private router: Router, private authService: AuthService) {
+  private totalRequests = 0;
+
+  constructor(
+    private router: Router, 
+    private authService: AuthService,
+    private store: Store
+  ) {
     console.log("AuthInterceptor constructor called");
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('AuthInterceptor: Intercepting request', request);
-    const token = this.authService.loadStoredToken();
-    console.log('Retrieved token from localStorage:', token); 
+    this.totalRequests++;
+    console.log('Dispatching SetLoading(true)');
+  this.store.dispatch(new SetLoading(true)).subscribe(() => {
+    console.log('SetLoading(true) dispatched');
+  });
+    
 
-    if (token) {
-      console.log('AuthInterceptor: Adding token to Authorization header');
-      const authRequest = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`
+    const token = this.authService.loadStoredToken();
+    let authRequest = token ? request.clone({
+      setHeaders: { Authorization: `Bearer ${token}` }
+    }) : request;
+  
+    return  next.handle(authRequest).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === StatusCode.Unauthorized) {
+          this.router.navigate(['/login']);
+        } else if (error.status === StatusCode.Forbidden) {
+          console.error('Access denied');
         }
-      });
-   
-      console.log('Added Authorization header:', authRequest.headers);
-      
-      return next.handle(authRequest).pipe(
-        catchError((error: HttpErrorResponse) => {
-          switch (error.status) {
-            case StatusCode.Unauthorized:
-              // Handle unauthorized error
-              this.router.navigate(['/login']);
-              break;
-            case StatusCode.Forbidden:
-              // Handle forbidden error
-              console.error('Access denied');
-              break;
-            // Handle other status codes as needed
-            default:
-              break;
-          }
-          return throwError(error);
-        })
-      );
-    } else {
-      // Token is not present, proceed with the original request
-      return next.handle(request).pipe(
-        catchError((error: HttpErrorResponse) => {
-          switch (error.status) {
-            case StatusCode.Unauthorized:
-              // Handle unauthorized error
-              this.router.navigate(['/login']);
-              break;
-            case StatusCode.Forbidden:
-              // Handle forbidden error
-              console.error('Access denied');
-              break;
-            // Handle other status codes as needed
-            default:
-              break;
-          }
-          return throwError(error);
-        })
-      );
-    }
+        return throwError(() => error);
+      }),
+      finalize(() => {
+        this.totalRequests--;
+        console.log('Request finished. Total requests:', this.totalRequests);
+        if (this.totalRequests === 0) {
+            console.log('Dispatching SetLoading(false)');
+            this.store.dispatch(new SetLoading(false)).subscribe(() => {
+              console.log('SetLoading(false) dispatched');
+            });
+        }
+      })
+    );
   }
 }

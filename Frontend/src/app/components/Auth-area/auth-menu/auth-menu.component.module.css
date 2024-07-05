@@ -1,0 +1,75 @@
+@charset "UTF-8";
+.auth-menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
+}
+
+.btn-cart,
+.login-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, width 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.btn-cart:hover,
+.login-btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn-cart {
+  position: relative;
+  overflow: hidden;
+  width: 120px;
+}
+.btn-cart:hover {
+  width: 200px;
+}
+.btn-cart:hover .text {
+  display: none;
+}
+.btn-cart:hover::after {
+  content: "סל הקניות שלי";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+.btn-cart .img-on-button-top {
+  position: relative;
+}
+.btn-cart .number-of-cart-items {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.welcome_area {
+  display: flex;
+  align-items: center;
+  color: #ad7c3a;
+}
+.welcome_area h6 {
+  color: #ad7c3a;
+  margin-right: 5px;
+  margin-left: 20px;
+}/*# sourceMappingURL=auth-menu.component.module.css.map */

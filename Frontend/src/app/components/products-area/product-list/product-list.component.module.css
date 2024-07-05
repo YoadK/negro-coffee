@@ -1,0 +1,9 @@
+.product-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+  overflow: visible;
+}/*# sourceMappingURL=product-list.component.module.css.map */

@@ -8,11 +8,12 @@ import { Logout } from '../../../NgXs/actions/auth.actions';
 import { HeaderComponent } from '../../HeaderArea/header/header.component';
 import { FooterComponent } from '../../FooterArea/footer/footer.component';
 import { UserModel } from '../../../models/user.model';
+import { SpinnerComponent } from '../../SharedArea/spinner/spinner.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FooterComponent, RouterModule],
+  imports: [CommonModule, HeaderComponent, FooterComponent, RouterModule,SpinnerComponent],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.module.scss'],
 })
