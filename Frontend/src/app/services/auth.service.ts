@@ -10,6 +10,9 @@ import { Store, Select } from '@ngxs/store';
 import { AuthSuccess, AuthFailure, Logout } from '../NgXs/actions/auth.actions';
 import { RoleModel } from '../../../../Backend/src/3-models/role-model';
 import { AuthState } from '../NgXs/state/auth.state';
+import { SpinnerLoadingService } from './spinner.loading.service';
+import { finalize } from 'rxjs/operators';
+
 
 @Injectable({
     providedIn: 'root'
@@ -19,13 +22,15 @@ export class AuthService {
     private currentUser$: Observable<UserModel | null>;
 
 
-    constructor(private http: HttpClient, private store: Store) {
+    constructor(private http: HttpClient, private store: Store,private spinnerLoadingService: SpinnerLoadingService) {
         console.log('AuthService constructor called');
         this.currentUser$ = this.store.select(AuthState.user);
         this.loadStoredToken();  // Ensure token is loaded when service is instantiated
     }
 
     loadStoredToken(): string | null {
+        this.spinnerLoadingService.setLoading(true);
+
         console.log('AuthService.loadStoredToken called');
         const token:string | null = localStorage.getItem('token')?.toString();
         console.log('Loaded token from localStorage:', token);
@@ -40,6 +45,8 @@ export class AuthService {
                 this.store.dispatch(new Logout());
             }
         }
+        this.spinnerLoadingService.setLoading(false);
+
         return token
     }
 
@@ -51,34 +58,36 @@ export class AuthService {
     }
 
     login(credentials: CredentialsModel): Observable<{ user: UserModel, token: string }> {
+        this.spinnerLoadingService.setLoading(true);
+    
         return this.http.post<{ user: UserModel, token: string }>(`${appConfig.loginUrl}`, credentials).pipe(
             tap(response => {
-                try {
-                    if (response && response.user && response.token) {  // <-- Check response structure
-                        const token = response.token;
-                        const loggedInUser = response.user;
-                        localStorage.setItem('token', token);
-                        localStorage.setItem('user', JSON.stringify(loggedInUser));
-                        console.log('Token stored in localStorage:', token);
-                        console.log('User stored in localStorage:', loggedInUser);
-                        this.store.dispatch(new AuthSuccess({ user: response.user, token: response.token }));
-                    } else {
-                        throw new Error('Invalid response structure');  // <-- Handle invalid response
-                    }
-                } catch (error) {
-                    console.error('Login error:', error);
-                    throw error;
+                if (response && response.user && response.token) {
+                    const token = response.token;
+                    const loggedInUser = response.user;
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('user', JSON.stringify(loggedInUser));
+                    console.log('Token stored in localStorage:', token);
+                    console.log('User stored in localStorage:', loggedInUser);
+                    this.store.dispatch(new AuthSuccess({ user: response.user, token: response.token }));
+                } else {
+                    throw new Error('Invalid response structure');
                 }
             }),
             catchError(err => {
                 console.error('Login error:', err);
                 this.store.dispatch(new AuthFailure({ error: err.error }));
-                return throwError(err);
+                return throwError(() => err);
+            }),
+            finalize(() => {
+                console.log('Login finalized, setting loading to false');
+                this.spinnerLoadingService.setLoading(false);
             })
         );
     }
 
     register(credentials: CredentialsModel): Observable<{ user: UserModel, token: string }> {
+        this.spinnerLoadingService.setLoading(true);
         return this.http.post<{ user: UserModel, token: string }>(`${appConfig.registerUrl}`, credentials).pipe(
             tap(response => {
                 try {
@@ -97,6 +106,9 @@ export class AuthService {
                     console.error('Register error:', error);
                     throw error;
                 }
+
+                finalize (()=> this.spinnerLoadingService.setLoading(false))  
+
             }),
             catchError(err => {
                 console.error('Register error:', err);

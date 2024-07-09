@@ -6,7 +6,9 @@ import { Login, Logout, Register, AuthSuccess, AuthFailure, LoadStoredTokenAndUs
 import { UserModel } from '../../models/user.model';
 import { of, throwError } from 'rxjs';
 import { ClearCart, LoadUserCart } from '../actions/cart.actions';
-import { SetLoading } from '../actions/auth.actions';
+import { SpinnerLoadingService } from '../../services/spinner.loading.service';
+
+
 
 //AuthState - responsible for managing the authentication state of the application.
 
@@ -14,7 +16,7 @@ export interface IAuthState {
     user: UserModel | null;
     token: string | null;
     error: string | null;
-    isLoading: boolean;
+    // isLoading: boolean;
 }
 
 @State<IAuthState>({
@@ -23,14 +25,14 @@ export interface IAuthState {
         token: null,
         user: null,
         error: null,
-        isLoading: false
+        // isLoading: false
     }
 })
 
 @Injectable()
 export class AuthState {
 
-    constructor(private authService: AuthService, private store: Store) {
+    constructor(private authService: AuthService, private store: Store,private spinnerLoadingService: SpinnerLoadingService) {
         console.log('AuthState constructor called');
         this.store.dispatch(new LoadStoredTokenAndUser());
     }
@@ -57,16 +59,12 @@ export class AuthState {
         return state.error;
     }
 
-    @Selector()
-    static isLoading(state: IAuthState): boolean {
-        console.log('AuthState.isLoading called');
-        return state.isLoading;
-    }
+
 
     @Action(Login)
     login({ patchState, dispatch }: StateContext<IAuthState>, { payload }: Login) {
         console.log('AuthState.login called with payload:', payload);
-        patchState({ isLoading: true });
+        // patchState({ isLoading: true });
 
         return this.authService.login(payload).pipe(
             tap((response: { user: UserModel; token: string }) => {
@@ -91,7 +89,7 @@ export class AuthState {
     @Action(Register)
     register({ patchState, dispatch }: StateContext<IAuthState>, { payload }: Register) {
         console.log('AuthState.register called with payload:', payload);
-        patchState({ isLoading: true });
+        // patchState({ isLoading: true });
 
         return this.authService.register(payload).pipe(
             tap((response: { user: UserModel; token: string }) => {
@@ -122,7 +120,7 @@ export class AuthState {
             user: null,
             token: null,
             error: null,
-            isLoading: false
+            // isLoading: false
         });
         // Log the status
         const state = getState();
@@ -140,8 +138,10 @@ export class AuthState {
             user: payload.user,
             token: payload.token,
             error: null,
-            isLoading: false
+            // isLoading: false
         });
+        this.spinnerLoadingService.setLoading(false);
+
         if (payload.user && payload.user._id) {
             dispatch(new LoadUserCart(payload.user._id.toString()));
         } else {
@@ -154,8 +154,9 @@ export class AuthState {
         console.log('AuthState.authFailure called with payload:', payload);
         patchState({
             error: payload.error,
-            isLoading: false
+            // isLoading: false
         });
+        this.spinnerLoadingService.setLoading(false);
     }
 
     @Action(LoadStoredTokenAndUser)
@@ -168,11 +169,11 @@ export class AuthState {
         }
     }
 
-    @Action(SetLoading)
-    setLoading({ patchState }: StateContext<IAuthState>, { payload }: SetLoading) {
-        console.log('AuthState: Setting loading state to: ', payload);
-        patchState({ isLoading: payload });
-    }
+    // @Action(SetLoading)
+    // setLoading({ patchState }: StateContext<IAuthState>, { payload }: SetLoading) {
+    //     console.log('AuthState: Setting loading state to: ', payload);
+    //     patchState({ isLoading: payload });
+    // }
 
 
     // Handle this action in your AuthState

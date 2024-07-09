@@ -42,10 +42,10 @@ export class Login {
     static readonly type = '[Auth] Load Stored Token and User';
   }
   
-  export class SetLoading {
-    static readonly type = '[Auth] Set Loading';
-    constructor(public payload: boolean) {}
-  }
+//   export class SetLoading {
+//     static readonly type = '[Auth] Set Loading';
+//     constructor(public payload: boolean) {}
+//   }
 
   
 export class LogCurrentState {

@@ -5,37 +5,34 @@ import { catchError, finalize, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { StatusCode } from '../../../../Backend/src/3-models/enums';
 import { AuthService } from '../services/auth.service';
-import { Store } from '@ngxs/store';
-import { SetLoading } from '../NgXs/actions/auth.actions';
+import { SpinnerLoadingService } from '../services/spinner.loading.service';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class AuthInterceptor implements HttpInterceptor {
   private totalRequests = 0;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private authService: AuthService,
-    private store: Store
+    private spinnerLoadingService: SpinnerLoadingService
   ) {
     console.log("AuthInterceptor constructor called");
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.totalRequests++;
-    console.log('Dispatching SetLoading(true)');
-  this.store.dispatch(new SetLoading(true)).subscribe(() => {
-    console.log('SetLoading(true) dispatched');
-  });
-    
+    this.spinnerLoadingService.setLoading(true);
+    console.log('Setting loading to true');
 
     const token = this.authService.loadStoredToken();
     let authRequest = token ? request.clone({
       setHeaders: { Authorization: `Bearer ${token}` }
     }) : request;
-  
-    return  next.handle(authRequest).pipe(
+
+    return timer(3000).pipe(
+      switchMap(() => next.handle(authRequest)),
       catchError((error: HttpErrorResponse) => {
         if (error.status === StatusCode.Unauthorized) {
           this.router.navigate(['/login']);
@@ -48,10 +45,8 @@ export class AuthInterceptor implements HttpInterceptor {
         this.totalRequests--;
         console.log('Request finished. Total requests:', this.totalRequests);
         if (this.totalRequests === 0) {
-            console.log('Dispatching SetLoading(false)');
-            this.store.dispatch(new SetLoading(false)).subscribe(() => {
-              console.log('SetLoading(false) dispatched');
-            });
+          console.log('Setting loading to false');
+          this.spinnerLoadingService.setLoading(false);
         }
       })
     );

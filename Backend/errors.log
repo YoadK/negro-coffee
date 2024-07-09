@@ -1592,3 +1592,19 @@ Stack: ReferenceError: alert is not defined
     at Function.handle (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:175:3)
 ---------------------------------------
 
+Time: Mon Jul 08 2024 19:50:24 GMT+0300 (Israel Daylight Time)
+Message: Operation `products.find()` buffering timed out after 10000ms
+Stack: MongooseError: Operation `products.find()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at processTimers (node:internal/timers:514:7)
+---------------------------------------
+
+Time: Mon Jul 08 2024 19:50:31 GMT+0300 (Israel Daylight Time)
+Message: Operation `users.findOne()` buffering timed out after 10000ms
+Stack: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at processTimers (node:internal/timers:514:7)
+---------------------------------------
+
