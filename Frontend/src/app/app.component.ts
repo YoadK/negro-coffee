@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
 import { SpinnerLoadingService } from './services/spinner.loading.service';
 import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class AppComponent implements OnInit {
     title = 'AppComponent ';
     isLoading$: Observable<boolean>;
 
-    constructor(private spinnerLoadingService: SpinnerLoadingService,private authService: AuthService) {
+    constructor(private spinnerLoadingService: SpinnerLoadingService,private authService: AuthService    ) {
         this.isLoading$ = this.spinnerLoadingService.isLoading$;
      }
 

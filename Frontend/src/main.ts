@@ -7,7 +7,7 @@ import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { CartState } from './app/NgXs/state/cart.state';
-import { AuthInterceptor } from './app/Utils/AuthInterceptors';
+import { HttpRequestsInterceptor } from './app/Utils/HttpRequestsInterceptor';
 import { SpinnerLoadingService } from './app/services/spinner.loading.service';
 
 
@@ -17,7 +17,9 @@ bootstrapApplication(AppComponent, {
         importProvidersFrom(NgxsModule.forRoot([AuthState, CartState])),
         importProvidersFrom(HttpClientModule),
         provideHttpClient(),
-        SpinnerLoadingService
+        SpinnerLoadingService,
+        { provide: HTTP_INTERCEPTORS, useClass: HttpRequestsInterceptor, multi: true }
+
     ],
 
 }).catch(err => console.error(err));
