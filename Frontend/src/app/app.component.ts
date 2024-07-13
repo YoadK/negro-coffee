@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { LayoutComponent } from './components/layout-area/layout/layout.component';
 import { SpinnerComponent } from './components/SharedArea/spinner/spinner.component';
 import { CommonModule } from '@angular/common';
@@ -23,19 +23,20 @@ export class AppComponent implements OnInit {
     title = 'AppComponent ';
     isLoading$: Observable<boolean>;
 
-    constructor(private spinnerLoadingService: SpinnerLoadingService,private authService: AuthService    ) {
+    constructor(private spinnerLoadingService: SpinnerLoadingService,private authService: AuthService,private cdr: ChangeDetectorRef    ) {
         this.isLoading$ = this.spinnerLoadingService.isLoading$;
      }
 
-    ngOnInit() {
+     ngOnInit() {
         console.log('AppComponent.ngOnInit called');
         this.authService.loadStoredToken();
-
+    
         this.isLoading$.subscribe(isLoading => {
-            console.log('AppComponent - isLoading', isLoading);
-            console.log('AppComponent - Current Time:', new Date().toISOString());
+          console.log('AppComponent - isLoading', isLoading);
+          console.log('AppComponent - Current Time:', new Date().toISOString());
+          this.cdr.detectChanges(); // Ensure change detection runs after setting isLoading
         });
-    }
+      }
 }
 
 
