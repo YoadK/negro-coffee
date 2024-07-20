@@ -1,0 +1,23 @@
+.my-account {
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 1rem;
+      button {
+        background: #f8f8f8;
+        border: 1px solid #ccc;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        &.active {
+          background: #ddd;
+          border-bottom: none;
+        }
+      }
+    }
+    .tab-content {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+  }
+  

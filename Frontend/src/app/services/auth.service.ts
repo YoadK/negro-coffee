@@ -18,13 +18,12 @@ import { SpinnerLoadingService } from './spinner.loading.service';
 })
 export class AuthService implements OnInit {
     private currentUser$: Observable<UserModel | null>;
-    // NEW: Added cachedToken property
     private cachedToken: string | null = null;
+
 
     constructor(private http: HttpClient, private store: Store, private spinnerLoadingService: SpinnerLoadingService) {
         console.log('AuthService constructor called');
-        this.currentUser$ = this.store.select(AuthState.user);
-        
+        this.currentUser$ = this.store.select(AuthState.user);        
     }
 
     ngOnInit() {
@@ -40,13 +39,10 @@ export class AuthService implements OnInit {
 
         // Reintroduced: Set loading to true at the beginning
         this.spinnerLoadingService.setLoading(true);
-
         console.log('AuthService.loadStoredToken called');
-
         try {
             const token: string | null = localStorage.getItem('token')?.toString();
             console.log('Loaded token from localStorage:', token);
-
             if (token) {
                 const decodedToken = jwtDecode<{ user: UserModel }>(token);
                 const loggedInUser = decodedToken.user;
@@ -60,10 +56,10 @@ export class AuthService implements OnInit {
         } finally {
             // Added: Ensure setLoading(false) is called regardless of success or failure
             console.log('Token loading finalized, setting loading to false');
-            this.spinnerLoadingService.setLoading(false);
-       
-            return this.cachedToken;
+            this.spinnerLoadingService.setLoading(false);       
+           
         }
+        return this.cachedToken;
     }
     // The rest of the methods remain unchanged
 
@@ -76,7 +72,6 @@ export class AuthService implements OnInit {
 
     login(credentials: CredentialsModel): Observable<{ user: UserModel, token: string }> {
         this.spinnerLoadingService.setLoading(true);
-
         return this.http.post<{ user: UserModel, token: string }>(`${appConfig.loginUrl}`, credentials).pipe(
             tap(response => {
                 if (response && response.user && response.token) {
@@ -123,7 +118,8 @@ export class AuthService implements OnInit {
                     } else {
                         throw new Error('Invalid response structure');
                     }
-                } catch (error) {
+                }
+                 catch (error) {
                     console.error('Register error:', error);
                     throw error;
                 }
@@ -139,16 +135,32 @@ export class AuthService implements OnInit {
             })
         );
     }
-
-    // MODIFIED: Updated logout to clear cached token
-    logout(): void {
+ logout(): Observable<void> {
         console.log('AuthService.logout called');
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        console.log('Token and user removed from localStorage');
-        // NEW: Clear cached token
-        this.cachedToken = null;
-        this.store.dispatch(new Logout());
+        this.spinnerLoadingService.setLoading(true);
+        return new Observable<void>(observer => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            console.log('Token and user removed from localStorage');
+            this.cachedToken = null;
+            this.store.dispatch(new Logout()).subscribe(
+                () => {
+                  // Added this line to update the currentUser$ observable 
+                this.currentUser$ = this.store.select(AuthState.user);
+                    observer.next();
+                    observer.complete();
+                },
+                error => {
+                    console.error('Error during logout:', error);
+                    observer.error(error);
+                }
+            );
+        }).pipe(
+            finalize(() => {
+                console.log('Logout finalized, setting loading to false');
+                this.spinnerLoadingService.setLoading(false);
+            })
+        );
     }
 
     isAuthenticated(): Observable<boolean> {

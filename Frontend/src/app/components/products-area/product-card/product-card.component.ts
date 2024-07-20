@@ -6,6 +6,7 @@ import { SharedModule } from '../../SharedArea/shared-module';
 import { Store } from '@ngxs/store';
 
 import { AddToCart } from '../../../NgXs/actions/cart.actions';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,8 +22,9 @@ import { AddToCart } from '../../../NgXs/actions/cart.actions';
 export class ProductCardComponent {
 
     @Input() //Props
-    public product: ProductModel;
-
+    public product: ProductModel;   
+    quantity: number = 1;
+  
     constructor(private store: Store) {}
 
     addToCart() {
@@ -34,6 +36,26 @@ export class ProductCardComponent {
     setDefaultImage(event: any): void {
         event.target.src = "http://localhost:4000/api/products/images/default-Image.jpg";
     }
+
+    increaseQuantity() {
+        if (this.quantity < 99) {
+          this.quantity++;
+        }
+      }
+    
+      decreaseQuantity() {
+        if (this.quantity > 1) {
+          this.quantity--;
+        }
+      }
+    
+    //   addToCart() {
+    //     this.store.dispatch(new AddToCart({ product: this.product, quantity: this.quantity }));
+    //   }
+    // }
+    
+    }
+    
     
 
-}
+

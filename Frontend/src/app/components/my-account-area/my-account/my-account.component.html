@@ -1,0 +1,15 @@
+<div class="my-account">
+    <div class="tabs">
+      <button [class.active]="selectedTab === 'orders'" (click)="selectTab('orders')">Orders</button>
+      <button [class.active]="selectedTab === 'address'" (click)="selectTab('address')">Address</button>
+      <button [class.active]="selectedTab === 'payment'" (click)="selectTab('payment')">Payment Options</button>
+      <button [class.active]="selectedTab === 'account-details'" (click)="selectTab('account-details')">Account Details</button>
+    </div>
+    <div class="tab-content">
+      <div *ngIf="selectedTab === 'orders'">Orders Content</div>
+      <div *ngIf="selectedTab === 'address'">Address Content</div>
+      <div *ngIf="selectedTab === 'payment'">Payment Options Content</div>
+      <div *ngIf="selectedTab === 'account-details'">Account Details Content</div>
+    </div>
+  </div>
+  

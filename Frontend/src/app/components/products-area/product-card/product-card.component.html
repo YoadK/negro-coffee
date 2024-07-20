@@ -12,9 +12,9 @@
     </div>
     <div class="card-actions">
         <div class="input-quantity-group">
-            <div class="input_amount_btn minus" aria-label="Decrease quantity">-</div>            
+            <div class="input_amount_btn minus" (click)="decreaseQuantity()" aria-label="Decrease quantity" >-</div>            
             <input id="item-{{product._id}}" type="number" name="amount" min="1" value="1" class="input_amount">
-            <div class="input_amount_btn plus" aria-label="Increase quantity">+</div>
+            <div class="input_amount_btn plus" (click)="increaseQuantity()" aria-label="Increase quantity">+</div>
         </div>
         <button class="add-to-cart-btn" (click)="addToCart()">הוספה לסל</button>
     </div>

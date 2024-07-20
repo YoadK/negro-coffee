@@ -6,6 +6,7 @@ import { AuthState } from '../../../NgXs/state/auth.state';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { notify } from '../../../Utils/Notify';
 
 @Component({
   selector: 'app-login',
@@ -34,10 +35,13 @@ export class LoginComponent {
     this.store.dispatch(new Login(this.credentials)).subscribe(
       () => {
         console.log('Login dispatch successful');
+        
+        notify.success(`Welcome back!`);
         this.router.navigate(['/products']); 
       },
       error => {
         console.error('Login dispatch error:', error);
+        notify.error('Login dispatch error');
       }
     );
   }

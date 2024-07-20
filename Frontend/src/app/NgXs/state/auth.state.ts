@@ -7,9 +7,7 @@ import { UserModel } from '../../models/user.model';
 import { of, throwError } from 'rxjs';
 import { ClearCart, LoadUserCart } from '../actions/cart.actions';
 import { SpinnerLoadingService } from '../../services/spinner.loading.service';
-
-
-
+import {notify} from '../../Utils/Notify';
 //AuthState - responsible for managing the authentication state of the application.
 
 export interface IAuthState {
@@ -74,6 +72,7 @@ export class AuthState {
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
                     dispatch(new AuthSuccess({ user, token }));
+                    notify.success('Login successful!')
                 } catch (error) {
                     console.error('Error in login tap:', error);
                     throw error;
@@ -81,6 +80,7 @@ export class AuthState {
             }),
             catchError(error => {
                 dispatch(new AuthFailure({ error: error.message }));
+                notify.error('Login failed. Please check your credentials and try again.');
                 return throwError(error);
             })
         );
@@ -99,6 +99,8 @@ export class AuthState {
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
                     dispatch(new AuthSuccess({ user, token }));
+                    notify.success('Registration successful!');
+
                 } catch (error) {
                     console.error('Error in register tap:', error);
                     throw error;
@@ -106,30 +108,54 @@ export class AuthState {
             }),
             catchError(error => {
                 dispatch(new AuthFailure({ error: error.message }));
+                notify.error('Registration failed. Please try again.');
+
                 return throwError(error);
             })
         );
     }
 
-    @Action(Logout)
-    logout({ setState, getState, dispatch }: StateContext<IAuthState>) {
-        console.log('AuthState.logout called');
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        setState({
-            user: null,
-            token: null,
-            error: null,
-            // isLoading: false
-        });
-        // Log the status
-        const state = getState();
-        const status = state.user ? 'signed-in' : 'signed-out';
-        console.log(`User status: ${status}`);
+    
+//     @Action(Logout)
+//     logout({ setState, getState, dispatch }: StateContext<IAuthState>) {
+//         console.log('AuthState.logout called');
+//         tap(() => {
+//         localStorage.removeItem('token');
+//         localStorage.removeItem('user');
+//         setState({
+//             user: null,
+//             token: null,
+//             error: null,
+//             // isLoading: false
+//         });
+//         // Log the status
+//         const state = getState();
+//         const status = state.user ? 'signed-in' : 'signed-out';
+//         console.log(`User status: ${status}`);       
+//         dispatch(new ClearCart());
+//         notify.success('Logout successful!');
+//     }),
+//     catchError(error => {
+//         notify.error('Logout failed. Please try again.');
+//         return throwError(error);
+//     })
 
-        localStorage.removeItem('auth');
-        dispatch(new ClearCart());
-    }
+// }
+@Action(Logout)
+logout(ctx: StateContext<IAuthState>) {
+    console.log('AuthState.logout called');
+    const state = ctx.getState();
+    ctx.setState({
+        ...state,
+        user: null,
+        token: null,
+        error: null,
+    });
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    notify.success('Logout successful!');
+}
+
 
     @Action(AuthSuccess)
     authSuccess({ patchState, dispatch }: StateContext<IAuthState>, { payload }: AuthSuccess) {
@@ -169,11 +195,7 @@ export class AuthState {
         }
     }
 
-    // @Action(SetLoading)
-    // setLoading({ patchState }: StateContext<IAuthState>, { payload }: SetLoading) {
-    //     console.log('AuthState: Setting loading state to: ', payload);
-    //     patchState({ isLoading: payload });
-    // }
+   
 
 
     // Handle this action in your AuthState
