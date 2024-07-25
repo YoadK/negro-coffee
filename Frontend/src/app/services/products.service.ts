@@ -80,7 +80,7 @@ export class ProductsService {
 
     //delete product:
     public async deleteProduct(_id: string): Promise<void> {
-        const observable = this.http.delete<ProductModel>(appConfig.productsUrl + _id);
+        const observable = this.http.delete<void>(`${appConfig.productsUrl}${_id}`);
         await firstValueFrom(observable);
     }
 }

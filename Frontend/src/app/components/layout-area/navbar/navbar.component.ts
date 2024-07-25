@@ -7,22 +7,21 @@ import { map, takeUntil } from 'rxjs/operators';
 import { AuthState } from '../../../NgXs/state/auth.state';
 import { UserModel } from '../../../models/user.model';
 import { AuthService } from '../../../services/auth.service';
+import { ProductsManagementComponent } from '../../products-area/products-management/products-management.component';
 
 
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, ProductsManagementComponent],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.module.scss']
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   isNavbarOpen = false;
-
   isLoggedIn$: Observable<boolean>;
   userRole$: Observable<string | null>;
-
   private unsubscribe$ = new Subject<void>();
 
   constructor(private store: Store, private authService: AuthService) {

@@ -11,13 +11,16 @@ import { LayoutComponent } from './components/layout-area/layout/layout.componen
 import { NgModule } from '@angular/core';
 import {MyAccountComponent} from './components/my-account-area/my-account/my-account.component.module';
 import { AuthGuard } from './services/guards/auth.guard';
+import { ProductsManagementComponent } from './components/products-area/products-management/products-management.component';
 
 
 export const routes: Routes = [
     { path: "home", component: HomeComponent },
     { path: "products", component: ProductListComponent },
     { path: "products/details/:id", component: ProductDetailsComponent },
-    { path: "products/edit/{{product?._id}}", component: EditProductComponent },    
+    { path: "products/edit/{{product?._id}}", component: EditProductComponent, canActivate: [AuthGuard] },
+    { path: "product-management", component: ProductsManagementComponent, canActivate: [AuthGuard] },
+
     { path: "new", component: AddProductComponent },  
     { path: "login", component: LoginComponent },   
     { path: "register", component: RegisterComponent },   
