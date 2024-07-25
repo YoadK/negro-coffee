@@ -1,23 +1,25 @@
 <div class="product-management">
-    <h2>Product Management</h2>
+    <h2>טבלת ניהול מוצרי קפה</h2>
     <div class="table-container">
       <table class="product-table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Weight</th>
-            <th>Actions</th>
+            <th>מוצר</th>
+            <th>מחיר</th>
+            <th>משקל</th>
+            <th>פעולות</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of products">
+          <tr *ngFor="let product of products" class="product-row" [attr.data-product-id]="product._id">
             <td>{{ product.name }}</td>
             <td>{{ product.price | currency:'ILS':'symbol' }}</td>
-            <td>{{ product.product_weight_grams }} g</td>
+            <td>{{ product.product_weight_grams }} גרם</td>
             <td class="actions">
               <button class="btn btn-edit" [routerLink]="['/products/edit', product._id]">Edit</button>
-              <button class="btn btn-delete" (click)="deleteProduct(product._id.toString())">Delete</button>
+              <button class="btn btn-delete" (click)="deleteProduct(product._id.toString())">
+                <i class="fas fa-trash-alt"></i>
+              </button>
             </td>
           </tr>
         </tbody>

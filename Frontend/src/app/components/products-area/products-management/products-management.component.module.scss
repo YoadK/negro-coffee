@@ -1,4 +1,5 @@
 .product-management {
+    direction: rtl;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
@@ -65,27 +66,56 @@
         }
   
         &-delete {
-          background-color: #f44336;
-          color: white;
+            background-color: transparent;
+            color: #f44336;
+            font-size: 1.2em;
+            padding: 5px 10px;
+            transition: transform 0.3s ease, color 0.3s ease;
   
           &:hover {
-            background-color: #da190b;
+            color: #da190b;
+          transform: scale(1.1);
           }
+
+          &:active {
+            transform: scale(0.9);
+          }
+
+
         }
       }
     }
   }
   
-  @media (max-width: 768px) {
-    .product-table {
-      font-size: 14px;
+  @keyframes fadeOutLeft {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+  }
   
-      th, td {
-        padding: 10px;
+  .deleting {
+    animation: fadeOutLeft 0.5s ease forwards;
+  }
+
+
+@media (max-width: 768px) {
+    .product-management {
+      .product-table {
+        font-size: 14px;
+        
+        th, td {
+          padding: 10px;
+        }
       }
-  
+      
       .actions {
-        flex-direction: column;
+        // Instead of changing flex-direction, you might adjust the gap
+        gap: 5px;
       }
     }
   }
