@@ -9,7 +9,7 @@ import { EditProductComponent } from './components/products-area/edit-product/ed
 import { ProductListComponent } from './components/products-area/product-list/product-list.component';
 import { LayoutComponent } from './components/layout-area/layout/layout.component';
 import { NgModule } from '@angular/core';
-import {MyAccountComponent} from './components/my-account-area/my-account/my-account.component.module';
+import {MyAccountComponent} from './components/my-account-area/my-account/my-account.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { ProductsManagementComponent } from './components/products-area/products-management/products-management.component';
 

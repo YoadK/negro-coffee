@@ -7,14 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { CartState } from '../../../NgXs/state/cart.state';
 import { SharedModule } from '../../SharedArea/shared-module';
 import { ProductModel } from '../../../models/product.model';
+import { QuantitySelectorComponent } from '../../SharedArea/quantity-selector/quantity-selector.component';
 
 
 @Component({
     selector: 'app-shopping-cart-modal',
     standalone: true,
-    imports: [CommonModule, FormsModule, SharedModule],
-    templateUrl: './shopping.cart.modal.component.html',
-    styleUrl: './shopping.cart.modal.component.module.scss'
+    imports: [CommonModule, FormsModule, SharedModule, QuantitySelectorComponent],
+    templateUrl: './shopping-cart-modal.component.html',
+    styleUrl: './shopping-cart-modal.component.module.scss'
 })
 export class ShoppingCartModalComponent implements OnInit {
 
@@ -43,15 +44,20 @@ export class ShoppingCartModalComponent implements OnInit {
         this.store.dispatch(new ToggleCartModal());
     }
 
-    increaseQuantity(item: ProductModel & { quantity: number }) {
-        this.store.dispatch(new UpdateCartItemQuantity({ productId: item._id, quantity: item.quantity + 1 }));
-    }
+    // increaseQuantity(item: ProductModel & { quantity: number }) {
+    //     this.store.dispatch(new UpdateCartItemQuantity({ productId: item._id, quantity: item.quantity + 1 }));
+    // }
 
-    decreaseQuantity(item: ProductModel & { quantity: number }) {
-        if (item.quantity > 1) {
-            this.store.dispatch(new UpdateCartItemQuantity({ productId: item._id, quantity: item.quantity - 1 }));
-        }
-    }
+    // decreaseQuantity(item: ProductModel & { quantity: number }) {
+    //     if (item.quantity > 1) {
+    //         this.store.dispatch(new UpdateCartItemQuantity({ productId: item._id, quantity: item.quantity - 1 }));
+    //     }
+    // }
+
+
+    updateQuantity(item: ProductModel & { quantity: number }, quantity: number) {
+        this.store.dispatch(new UpdateCartItemQuantity({ productId: item._id, quantity }));
+      }
 
     removeItem(item: ProductModel & { quantity: number }) {
         this.store.dispatch(new RemoveFromCart({ productId: item._id }));

@@ -6,6 +6,8 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 import { ProductModel } from '../../../models/product.model';
 import { SpinnerComponent } from '../../SharedArea/spinner/spinner.component';
 import { SpinnerLoadingService } from '../../../services/spinner.loading.service';
+import { Observable, from } from 'rxjs';
+
 
 @Component({
     selector: 'app-product-list',
@@ -15,7 +17,7 @@ import { SpinnerLoadingService } from '../../../services/spinner.loading.service
     styleUrl: './product-list.component.module.scss'
 })
 export class ProductListComponent implements OnInit {
-    public products: ProductModel[];
+    products$: Observable<ProductModel[]>;
 
     constructor(
         private title: Title,
@@ -30,7 +32,7 @@ export class ProductListComponent implements OnInit {
             
             this.spinnerLoadingService.setLoading(true);
             
-            this.products = await this.productsService.getAllProducts();
+            this.products$ = from(this.productsService.getAllProducts());
         }
         catch(err: any) {
             alert(err.message);

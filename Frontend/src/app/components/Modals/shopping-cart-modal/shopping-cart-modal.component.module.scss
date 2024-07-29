@@ -1,0 +1,270 @@
+.popup_cart_open {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    direction: rtl;
+    overflow-y: auto;
+
+    &.show {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 20px 0;
+    }
+}
+
+.all_popup {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 40px);
+}
+
+.top_popup {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    flex-shrink: 0;
+}
+
+.head-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.head-top-cart {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+// CHANGED: Updated close button styles
+.close {
+    cursor: pointer;
+    color: #b06b11;
+    font-size: 18px;
+}
+
+// CHANGED: Updated close button hover effect
+.close-header-cart {
+    .fa-times {
+        transition: all 0.5s ease;
+
+        &:hover {
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
+            transform: scale(1.2);
+            color: red;
+        }
+    }
+}
+
+.middle_popup {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+    max-height: calc(100vh - 200px);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate; // Change from collapse to separate
+    border-spacing: 0; // Ensure no space between cells
+    
+    // --bs-table-hover-color: #d2bfbb
+    // --bs-table-hover-bg: #ffffff;
+    --bs-table-border-color: #efca8d;
+
+    .thead th {
+      position: sticky;
+      top: 0;
+      background-color: #ffffff;
+      z-index: 1;
+      padding: 1rem;
+      border-bottom: 2px solid #e0e0e0;
+    }
+  
+    .tbody {
+      tr {
+        transition: all 0.3s ease; // Transition for all properties
+  
+        &:hover {
+          background-color: #e6f7ff; // A more noticeable light blue color
+          box-shadow: 0 3px 5px rgba(0,0,0,0.1); // Add a subtle shadow on hover
+          transform: translateY(-2px); // Slight lift effect
+        }
+      }
+  
+      td {
+        padding: 1rem;
+        border-bottom: 1px solid #e0e0e0;
+      }
+    }
+  }
+
+  
+
+.cart_product_info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.product-details {
+    .product-name {
+        margin: 0 0 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .product-description {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #666;
+    }
+}
+
+.cart_product_quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    direction: ltr;
+}
+
+.quantity-btn {
+    background-color: #f0f0f0;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.quantity-input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    margin: 0 0.5rem;
+}
+
+// CHANGED: Updated delete button styles for trash icon
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    color: #ff4444;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+
+    .fa-trash {
+        pointer-events: none;
+    }
+}
+
+.bottom_popup {
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+    flex-shrink: 0;
+}
+
+.cart-price {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    &-text {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    &-number {
+        font-size: 18px;
+        color: #ff5722;
+    }
+}
+
+.cart-note-text {
+    font-size: 14px;
+    color: #999999;
+    margin-top: 10px;
+}
+
+.mini-cart-subheading {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.remain-order-notice {
+    font-size: 14px;
+    color: #999999;
+}
+
+.highlight {
+    color: #ff5722;
+}
+
+.a_checkout {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-checkout {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ff5722;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #e64a19;
+    }
+}
+
+// ADDED: New styles for quantity wrapper
+.quantity-wrapper {
+    display: flex;
+    justify-content: flex-end; // Aligns to the left in RTL context
+}
+
+.continue {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ff5722;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #e64a19;
+    }
+}
+
+// CHANGED: Comments added to indicate where changes were made

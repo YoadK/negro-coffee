@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './quantity-selector.component.module.scss'
 })
 export class QuantitySelectorComponent {
-  @Input() quantity: number = 0;
+  @Input() quantity: number = 1;
   @Output() quantityChange = new EventEmitter<number>();
 
   increase() {
@@ -18,7 +18,7 @@ export class QuantitySelectorComponent {
   }
 
   decrease() {
-    if (this.quantity > 1) {
+    if (this.quantity > 0) {
       this.quantity--;
       this.quantityChange.emit(this.quantity);
     }

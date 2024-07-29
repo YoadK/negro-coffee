@@ -132,3 +132,10 @@ div.card {
         unicode-bidi: bidi-override;
     }
 }
+
+.quantity-selector {
+    display: flex;
+    justify-content: center;
+    flex-direction: row; /* Ensure consistent row direction */
+    margin-top: 1rem;
+}

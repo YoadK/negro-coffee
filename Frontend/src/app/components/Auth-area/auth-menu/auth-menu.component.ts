@@ -10,11 +10,11 @@ import { UserModel } from '../../../models/user.model';
 import { map,take } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
 import { ToggleCartModal } from '../../../NgXs/actions/cart.actions';
-import { ShoppingCartModalComponent } from '../../Modals/shopping-cart-modal/shopping.cart.modal.component';
+import { ShoppingCartModalComponent } from '../../Modals/shopping-cart-modal/shopping-cart-modal.component';
 import { CartState} from '../../../NgXs/state/cart.state';
 import { ProductModel } from '../../../models/product.model';
 import { ClearCart } from '../../../NgXs/actions/cart.actions';
-import { MyAccountComponent } from '../../my-account-area/my-account/my-account.component.module';
+import { MyAccountComponent } from '../../my-account-area/my-account/my-account.component';
 import { notify } from '../../../Utils/Notify';
 import { Router } from '@angular/router';
 
