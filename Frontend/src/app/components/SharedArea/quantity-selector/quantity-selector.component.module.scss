@@ -1,0 +1,26 @@
+.input-quantity-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    .input_amount_btn {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      user-select: none;
+  
+      &:hover {
+        background-color: #e0e0e0;
+      }
+    }
+  
+    span {
+      margin: 0 10px;
+      font-size: 16px;
+    }
+  }

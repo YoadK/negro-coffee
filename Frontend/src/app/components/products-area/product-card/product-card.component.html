@@ -1,21 +1,18 @@
 <div class="card">
     <div class="card-content">
-        <div class="product-name">  {{product.name}} </div>        
-        <div class="product-description"> {{product.description}}</div>
-        <div class="product-quantity-price">{{product.price| currency:'ILS':'symbol'}} | {{product.product_weight_grams  | hebrewQuantity }}</div> 
+      <div class="product-name">{{ product.name }}</div>
+      <div class="product-description">{{ product.description }}</div>
+      <div class="product-quantity-price">
+        {{ product.price | currency:'ILS':'symbol' }} | {{ product.product_weight_grams | hebrewQuantity }}
+      </div>
     </div>
+  
     <div class="card-image">
-        <a routerLink="/products/details/{{product._id}}">
-            <img [src]="product.imageUrl" alt="Image of {{product.name}}"
-            (error)="setDefaultImage($event)">
-        </a>
+      <img [src]="product.imageUrl" (error)="setDefaultImage($event)" alt="{{ product.name }}">
     </div>
+  
     <div class="card-actions">
-        <div class="input-quantity-group">
-            <div class="input_amount_btn minus" (click)="decreaseQuantity()" aria-label="Decrease quantity" >-</div>            
-            <input id="item-{{product._id}}" type="number" name="amount" min="1" value="1" class="input_amount">
-            <div class="input_amount_btn plus" (click)="increaseQuantity()" aria-label="Increase quantity">+</div>
-        </div>
-        <button class="add-to-cart-btn" (click)="addToCart()">הוספה לסל</button>
+      <app-quantity-selector [(quantity)]="quantity"></app-quantity-selector>
+      <button (click)="addToCart()" [disabled]="quantity === 0">הוספה לסל</button>
     </div>
-</div>
+  </div>l

@@ -5,6 +5,7 @@ import { ProductModel } from "../../models/product.model";
 // You might want to import this type from cart.state.ts if you decide to export it
 type CartItem = ProductModel & { quantity: number };
 
+// Define the types of actions related to the cart.
 export class ToggleCartModal {
     static readonly type = '[Cart] Toggle Cart Modal';
   }

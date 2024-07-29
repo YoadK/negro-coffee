@@ -23,7 +23,10 @@
         // max-width: 100%;
         // max-height: 50px;
         // object-fit: contain;
-        height: 30px;
+        // height: 30px;
+        width:190px;
+        height: auto;
+        border-radius: 5px;
     }
 }
 
@@ -61,6 +64,7 @@
     &:last-child {
         margin-right: 0;
     }
+   
 
 }
 

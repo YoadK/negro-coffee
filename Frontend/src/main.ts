@@ -9,13 +9,14 @@ import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptor
 import { CartState } from './app/NgXs/state/cart.state';
 import { HttpRequestsInterceptor } from './app/Utils/HttpRequestsInterceptor';
 import { SpinnerLoadingService } from './app/services/spinner.loading.service';
+import { ProductState } from './app/NgXs/state/product.state';
 
 
 bootstrapApplication(AppComponent, {
     providers: [
         provideRouter(routes),
-        importProvidersFrom(NgxsModule.forRoot([AuthState, CartState])),
-        importProvidersFrom(HttpClientModule),
+        importProvidersFrom(NgxsModule.forRoot([AuthState, CartState,ProductState])),
+                importProvidersFrom(HttpClientModule),
         provideHttpClient(),
         SpinnerLoadingService,
         { provide: HTTP_INTERCEPTORS, useClass: HttpRequestsInterceptor, multi: true }

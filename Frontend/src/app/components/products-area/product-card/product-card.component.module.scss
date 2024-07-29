@@ -4,37 +4,28 @@ div.card {
     text-align: center;
     background-image: linear-gradient(90deg, lightgray, white);
     padding: 10px;
-    border: 2px solid #bb946b;// bb946b
+    border: 2px solid #bb946b;
     border-radius: 10px;   
     margin: 15px 15px 15px 15px;
-    
-    
 }
 
 .card {
-    transition: box-shadow 0.3s ease, transform 0.3s ease; // Smooth transitions for shadow and transform
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Initial subtle shadow
-
-    
-    
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
     &:hover {
-        transform: translateY(-6px); // Moves the card up slightly to create an "elevated" effect
-        box-shadow: 7px 7px 8px 4px rgba(0, 0, 0, 0.1) // Darker and more pronounced shadow on hover
+        transform: translateY(-6px);
+        box-shadow: 7px 7px 8px 4px rgba(0, 0, 0, 0.1)
     }
 }
 
-
-
 .card-image img {
-    display: block; // Change the img from inline to block-level
+    display: block;
     margin-left: auto;
     margin-right: auto;
     width: 150px;
     height: 150px;
 }
-
-
 
 .card-actions {
     display: flex;
@@ -45,95 +36,99 @@ div.card {
     .input-quantity-group {
         display: flex;
         justify-content: center;
+        align-items: center;
         width: 100%;
+        margin-bottom: 10px;
 
-        .input_amount_btn, .input_amount {
-            height: 30px; // Set a consistent height for buttons and input
+        .input_amount_btn {
+            width: 30px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 5px; // Adds a small margin on the sides for spacing
-        }
-
-        .input_amount_btn {
-            width: 30px; // Ensures the buttons are square
-            border: 1px solid #ccc; // Standard border for visual consistency
-            background-color: #f9f9f9; // Button background color
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
             cursor: pointer;
+            font-size: 18px;
+            user-select: none;
 
             &:hover {
-                background-color: #e9e9e9; // Slightly darker on hover
+                background-color: #e9e9e9;
             }
 
             &:active {
-                background-color: #d9d9d9; // Even darker when clicked
+                background-color: #d9d9d9;
             }
         }
 
-        .input_amount {
-            width: 50px; // Ensures the input is not too wide
-            text-align: center; // Centers the text inside the input
-            border: 1px solid #ccc; // Matches the button border
-            background-color: #fff; // Keeps the input white or light
+        span {
+            width: 50px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            margin: 0 5px;
+            font-size: 16px;
         }
     }
 
-    .add-to-cart-btn {
+    button {
         width: 90%;
-        margin-top: 10px;
         padding: 10px 0;
+        margin-top:15px;
         background-color: white;
         color: black;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        font-family: 'assistant', david, sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        transition: background-color 0.3s, color 0.3s, transform 0.1s, box-shadow 0.1s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
         &:hover {
             background-color: black;
             color: white;
         }
+
+        &:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            background-color: #333;
+            color: white;
+        }
+
+        &:disabled {
+            background-color: #cccccc;
+            color: #666666;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
     }
 }
 
-div:last-child {
-    margin-left: auto;
-      
-}
-
-.product-name{
+.product-name {
     font-family: 'dancing script';
     font-size: 26px;
-    color:black;
+    color: black;
     font-weight: 700;
 }
 
 .product-description {
     font-family: 'assistant', sans-serif;
     font-size: 23px;
-    color:#bb946b;
-    
-    
+    color: #bb946b;
 }
 
-
-
 .product-quantity-price {
-   
-  
-    
     direction: rtl; 
   
-    // Specific class for Hebrew or RTL content
     .hebrew-text {
-      direction: rtl; // Right-to-left
-      unicode-bidi: bidi-override; // Ensures the text is treated as a cohesive right-to-left block
+        direction: rtl;
+        unicode-bidi: bidi-override;
     }
-  }
-
-  
-.add-to-cart-btn{
-    font-family: 'assistant', david, sans-serif;
-    font-size: 18px;
-    color:black;    
-    font-weight: 700;
 }

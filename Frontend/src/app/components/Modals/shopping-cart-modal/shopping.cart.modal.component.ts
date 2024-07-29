@@ -20,7 +20,6 @@ export class ShoppingCartModalComponent implements OnInit {
 
     @Select(CartState.isCartModalOpen) isCartModalOpen$: Observable<boolean>;
     @Select(CartState.cartItems) cartItems$: Observable<Array<ProductModel & { quantity: number }>>;
-
     
     total = { price: 0, quantity: 0 };
 

@@ -14,8 +14,6 @@ export interface ICartState {
     totalPrice: number;
 }
 
-
-
 @State<ICartState>({
     name: 'cart',
     defaults: {
@@ -31,19 +29,19 @@ export class CartState {
 
     constructor(private store: Store) { }
 
-    // setting  'saveCartState' and 'loadCartState' functions  to include the user's ID:
-private saveCartState(state: ICartState, userId: string) {
-    localStorage.setItem(`cartState_${userId}`, JSON.stringify(state));
-}
 
-private loadCartState(userId: string): ICartState {
-    const savedState = localStorage.getItem(`cartState_${userId}`);
-    return savedState ? JSON.parse(savedState) : { isCartModalOpen: false, items: [], totalQuantity: 0, totalPrice: 0 };
-}
+    // setting  'saveCartState' and 'loadCartState' functions  to include the user's ID:
+    private saveCartState(state: ICartState, userId: string) {
+        localStorage.setItem(`cartState_${userId}`, JSON.stringify(state));
+    }
+
+    private loadCartState(userId: string): ICartState {
+        const savedState = localStorage.getItem(`cartState_${userId}`);
+        return savedState ? JSON.parse(savedState) : { isCartModalOpen: false, items: [], totalQuantity: 0, totalPrice: 0 };
+    }
 
 
     //Selectors (Selectors are functions that extract specific data slices from the global state.)
-
     @Selector()
     static isCartModalOpen(state: ICartState): boolean {
         console.log('isCartModalOpen: ', state);
@@ -75,7 +73,7 @@ private loadCartState(userId: string): ICartState {
         ctx.patchState({ isCartModalOpen: newIsCartModalOpen });
         const userId = this.store.selectSnapshot(AuthState.user)?._id || '';
         this.saveCartState(ctx.getState(), userId);
-        
+
         if (newIsCartModalOpen) {
             console.log('The shopping cart modal is opened.');
         } else {
