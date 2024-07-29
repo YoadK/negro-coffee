@@ -18,7 +18,7 @@ export class QuantitySelectorComponent {
   }
 
   decrease() {
-    if (this.quantity > 0) {
+    if (this.quantity > 1) {
       this.quantity--;
       this.quantityChange.emit(this.quantity);
     }
