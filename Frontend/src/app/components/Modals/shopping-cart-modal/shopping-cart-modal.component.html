@@ -1,62 +1,74 @@
 <div class="popup_cart_open ajax-cart" [ngClass]="{'show': (isCartModalOpen$ | async)}">
     <div class="all_popup">
-      <div class="top_popup">
-        <div class="head-div">
-          <img src="https://negro.co.il/wp-content/themes/matat-child/images/cart_icon.png" class="head-top-cart" alt="cart">
-          <h2>עגלת קניות</h2>
-          <div class="close close-header-cart" (click)="toggleCartModal()">
-            <i class="fa fa-times"></i>
-          </div>
-        </div>
-      </div>
-  
-      <div class="middle_popup">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>מוצר</th>
-              <th>מחיר</th>
-              <th>כמות</th>
-              <th>מחיקת מוצר</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of cartItems$ | async">
-              <td class="product-details">
-                <h2 class="product-name">{{item?.name}}</h2>
-                <h3>{{item?.description}}</h3>
-              </td>
-              <td>{{item.price | currency:'ILS':'symbol'}} | {{item?.product_weight_grams}}g</td>
-              <td>
-                <div class="quantity-wrapper">
-                  <app-quantity-selector 
-                    [quantity]="item.quantity" 
-                    (quantityChange)="updateQuantity(item, $event)">
-                  </app-quantity-selector>
+        <div class="top_popup">
+            <div class="head-div">
+                <img src="https://negro.co.il/wp-content/themes/matat-child/images/cart_icon.png" class="head-top-cart"
+                    alt="cart">
+                <h2>עגלת קניות</h2>
+                <div class="close close-header-cart" (click)="toggleCartModal()">
+                    <i class="fa fa-times"></i>
                 </div>
-              </td>
-              <td>
-                <button class="delete-btn" (click)="removeItem(item)">
-                  <i class="fa fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  
-      <div class="bottom_popup">
-        <div class="cart-price">
-          <div class="cart-price-text">סה״כ</div>
-          <div class="cart-price-number">
-            <span class="cart-price-amount">{{total.price | currency:'ILS':'symbol'}} | {{total.quantity}} פריטים</span>
-          </div>
-          <div class="cart-note-text">
-            מומלץ לקנות קפה לצריכה של עד חודש וחצי | משלוח חינם מ450 ש"ח ומעלה |
-          </div>
+            </div>
         </div>
-        <button class="continue">תשלום</button>
-      </div>
+
+        <div class="middle_popup">
+            <ng-container *ngIf="(cartItems$ | async)?.length; else emptyCart">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>מוצר</th>
+                        <th>מחיר</th>
+                        <th>כמות</th>
+                        <th>מחיקת מוצר</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of cartItems$ | async">
+                        <td class="product-details">
+                            <h2 class="product-name">{{item?.name}}</h2>
+                            <h3>{{item?.description}}</h3>
+                        </td>
+                        <td>{{item.price | currency:'ILS':'symbol'}} | {{item?.product_weight_grams}}g</td>
+                        <td>
+                            <div class="quantity-wrapper">
+                                <app-quantity-selector [quantity]="item.quantity"
+                                    (quantityChange)="updateQuantity(item, $event)">
+                                </app-quantity-selector>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="delete-btn" (click)="removeItem(item)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </ng-container>
+
+            <ng-template #emptyCart>
+                <div class="empty-cart-message">
+                  <i class="fa fa-shopping-cart"></i>
+                  <p>העגלה שלך ריקה</p>
+                  <button class="continue-shopping" (click)="continueShopping()"> המשך במסע הקניות! ☕</button>
+                </div>
+              </ng-template>
+
+        </div>
+
+        <div class="bottom_popup" *ngIf="(cartItems$ | async)?.length">
+            <div class="cart-price">
+                <div class="cart-price-text">סה״כ</div>
+                <div class="cart-price-number">
+                    <span class="cart-price-amount">{{total.price | currency:'ILS':'symbol'}} | {{total.quantity}}
+                        פריטים</span>
+                </div>
+                <div class="cart-note-text">
+                    מומלץ לקנות קפה לצריכה של עד חודש וחצי | משלוח חינם מ450 ש"ח ומעלה |
+                </div>
+            </div>
+            <button class="place_order">תשלום</button>
+        </div>
     </div>
-  </div>
-  <!-- CHANGED: Added back the close button and replaced "X" with trash icon -->
+</div>
+<!-- CHANGED: Added back the close button and replaced "X" with trash icon -->

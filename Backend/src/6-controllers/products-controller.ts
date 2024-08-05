@@ -25,7 +25,7 @@ class ProductsController {
         this.router.get("/products/:_id([0-9a-fA-F]{24})", this.getOneProductById);
         this.router.get("/products/search/:text", this.searchProducts);
         this.router.post("/products/new", this.addProduct);
-        this.router.put("/products/edit/:_id([0-9a-fA-F]{24})", this.updateProduct);
+        this.router.put("/products/:_id([0-9a-fA-F]{24})", this.updateProduct);
         this.router.delete("/products/:_id([0-9a-fA-F]{24})", this.deleteProduct);
         this.router.get("/products/images/:imageName",this.getImageFile);
 

@@ -1,3 +1,5 @@
+// The CartState class is responsible for managing and updating the cart state.
+
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { ToggleCartModal, AddToCart, RemoveFromCart, UpdateCartItemQuantity, LoadUserCart } from '../actions/cart.actions';
@@ -26,9 +28,7 @@ export interface ICartState {
 
 @Injectable()
 export class CartState {
-
     constructor(private store: Store) { }
-
 
     // setting  'saveCartState' and 'loadCartState' functions  to include the user's ID:
     private saveCartState(state: ICartState, userId: string) {
@@ -65,7 +65,6 @@ export class CartState {
 
 
     //Actions
-
     @Action(ToggleCartModal)
     toggleCartModal(ctx: StateContext<ICartState>) {
         const state = ctx.getState();
@@ -86,13 +85,20 @@ export class CartState {
         const state = ctx.getState();
         const existingItemIndex = state.items.findIndex(item => item._id === action.payload.product._id);
 
+        //if: product already exists, Creates a new object by spreading the existing item (...item) 
+        // and updates the quantity.
         if (existingItemIndex !== -1) {
             const updatedItems = state.items.map((item, index) =>
                 index === existingItemIndex
                     ? { ...item, quantity: item.quantity + action.payload.quantity }
                     : item
             );
+            //update the state with the newly created updatedItems array.
             ctx.patchState({ items: updatedItems });
+
+            // else: product does not exists, therefore a new newItem object is created using the spread operator (...) to copy properties from the
+            // action.payload.product  and adds the quantity property. The ctx.patchState method is used to update the cart state by 
+            //adding the newItem to the existing items array using the spread operator ([...]) to create a new array.
         } else {
             const newItem = { ...action.payload.product, quantity: action.payload.quantity };
             ctx.patchState({ items: [...state.items, newItem] });

@@ -1,30 +1,42 @@
-<div>
-
-    <!-- to enable html native validation -->
-<!--   <form (ngSubmit)="send()" ngNativeValidate> -->
-     
-    <form (ngSubmit)="send()" #myForm="ngForm">
-        
-        <label>Name: </label>
-        <input type="text" name="name" [(ngModel)]="product.name" #nameBox="ngModel" required minlength="2" maxlength="50">
-        <span *ngIf="nameBox.touched && nameBox.errors?.['required']">Missing name.</span>
-        <span *ngIf="nameBox.touched && nameBox.errors?.['minlength']">Name is too short.</span>
-        <span *ngIf="nameBox.touched && nameBox.errors?.['maxlength']">Name is too long.</span>
-        
-
-        <label>Price: </label>
-        <input type="number" name="price" step="0.01" [(ngModel)]="product.price" required min="0" max="1000">
-        <span *ngIf="nameBox.touched && nameBox.errors?.['min']">Price can't be negative.</span>
-        <span *ngIf="nameBox.touched && nameBox.errors?.['max']">Price can't exceed 1000.</span>
-       
-
-        
-        <label>Image: </label>
-        <input type="file" name="image" [(ngModel)]="product.image"  #myImage #imageBox="ngModel" >
-       
-
-         <button [disabled]="myForm.invalid"> update</button>
-
+<div class="edit-product-container">
+    <h2>Edit Product</h2>
+    <form (ngSubmit)="send()" #productForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="product.name" required minlength="2" maxlength="100" #nameBox="ngModel">
+        <div class="error-message" *ngIf="nameBox.touched && nameBox.errors?.['required']">Name is required.</div>
+        <div class="error-message" *ngIf="nameBox.touched && nameBox.errors?.['minlength']">Name is too short.</div>
+        <div class="error-message" *ngIf="nameBox.touched && nameBox.errors?.['maxlength']">Name is too long.</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" [(ngModel)]="product.description"></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" [(ngModel)]="product.price" required min="0" max="1000" #priceBox="ngModel">
+        <div class="error-message" *ngIf="priceBox.touched && priceBox.errors?.['required']">Price is required.</div>
+        <div class="error-message" *ngIf="priceBox.touched && priceBox.errors?.['min']">Price can't be negative.</div>
+        <div class="error-message" *ngIf="priceBox.touched && priceBox.errors?.['max']">Price can't exceed 1000.</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="weight">Weight (grams):</label>
+        <input type="number" id="weight" name="product_weight_grams" [(ngModel)]="product.product_weight_grams" required min="0" max="1000">
+      </div>
+  
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" (change)="onFileSelected($event)" #myImage accept="image/*">
+        <!-- Changed: Added img element inside the image-preview div -->
+        <div *ngIf="imagePreview" class="image-preview">
+          <img [src]="imagePreview" alt="Product image preview">
+        </div>
+        <span *ngIf="fileName">Current image: {{ fileName }}</span>
+      </div>
+  
+      <button type="submit" [disabled]="!productForm.form.valid">Update Product</button>
     </form>
-
-</div>
+  </div>

@@ -72,7 +72,7 @@ export class ProductsService {
 
     //update product
     public async updateProduct(product: ProductModel): Promise<void> {
-        const observable = this.http.put<ProductModel>(appConfig.productsUrl + product._id, product);
+        const observable = this.http.put<ProductModel>(appConfig.productsUrl+product._id, product);
         const updatedProduct = await firstValueFrom(observable);
         console.log(updatedProduct);
     }

@@ -32,6 +32,7 @@ addToCartHandler() {
     this.addToCart.emit(this.product);
     this.store.dispatch(new AddToCart({ product: this.product, quantity: this.quantity }));
   }
+  
 //   setDefaultImage(event: Event) {
 //     (event.target as HTMLImageElement).src = 'path/to/default/image.jpg';
 //   }

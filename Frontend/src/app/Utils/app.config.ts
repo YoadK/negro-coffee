@@ -8,7 +8,7 @@ export const appConfig = {
     categoriesUrl: "http://localhost:4000/api/categories/",
     searchUrl: "http://localhost:4000/api/search/",
     productsUrl: "http://localhost:4000/api/products/",
-    productAddUrl: "http://localhost:4000/api/products/new",
+    productAddUrl: "http://localhost:4000/api/products/new/",
     registerUrl: "http://localhost:4000/api/register/",
     loginUrl: "http://localhost:4000/api/login/",
     // imagesUrl: "http://localhost:4000/api/products/images/"
