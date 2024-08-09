@@ -1638,3 +1638,56 @@ Message: Route /api/products//66af73d953d55a84a77cf964 not found.
 Stack: undefined
 ---------------------------------------
 
+Time: Mon Aug 05 2024 11:35:02 GMT+0300 (Israel Daylight Time)
+Message: Route /favicon.ico not found.
+Stack: undefined
+---------------------------------------
+
+Time: Mon Aug 05 2024 13:11:02 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'lastIndexOf')
+Stack: TypeError: Cannot read properties of undefined (reading 'lastIndexOf')
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:39:55)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:4:12)
+    at FileSaver.add (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:32:16)
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:49:44)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+
+Time: Thu Aug 08 2024 11:46:54 GMT+0300 (Israel Daylight Time)
+Message: Cannot read properties of undefined (reading 'lastIndexOf')
+Stack: TypeError: Cannot read properties of undefined (reading 'lastIndexOf')
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:39:55)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:4:12)
+    at FileSaver.add (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:32:16)
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:49:44)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+
+Time: Thu Aug 08 2024 13:09:37 GMT+0300 (Israel Daylight Time)
+Message: Uploaded image is missing a name.
+Stack: Error: Uploaded image is missing a name.
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:97:27)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Thu Aug 08 2024 13:11:03 GMT+0300 (Israel Daylight Time)
+Message: Uploaded image is missing a name.
+Stack: Error: Uploaded image is missing a name.
+    at ProductsService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:97:27)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+

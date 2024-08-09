@@ -8,7 +8,9 @@ export class ProductModel {
     description: string;
     product_weight_grams: number;
     price: number;
-    image: File;
-    imageUrl: string;
+    image?: File; 
+    imageUrl?: string;
+    
+    imageName?: string;
 
 }

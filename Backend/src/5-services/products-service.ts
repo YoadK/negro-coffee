@@ -42,13 +42,13 @@ class ProductsService {
             // Check if an image file is provided
             if (product.image) {
                 // Save the image file
-               
+
                 const imageFile = product.image as UploadedFile;
                 const imageName = await fileSaver.add(imageFile);
                 newProduct.imageName = imageName;
                 newProduct.imageUrl = environment.BASE_IMAGE_URL + imageName;
-                newProduct.image=product.image;
-                console.log("image name is: " +   newProduct.imageName);
+                newProduct.image = product.image;
+                console.log("image name is: " + newProduct.imageName);
                 console.log("image url  is: " + newProduct.imageUrl);
 
             } else {
@@ -58,7 +58,7 @@ class ProductsService {
                 console.log("else: image url  is: " + product.imageUrl);
                 const defaultImageName = "default-image.jpg";
                 newProduct.imageName = defaultImageName;
-                newProduct.imageUrl = environment.BASE_IMAGE_URL +  newProduct.imageName;
+                newProduct.imageUrl = environment.BASE_IMAGE_URL + newProduct.imageName;
             }
 
 
@@ -76,52 +76,49 @@ class ProductsService {
     public async updateProduct(product: IProductModel): Promise<IProductModel> {
         try {
             console.log("Updating product with ID:", product._id);
-
-            // Find the product by ID
             const existingProduct = await IProductModel.findById(product._id);
             console.log("Existing product:", existingProduct);
-
 
             if (!existingProduct) {
                 throw new ResourceNotFoundError(product._id.toString());
             }
-
             // Update the product fields
-            existingProduct.name = product.name;;
+            existingProduct.name = product.name;
             existingProduct.description = product.description;
             existingProduct.product_weight_grams = product.product_weight_grams;
             existingProduct.price = product.price;
 
-
-            if (product.image) {
+            if (product.image && product.image instanceof Object && 'name' in product.image) {
                 // Update the image file
+                console.log('Saving new image:', product.image);
                 const imageFile = product.image as UploadedFile;
-                const updatedImageName = await fileSaver.update(existingProduct.imageName, product.image);
+                const updatedImageName = await fileSaver.update(existingProduct.imageName, imageFile);
                 existingProduct.imageName = updatedImageName;
-                existingProduct.imageUrl = environment.BASE_IMAGE_URL + updatedImageName;
+                // existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}${updatedImageName}`;
+                existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}${updatedImageName}?t=${Date.now()}`;//prevent caching
+
+
             } else if (!existingProduct.imageName) {
                 // If no image is provided and the existing product doesn't have an image name,
                 // set a default image name
                 const defaultImageName = "default-image.avif";
                 const defaultImagePath = fileSaver.getFilePath(defaultImageName, true);
                 existingProduct.imageName = defaultImageName;
-                existingProduct.imageUrl = environment.BASE_IMAGE_URL + defaultImageName;
+                existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}${defaultImageName}`;
             }
 
             // Manually trigger validation
             await existingProduct.validate();
-
             // Save the updated product
             await existingProduct.save();
-
             // Return the updated product
             return existingProduct;
-        }
-        catch (err: any) {
+
+        } catch (err: any) {
+            console.error("Error updating product:", err);
             throw err;
         }
     }
-
 
     //delete product:
     public async deleteProduct(_id: string): Promise<void> {

@@ -27,7 +27,7 @@ class ProductsController {
         this.router.post("/products/new", this.addProduct);
         this.router.put("/products/:_id([0-9a-fA-F]{24})", this.updateProduct);
         this.router.delete("/products/:_id([0-9a-fA-F]{24})", this.deleteProduct);
-        this.router.get("/products/images/:imageName",this.getImageFile);
+        this.router.get("/products/images/:imageName", this.getImageFile);
 
     }
 
@@ -94,53 +94,54 @@ class ProductsController {
     }
 
     // PUT http://localhost:4000/api/products/edit/:_id
-    private async updateProduct(request: Request, response: Response, next: NextFunction): Promise < void> {
+    private async updateProduct(request: Request, response: Response, next: NextFunction): Promise<void> {
 
-    try {
-        const productId = request.params._id;
-        console.log("product id is: " + productId);
-        const productData = {
-            ...request.body,
-            _id: new mongoose.Types.ObjectId(productId)
-        };
-        const product = new IProductModel(productData);
+        try {
+            const productId = request.params._id;
+            console.log("product id is: " + productId);
+            const productData = {
+                ...request.body,
+                _id: new mongoose.Types.ObjectId(productId)
+            };
+            const product = new IProductModel(productData);
 
-        // Check if a new image file is provided
-        if(request.files && request.files.image) {
-    const imageFile = request.files.image as UploadedFile;
-    product.imageName = imageFile.name;
-}
-const updatedProduct = await productsService.updateProduct(product);
-response.json(updatedProduct);
+            // Check if a new image file is provided
+            if (request.files && request.files.image) {
+                const imageFile = request.files.image as UploadedFile;
+                product.image=imageFile;
+                product.imageName = imageFile.name;
+            }
+            const updatedProduct = await productsService.updateProduct(product);
+            response.json(updatedProduct);
         }
         catch (err: any) {
-    if (err instanceof ValidationError) {
-        // Handle the ValidationError
-        response.status(StatusCode.BadRequest).json({ message: err.message });
-    } else {
-        // Pass other errors to the error handling middleware
-        next(err);
-    }
-}
+            if (err instanceof ValidationError) {
+                // Handle the ValidationError
+                response.status(StatusCode.BadRequest).json({ message: err.message });
+            } else {
+                // Pass other errors to the error handling middleware
+                next(err);
+            }
+        }
     }
 
 
 
     // DELETE http://localhost:4000/api/Products/:_id
-    private async deleteProduct(request: Request, response: Response, next: NextFunction): Promise < void> {
-    try {
-        const _id = request.params._id;
-        const deletedProduct = await productsService.deleteProduct(_id);
-        response.sendStatus(StatusCode.NoContent)
-    }
-        catch(err: any) { next(err); }
-}
-
-
-     // GET http://localhost:4000/api/products/images/:imageName
-     private async getImageFile(request: Request, response: Response, next: NextFunction): Promise<void> {
+    private async deleteProduct(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
-            const imageName= request.params.imageName;
+            const _id = request.params._id;
+            const deletedProduct = await productsService.deleteProduct(_id);
+            response.sendStatus(StatusCode.NoContent)
+        }
+        catch (err: any) { next(err); }
+    }
+
+
+    // GET http://localhost:4000/api/products/images/:imageName
+    private async getImageFile(request: Request, response: Response, next: NextFunction): Promise<void> {
+        try {
+            const imageName = request.params.imageName;
             const imagePath = fileSaver.getFilePath(imageName, true);
             response.sendFile(imagePath); //response the actual image file
         }

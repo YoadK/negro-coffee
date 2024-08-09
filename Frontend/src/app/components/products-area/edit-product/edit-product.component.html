@@ -1,6 +1,8 @@
+
+
 <div class="edit-product-container">
     <h2>Edit Product</h2>
-    <form (ngSubmit)="send()" #productForm="ngForm">
+    <form (ngSubmit)="send()">
       <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" [(ngModel)]="product.name" required minlength="2" maxlength="100" #nameBox="ngModel">
@@ -24,19 +26,26 @@
   
       <div class="form-group">
         <label for="weight">Weight (grams):</label>
-        <input type="number" id="weight" name="product_weight_grams" [(ngModel)]="product.product_weight_grams" required min="0" max="1000">
+        <input type="number" id="weight" name="product_weight_grams" [(ngModel)]="product.product_weight_grams">
       </div>
   
       <div class="form-group">
         <label for="image">Image:</label>
-        <input type="file" id="image" name="image" (change)="onFileSelected($event)" #myImage accept="image/*">
-        <!-- Changed: Added img element inside the image-preview div -->
-        <div *ngIf="imagePreview" class="image-preview">
-          <img [src]="imagePreview" alt="Product image preview">
+        
+        <!-- Display current image info or new image preview -->
+        <div class="image-info">
+          <img *ngIf="imagePreview" [src]="imagePreview" alt="Product image" class="image-preview">
+          <img *ngIf="!imagePreview && product.imageUrl" [src]="product.imageUrl" alt="Current product image" class="image-preview">
+          <p *ngIf="!imagePreview && product.imageUrl">Current image: {{product.imageUrl}}</p>
+          <p *ngIf="!imagePreview && !product.imageUrl">No preview image available</p>
         </div>
-        <span *ngIf="fileName">Current image: {{ fileName }}</span>
-      </div>
+        
+        <!-- File input for new image -->
+        <input type="file" id="image" (change)="onFileSelected($event)" #myImage>
+    </div>
+    
   
-      <button type="submit" [disabled]="!productForm.form.valid">Update Product</button>
+      <button type="submit">Update Product</button>
     </form>
   </div>
+  
