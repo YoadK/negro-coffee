@@ -37,17 +37,14 @@ class ProductsService {
     public async addProduct(product: IProductModel): Promise<IProductModel> {
         try {
             const newProduct = new IProductModel(product);//await this.getProductByName(product.name);
-
-
-            // Check if an image file is provided
+            // Check if an image file is providedQ
             if (product.image) {
                 // Save the image file
-
                 const imageFile = product.image as UploadedFile;
                 const imageName = await fileSaver.add(imageFile);
                 newProduct.imageName = imageName;
                 newProduct.imageUrl = environment.BASE_IMAGE_URL + imageName;
-                newProduct.image = product.image;
+                // newProduct.image = product.image;
                 console.log("image name is: " + newProduct.imageName);
                 console.log("image url  is: " + newProduct.imageUrl);
 
@@ -58,13 +55,10 @@ class ProductsService {
                 console.log("else: image url  is: " + product.imageUrl);
                 const defaultImageName = "default-image.jpg";
                 newProduct.imageName = defaultImageName;
-                newProduct.imageUrl = environment.BASE_IMAGE_URL + newProduct.imageName;
+                newProduct.imageUrl = environment.BASE_IMAGE_URL + defaultImageName;
             }
-
-
             // Save the new product to the database
             await newProduct.save();
-
             // Return the added product
             return newProduct;
         } catch (err: any) {

@@ -1,44 +1,41 @@
-<div>
-    <!-- to enable html native validation -->
-<!--   <form (ngSubmit)="send()" ngNativeValidate> -->
-     
-    <form (ngSubmit)="send()" #myForm="ngForm"><!--   the "#myForm="ngForm" gives us angular validation properties for our 'form' (touched,valid, etc...) -->
-        
-        <label>Name: </label>
-        <input type="text" name="name" [(ngModel)]="product.name" #nameBox="ngModel" required minlength="2" maxlength="50">
-        <!--  these two properties: "[(ngModel)]="product.name" #nameBox="ngModel" mean:
-         take the properties of the banana-in-a-box:'[(ngModel)]' , 
-        put it inside the '#nameBox' which means: put it in the 'ngModel' variable-->
-        
-        <span *ngIf="nameBox.touched && nameBox.errors?.['required']">Missing name.</span>
-        <span *ngIf="nameBox.touched && nameBox.errors?.['minlength']">Name is too short.</span>
-        <span *ngIf="nameBox.touched && nameBox.errors?.['maxlength']">Name is too long.</span>
-        
-        <label>Description: </label>
-        <input type="text" name="description" [(ngModel)]="product.description" #descriptionBox="ngModel" required minlength="2" maxlength="50">
-        <span *ngIf="descriptionBox.touched && descriptionBox.errors?.['required']">Missing description.</span>
-        <span *ngIf="descriptionBox.touched && descriptionBox.errors?.['minlength']">description is too short.</span>
-        <span *ngIf="descriptionBox.touched && descriptionBox.errors?.['maxlength']">description is too long.</span>
-
-        <label>Price: </label>
-        <input type="number" name="price" step="1" [(ngModel)]="product.price" #priceBox="ngModel" required min="0" max="1000">
-        <span *ngIf="priceBox.touched && priceBox.errors?.['min']">Price can't be negative.</span>
-        <span *ngIf="priceBox.touched && priceBox.errors?.['max']">Price can't exceed 1000.</span>
-       
-        <label>Quantity: </label>
-        <input type="number" name="price" step="1" [(ngModel)]="quantity" #quantityBox="ngModel" required min="0" max="1000">
-        <span *ngIf="quantityBox.touched && quantityBox.errors?.['min']">quantity can't be negative.</span>
-        <span *ngIf="quantityBox.touched && quantityBox.errors?.['max']">quantity can't exceed 1000.</span>
-        
-
-        <label>Image: </label> 
-        <input type="file" name="image"  #myImage  required>
-        <span *ngIf="myImage.value === '' && myForm.submitted">Missing image.</span> 
-
-         <button [disabled]="myForm.invalid">Add</button>
-
-         
-
+<div class="add-product-form">
+    <form #myForm="ngForm" (ngSubmit)="send()">
+      <div class="form-group">
+        <label for="name">שם המוצר:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="product.name" required minlength="2" maxlength="100" #nameBox="ngModel">
+        <span class="error" *ngIf="nameBox.touched && nameBox.errors?.['required']">Missing name.</span>
+        <span class="error" *ngIf="nameBox.touched && nameBox.errors?.['minlength']">Name is too short.</span>
+        <span class="error" *ngIf="nameBox.touched && nameBox.errors?.['maxlength']">Name is too long.</span>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">תיאור המוצר:</label>
+        <textarea id="description" name="description" [(ngModel)]="product.description" required minlength="2" maxlength="1000" #descriptionBox="ngModel"></textarea>
+        <span class="error" *ngIf="descriptionBox.touched && descriptionBox.errors?.['required']">Missing description.</span>
+        <span class="error" *ngIf="descriptionBox.touched && descriptionBox.errors?.['minlength']">Description is too short.</span>
+        <span class="error" *ngIf="descriptionBox.touched && descriptionBox.errors?.['maxlength']">Description is too long.</span>
+      </div>
+  
+      <div class="form-group">
+        <label for="price">מחיר:</label>
+        <input type="number" id="price" name="price" [(ngModel)]="product.price" required min="0" max="1000" #priceBox="ngModel">
+        <span class="error" *ngIf="priceBox.touched && priceBox.errors?.['min']">Price can't be negative.</span>
+        <span class="error" *ngIf="priceBox.touched && priceBox.errors?.['max']">Price can't exceed 1000.</span>
+      </div>
+  
+      <div class="form-group">
+        <label for="weight">משקל (בגרמים):</label>
+        <input type="number" id="weight" name="product_weight_grams" [(ngModel)]="product.product_weight_grams" required min="0" max="1000" #quantityBox="ngModel">
+        <span class="error" *ngIf="quantityBox.touched && quantityBox.errors?.['min']">Weight can't be negative.</span>
+        <span class="error" *ngIf="quantityBox.touched && quantityBox.errors?.['max']">Weight can't exceed 1000 grams.</span>
+      </div>
+  
+      <div class="form-group">
+        <label for="image">תמונה:</label>
+        <input type="file" id="image" name="image" #myImage accept="image/*">
+        <span class="error" *ngIf="myImage.value === '' && myForm.submitted">Missing image.</span>
+      </div>
+  
+      <button type="submit">הוסף מוצר</button>
     </form>
-
-</div>
+  </div>

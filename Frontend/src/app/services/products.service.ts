@@ -57,11 +57,18 @@ export class ProductsService {
         formData.append('product_weight_grams', product.product_weight_grams.toString());
         formData.append('image', product.image);
 
-        console.log("added product name is: "+product.name);
-        console.log("added product description is: "+product.description);
-        console.log("added product price is: "+product.price);
-        console.log("added product product_weight_grams is: "+product.product_weight_grams.toString());
-        console.log("added product image name is: "+product.image.name);
+        // console.log("added product name is: "+product.name);
+        // console.log("added product description is: "+product.description);
+        // console.log("added product price is: "+product.price);
+        // console.log("added product product_weight_grams is: "+product.product_weight_grams.toString());
+        // console.log("added product image name is: "+product.image.name);
+        console.log("Adding product:", {
+            name: product.name,
+            description: product.description,
+            price: product.price,
+            product_weight_grams: product.product_weight_grams.toString(),
+            image: product.image ? product.image.name : 'No image'
+        });
 
 
         const observable = this.http.post<ProductModel>(appConfig.productAddUrl, formData);// returns an observable object 

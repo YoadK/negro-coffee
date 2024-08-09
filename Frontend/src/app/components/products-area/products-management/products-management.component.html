@@ -1,7 +1,22 @@
 <div class="product-management">
     <h2>טבלת ניהול מוצרי קפה</h2>
+  
+    <div class="add-product-section">
+    <button class="add-product-btn" (click)="toggleAddForm()">
+      <span *ngIf="!showAddForm">+ הוסף מוצר חדש</span>
+      <span *ngIf="showAddForm">- ביטול הוספת מוצר</span>
+    </button>
+  
+    
+    <div *ngIf="showAddForm" class="add-product-form-wrapper">
+        <app-add-product (productAdded)="onProductAdded()"></app-add-product>
+      </div>
+    </div>
+
     <div class="table-container">
-      <table class="product-table">
+        <h3>טבלת מוצרים</h3>
+        <table class="product-table">
+        
         <thead>
           <tr>
             <th>מוצר</th>
@@ -11,15 +26,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of products" class="product-row" [attr.data-product-id]="product._id">
-            <td>{{ product.name }}</td>
+         
+          <tr *ngFor="let product of products" [attr.data-product-id]="product._id">
+            <td>
+              {{ product.name }}
+              <br>
+              <small>{{ product.description }}</small>
+            </td>
             <td>{{ product.price | currency:'ILS':'symbol' }}</td>
             <td>{{ product.product_weight_grams }} גרם</td>
             <td class="actions">
-              <button class="btn btn-edit" [routerLink]="['/products/edit/', product._id]">ערוך מוצר</button>
+              <button class="btn btn-edit" [routerLink]="['/products/edit', product._id]">ערוך</button>
               <button class="btn btn-delete" (click)="deleteProduct(product._id.toString())">
                 <i class="fas fa-trash-alt"></i>
-              </button>
+
+            </button>
             </td>
           </tr>
         </tbody>
