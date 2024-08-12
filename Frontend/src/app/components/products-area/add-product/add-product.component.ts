@@ -1,50 +1,123 @@
 import { Component, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { ProductModel } from '../../../models/product.model';
 import { ProductsService } from '../../../services/products.service';
+import { notify } from '../../../Utils/Notify';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-add-product',
     standalone: true,
     imports: [FormsModule, CommonModule],
     templateUrl: './add-product.component.html',
-    styleUrl: './add-product.component.module.scss'
+    styleUrls: ['./add-product.component.module.scss']
 })
 export class AddProductComponent {
     @Output() productAdded = new EventEmitter<void>();
     
     public product = new ProductModel();
-    public quantity: number = 1;
+    public imagePreview: string | ArrayBuffer | null = null;
+    public isSubmitting = false;
 
     @ViewChild("myImage")
     public myImage: ElementRef<HTMLInputElement>;
 
+    @ViewChild("myForm")
+    public myForm: NgForm;
+
     constructor(private productsService: ProductsService, private router: Router) { }
 
     public async send(): Promise<void> {
+        if (this.isSubmitting) return;
+
+        this.isSubmitting = true;
+
+
+        
+
         try {
-            console.log(this.product);
-           
-            this.product.image = this.myImage.nativeElement.files[0];           
+
+            if (this.myForm.form.invalid) {
+                Object.values(this.myForm.controls).forEach(control => {
+                    control.markAsTouched();
+                });
+                notify.error('Please fill all required fields correctly');
+                return;
+            }
+
+
+            if (this.myImage?.nativeElement?.files?.length > 0) {
+                this.product.image = this.myImage.nativeElement.files[0];
+            } else {
+                notify.error('Please select an image');
+                return;
+            }
+
+            // Validate product data before sending to service
+            if (!this.validateProduct(this.product)) {
+                return;
+            }
 
             await this.productsService.addProduct(this.product);
-
-            this.productAdded.emit(); // Emit event when product is added
+            this.productAdded.emit();
+            notify.success('Product added successfully');
             this.resetForm();
         }
         catch (err: any) { 
             console.error('Error adding product:', err);
-            alert(err.message); 
+            notify.error(err.message || 'Error adding product'); 
         }
+        finally {
+            this.isSubmitting = false;
+        }
+    }
+
+    onFileSelected(event: Event): void {
+        const input = event.target as HTMLInputElement;
+        if (input.files && input.files.length > 0) {
+            const file = input.files[0];
+            this.product.image = file;
+            this.previewImage(file);
+        }
+    }
+
+    previewImage(file: File): void {
+        const reader = new FileReader();
+        reader.onload = () => {
+            this.imagePreview = reader.result;
+        };
+        reader.readAsDataURL(file);
     }
 
     private resetForm(): void {
         this.product = new ProductModel();
-        this.quantity = 1;
+        this.imagePreview = null;
         if (this.myImage && this.myImage.nativeElement) {
             this.myImage.nativeElement.value = '';
         }
+        this.myForm.resetForm();
     }
+
+    private validateProduct(product: ProductModel): boolean {
+        if (!product.name || product.name.length < 2 || product.name.length > 100) {
+            notify.error('Product name must be between 2 and 100 characters');
+            return false;
+        }
+        if (!product.description || product.description.length > 500) {
+            notify.error('Product description must not exceed 500 characters');
+            return false;
+        }
+        if (product.price === undefined || product.price < 0 || product.price > 1000) {
+            notify.error('Product price must be between 0 and 1000');
+            return false;
+        }
+        if (product.product_weight_grams === undefined || product.product_weight_grams < 0 || product.product_weight_grams > 1000) {
+            notify.error('Product weight must be between 0 and 1000 grams');
+            return false;
+        }
+        return true;
+    }
+
+    
 }

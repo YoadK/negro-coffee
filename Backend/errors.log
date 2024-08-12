@@ -1691,3 +1691,152 @@ Stack: Error: Uploaded image is missing a name.
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
 ---------------------------------------
 
+Time: Fri Aug 09 2024 18:44:28 GMT+0300 (Israel Daylight Time)
+Message: newUploadedFile.mv is not a function
+Stack: TypeError: newUploadedFile.mv is not a function
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:43:35)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:4:12)
+    at FileSaver.add (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:32:16)
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:49:44)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+
+Time: Fri Aug 09 2024 18:45:47 GMT+0300 (Israel Daylight Time)
+Message: newUploadedFile.mv is not a function
+Stack: TypeError: newUploadedFile.mv is not a function
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:43:35)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:4:12)
+    at FileSaver.add (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:32:16)
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:49:44)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+
+Time: Sat Aug 10 2024 18:41:38 GMT+0300 (Israel Daylight Time)
+Message: Invalid password.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 10 2024 18:41:43 GMT+0300 (Israel Daylight Time)
+Message: Invalid password.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 10 2024 18:42:33 GMT+0300 (Israel Daylight Time)
+Message: Invalid password.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 10 2024 18:43:08 GMT+0300 (Israel Daylight Time)
+Message: Invalid password.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 10 2024 18:43:55 GMT+0300 (Israel Daylight Time)
+Message: Invalid password.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 10 2024 18:52:26 GMT+0300 (Israel Daylight Time)
+Message: Invalid password.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 10 2024 19:23:43 GMT+0300 (Israel Daylight Time)
+Message: newUploadedFile.mv is not a function
+Stack: TypeError: newUploadedFile.mv is not a function
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:43:35)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:4:12)
+    at FileSaver.add (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:32:16)
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:49:44)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+
+Time: Sat Aug 10 2024 19:23:49 GMT+0300 (Israel Daylight Time)
+Message: newUploadedFile.mv is not a function
+Stack: TypeError: newUploadedFile.mv is not a function
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:43:35)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:4:12)
+    at FileSaver.add (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:32:16)
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:49:44)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+
+Time: Sun Aug 11 2024 10:49:24 GMT+0300 (Israel Daylight Time)
+Message: Route /favicon.ico not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Aug 11 2024 10:52:03 GMT+0300 (Israel Daylight Time)
+Message: request entity too large
+Stack: PayloadTooLargeError: request entity too large
+    at readStream (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\raw-body\index.js:163:17)
+    at getRawBody (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\raw-body\index.js:116:12)
+    at read (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\body-parser\lib\read.js:79:3)
+    at jsonParser (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\body-parser\lib\types\json.js:138:5)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:280:10)
+    at cors (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\cors\lib\index.js:188:7)
+---------------------------------------
+
+Time: Sun Aug 11 2024 10:53:09 GMT+0300 (Israel Daylight Time)
+Message: request entity too large
+Stack: PayloadTooLargeError: request entity too large
+    at readStream (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\raw-body\index.js:163:17)
+    at getRawBody (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\raw-body\index.js:116:12)
+    at read (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\body-parser\lib\read.js:79:3)
+    at jsonParser (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\body-parser\lib\types\json.js:138:5)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\index.js:280:10)
+    at cors (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\cors\lib\index.js:188:7)
+---------------------------------------
+
+Time: Mon Aug 12 2024 21:13:11 GMT+0300 (Israel Daylight Time)
+Message: Failed to delete C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\1-assets\images\default-image.jpg.
+Stack: Error: Failed to delete C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\1-assets\images\default-image.jpg.
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:74:19)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:6:65)
+---------------------------------------
+
+Time: Mon Aug 12 2024 21:14:06 GMT+0300 (Israel Daylight Time)
+Message: Failed to delete C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\1-assets\images\default-image.jpg.
+Stack: Error: Failed to delete C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\1-assets\images\default-image.jpg.
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:74:19)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:6:65)
+---------------------------------------
+
+Time: Mon Aug 12 2024 21:17:52 GMT+0300 (Israel Daylight Time)
+Message: Failed to delete C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\1-assets\images\default-image.jpg.
+Stack: Error: Failed to delete C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\1-assets\images\default-image.jpg.
+    at FileSaver.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:74:19)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:6:65)
+---------------------------------------
+

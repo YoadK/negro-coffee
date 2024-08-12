@@ -36,7 +36,7 @@ export const ProductSchema = new Schema<IProductModel>({
         type: Number,
         required: [true, "Missing product weight in grams"],
         min: [0, "product weight in grams can't be negative"],
-        max: [1000, "product weight in grams can't exceed 1000"],
+        max: [2000, "product weight in grams can't exceed 2000 (grams)"],
     },
     price: {
         type: Number,

@@ -9,8 +9,15 @@ import { Conflict } from 'http-errors';
 class ProductsService {
 
     // get All products
-    public getAllProducts(): Promise<IProductModel[]> {
-        return IProductModel.find().exec();
+    public async getAllProducts(): Promise<IProductModel[]> {
+        const products = await IProductModel.find().exec();
+        return products.map(product => {
+            if (!product.imageName || !product.imageUrl) {
+                product.imageName = 'default-image.jpg';
+                product.imageUrl = `${environment.BASE_IMAGE_URL}default-image.jpg`;
+            }
+            return product;
+        });
     }
 
     //get  a product by name
@@ -88,13 +95,11 @@ class ProductsService {
                 const imageFile = product.image as UploadedFile;
                 const updatedImageName = await fileSaver.update(existingProduct.imageName, imageFile);
                 existingProduct.imageName = updatedImageName;
-                // existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}${updatedImageName}`;
-                existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}${updatedImageName}?t=${Date.now()}`;//prevent caching
-
+                existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}${updatedImageName}`;
 
             } else if (!existingProduct.imageName) {
                 // If no image is provided and the existing product doesn't have an image name,
-                // set a default image name
+                // set a default image name + path to the existing product
                 const defaultImageName = "default-image.avif";
                 const defaultImagePath = fileSaver.getFilePath(defaultImageName, true);
                 existingProduct.imageName = defaultImageName;

@@ -1,97 +1,109 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-// import { CategoryModel } from '../models/category.model';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ProductModel } from '../models/product.model';
 import { appConfig } from '../Utils/app.config';
-import { firstValueFrom } from 'rxjs';
-import { ProductModel} from '../models/product.model';
-import { CategoryModel } from '../models/category.model';
+import { lastValueFrom } from 'rxjs';
+import { Store } from '@ngxs/store';
+import { DeleteProduct, UpdateProductQuantity } from '../NgXs/actions/product.actions';
+import { notify } from '../Utils/Notify';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class ProductsService {
+  constructor(private http: HttpClient, private store: Store) {}
 
-
-    constructor(private http: HttpClient) { } // DI for an 'axios' like object.
-
-    // get All Products
-    public async getAllProducts(): Promise<ProductModel[]> {
-        console.log('Inside getAllProducts()');
-        const observable = this.http.get<ProductModel[]>(appConfig.productsUrl);
-        console.log('After making the HTTP request');
-        const Products = await firstValueFrom(observable);
-        console.log('Products retrieved:', Products);
-        return Products;
+  async getAllProducts(): Promise<ProductModel[]> {
+    try {
+      const products = await lastValueFrom(this.http.get<ProductModel[]>(appConfig.productsUrl));
+      // Instead of dispatching SetAllProducts, we'll update quantities for each product
+      products.forEach(product => {
+        this.store.dispatch(new UpdateProductQuantity({ productId: product._id, quantity: product.product_weight_grams }));
+      });
+      return products;
+    } catch (error) {
+      this.handleError(error);
+      throw error;
     }
+  }
 
-    //get one product
-    public async getOneProduct(_id: string): Promise<ProductModel> {
-        const observable = this.http.get<ProductModel>(appConfig.productsUrl + _id); // returns an observable object object
-        const product = await firstValueFrom(observable);
-        return product;
+  async getOneProduct(id: string): Promise<ProductModel> {
+    try {
+      return await lastValueFrom(this.http.get<ProductModel>(`${appConfig.productsUrl}${id}`));
+    } catch (error) {
+      this.handleError(error);
+      throw error;
     }
+  }
 
+  async addProduct(product: ProductModel): Promise<ProductModel> {
+    const formData = new FormData();
+    this.appendProductData(formData, product);
 
-    //get All Categories
-    public async getAllCategories(): Promise<CategoryModel[]> {
-        const observable = this.http.get<CategoryModel[]>(appConfig.categoriesUrl);
-        const Categories = await firstValueFrom(observable);
-        return Categories;
+    try {
+      const newProduct = await lastValueFrom(this.http.post<ProductModel>(appConfig.productAddUrl, formData));
+      // Update the store with the new product's quantity
+      this.store.dispatch(new UpdateProductQuantity({ productId: newProduct._id, quantity: newProduct.product_weight_grams }));
+      return newProduct;
+    } catch (error) {
+      this.handleError(error);
+      throw error;
     }
+  }
 
+  async updateProduct(product: ProductModel): Promise<ProductModel> {
+    const formData = new FormData();
+    this.appendProductData(formData, product);
 
-    //search products
-    public async searchProducts(text: string): Promise<ProductModel[]> {
-        const observable = this.http.get<ProductModel[]>(appConfig.searchUrl + text);
-        const products = await firstValueFrom(observable);
-        return products;
+    try {
+      const updatedProduct = await lastValueFrom(this.http.put<ProductModel>(`${appConfig.productsUrl}${product._id}`, formData));
+      // Update the store with the updated product's quantity
+      this.store.dispatch(new UpdateProductQuantity({ productId: updatedProduct._id, quantity: updatedProduct.product_weight_grams }));
+      return updatedProduct;
+    } catch (error) {
+      this.handleError(error);
+      throw error;
     }
+  }
 
-    //add product:
-    public async addProduct(product: ProductModel): Promise<void> {
-        const formData = new FormData();
-        formData.append('name', product.name);
-        formData.append('description', product.description);
-        formData.append('price', product.price.toString());
-        formData.append('product_weight_grams', product.product_weight_grams.toString());
-        formData.append('image', product.image);
-
-        // console.log("added product name is: "+product.name);
-        // console.log("added product description is: "+product.description);
-        // console.log("added product price is: "+product.price);
-        // console.log("added product product_weight_grams is: "+product.product_weight_grams.toString());
-        // console.log("added product image name is: "+product.image.name);
-        console.log("Adding product:", {
-            name: product.name,
-            description: product.description,
-            price: product.price,
-            product_weight_grams: product.product_weight_grams.toString(),
-            image: product.image ? product.image.name : 'No image'
-        });
-
-
-        const observable = this.http.post<ProductModel>(appConfig.productAddUrl, formData);// returns an observable object 
-        const addedProduct = await firstValueFrom(observable);
-
-        console.log("added product is: "+addedProduct);
+  async deleteProduct(id: string): Promise<void> {
+    try {
+      await lastValueFrom(this.http.delete<void>(`${appConfig.productsUrl}${id}`));
+      this.store.dispatch(new DeleteProduct(id));
+    } catch (error) {
+      this.handleError(error);
+      throw error;
     }
+  }
 
-    //update product
-    public async updateProduct(product: ProductModel): Promise<void> {
-        const observable = this.http.put<ProductModel>(appConfig.productsUrl+product._id, product);
-        const updatedProduct = await firstValueFrom(observable);
-        console.log(updatedProduct);
+  async searchProducts(text: string): Promise<ProductModel[]> {
+    try {
+      return await lastValueFrom(this.http.get<ProductModel[]>(`${appConfig.searchUrl}${text}`));
+    } catch (error) {
+      this.handleError(error);
+      throw error;
     }
+  }
 
-
-    //delete product:
-    public async deleteProduct(_id: string): Promise<void> {
-        const observable = this.http.delete<void>(`${appConfig.productsUrl}${_id}`);
-        await firstValueFrom(observable);
+  private appendProductData(formData: FormData, product: ProductModel): void {
+    formData.append('name', product.name);
+    formData.append('description', product.description);
+    formData.append('price', product.price.toString());
+    formData.append('product_weight_grams', product.product_weight_grams.toString());
+    
+    if (product.image instanceof File) {
+      formData.append('image', product.image, product.image.name);
     }
+  }
+
+  private handleError(error: any) {
+    let errorMessage = 'An unknown error occurred!';
+    if (error instanceof HttpErrorResponse) {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    } else if (error instanceof Error) {
+      errorMessage = `Error: ${error.message}`;
+    }
+    console.error(errorMessage);
+    notify.error(errorMessage);
+  }
 }
-
-
-
-

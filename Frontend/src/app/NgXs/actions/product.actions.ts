@@ -1,23 +1,29 @@
 import { ObjectId } from "mongoose";
 import { ProductModel } from "../../models/product.model";
 
-
-// You might want to import this type from cart.state.ts if you decide to export it
 type CartItem = ProductModel & { quantity: number };
 
+export class AddToCart {
+  static readonly type = '[Cart] Add To Cart';
+  constructor(public payload: { product: ProductModel, quantity: number }) {}
+}
 
-  
-  export class AddToCart {
-    static readonly type = '[Cart] Add To Cart';
-    constructor(public payload: { product: ProductModel, quantity: number }) {}
-  }
+export class UpdateProductQuantity {
+  static readonly type = '[Product] Update Product Quantity';
+  constructor(public payload: { productId: ObjectId, quantity: number }) {}
+}
 
-  
+export class AddProduct {
+  static readonly type = '[Product] Add Product';
+  constructor(public payload: ProductModel) {}
+}
 
-  export class UpdateProductQuantity {
-    static readonly type = '[Product] Update Product Quantity';
-    constructor(public payload: { productId: ObjectId, quantity: number }) {}
-  }
+export class UpdateProduct {
+  static readonly type = '[Product] Update Product';
+  constructor(public payload: ProductModel) {}
+}
 
-  
-  
+export class DeleteProduct {
+  static readonly type = '[Product] Delete Product';
+  constructor(public payload: string) {}
+}

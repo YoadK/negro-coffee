@@ -1,51 +1,41 @@
-
-
 <div class="edit-product-container">
     <h2>Edit Product</h2>
-    <form (ngSubmit)="send()">
+    <form (ngSubmit)="send()" #myForm="ngForm">
       <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" [(ngModel)]="product.name" required minlength="2" maxlength="100" #nameBox="ngModel">
-        <div class="error-message" *ngIf="nameBox.touched && nameBox.errors?.['required']">Name is required.</div>
-        <div class="error-message" *ngIf="nameBox.touched && nameBox.errors?.['minlength']">Name is too short.</div>
-        <div class="error-message" *ngIf="nameBox.touched && nameBox.errors?.['maxlength']">Name is too long.</div>
+        <div *ngIf="nameBox.touched && nameBox.errors?.['required']" class="error-message">Name is required.</div>
+        <div *ngIf="nameBox.touched && nameBox.errors?.['minlength']" class="error-message">Name is too short.</div>
+        <div *ngIf="nameBox.touched && nameBox.errors?.['maxlength']" class="error-message">Name is too long.</div>
       </div>
   
       <div class="form-group">
         <label for="description">Description:</label>
-        <textarea id="description" name="description" [(ngModel)]="product.description"></textarea>
+        <textarea id="description" name="description" [(ngModel)]="product.description" maxlength="500"></textarea>
       </div>
   
       <div class="form-group">
         <label for="price">Price:</label>
         <input type="number" id="price" name="price" [(ngModel)]="product.price" required min="0" max="1000" #priceBox="ngModel">
-        <div class="error-message" *ngIf="priceBox.touched && priceBox.errors?.['required']">Price is required.</div>
-        <div class="error-message" *ngIf="priceBox.touched && priceBox.errors?.['min']">Price can't be negative.</div>
-        <div class="error-message" *ngIf="priceBox.touched && priceBox.errors?.['max']">Price can't exceed 1000.</div>
+        <div *ngIf="priceBox.touched && priceBox.errors?.['required']" class="error-message">Price is required.</div>
+        <div *ngIf="priceBox.touched && priceBox.errors?.['min']" class="error-message">Price can't be negative.</div>
+        <div *ngIf="priceBox.touched && priceBox.errors?.['max']" class="error-message">Price can't exceed 1000.</div>
       </div>
   
       <div class="form-group">
         <label for="weight">Weight (grams):</label>
-        <input type="number" id="weight" name="product_weight_grams" [(ngModel)]="product.product_weight_grams">
+        <input type="number" id="weight" name="product_weight_grams" [(ngModel)]="product.product_weight_grams" required>
       </div>
   
       <div class="form-group">
         <label for="image">Image:</label>
-        
-        <!-- Display current image info or new image preview -->
-        <div class="image-info">
-          <img *ngIf="imagePreview" [src]="imagePreview" alt="Product image" class="image-preview">
-          <img *ngIf="!imagePreview && product.imageUrl" [src]="product.imageUrl" alt="Current product image" class="image-preview">
-          <p *ngIf="!imagePreview && product.imageUrl">Current image: {{product.imageUrl}}</p>
-          <p *ngIf="!imagePreview && !product.imageUrl">No preview image available</p>
+        <input type="file" id="image" name="image" (change)="onFileSelected($event)" #myImage>
+        <div class="image-info" *ngIf="imagePreview">
+          <img [src]="imagePreview" alt="Product image preview" >
         </div>
-        
-        <!-- File input for new image -->
-        <input type="file" id="image" (change)="onFileSelected($event)" #myImage>
-    </div>
-    
+        <div *ngIf="!imagePreview">No preview image available</div>
+      </div>
   
-      <button type="submit">Update Product</button>
+      <button type="submit" [disabled]="myForm.form.invalid">Update Product</button>
     </form>
   </div>
-  
