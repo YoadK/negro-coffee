@@ -77,48 +77,80 @@ class ProductsService {
     public async updateProduct(product: IProductModel): Promise<IProductModel> {
         try {
             console.log("Updating product with ID:", product._id);
+            
+            // Fetch the existing product from the database
             const existingProduct = await IProductModel.findById(product._id);
+            
+            // If the product doesn't exist, throw a ResourceNotFoundError
+            if (!existingProduct) throw new ResourceNotFoundError(product._id.toString());
+            
             console.log("Existing product:", existingProduct);
-
-            if (!existingProduct) {
-                throw new ResourceNotFoundError(product._id.toString());
-            }
-            // Update the product fields
-            existingProduct.name = product.name;
-            existingProduct.description = product.description;
-            existingProduct.product_weight_grams = product.product_weight_grams;
-            existingProduct.price = product.price;
-
+    
+            // Update basic product fields using Object.assign for cleaner code
+            Object.assign(existingProduct, {
+                name: product.name,
+                description: product.description,
+                product_weight_grams: product.product_weight_grams,
+                price: product.price
+            });
+    
+            // Handle image update
             if (product.image && product.image instanceof Object && 'name' in product.image) {
-                // Update the image file
-                console.log('Saving new image:', product.image);
-                const imageFile = product.image as UploadedFile;
-                const updatedImageName = await fileSaver.update(existingProduct.imageName, imageFile);
-                existingProduct.imageName = updatedImageName;
-                existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}${updatedImageName}`;
-
-            } else if (!existingProduct.imageName) {
-                // If no image is provided and the existing product doesn't have an image name,
-                // set a default image name + path to the existing product
-                const defaultImageName = "default-image.avif";
-                const defaultImagePath = fileSaver.getFilePath(defaultImageName, true);
-                existingProduct.imageName = defaultImageName;
-                existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}${defaultImageName}`;
+                // If a new image is provided, update the product's image
+                await this.updateProductImage(existingProduct, product.image as UploadedFile);
+            } else if (!product.image && existingProduct.imageName !== 'default-image.jpg') {
+                // If no new image is provided and the current image is not the default, revert to default
+                this.revertToDefaultImage(existingProduct);
             }
-
-            // Manually trigger validation
+    
+            // Validate the updated product
             await existingProduct.validate();
-            // Save the updated product
-            await existingProduct.save();
-            // Return the updated product
-            return existingProduct;
-
+            
+            // Save and return the updated product
+            return await existingProduct.save();
         } catch (err: any) {
             console.error("Error updating product:", err);
             throw err;
         }
     }
-
+    
+    private async updateProductImage(existingProduct: IProductModel, imageFile: UploadedFile): Promise<void> {
+        try {
+            let imageName: string;
+            
+            if (existingProduct.imageName === 'default-image.jpg') {
+                // If the current image is the default, add the new image
+                imageName = await fileSaver.add(imageFile);
+            } else {
+                // If it's not the default, update the existing image
+                imageName = await fileSaver.update(existingProduct.imageName, imageFile);
+            }
+            
+            // Update the product with the new image details
+            existingProduct.imageName = imageName;
+            existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}${imageName}`;
+        } catch (err) {
+            console.error(`Failed to update/add image for ${existingProduct.imageName}:`, err);
+            
+            // If update fails, try to add the image as a new file
+            try {
+                const newImageName = await fileSaver.add(imageFile);
+                existingProduct.imageName = newImageName;
+                existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}${newImageName}`;
+            } catch (addErr) {
+                console.error(`Failed to add new image:`, addErr);
+                // If adding also fails, throw an error
+                throw new Error("Failed to update product image. The product will keep its current image.");
+            }
+        }
+    }
+    
+    private revertToDefaultImage(existingProduct: IProductModel): void {
+        // Set the product's image to the default
+        existingProduct.imageName = 'default-image.jpg';
+        existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}default-image.jpg`;
+    }
+    
     //delete product:
     public async deleteProduct(_id: string): Promise<void> {
         try {
@@ -126,8 +158,10 @@ class ProductsService {
             const product = await IProductModel.findById(_id);
 
             if (product) {
-                // Delete the image file
-                await fileSaver.delete(product.imageName);
+                // Only delete the image if it's not the default image
+                if (product.imageName !== 'default-image.jpg') {
+                    await fileSaver.delete(product.imageName);
+                }
 
                 // Delete the product from the database
                 await IProductModel.findByIdAndDelete(_id).exec();

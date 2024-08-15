@@ -108,10 +108,12 @@ class ProductsController {
             // Check if a new image file is provided
             if (request.files && request.files.image) {
                 const imageFile = request.files.image as UploadedFile;
-                product.image=imageFile;
-                product.imageName = imageFile.name;
+                product.image = imageFile;// Pass the image file to the service
+                product.imageName = imageFile.name;// Ensure imageName is passed
             }
+            // Pass the updated product data to the service
             const updatedProduct = await productsService.updateProduct(product);
+            // Respond with the updated product
             response.json(updatedProduct);
         }
         catch (err: any) {
