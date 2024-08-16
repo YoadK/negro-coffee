@@ -39,7 +39,7 @@ export class ProductsManagementComponent implements OnInit {
     async onProductAdded() {
         await this.loadProducts();
         this.showAddForm = false;
-        notify.success('Product added successfully');
+        
     }
 
     async deleteProduct(productId: string) {

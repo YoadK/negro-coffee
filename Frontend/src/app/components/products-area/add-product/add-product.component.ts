@@ -30,14 +30,8 @@ export class AddProductComponent {
 
     public async send(): Promise<void> {
         if (this.isSubmitting) return;
-
         this.isSubmitting = true;
-
-
-        
-
         try {
-
             if (this.myForm.form.invalid) {
                 Object.values(this.myForm.controls).forEach(control => {
                     control.markAsTouched();
@@ -45,23 +39,20 @@ export class AddProductComponent {
                 notify.error('Please fill all required fields correctly');
                 return;
             }
-
-
             if (this.myImage?.nativeElement?.files?.length > 0) {
                 this.product.image = this.myImage.nativeElement.files[0];
             } else {
                 notify.error('Please select an image');
                 return;
             }
-
             // Validate product data before sending to service
             if (!this.validateProduct(this.product)) {
                 return;
             }
-
             await this.productsService.addProduct(this.product);
             this.productAdded.emit();
             notify.success('Product added successfully');
+            console.log('Product added successfully');
             this.resetForm();
         }
         catch (err: any) { 
