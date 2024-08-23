@@ -1,4 +1,4 @@
-import { IUserModel } from "../3-models/user-model";
+import { IUserModel } from "../3-models/Iuser-model";
 import jwt, { SignOptions } from "jsonwebtoken";
 import { environment } from "../../../Frontend/src/environments/environment";
 import { RoleModel } from "../3-models/role-model";

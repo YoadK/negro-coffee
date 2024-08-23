@@ -1856,3 +1856,223 @@ Stack: Error: Failed to delete C:\Users\YoadK\Dropbox\my_projects-portfolio\negr
     at rejected (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\uploaded-file-saver\dist\file-saver.js:6:65)
 ---------------------------------------
 
+Time: Wed Aug 21 2024 12:40:30 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at CategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:19:79)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:4:12)
+    at CategoriesService.getProductsByCategory (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:22:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:39:62
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:8:71
+---------------------------------------
+
+Time: Wed Aug 21 2024 12:42:02 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at CategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:19:79)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:4:12)
+    at CategoriesService.getProductsByCategory (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:22:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:39:62
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:8:71
+---------------------------------------
+
+Time: Wed Aug 21 2024 12:43:15 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at CategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:19:79)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:4:12)
+    at CategoriesService.getProductsByCategory (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:22:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:39:62
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:8:71
+---------------------------------------
+
+Time: Wed Aug 21 2024 12:43:22 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at CategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:19:79)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:4:12)
+    at CategoriesService.getProductsByCategory (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:22:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:39:62
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:8:71
+---------------------------------------
+
+Time: Wed Aug 21 2024 12:48:00 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at CategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:19:79)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:4:12)
+    at CategoriesService.getProductsByCategory (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:22:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:39:62
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:8:71
+---------------------------------------
+
+Time: Wed Aug 21 2024 12:48:11 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at CategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:19:79)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:4:12)
+    at CategoriesService.getProductsByCategory (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:22:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:39:62
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:8:71
+---------------------------------------
+
+Time: Wed Aug 21 2024 12:52:51 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at CategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:19:79)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:4:12)
+    at CategoriesService.getProductsByCategory (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:22:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:39:62
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:8:71
+---------------------------------------
+
+Time: Wed Aug 21 2024 12:54:19 GMT+0300 (Israel Daylight Time)
+Message: Route /favicon.ico not found.
+Stack: undefined
+---------------------------------------
+
+Time: Wed Aug 21 2024 13:28:22 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at CategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:18:26)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:4:12)
+    at CategoriesService.getProductsByCategory (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:22:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:39:62
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:8:71
+---------------------------------------
+
+Time: Wed Aug 21 2024 13:28:35 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at CategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:18:26)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:4:12)
+    at CategoriesService.getProductsByCategory (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:22:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:39:62
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:8:71
+---------------------------------------
+
+Time: Wed Aug 21 2024 13:29:55 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at CategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:18:26)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:4:12)
+    at CategoriesService.getProductsByCategory (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:22:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:39:62
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:8:71
+---------------------------------------
+
+Time: Wed Aug 21 2024 13:32:47 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/:categoryId not found.
+Stack: undefined
+---------------------------------------
+
+Time: Wed Aug 21 2024 13:33:36 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/:categoryId not found.
+Stack: undefined
+---------------------------------------
+
+Time: Wed Aug 21 2024 13:33:54 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/categories/:categoryId not found.
+Stack: undefined
+---------------------------------------
+
+Time: Wed Aug 21 2024 13:34:07 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at CategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:18:26)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:4:12)
+    at CategoriesService.getProductsByCategory (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:22:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:39:62
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:8:71
+---------------------------------------
+
+Time: Wed Aug 21 2024 13:44:23 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at CategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:18:26)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:4:12)
+    at CategoriesService.getProductsByCategory (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\categories-service.ts:22:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:39:62
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\categories-controller.ts:8:71
+---------------------------------------
+
+Time: Wed Aug 21 2024 19:49:46 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/category/66293bc08900f5681d2ab564 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 23 2024 14:07:50 GMT+0300 (Israel Daylight Time)
+Message: Invalid categoryId format
+Stack: Error: Invalid categoryId format
+    at ProductsCategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-categories-service.ts:16:23)
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-categories-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-categories-service.ts:4:12)
+    at ProductsCategoriesService.getProductsByCategory (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-categories-service.ts:19:16)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-categories-controller.ts:30:70
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-categories-controller.ts:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+

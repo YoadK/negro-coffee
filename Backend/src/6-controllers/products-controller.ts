@@ -3,7 +3,7 @@ import { StatusCode } from "../3-models/enums";
 import { productsService } from "../5-services/products-service";
 import { ValidationError } from "../3-models/client-errors";
 import mongoose from "mongoose";
-import { IProductModel } from "../3-models/product-model";
+import { IProductModel } from "../3-models/Iproduct-model";
 import { UploadedFile } from "express-fileupload";
 import { Conflict } from 'http-errors';
 import { fileSaver } from "uploaded-file-saver";

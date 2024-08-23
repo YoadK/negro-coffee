@@ -1,6 +1,6 @@
 import { ValidationError } from "../3-models/client-errors";
-import { ICredentialsModel } from "../3-models/credentials-model";
-import { IUserModel } from "../3-models/user-model";
+import { ICredentialsModel } from "../3-models/Icredentials-model";
+import { IUserModel } from "../3-models/Iuser-model";
 
 export function validateCredentials(credentials: ICredentialsModel): string[] {
     const errors: string[] = [];

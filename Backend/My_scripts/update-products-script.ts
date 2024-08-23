@@ -1,7 +1,7 @@
 // updateExistingProducts.ts
 
 import mongoose from 'mongoose';
-import { IProductModel } from '../../Backend/src/3-models/product-model';
+import { IProductModel } from '../src/3-models/Iproduct-model';
 import { environment } from '../../Frontend/src/environments/environment';
 
 async function updateExistingProducts() {

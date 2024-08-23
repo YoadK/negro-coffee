@@ -18,6 +18,7 @@ import { Observable, from } from 'rxjs';
 })
 export class ProductListComponent implements OnInit {
     products$: Observable<ProductModel[]>;
+   
 
     constructor(
         private title: Title,

@@ -1,8 +1,8 @@
 import express, { Request, Response, NextFunction } from "express";
-import { IUserModel } from "../3-models/user-model";
+import { IUserModel } from "../3-models/Iuser-model";
 import { StatusCode } from  "../3-models/enums";
 import { authService } from "../5-services/auth-service";
-import { ICredentialsModel } from "../3-models/credentials-model";
+import { ICredentialsModel } from "../3-models/Icredentials-model";
 import { validateInsert, validateCredentials } from "../2-utils/validation";
 
 class AuthController {

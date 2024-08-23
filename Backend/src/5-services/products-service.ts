@@ -1,7 +1,7 @@
 import { fileSaver } from "uploaded-file-saver";
 import { environment } from "../../../Frontend/src/environments/environment";
 import { ResourceNotFoundError, ValidationError } from "../3-models/client-errors";
-import { IProductModel } from "../3-models/product-model";
+import { IProductModel } from "../3-models/Iproduct-model";
 import mongoose, { ObjectId } from "mongoose";
 import { UploadedFile } from "express-fileupload";
 import { Conflict } from 'http-errors';

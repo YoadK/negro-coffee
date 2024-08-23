@@ -6,6 +6,8 @@ import { lastValueFrom } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { DeleteProduct, UpdateProductQuantity } from '../NgXs/actions/product.actions';
 import { notify } from '../Utils/Notify';
+import { CategoryModel } from '../models/category.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -95,6 +97,16 @@ export class ProductsService {
       formData.append('image', product.image, product.image.name);
     }
   }
+
+
+  async getCategories(): Promise<CategoryModel[]> {
+    return await lastValueFrom(this.http.get<CategoryModel[]>(`${appConfig.categoriesUrl}`));
+  }
+
+  async getProductsByCategory(categoryId: string): Promise<ProductModel[]> {
+    return await lastValueFrom(this.http.get<ProductModel[]>(`${appConfig.productsUrl}category/${categoryId}`));
+  }
+
 
   private handleError(error: any) {
     let errorMessage = 'An unknown error occurred!';

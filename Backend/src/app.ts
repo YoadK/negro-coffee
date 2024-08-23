@@ -10,6 +10,7 @@ import { dal } from "./2-utils/dal";
 import { authRouter } from "./6-controllers/auth-controller";
 import { categoriesRouter } from "./6-controllers/categories-controller";
 import {environment}  from '../../Frontend/src/environments/environment';
+import { productsCategoriesRouter } from "./6-controllers/products-categories-controller";
 
 // Main application class:
 class App {
@@ -36,7 +37,7 @@ class App {
         this.server.use(loggerMiddleware.logToConsole);
 
         // Connect any controller route to the server:
-        this.server.use("/api", authRouter, productsRouter, categoriesRouter);
+        this.server.use("/api", authRouter, productsRouter, categoriesRouter, productsCategoriesRouter);
 
         // Route not found middleware: 
         this.server.use(errorsMiddleware.routeNotFound);

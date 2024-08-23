@@ -15,8 +15,9 @@ class CategoriesController {
 
     // Register routes:
     private registerRoutes(): void {
-        this.router.get("/categories", this.getAllCategories);       
+        this.router.get("/categories", this.getAllCategories);
         
+
     }
 
     // GET http://localhost:4000/api/categories
@@ -31,10 +32,7 @@ class CategoriesController {
     }
 
 
-    
-
-
 }
 
 const categoriesController = new CategoriesController();
-export const categoriesRouter =  categoriesController.router;
+export const categoriesRouter = categoriesController.router;
