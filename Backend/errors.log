@@ -2076,3 +2076,40 @@ Stack: Error: Invalid categoryId format
     at new Promise (<anonymous>)
 ---------------------------------------
 
+Time: Sun Aug 25 2024 15:56:43 GMT+0300 (Israel Daylight Time)
+Message: Failed to fetch products with categories
+Stack: Error: Failed to fetch products with categories
+    at ProductsCategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-categories-service.ts:87:23)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-categories-service.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Sun Aug 25 2024 15:56:44 GMT+0300 (Israel Daylight Time)
+Message: Failed to fetch products with categories
+Stack: Error: Failed to fetch products with categories
+    at ProductsCategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-categories-service.ts:87:23)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-categories-service.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Sun Aug 25 2024 15:56:46 GMT+0300 (Israel Daylight Time)
+Message: Failed to fetch products with categories
+Stack: Error: Failed to fetch products with categories
+    at ProductsCategoriesService.<anonymous> (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-categories-service.ts:87:23)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\5-services\products-categories-service.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Sun Aug 25 2024 22:40:18 GMT+0300 (Israel Daylight Time)
+Message: Route /favicon.ico not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Aug 25 2024 22:40:45 GMT+0300 (Israel Daylight Time)
+Message: Route /favicon.ico not found.
+Stack: undefined
+---------------------------------------
+

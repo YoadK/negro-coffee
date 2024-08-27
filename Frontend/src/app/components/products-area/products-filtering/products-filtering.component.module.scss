@@ -1,0 +1,75 @@
+.category-filter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0 2rem;
+  }
+  
+  .filter-label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .filters_item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  
+    .click_to_filter_cat, [data-filter] {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+  
+      &:hover, &.active {
+        background-color: #007bff;
+        color: white;
+        border-color: #0056b3;
+  
+        .filter_icon {
+          filter: brightness(0) invert(1);
+        }
+      }
+    }
+  
+    .filter_icon {
+      width: 30px;
+      height: 30px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-bottom: 0.25rem;
+    }
+  
+    .filter_title {
+      font-size: 0.85rem;
+      text-align: center;
+    }
+  }
+  
+  // Add specific icon classes here if needed, e.g.:
+  .icon_Misc { background-image: url('path-to-Misc-icon.svg'); }
+  .icon_Turkish { background-image: url('path-to-Turkish-icon.svg'); }
+  .icon_FilteredCoffee { background-image: url('path-to-FilteredCoffee-icon.svg'); }  
+  .icon_MokaPot  { background-image: url('path-to-MokaPot-icon.svg'); }
+  .icon_ AutomaticMachines { background-image: url('path-to- AutomaticMachines-icon.svg'); }
+  .icon_Espresso { background-image: url('path-to-Espresso-icon.svg'); }
+  .icon_Cappuccino { background-image: url('path-to-Cappuccino-icon.svg'); }
+  

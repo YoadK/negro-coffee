@@ -1,107 +1,79 @@
-import { isValidObjectId, Types } from 'mongoose';
-import { ICategoryModel } from "../3-models/Icategory-model";
-import { IProductModel } from "../3-models/Iproduct-model";
-import { IProductCategoryModel } from "../3-models/IproductCategory-Model";
-import { ProductWithCategories } from "../3-models/IproductsWithCategories";
+import { IProductWithCategoriesModel } from '../3-models/IProductWithCategories-model';
+import mongoose from 'mongoose';
 
 class ProductsCategoriesService {
-
-
-    // New method to get products by category
-    public async getProductsByCategory(categoryId: string): Promise<IProductModel[]> {
+    async createOrUpdateProduct(productData: Partial<mongoose.Document & IProductWithCategoriesModel>): Promise<mongoose.Document & IProductWithCategoriesModel> {
         try {
-
-            // Validate that the categoryId is a valid ObjectId
-            if (!isValidObjectId(categoryId)) {
-                throw new Error("Invalid categoryId format");
+            if (!productData.name) {
+                throw new Error("Product name is required");
             }
 
-            // logging '' before using it    
-            console.log("Received categoryId:", categoryId);
+            let product = await IProductWithCategoriesModel.findOne({ name: productData.name });
 
-
-            // 1. Retrieves all product-category relations where the specified 'categoryId' is present in the 'categoryIds' array of each document.
-            const objectId = new Types.ObjectId(categoryId);
-            console.log("Converted ObjectId:", objectId);  // Debugging: Log the ObjectId
-
-
-            // Find relations for the given category
-            const relations = await IProductCategoryModel.find({ categoryIds: objectId }).lean();
-
-            console.log("Query explanation: Finding all product-category relationships where the specified category ID is associated with products.");
-            console.log("Query results:");
-            console.log(JSON.stringify(relations, null, 2));
-
-
-
-            if (relations.length === 0) {
-                console.log("No relations found for this category");
-                return [];
+            if (product) {
+                // Update existing product
+                Object.assign(product, productData);
+                await product.save();
+            } else {
+                // Create new product
+                product = new IProductWithCategoriesModel(productData);
+                await product.save();
             }
 
-            // 2. This line extracts just the productId from each relation document - It creates a new array (productIds) containing only the product IDs
-            const productIds = relations.map(relation => relation.productId);
-            console.log("Product IDs:", productIds);  // Debugging: Log the extracted product IDs
-
-            // 3. Find the products using the extracted product IDs
-
-            // Fetch products using the extracted product IDs
-            const products = await IProductModel.find({ _id: { $in: productIds } }).lean(); //Tells Mongoose to return plain JavaScript objects instead of full Mongoose documents. This can improve performance
-            // Debugging: Log the final products array
-            console.log("Products:", JSON.stringify(products, null, 2));
-
-            return products;
+            return product;
         } catch (error) {
-            console.error("Error fetching products by category:", error);
+            console.error("Error creating or updating product:", error);
             throw error;
         }
     }
 
-
-    // New method to get all products with their categories- find all products associated with a given category.
-    public async getAllProductsWithCategories(): Promise<ProductWithCategories[]> {
+    async findProductById(productId: string): Promise<mongoose.Document & IProductWithCategoriesModel | null> {
         try {
-            // 1. Fetch all products
-            const products = await IProductModel.find();
-
-            // 2. Fetch all product-category relations
-            const relations = await IProductCategoryModel.find();
-
-            // 3. Fetch all categories
-            const categories = await ICategoryModel.find();
-
-            // 4. Combine products with their categories
-            const productsWithCategories = products.map(product => {
-                // a. Find categories for this product
-                const productRelation = relations.find(rel =>
-                    rel.productId.toString() === product._id.toString()
-                );
-                const productCategories = productRelation
-                    ? categories.filter(category =>
-                        productRelation.categoryIds.some(id => id.toString() === category._id.toString())
-                    )
-                    : [];
-
-                // b. Combine product data with its categories
-                return {
-                    _id: product._id.toString(),
-                    name: product.name,
-                    description: product.description,
-                    product_weight_grams: product.product_weight_grams,
-                    price: product.price,
-                    imageName: product.imageName,
-                    imageUrl: product.imageUrl,
-                    categories: productCategories // This is already ICategoryModel[]. this line is not a type declaration, but an actual assignment of data.
-                } as ProductWithCategories; //tell TypeScript that this entire object should conform to the ProductWithCategories interface, which includes the categories: ICategoryModel[] type declaration.
-            });
-
-            return productsWithCategories;
+            const product = await IProductWithCategoriesModel.findById(productId).populate('categories');
+            return product;
         } catch (error) {
-            console.error("Error fetching products with categories:", error);
+            console.error("Error finding product by ID:", error);
             throw error;
         }
     }
 
-}//ProductsCategoriesService END
+    async deleteProduct(productId: string): Promise<boolean> {
+        try {
+            const result = await IProductWithCategoriesModel.findByIdAndDelete(productId);
+            return result !== null;
+        } catch (error) {
+            console.error("Error deleting product:", error);
+            throw error;
+        }
+    }
+
+    async addCategoryToProduct(productId: string, categoryId: string): Promise<mongoose.Document & IProductWithCategoriesModel | null> {
+        try {
+            const updatedProduct = await IProductWithCategoriesModel.findByIdAndUpdate(
+                productId,
+                { $addToSet: { categories: categoryId } },
+                { new: true, runValidators: true }
+            ).populate('categories');
+            return updatedProduct;
+        } catch (error) {
+            console.error("Error adding category to product:", error);
+            throw error;
+        }
+    }
+
+    async removeCategoryFromProduct(productId: string, categoryId: string): Promise<mongoose.Document & IProductWithCategoriesModel | null> {
+        try {
+            const updatedProduct = await IProductWithCategoriesModel.findByIdAndUpdate(
+                productId,
+                { $pull: { categories: categoryId } },
+                { new: true }
+            ).populate('categories');
+            return updatedProduct;
+        } catch (error) {
+            console.error("Error removing category from product:", error);
+            throw error;
+        }
+    }
+}
 
 export const productsCategoriesService = new ProductsCategoriesService();

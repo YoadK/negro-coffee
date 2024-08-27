@@ -1,54 +1,69 @@
-import express, { NextFunction, Request, Response } from "express";
-import { categoriesService } from "../5-services/categories-service";
-import { productsCategoriesService } from "../5-services/products-categories-service";
+import { Request, Response } from 'express';
+import { productsCategoriesService } from '../5-services/products-categories-service';
 
-
-// Product controller:
 class ProductsCategoriesController {
-
-    // Create a router object for listening to HTTP requests:
-    public readonly router = express.Router();
-
-    // Register routes once: 
-    public constructor() {
-        this.registerRoutes();
-    }
-
-    // Register routes:
-    private registerRoutes(): void {
-       
-        this.router.get("/products/category/:categoryId", this.getProductsByCategory);
-        this.router.get("/products-with-categories", this.getAllProductsWithCategories);
-
-    }
-
-    
-    // GET http://localhost:4000/api/products/category/:categoryId
-    private async getProductsByCategory(request: Request, response: Response, next: NextFunction): Promise<void> {
+    async handleCreateOrUpdateProduct(req: Request, res: Response) {
         try {
-            const categoryId = request.params.categoryId;
-            console.log("Controller received categoryId:", categoryId);
-            const filteredProducts = await productsCategoriesService.getProductsByCategory(categoryId);
-            console.log("Controller sending response:", JSON.stringify(filteredProducts, null, 2));
-            response.json(filteredProducts);
-        }
-        catch (err: any) {
-            console.error("Controller error:", err);
-            next(err);
+            const product = await productsCategoriesService.createOrUpdateProduct(req.body);
+            res.status(200).json(product);
+        } catch (error) {
+            res.status(500).json({ message: error.message });
         }
     }
 
-
-    private async getAllProductsWithCategories(request: Request, response: Response, next: NextFunction): Promise<void> {
+    async handleFindProductById(req: Request, res: Response) {
         try {
-            const productsWithCategories = await productsCategoriesService.getAllProductsWithCategories();
-            response.json(productsWithCategories);
+            const product = await productsCategoriesService.findProductById(req.params.id);
+            if (product) {
+                res.status(200).json(product);
+            } else {
+                res.status(404).json({ message: "Product not found" });
+            }
+        } catch (error) {
+            res.status(500).json({ message: error.message });
         }
-        catch (err: any) { 
-            next(err); 
+    }
+
+    async handleDeleteProduct(req: Request, res: Response) {
+        try {
+            const deleted = await productsCategoriesService.deleteProduct(req.params.id);
+            if (deleted) {
+                res.status(200).json({ message: "Product deleted successfully" });
+            } else {
+                res.status(404).json({ message: "Product not found" });
+            }
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+
+    async handleAddCategoryToProduct(req: Request, res: Response) {
+        try {
+            const { productId, categoryId } = req.body;
+            const updatedProduct = await productsCategoriesService.addCategoryToProduct(productId, categoryId);
+            if (updatedProduct) {
+                res.status(200).json(updatedProduct);
+            } else {
+                res.status(404).json({ message: "Product not found" });
+            }
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+
+    async handleRemoveCategoryFromProduct(req: Request, res: Response) {
+        try {
+            const { productId, categoryId } = req.body;
+            const updatedProduct = await productsCategoriesService.removeCategoryFromProduct(productId, categoryId);
+            if (updatedProduct) {
+                res.status(200).json(updatedProduct);
+            } else {
+                res.status(404).json({ message: "Product not found" });
+            }
+        } catch (error) {
+            res.status(500).json({ message: error.message });
         }
     }
 }
 
-const productsCategoriesController = new ProductsCategoriesController();
-export const productsCategoriesRouter  = productsCategoriesController.router;
+export const productsCategoriesController = new ProductsCategoriesController();

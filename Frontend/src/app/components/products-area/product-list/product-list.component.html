@@ -1,6 +1,19 @@
-<div class="product-list-container">
+<!-- <div class="product-list-container">
+    <app-products-filter></app-products-filter>
     <app-product-card 
         *ngFor="let product of products$ | async" 
         [product]="product">
     </app-product-card>
-</div>
+</div> -->
+
+
+<!-- new html structure (August 2024) -->
+<div class="product-list-container">
+    <app-products-filter (categorySelected)="onCategorySelected($event)"></app-products-filter>
+    <div class="products-wrapper">
+      <app-product-card 
+        *ngFor="let product of (products$ | async)"
+        [product]="product">
+      </app-product-card>
+    </div>
+  </div>

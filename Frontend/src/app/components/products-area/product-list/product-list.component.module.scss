@@ -1,10 +1,160 @@
-
 .product-list-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center; // This will distribute space evenly between the cards
-    align-items: flex-start;
-    gap: 15px;
-    margin-bottom: 20px;
-    overflow: visible;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    width: 100%;
+
+    app-products-filter {
+        // width: 100%;
+        // display: flex;
+        // justify-content: center;
+        // margin: 1.25rem 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1.5rem 0;
+    }
+
+    .products-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.25rem;
+        width: 100%;
+        max-width: 1600px;
+    }
+
+    app-product-card {
+        flex: 1 1 calc(20% - 1.25rem);
+        min-width: 180px;
+        max-width: calc(20% - 1.25rem);
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.25rem;
+    }
+}
+
+@media (max-width: 1400px) {
+    .product-list-container app-product-card {
+        flex: 1 1 calc(25% - 1.25rem);
+        max-width: calc(25% - 1.25rem);
+    }
+}
+
+@media (max-width: 1100px) {
+    .product-list-container app-product-card {
+        flex: 1 1 calc(33.333% - 1.25rem);
+        max-width: calc(33.333% - 1.25rem);
+    }
+}
+
+@media (max-width: 800px) {
+    .product-list-container {
+        padding: 0 0.75rem;
+    }
+    .product-list-container .products-wrapper {
+        gap: 0.75rem;
+    }
+    .product-list-container app-product-card {
+        flex: 1 1 calc(50% - 0.75rem);
+        max-width: calc(50% - 0.75rem);
+    }
+}
+
+@media (max-width: 500px) {
+    .product-list-container app-product-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+::ng-deep app-product-card {
+    .card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 0.6rem;
+        box-sizing: border-box;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+    }
+
+    .card-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-name {
+        font-weight: bold;
+        margin-bottom: 0.2rem;
+        font-size: 0.85rem;
+        line-height: 1.2;
+    }
+
+    .product-description {
+        margin-bottom: 0.2rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+
+    .product-quantity-price {
+        font-weight: bold;
+        margin-bottom: 0.2rem;
+        font-size: 0.85rem;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 130px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        margin-bottom: 0.2rem;
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .card-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0.2rem;
+        padding-top: 0.2rem;
+        border-top: 1px solid #e0e0e0;
+
+        app-quantity-selector {
+            flex: 1;
+            margin-right: 0.4rem;
+        }
+
+        button {
+            padding: 0.35rem 0.7rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 0.75rem;
+
+            &:disabled {
+                background-color: #cccccc;
+                cursor: not-allowed;
+            }
+        }
+    }
 }

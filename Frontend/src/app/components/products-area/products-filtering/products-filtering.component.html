@@ -1,51 +1,19 @@
-<div class="filters_item">
-    <a href="#" aria-label="filter all products">
-      <div class="click_to_filter_cat" data-cat="all">
-        <div class="filter_icon icon_all"></div>
-        <div class="filter_title">All Categories</div>
-      </div>
-    </a>
-    <a href="#" aria-label="filter by espresso">
-      <div class="" data-filter="product_cat-espresso">
-        <div class="filter_icon icon_espresso"></div>
-        <div class="filter_title">Espresso</div>
-      </div>
-    </a>
-    <a href="#" aria-label="filter by automatic machines">
-      <div class="" data-filter="product_cat-automatic-machines">
-        <div class="filter_icon icon_machine"></div>
-        <div class="filter_title">Automatic Machines</div>
-      </div>
-    </a>
-    <a href="#" aria-label="filter by cappuccino">
-      <div class="" data-filter="product_cat-cappuccino">
-        <div class="filter_icon icon_cappuccino"></div>
-        <div class="filter_title">Cappuccino</div>
-      </div>
-    </a>
-    <a href="#" aria-label="filter by moka pot">
-      <div class="" data-filter="product_cat-moka-pot">
-        <div class="filter_icon icon_moka"></div>
-        <div class="filter_title">Moka Pot</div>
-      </div>
-    </a>
-    <a href="#" aria-label="filter by filter coffee">
-      <div class="" data-filter="product_cat-filter-coffee">
-        <div class="filter_icon icon_filter"></div>
-        <div class="filter_title">Filter Coffee</div>
-      </div>
-    </a>
-    <a href="#" aria-label="filter by turkish">
-      <div class="" data-filter="product_cat-turkish">
-        <div class="filter_icon icon_turkish"></div>
-        <div class="filter_title">Turkish</div>
-      </div>
-    </a>
-    <a href="#" aria-label="filter by misc">
-      <div class="" data-filter="product_cat-misc">
-        <div class="filter_icon icon_misc"></div>
-        <div class="filter_title">Misc</div>
-      </div>
-    </a>
+<div class="category-filter">
+    <div class="filter-label">סינון לפי קטגוריה</div>
+    <div class="filters_item">
+      <a href="#" (click)="onCategoryClick('all', $event)" aria-label="filter all products">
+        <div class="click_to_filter_cat" [class.active]="selectedCategory === 'all'" data-cat="all">
+          <div class="filter_icon icon_all"></div>
+          <div class="filter_title">All Categories</div>
+        </div>
+      </a>
+      <ng-container *ngFor="let category of categories">
+        <a href="#" (click)="onCategoryClick(category._id, $event)" [attr.aria-label]="'filter by ' + category.name">
+          <div class="" [class.active]="selectedCategory === category._id" [attr.data-filter]="'product_cat-' + category.name.toLowerCase().replace(' ', '-')">
+            <div class="filter_icon" [ngClass]="'icon_' + category.name.toLowerCase().replace(' ', '_')"></div>
+            <div class="filter_title">{{ category.name }}</div>
+          </div>
+        </a>
+      </ng-container>
+    </div>
   </div>
-  
