@@ -16,9 +16,7 @@ async function populateProductWithCategories() {
 
         for (const product of products) {
             try {
-                // Here, we assume that the original IProductModel already has a categories field
-                // If not, you'll need to implement logic to determine which categories belong to each product
-
+               
                 // Fetch full category details
                 const categories = await ICategoryModel.find({ _id: { $in: product.categories } });
 
