@@ -5,19 +5,27 @@ import { IProductModel } from "../3-models/Iproduct-model";
 import mongoose, { ObjectId } from "mongoose";
 import { UploadedFile } from "express-fileupload";
 import { Conflict } from 'http-errors';
+import { productsCategoriesService } from '../5-services/products-categories-service';
+
 
 class ProductsService {
 
     // get All products
     public async getAllProducts(): Promise<IProductModel[]> {
-        const products = await IProductModel.find().exec();
-        return products.map(product => {
-            if (!product.imageName || !product.imageUrl) {
-                product.imageName = 'default-image.jpg';
-                product.imageUrl = `${environment.BASE_IMAGE_URL}default-image.jpg`;
-            }
-            return product;
-        });
+        try {
+            const products = await IProductModel.find().exec();
+            return products.map(product => {
+                if (!product.imageName || !product.imageUrl) {
+                    product.imageName = 'default-image.jpg';
+                    product.imageUrl = `${environment.BASE_IMAGE_URL}default-image.jpg`;
+                }
+                return product;
+            });
+        }
+        catch (err: any) {
+            console.error("Error getting all products:", err);
+            throw err;
+        }
     }
 
     //get  a product by name
@@ -25,12 +33,19 @@ class ProductsService {
         return IProductModel.findOne({ name }).exec();
     }
 
+
     public async getOneProductById(id: string): Promise<IProductModel | null> {
-        const product = await IProductModel.findById(id).exec();
-        if (!product) {
-            throw new ValidationError("Product not found");
+        try {
+            const product = await IProductModel.findById(id).exec();
+            if (!product) {
+                throw new ValidationError("Product not found");
+            }
+            return product;
         }
-        return product;
+        catch (err: any) {
+            console.error("Error getting product by ID:", err);
+            throw err;
+        }
     }
 
 
@@ -66,6 +81,10 @@ class ProductsService {
             }
             // Save the new product to the database
             await newProduct.save();
+
+             // Sync with 'ProductWithCategories' collection (through 'IProductWithCategories-model.ts' model)
+             await productsCategoriesService.syncProductWithCategories(newProduct._id.toString());
+
             // Return the added product
             return newProduct;
         } catch (err: any) {
@@ -77,15 +96,15 @@ class ProductsService {
     public async updateProduct(product: IProductModel): Promise<IProductModel> {
         try {
             console.log("Updating product with ID:", product._id);
-            
+
             // Fetch the existing product from the database
             const existingProduct = await IProductModel.findById(product._id);
-            
+
             // If the product doesn't exist, throw a ResourceNotFoundError
             if (!existingProduct) throw new ResourceNotFoundError(product._id.toString());
-            
+
             console.log("Existing product:", existingProduct);
-    
+
             // Update basic product fields using Object.assign for cleaner code
             Object.assign(existingProduct, {
                 name: product.name,
@@ -93,7 +112,7 @@ class ProductsService {
                 product_weight_grams: product.product_weight_grams,
                 price: product.price
             });
-    
+
             // Handle image update
             if (product.image && product.image instanceof Object && 'name' in product.image) {
                 // If a new image is provided, update the product's image
@@ -102,22 +121,28 @@ class ProductsService {
                 // If no new image is provided and the current image is not the default, revert to default
                 this.revertToDefaultImage(existingProduct);
             }
-    
+
             // Validate the updated product
             await existingProduct.validate();
-            
+
             // Save and return the updated product
-            return await existingProduct.save();
+            const updatedProduct=  await existingProduct.save();
+
+            // Sync with 'ProductWithCategories' collection (through 'IProductWithCategories-model.ts' model)
+            await productsCategoriesService.syncProductWithCategories(product._id.toString());
+
+            return updatedProduct;
+
         } catch (err: any) {
             console.error("Error updating product:", err);
             throw err;
         }
     }
-    
+
     private async updateProductImage(existingProduct: IProductModel, imageFile: UploadedFile): Promise<void> {
         try {
             let imageName: string;
-            
+
             if (existingProduct.imageName === 'default-image.jpg') {
                 // If the current image is the default, add the new image
                 imageName = await fileSaver.add(imageFile);
@@ -125,13 +150,13 @@ class ProductsService {
                 // If it's not the default, update the existing image
                 imageName = await fileSaver.update(existingProduct.imageName, imageFile);
             }
-            
+
             // Update the product with the new image details
             existingProduct.imageName = imageName;
             existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}${imageName}`;
         } catch (err) {
             console.error(`Failed to update/add image for ${existingProduct.imageName}:`, err);
-            
+
             // If update fails, try to add the image as a new file
             try {
                 const newImageName = await fileSaver.add(imageFile);
@@ -144,13 +169,13 @@ class ProductsService {
             }
         }
     }
-    
+
     private revertToDefaultImage(existingProduct: IProductModel): void {
         // Set the product's image to the default
         existingProduct.imageName = 'default-image.jpg';
         existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}default-image.jpg`;
     }
-    
+
     //delete product:
     public async deleteProduct(_id: string): Promise<void> {
         try {
@@ -165,6 +190,9 @@ class ProductsService {
 
                 // Delete the product from the database
                 await IProductModel.findByIdAndDelete(_id).exec();
+
+                // Sync with 'ProductWithCategories' collection (through 'IProductWithCategories-model.ts' model)
+             await productsCategoriesService.syncProductWithCategories(_id.toString());
             }
         }
         catch (err: any) {

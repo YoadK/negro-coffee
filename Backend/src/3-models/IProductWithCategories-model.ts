@@ -25,4 +25,5 @@ const ProductWithCategoriesSchema = new Schema<IProductWithCategories>({
 });
 
 export const IProductWithCategoriesModel = mongoose.model<IProductWithCategories>('ProductWithCategories', ProductWithCategoriesSchema);
-
+// IProductWithCategories: This is an interface that defines the structure of a product with categories. provides type checking and autocompletion in your TypeScript code.
+// IProductWithCategoriesModel: This is the Mongoose model created from the schema. used for database operations.
