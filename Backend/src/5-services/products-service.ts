@@ -82,9 +82,7 @@ class ProductsService {
             // Save the new product to the database
             await newProduct.save();
 
-             // Sync with 'ProductWithCategories' collection (through 'IProductWithCategories-model.ts' model)
-             await productsCategoriesService.syncProductWithCategories(newProduct._id.toString());
-
+            
             // Return the added product
             return newProduct;
         } catch (err: any) {
@@ -191,8 +189,8 @@ class ProductsService {
                 // Delete the product from the database
                 await IProductModel.findByIdAndDelete(_id).exec();
 
-                // Sync with 'ProductWithCategories' collection (through 'IProductWithCategories-model.ts' model)
-             await productsCategoriesService.syncProductWithCategories(_id.toString());
+              // After deleting the product, remove its category associations
+            await productsCategoriesService.handleProductDeletion(_id);
             }
         }
         catch (err: any) {

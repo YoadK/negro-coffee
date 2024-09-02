@@ -18,21 +18,20 @@ export class CategoriesService {
 
 
 
+   
+
+  
+
     async getAllCategories(): Promise<CategoryModel[]> {
         try {
-            const allCategories = await lastValueFrom(this.http.get<CategoryModel[]>(`${appConfig.categoriesUrl}`));
-            return allCategories;
+          const categories = await lastValueFrom(this.http.get<CategoryModel[]>(`${appConfig.categoriesUrl}`));
+          console.log('Fetched categories:', categories.length);
+          return categories;
+        } catch (error) {
+          this.handleError(error);
+          throw error;
         }
-        catch (error) {
-            this.handleError(error);
-            throw error;
-        }
-    }
-
-    async getProductsByCategory(categoryId: string): Promise<ProductModel[]> {
-        return await lastValueFrom(this.http.get<ProductModel[]>(`${appConfig.productsUrl}category/${categoryId}`));
-    }
-
+      }
 
     private handleError(error: any) {
         let errorMessage = 'An unknown error occurred!';

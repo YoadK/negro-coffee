@@ -7,7 +7,9 @@ import { SpinnerLoadingService } from '../../../services/spinner.loading.service
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CategoryFilterComponent } from "../../SharedArea/products-filter/products-filter.component";
 import { ProductsCategoriesService } from '../../../services/products-categories.service';
-import { ProductWithCategories } from '../../../models/productsWithCategories';
+import { ProductModel } from '../../../models/product.model';
+import { ProductCategoryModel } from '../../../models/product.category.Model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-product-list',
@@ -16,28 +18,39 @@ import { ProductWithCategories } from '../../../models/productsWithCategories';
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.module.scss'
 })
-export class ProductListComponent implements OnInit {    
-    private productsSubject = new BehaviorSubject<ProductWithCategories[]>([]);
-    products$: Observable<ProductWithCategories[]> = this.productsSubject.asObservable();
-    private allProducts: ProductWithCategories[] = [];
+export class ProductListComponent implements OnInit {
+    private productsSubject = new BehaviorSubject<ProductModel[]>([]);
+    products$: Observable<ProductModel[]> = this.productsSubject.asObservable();
+    private allProductAssociations: ProductCategoryModel[] = [];
+    categoryId: string | null = null;
 
     constructor(
         private title: Title,
         private productsCategoriesService: ProductsCategoriesService,
-        private spinnerLoadingService: SpinnerLoadingService
-    ) {}
+        private spinnerLoadingService: SpinnerLoadingService,
+        private route: ActivatedRoute
+    ) { }
 
     public async ngOnInit(): Promise<void> {
         try {
             this.title.setTitle("Negro's espresso shop | Products");
-            console.log('Calling getAllProductsWithCategories()');
-            
+            console.log('Initializing ProductListComponent');
+
             this.spinnerLoadingService.setLoading(true);
-            
-            this.allProducts = await this.productsCategoriesService.getAllProductsWithCategories();
-            this.productsSubject.next(this.allProducts);
+
+            // Get category ID from route parameter
+            this.categoryId = this.route.snapshot.paramMap.get('categoryId');
+            console.log('Category ID from route:', this.categoryId);
+
+            // Fetch all product-category associations
+            this.allProductAssociations = await this.productsCategoriesService.getAllProductCategoryAssociations();
+            console.log('All product-category associations loaded:', this.allProductAssociations.length);
+
+            // Filter and fetch products based on the initial category (if any)
+            await this.filterAndFetchProducts(this.categoryId);
         }
-        catch(err: any) {
+        catch (err: any) {
+            console.error('Error initializing ProductListComponent:', err);
             alert(err.message);
         }
         finally {
@@ -45,14 +58,49 @@ export class ProductListComponent implements OnInit {
         }
     }
 
-    onCategorySelected(categoryId: string | null): void {
-        if (categoryId === null) {
-            this.productsSubject.next(this.allProducts);
-        } else {
-            const filteredProducts = this.allProducts.filter(product => 
-                product.categories.some(category => category._id.toString() === categoryId)
+    async onCategorySelected(categoryId: string | null): Promise<void> {
+        console.log('Category selected:', categoryId);
+        this.categoryId = categoryId;
+        await this.filterAndFetchProducts(categoryId);
+    }
+
+    //filterAndFetchProducts-
+    /* It first filters the allProductAssociations based on the selected category 
+    (or uses all associations if no category is selected).
+    Then, it fetches the full product details for each relevant product ID.
+    Finally, it updates the productsSubject with the fetched products */
+    private async filterAndFetchProducts(categoryId: string | null): Promise<void> {
+        this.spinnerLoadingService.setLoading(true);
+        try {
+            let relevantAssociations: ProductCategoryModel[];
+
+            if (categoryId === null) {
+                console.log('Showing all products');
+                relevantAssociations = this.allProductAssociations;
+            } else {
+                console.log('Filtering products for category:', categoryId);
+                relevantAssociations = this.allProductAssociations.filter(
+                    assoc => assoc.categoryIds.includes(categoryId)
+                );
+            }
+
+            console.log('Relevant associations found:', relevantAssociations.length);
+
+            // Fetch product details for each relevant association
+            const productPromises = relevantAssociations.map(assoc =>
+                this.productsCategoriesService.getProductDetails(assoc.productId)
             );
-            this.productsSubject.next(filteredProducts);
+
+            const products = await Promise.all(productPromises);
+            console.log('Fetched product details:', products.length);
+
+            // Update the BehaviorSubject with the new products
+            this.productsSubject.next(products);
+        } catch (error) {
+            console.error('Error filtering and fetching products:', error);
+            alert('An error occurred while loading products. Please try again.');
+        } finally {
+            this.spinnerLoadingService.setLoading(false);
         }
     }
 }

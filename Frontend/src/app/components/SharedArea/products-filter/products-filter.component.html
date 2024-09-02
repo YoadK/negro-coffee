@@ -1,8 +1,6 @@
 <div class="category-filter">
-    <button 
-      *ngFor="let category of categories" 
-      (click)="onCategoryClick(category._id)"
-      class="category-button">
-      {{ category.name }}
+    <a [routerLink]="['/products']" (click)="onCategoryClick(null)">All Products</a>
+    <button *ngFor="let category of categories" (click)="onCategoryClick(category._id)" class="category-button">
+        {{ category.name }}
     </button>
-  </div>
+</div>

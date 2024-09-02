@@ -1,168 +1,89 @@
-import { IProductWithCategories, IProductWithCategoriesModel } from '../3-models/IProductWithCategories-model';
 import { IProductModel } from '../3-models/Iproduct-model';
 import { ICategoryModel } from '../3-models/Icategory-model';
-import { ValidationError, ResourceNotFoundError } from '../3-models/client-errors';
-import mongoose from 'mongoose';
+import { IProductWithCategories, IProductWithCategoriesModel } from '../3-models/IProductWithCategories-model';
+import { ResourceNotFoundError } from '../3-models/client-errors';
+import mongoose, { Types } from 'mongoose';
+
 
 class ProductsCategoriesService {
 
-    async createOrUpdateProduct(productData: Partial<IProductWithCategories>): Promise<IProductWithCategories> {
-        try {
-            if (!productData.name) {
-                throw new ValidationError("Product name is required");
-            }
 
-            let product = await IProductWithCategoriesModel.findOne({ name: productData.name });
-
-            if (product) {
-                Object.assign(product, productData);
-                await product.save();
-            } else {
-                product = new IProductWithCategoriesModel(productData);
-                await product.save();
-            }
-
-            return product;
-        } catch (error) {
-            console.error("Error creating or updating product:", error);
-            throw error;
-        }
+    async getAllProductCategoryAssociations(): Promise<IProductWithCategories[]> {
+        return IProductWithCategoriesModel.find();
     }
 
-    async findProductById(productId: string): Promise<IProductWithCategories | null> {
-        try {
-            return await IProductWithCategoriesModel.findById(productId).populate('categories');
-        } catch (error) {
-            console.error("Error finding product by ID:", error);
-            throw error;
-        }
+    async getProductsByCategoryId(categoryId: string): Promise<IProductModel[]> {
+        const productRelations = await IProductWithCategoriesModel.find({ categoryIds: categoryId });
+        const productIds = productRelations.map(relation => relation.productId);
+        return IProductModel.find({ _id: { $in: productIds } });
     }
 
-    async deleteProduct(productId: string): Promise<boolean> {
-        try {
-            const result = await IProductWithCategoriesModel.findByIdAndDelete(productId);
-            return !!result;
-        } catch (error) {
-            console.error("Error deleting product:", error);
-            throw error;
+   
+
+
+    async updateProductCategories(productId: string, categoryIds: string[]): Promise<IProductWithCategories> {
+        const product = await IProductModel.findById(productId);
+        if (!product) {
+            throw new ResourceNotFoundError(productId);
         }
-    }
 
-    async addCategoryToProduct(productId: string, categoryId: string): Promise<IProductWithCategories | null> {
-        try {
-            const product = await IProductWithCategoriesModel.findByIdAndUpdate(
-                productId,
-                { $addToSet: { categories: categoryId } },
-                { new: true }
-            ).populate('categories');
+             // Convert string IDs to ObjectIds
+             // We're converting string IDs to ObjectId types using new Types.ObjectId(id).
+             const categoryObjectIds = categoryIds.map(id => new Types.ObjectId(id));
 
-            if (!product) {
-                throw new ResourceNotFoundError(productId);
-            }
-
-            return product;
-        } catch (error) {
-            console.error("Error adding category to product:", error);
-            throw error;
+         let productCategories: IProductWithCategories | null = await IProductWithCategoriesModel.findOne({ productId });
+        if (!productCategories) {
+            productCategories = new IProductWithCategoriesModel({ 
+                productId: new Types.ObjectId(productId), 
+                categoryIds: categoryObjectIds 
+            });
+        } else {
+            productCategories.categoryIds = categoryObjectIds;
         }
-    }
 
-    async removeCategoryFromProduct(productId: string, categoryId: string): Promise<IProductWithCategories | null> {
-        try {
-            const product = await IProductWithCategoriesModel.findByIdAndUpdate(
-                productId,
-                { $pull: { categories: categoryId } },
-                { new: true }
-            ).populate('categories');
-
-            if (!product) {
-                throw new ResourceNotFoundError(productId);
-            }
-
-            return product;
-        } catch (error) {
-            console.error("Error removing category from product:", error);
-            throw error;
-        }
-    }
-
-    async updateProductCategories(productId: string, categories: string[]): Promise<IProductWithCategories | null> {
-        try {
-            const product = await IProductWithCategoriesModel.findByIdAndUpdate(
-                productId,
-                { $set: { categories: categories } },
-                { new: true }
-            ).populate('categories');
-
-            if (!product) {
-                throw new ResourceNotFoundError(productId);
-            }
-
-            return product;
-        } catch (error) {
-            console.error("Error updating product categories:", error);
-            throw error;
-        }
+        await productCategories.save();
+        return productCategories;
     }
 
     async syncProductWithCategories(productId: string): Promise<void> {
-        try {
-            console.log(`Syncing product with ID: ${productId}`);
+        const product = await IProductModel.findById(productId);
+        if (!product) {
+            throw new ResourceNotFoundError(productId);
+        }
     
-            // Fetch the product from the products collection
-            const product = await IProductModel.findById(productId);
-            if (!product) {
-                console.log(`Product with ID ${productId} not found`);
-                throw new ResourceNotFoundError(productId);
+        let productCategories = await IProductWithCategoriesModel.findOne({ productId: new Types.ObjectId(productId) });
+        if (!productCategories) {
+            // If it's a new product, associate it with all categories
+            const allCategoryIds = await ICategoryModel.find().distinct('_id');
+            productCategories = new IProductWithCategoriesModel({
+                productId: new Types.ObjectId(productId),
+                categoryIds: allCategoryIds // This is already an array of ObjectIds
+            });
+        }
+        // If it's an existing product, we keep its current category associations
+    
+        await productCategories.save();
+        console.log(`Product with ID ${productId} synced with categories.`);
+    }
+
+
+    async handleProductDeletion(productId: string): Promise<void> {
+        console.log(`Handling deletion of product with ID: ${productId}`);
+        
+        try {
+            // Remove the product's entry from the productCategoryRelations collection
+            const result = await IProductWithCategoriesModel.findOneAndDelete({ productId });
+            
+            if (result) {
+                console.log(`Product ${productId} removed from category associations.`);
+            } else {
+                console.log(`No category associations found for product ${productId}.`);
             }
-    
-            // Fetch the categories associated with this product from the ProductWithCategories collection
-            const productWithCategories = await IProductWithCategoriesModel.findById(productId).populate<{ categories: ICategoryModel[] }>('categories');
-            const categoryIds = productWithCategories?.categories.map(cat=> cat._id) || [];
-    
-            // Fetch the full category objects
-            //const categories = await ICategoryModel.find({ _id: { $in: categoryIds } });
-            const categories = await ICategoryModel.find({ _id: { $in: categoryIds as mongoose.Types.ObjectId[] } });
-
-
-            console.log(`Found ${categories.length} categories for product`);
-    
-            // Create or update the entry in the ProductWithCategories collection
-            const updatedProduct = await IProductWithCategoriesModel.findOneAndUpdate(
-                { _id: productId },
-                {
-                    name: product.name,
-                    description: product.description,
-                    product_weight_grams: product.product_weight_grams,
-                    price: product.price,
-                    imageName: product.imageName,
-                    imageUrl: product.imageUrl,
-                    categories: categories.map(cat => ({
-                        _id: cat._id,
-                        name: cat.name,
-                        description: cat.description
-                    }))
-                },
-                { upsert: true, new: true }
-            );
-    
-            console.log(`Product with categories synced successfully: ${updatedProduct?._id}`);
         } catch (error) {
-            console.error("Error in syncProductWithCategories:", error);
+            console.error(`Error handling product deletion for ID ${productId}:`, error);
             throw error;
         }
     }
-
-    async removeProductFromProductWithCategories(productId: string): Promise<void> {
-        try {
-            await IProductWithCategoriesModel.findByIdAndDelete(productId);
-        } catch (error) {
-            console.error("Error removing product from ProductWithCategories:", error);
-            throw error;
-        }
-    }
-
-    
 }
 
 export const productsCategoriesService = new ProductsCategoriesService();
