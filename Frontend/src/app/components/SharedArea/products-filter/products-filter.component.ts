@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsCategoriesService } from '../../../services/products-categories.service';
 import { CategoriesService } from '../../../services/categories.service';
@@ -14,7 +14,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 export class CategoryFilterComponent implements OnInit {
   categories: any[] = [];
   @Output() categorySelected = new EventEmitter<string | null>();
-
+  @Input() productCount: number = 0;
   constructor( private categoriesService:CategoriesService) {}
 
   ngOnInit(): void {
@@ -34,4 +34,11 @@ export class CategoryFilterComponent implements OnInit {
     console.log('Category clicked:', categoryId);
     this.categorySelected.emit(categoryId);
   }
+
+  
+  // This method can be called from the parent component to update the product count
+  updateProductCount(count: number): void {
+    this.productCount = count;
+  }
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from '../product-card/product-card.component';
@@ -23,6 +23,10 @@ export class ProductListComponent implements OnInit {
     products$: Observable<ProductModel[]> = this.productsSubject.asObservable();
     private allProductAssociations: ProductCategoryModel[] = [];
     categoryId: string | null = null;
+    productCount: number = 0;
+
+
+    @ViewChild(CategoryFilterComponent) filterComponent: CategoryFilterComponent;
 
     constructor(
         private title: Title,
@@ -71,6 +75,7 @@ export class ProductListComponent implements OnInit {
     Finally, it updates the productsSubject with the fetched products */
     private async filterAndFetchProducts(categoryId: string | null): Promise<void> {
         this.spinnerLoadingService.setLoading(true);
+        
         try {
             let relevantAssociations: ProductCategoryModel[];
 
@@ -96,6 +101,12 @@ export class ProductListComponent implements OnInit {
 
             // Update the BehaviorSubject with the new products
             this.productsSubject.next(products);
+
+             // Update the product count
+             this.productCount = products.length;
+             if (this.filterComponent) {
+                 this.filterComponent.updateProductCount(this.productCount);
+             }
         } catch (error) {
             console.error('Error filtering and fetching products:', error);
             alert('An error occurred while loading products. Please try again.');
