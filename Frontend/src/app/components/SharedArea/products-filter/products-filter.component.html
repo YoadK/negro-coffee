@@ -1,21 +1,24 @@
 <div class="category-filter">
-    <div class="filter-label"><h6>סינון לפי קטגוריה</h6></div>
-    <a [routerLink]="['/products']" (click)="onCategoryClick(null)">
-        <img [src]="'../../../../assets/images/line_before_footer_1.png' "/>
-        כל הקטגוריות</a>
+    <div class="filter-label">
+        <h6>סינון לפי קטגוריה</h6>
+    </div>
 
-    <button *ngFor="let category of categories"
-            (click)="onCategoryClick(category._id)" 
-            class="category-button"
-            [ngClass]="getIconClass(category.name)">
-        <img [src]="'../../../../assets/icons/' + getIconClass(category.name) + '.png'" 
-             alt="{{ category.name }} icon" 
-             class="category-icon">
-             {{ getTranslatedCategoryName(category.name) }}
-    </button>
+    <div class="buttons-container">
+        <button class="all-categories-button" (click)="onCategoryClick(null)" [class.active]="!selectedCategory">
+            כל הקטגוריות
+        </button>
+
+        <button *ngFor="let category of categories" 
+                class="category-button" 
+                [ngClass]="getIconClass(category.name)"
+                (click)="onCategoryClick(category._id)"
+                [class.active]="category._id === selectedCategory">
+            <div class="category-icon"></div>
+            <span>{{ getTranslatedCategoryName(category.name) }}</span>
+        </button>
+    </div>
+
+    <div *ngIf="productCount > 0" class="product-count">
+        נמצאו {{ productCount }} מוצרים
+    </div>
 </div>
-
-<div class="product-count" *ngIf="productCount > 0">
-    נמצאו {{ productCount }} מוצרים
-</div>
-

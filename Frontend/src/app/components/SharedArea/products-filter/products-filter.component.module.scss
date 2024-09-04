@@ -1,30 +1,65 @@
 .category-filter {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
     margin-bottom: 20px;
+    width: 100%;
 
     .filter-label {
-        direction: rtl;
+        // direction: rtl;
         text-align: right;
-        flex: 1;
+        width: 100%;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .buttons-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+        justify-content: flex-end;
+
+        .all-categories-button {
+            order: -1; // This moves the button to the start (right side in RTL)
+            padding: 10px 15px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: bold;
+
+            &:hover {
+                background-color: #e0e0e0;
+                transform: scale(1.05);
+            }
+
+            &.active {
+                background-color: #007bff;
+                color: white;
+            }
+        }
     }
 }
 
 .category-button {
     display: flex;
-    flex-direction: column; /* Icon above text */
+    flex-direction: column;
     align-items: center;
     padding: 10px 15px;
     border: none;
     background-color: #f0f0f0;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
     text-align: center;
+    border-radius: 4px;
 
     &:hover {
         background-color: #e0e0e0;
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 
     &.active {
@@ -42,7 +77,7 @@
         font-size: 14px;
     }
 
-    // Icon-specific styles
+    // Icon-specific styles (unchanged)
     &.icon-misc .category-icon {
         content: url('../../../../assets/icons/icons8-cafe-building-48.png');
     }
@@ -68,4 +103,6 @@
 
 .product-count {
     margin-top: 20px;
+    width: 100%;
+    text-align: right;
 }
