@@ -18,17 +18,6 @@ class ProductsCategoriesController {
     }
 
 
-    //GET http://localhost:4000/api/products/category/:categoryId
-    private async getProductsByCategoryId(req: Request, res: Response, next: NextFunction) {
-        try {
-            console.info ("getProductsByCategoryId is being called")
-            const categoryId = req.params.categoryId;
-            const products = await productsCategoriesService.getProductsByCategoryId(categoryId);
-            res.json(products);
-        } catch (error) {
-            next(error);
-        }
-    }
 
 
 

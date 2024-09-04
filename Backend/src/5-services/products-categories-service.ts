@@ -12,11 +12,7 @@ class ProductsCategoriesService {
         return IProductWithCategoriesModel.find();
     }
 
-    async getProductsByCategoryId(categoryId: string): Promise<IProductModel[]> {
-        const productRelations = await IProductWithCategoriesModel.find({ categoryIds: categoryId });
-        const productIds = productRelations.map(relation => relation.productId);
-        return IProductModel.find({ _id: { $in: productIds } });
-    }
+   
 
    
 
