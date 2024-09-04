@@ -10,7 +10,7 @@ class ProductsCategoriesController {
     }
 
     private registerRoutes(): void {
-        this.router.get("/categories/:categoryId/products", this.getProductsByCategoryId); 
+       
         this.router.get("/products/categories", this.getAllProductCategoryAssociations);
 
         // TODO:  the 'updateProductCategories' method is meant for later Usage.
