@@ -29,16 +29,20 @@ export class ProductsService {
     }
   }
 
-  async getOneProduct(id: string): Promise<ProductModel> {
+  async getOneProduct(productId: string): Promise<ProductModel> {
     try {
-      const product = await lastValueFrom(this.http.get<ProductModel>(`${appConfig.productsUrl}${id}`));
+      const product = await lastValueFrom(this.http.get<ProductModel>(`${appConfig.productsUrl}${productId}`));
+      console.log('Fetched product details for:', productId);
       console.log('Fetched product:', product);
       return product;
     } catch (error) {
+        console.error('Error fetching product details:', error);
       this.handleError(error);
       throw error;
     }
   }
+
+  
 
   async addProduct(product: ProductModel): Promise<ProductModel> {
     const formData = new FormData();

@@ -21,8 +21,8 @@ export class SpinnerComponent {
     ) {
         this.isLoading$ = this.spinnerLoadingService.isLoading$.pipe(
             tap(isLoading => {
-                console.log('SpinnerComponent: Loading state changed:', isLoading);
-                console.log('SpinnerComponent: Current Time:', new Date().toISOString());
+                // console.log('SpinnerComponent: Loading state changed:', isLoading);
+                // console.log('SpinnerComponent: Current Time:', new Date().toISOString());
                 // Manually trigger change detection
                 this.cdr.detectChanges();
             }),

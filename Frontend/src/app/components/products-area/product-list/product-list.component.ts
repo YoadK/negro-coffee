@@ -5,13 +5,14 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 import { SpinnerComponent } from '../../SharedArea/spinner/spinner.component';
 import { SpinnerLoadingService } from '../../../services/spinner.loading.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-// import { CategoryFilterComponent } from "../../SharedArea/products-filter/products-filter.component";
 import { ProductsCategoriesService } from '../../../services/products-categories.service';
 import { ProductModel } from '../../../models/product.model';
 import { ProductCategoryModel } from '../../../models/product.category.Model';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsFilterComponent } from '../../SharedArea/products-filter/products-filter.component';
 import { CategoriesService } from '../../../services/categories.service';
+import { ProductsService } from '../../../services/products.service';
+
 
 @Component({
     selector: 'app-product-list',
@@ -33,7 +34,8 @@ export class ProductListComponent implements OnInit {
     constructor(
         private title: Title,
         private productsCategoriesService: ProductsCategoriesService,
-        private categoriesService: CategoriesService, // Inject CategoriesService here
+        private categoriesService: CategoriesService, 
+        private productsService: ProductsService,  
         private spinnerLoadingService: SpinnerLoadingService,
         private route: ActivatedRoute
     ) { }
@@ -100,7 +102,7 @@ export class ProductListComponent implements OnInit {
 
             // Fetch product details for each relevant association
             const productPromises = relevantAssociations.map(assoc =>
-                this.productsCategoriesService.getProductDetails(assoc.productId)
+                this.productsService.getOneProduct(assoc.productId)
             );
 
             const products = await Promise.all(productPromises);

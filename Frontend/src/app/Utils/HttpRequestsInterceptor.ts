@@ -37,7 +37,7 @@ export class HttpRequestsInterceptor implements HttpInterceptor {
       switchMap(() => next.handle(authRequest)),
       tap((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          console.log(`Response for ${event.url} with status ${event.status}`);
+        // console.log(`Response for ${event.url} with status ${event.status}`);
         }
       }),
       catchError((error: HttpErrorResponse) => {
@@ -46,9 +46,9 @@ export class HttpRequestsInterceptor implements HttpInterceptor {
       }),
       finalize(() => {
         this.totalRequests--;
-        console.log('Request finished. Total requests:', this.totalRequests);
+        // console.log('Request finished. Total requests:', this.totalRequests);
         if (this.totalRequests === 0) {
-          console.log('Setting loading to false');
+        //   console.log('Setting loading to false');
           this.spinnerLoadingService.setLoading(false);
         }
       })

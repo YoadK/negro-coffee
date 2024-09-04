@@ -11,7 +11,7 @@ export class SpinnerLoadingService {
 
   
     setLoading(isLoading: boolean) {
-        console.log(`SpinnerLoadingService: Setting loading to ${isLoading}`);
+        // console.log(`SpinnerLoadingService: Setting loading to ${isLoading}`);
         setTimeout(() => {
             this.isLoadingSubject.next(isLoading);
         }, 0);
