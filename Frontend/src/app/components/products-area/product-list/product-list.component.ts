@@ -5,16 +5,18 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 import { SpinnerComponent } from '../../SharedArea/spinner/spinner.component';
 import { SpinnerLoadingService } from '../../../services/spinner.loading.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CategoryFilterComponent } from "../../SharedArea/products-filter/products-filter.component";
+// import { CategoryFilterComponent } from "../../SharedArea/products-filter/products-filter.component";
 import { ProductsCategoriesService } from '../../../services/products-categories.service';
 import { ProductModel } from '../../../models/product.model';
 import { ProductCategoryModel } from '../../../models/product.category.Model';
 import { ActivatedRoute } from '@angular/router';
+import { ProductsFilterComponent } from '../../SharedArea/products-filter/products-filter.component';
+import { CategoriesService } from '../../../services/categories.service';
 
 @Component({
     selector: 'app-product-list',
     standalone: true,
-    imports: [CommonModule, ProductCardComponent, SpinnerComponent, CategoryFilterComponent],
+    imports: [CommonModule, ProductCardComponent, SpinnerComponent, ProductsFilterComponent],
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.module.scss'
 })
@@ -24,13 +26,14 @@ export class ProductListComponent implements OnInit {
     private allProductAssociations: ProductCategoryModel[] = [];
     categoryId: string | null = null;
     productCount: number = 0;
+    categories: any[] = [];
 
-
-    @ViewChild(CategoryFilterComponent) filterComponent: CategoryFilterComponent;
+     @ViewChild(ProductsFilterComponent) filterComponent: ProductsFilterComponent;    
 
     constructor(
         private title: Title,
         private productsCategoriesService: ProductsCategoriesService,
+        private categoriesService: CategoriesService, // Inject CategoriesService here
         private spinnerLoadingService: SpinnerLoadingService,
         private route: ActivatedRoute
     ) { }
@@ -49,6 +52,10 @@ export class ProductListComponent implements OnInit {
             // Fetch all product-category associations
             this.allProductAssociations = await this.productsCategoriesService.getAllProductCategoryAssociations();
             console.log('All product-category associations loaded:', this.allProductAssociations.length);
+
+            // Fetch categories and pass them to ProductsFilterComponent
+            this.categories = await this.categoriesService.getAllCategories();
+            console.log('Categories loaded:', this.categories.length);
 
             // Filter and fetch products based on the initial category (if any)
             await this.filterAndFetchProducts(this.categoryId);
@@ -104,9 +111,7 @@ export class ProductListComponent implements OnInit {
 
              // Update the product count
              this.productCount = products.length;
-             if (this.filterComponent) {
-                 this.filterComponent.updateProductCount(this.productCount);
-             }
+            
         } catch (error) {
             console.error('Error filtering and fetching products:', error);
             alert('An error occurred while loading products. Please try again.');
@@ -114,4 +119,10 @@ export class ProductListComponent implements OnInit {
             this.spinnerLoadingService.setLoading(false);
         }
     }
+
+
+    updateProductCount(count: number) {
+        this.productCount = count;
+    }
+    
 }

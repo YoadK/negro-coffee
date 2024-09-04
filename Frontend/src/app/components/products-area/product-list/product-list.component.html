@@ -1,6 +1,7 @@
 <div class="product-list-container">
     <app-products-filter 
-        (categorySelected)="onCategorySelected($event)"
+        (categorySelected)="onCategorySelected($event)"    
+        [categories]="categories"    
         [productCount]="productCount">
     </app-products-filter>
 

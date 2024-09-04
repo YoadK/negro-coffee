@@ -3,21 +3,69 @@
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
-  }
-  
-  .category-button {
+
+    .filter-label {
+        direction: rtl;
+        text-align: right;
+        flex: 1;
+    }
+}
+
+.category-button {
+    display: flex;
+    flex-direction: column; /* Icon above text */
+    align-items: center;
     padding: 10px 15px;
     border: none;
     background-color: #f0f0f0;
     cursor: pointer;
     transition: background-color 0.3s;
-  
+    text-align: center;
+
     &:hover {
-      background-color: #e0e0e0;
+        background-color: #e0e0e0;
+        transform: scale(1.1);
     }
-  
+
     &.active {
-      background-color: #007bff;
-      color: white;
+        background-color: #007bff;
+        color: white;
     }
-  }
+
+    .category-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 5px;
+    }
+
+    span {
+        font-size: 14px;
+    }
+
+    // Icon-specific styles
+    &.icon-misc .category-icon {
+        content: url('../../../../assets/icons/icons8-cafe-building-48.png');
+    }
+    &.icon-turkish .category-icon {
+        content: url('../../../../assets/icons/turkish_16913093.gif');
+    }
+    &.icon-filtered-coffee .category-icon {
+        content: url('../../../../assets/icons/coffee-filter.png');
+    }
+    &.icon-moka-pot .category-icon {
+        content: url('../../../../assets/icons/moka-pot_17204277.gif');
+    }
+    &.icon-automatic-machines .category-icon {
+        content: url('../../../../assets/icons/icons8-automatic-coffee-machine-64.png');
+    }
+    &.icon-espresso .category-icon {
+        content: url('../../../../assets/icons/espresso_14447795.gif');
+    }
+    &.icon-cappuccino .category-icon {
+        content: url('../../../../assets/icons/icons8-cappuccino-64.png');
+    }
+}
+
+.product-count {
+    margin-top: 20px;
+}
