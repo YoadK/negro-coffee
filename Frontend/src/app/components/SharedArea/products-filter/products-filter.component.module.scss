@@ -7,7 +7,7 @@
     width: 100%;
 
     .filter-label {
-        // direction: rtl;
+        direction: rtl;
         text-align: right;
         width: 100%;
         font-size: 1.2rem;
@@ -17,35 +17,15 @@
 
     .buttons-container {
         display: flex;
+        flex-direction: row-reverse; // This will align items from right to left
         flex-wrap: wrap;
         gap: 10px;
         width: 100%;
-        justify-content: flex-end;
-
-        .all-categories-button {
-            order: -1; // This moves the button to the start (right side in RTL)
-            padding: 10px 15px;
-            background-color: #f0f0f0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            font-weight: bold;
-
-            &:hover {
-                background-color: #e0e0e0;
-                transform: scale(1.05);
-            }
-
-            &.active {
-                background-color: #007bff;
-                color: white;
-            }
-        }
+        justify-content: flex-start; // Start from the right side
     }
 }
 
-.category-button {
+.category-button, .all-categories-button {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,16 +48,29 @@
     }
 
     .category-icon {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         margin-bottom: 5px;
     }
 
     span {
         font-size: 14px;
     }
+}
 
-    // Icon-specific styles (unchanged)
+.all-categories-button {
+    font-weight: bold;
+    margin-left: 15px;
+
+    .all-categories-icon {
+        content: url('../../../../assets/icons/coffee-beans.gif');
+        width: 50px;
+        height: 50px;
+    }
+}
+
+// Icon-specific styles (unchanged)
+.category-button {
     &.icon-misc .category-icon {
         content: url('../../../../assets/icons/icons8-cafe-building-48.png');
     }
@@ -85,10 +78,10 @@
         content: url('../../../../assets/icons/turkish_16913093.gif');
     }
     &.icon-filtered-coffee .category-icon {
-        content: url('../../../../assets/icons/coffee-filter.png');
+        content: url('../../../../assets/icons/coffee-filter.gif');
     }
     &.icon-moka-pot .category-icon {
-        content: url('../../../../assets/icons/moka-pot_17204277.gif');
+        content: url('../../../../assets/icons/coffee-moka-pot.gif');
     }
     &.icon-automatic-machines .category-icon {
         content: url('../../../../assets/icons/icons8-automatic-coffee-machine-64.png');

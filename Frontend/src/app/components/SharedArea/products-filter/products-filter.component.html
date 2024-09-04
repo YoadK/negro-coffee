@@ -5,7 +5,8 @@
 
     <div class="buttons-container">
         <button class="all-categories-button" (click)="onCategoryClick(null)" [class.active]="!selectedCategory">
-            כל הקטגוריות
+            <div class="all-categories-icon"></div>
+            <span>כל הקטגוריות</span>
         </button>
 
         <button *ngFor="let category of categories" 
