@@ -7,6 +7,7 @@ import { Store } from '@ngxs/store';
 import { DeleteProduct, UpdateProductQuantity } from '../NgXs/actions/product.actions';
 import { notify } from '../Utils/Notify';
 import { CategoryModel } from '../models/category.model';
+import { ProductsCategoriesService } from './products-categories.service';
 
 
 @Injectable({
@@ -14,13 +15,11 @@ import { CategoryModel } from '../models/category.model';
 })
 export class CategoriesService {
 
-    constructor(private http: HttpClient, private store: Store) { }
+    constructor(
+        private http: HttpClient, 
+        private store: Store,
+        private productsCategoriesService: ProductsCategoriesService) { }
 
-
-
-   
-
-  
 
     async getAllCategories(): Promise<CategoryModel[]> {
         try {
@@ -28,10 +27,25 @@ export class CategoriesService {
           console.log('Fetched categories:', categories.length);
           return categories;
         } catch (error) {
+            console.log('An error occurred while fetching categories data');
           this.handleError(error);
           throw error;
         }
       }
+
+      
+    async deleteCategory(categoryId: string): Promise<void> {
+        try {
+            await lastValueFrom(this.http.delete<void>(`${appConfig.categoriesUrl}${categoryId}`));
+            console.log('Deleted category:', categoryId);
+            
+            // Remove the category from all products in productCategoryRelations
+            await this.productsCategoriesService.handleCategoryDeletion(categoryId);
+        } catch (error) {
+            this.handleError(error);
+            throw error;
+        }
+    }
 
     private handleError(error: any) {
         let errorMessage = 'An unknown error occurred!';

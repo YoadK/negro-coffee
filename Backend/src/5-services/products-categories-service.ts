@@ -12,64 +12,89 @@ class ProductsCategoriesService {
         return IProductWithCategoriesModel.find();
     }
 
-   
+    // New method to get product categories
+    async getProductCategories(productId: Types.ObjectId): Promise<IProductWithCategories | null> {
+        return IProductWithCategoriesModel.findOne({ productId: new Types.ObjectId(productId) });
+    }
 
-   
-
-
-    async updateProductCategories(productId: string, categoryIds: string[]): Promise<IProductWithCategories> {
+    // New method: Add a product to all categories
+    async addProductToCategories(productId: Types.ObjectId, categoryIds: Types.ObjectId[]): Promise<void> {
         const product = await IProductModel.findById(productId);
         if (!product) {
-            throw new ResourceNotFoundError(productId);
+            throw new ResourceNotFoundError(productId.toString());
         }
+      
 
-             // Convert string IDs to ObjectIds
-             // We're converting string IDs to ObjectId types using new Types.ObjectId(id).
-             const categoryObjectIds = categoryIds.map(id => new Types.ObjectId(id));
+        // Create a new product-category association
+        const productCategories = new IProductWithCategoriesModel({
+            productId,
+            categoryIds
+        });
+        await productCategories.save();
+    }
 
-         let productCategories: IProductWithCategories | null = await IProductWithCategoriesModel.findOne({ productId });
+
+    async updateProductCategories(productId: Types.ObjectId, categoryIds: Types.ObjectId[]): Promise<IProductWithCategories> {
+        const product = await IProductModel.findById(productId);
+        if (!product) {
+            throw new ResourceNotFoundError(productId.toString());
+        }
+      
+        // We're converting string IDs to ObjectId types using new Types.ObjectId(id).
+        const categoryObjectIds = categoryIds.map(id => new Types.ObjectId(id));
+        let productCategories: IProductWithCategories | null = await IProductWithCategoriesModel.findOne({ productId });
         if (!productCategories) {
-            productCategories = new IProductWithCategoriesModel({ 
-                productId: new Types.ObjectId(productId), 
-                categoryIds: categoryObjectIds 
+            productCategories = new IProductWithCategoriesModel({
+                productId,
+                categoryIds
             });
-        } else {
+        } else {            
             productCategories.categoryIds = categoryObjectIds;
         }
-
         await productCategories.save();
         return productCategories;
     }
 
-    async syncProductWithCategories(productId: string): Promise<void> {
+    // New method: Remove a product from all categories
+    async removeProductFromCategories(productId: Types.ObjectId): Promise<void> {
+        await IProductWithCategoriesModel.findOneAndDelete({ productId: new Types.ObjectId(productId) });
+    }
+
+    // New method: Remove a category from all products
+    async removeCategoryFromProducts(categoryId: Types.ObjectId): Promise<void> {
+        await IProductWithCategoriesModel.updateMany(
+            { categoryIds: new Types.ObjectId(categoryId) },
+            { $pull: { categoryIds: new Types.ObjectId(categoryId) } }
+        );
+    }
+
+    async syncProductWithCategories(productId: Types.ObjectId): Promise<void> {
         const product = await IProductModel.findById(productId);
         if (!product) {
-            throw new ResourceNotFoundError(productId);
+            throw new ResourceNotFoundError(productId.toString());
         }
-    
         let productCategories = await IProductWithCategoriesModel.findOne({ productId: new Types.ObjectId(productId) });
         if (!productCategories) {
             // If it's a new product, associate it with all categories
             const allCategoryIds = await ICategoryModel.find().distinct('_id');
             productCategories = new IProductWithCategoriesModel({
-                productId: new Types.ObjectId(productId),
-                categoryIds: allCategoryIds // This is already an array of ObjectIds
+                productId,
+                categoryIds:allCategoryIds
             });
         }
         // If it's an existing product, we keep its current category associations
-    
         await productCategories.save();
         console.log(`Product with ID ${productId} synced with categories.`);
     }
 
 
-    async handleProductDeletion(productId: string): Promise<void> {
+    async handleProductDeletion(productId: Types.ObjectId): Promise<void> {
         console.log(`Handling deletion of product with ID: ${productId}`);
-        
+
         try {
             // Remove the product's entry from the productCategoryRelations collection
             const result = await IProductWithCategoriesModel.findOneAndDelete({ productId });
-            
+
             if (result) {
                 console.log(`Product ${productId} removed from category associations.`);
             } else {

@@ -6,13 +6,17 @@ import { lastValueFrom } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { DeleteProduct, UpdateProductQuantity } from '../NgXs/actions/product.actions';
 import { notify } from '../Utils/Notify';
-import { CategoryModel } from '../models/category.model';
+import { ProductsCategoriesService } from './products-categories.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  constructor(private http: HttpClient, private store: Store) {}
+  constructor(
+    private http: HttpClient, 
+    private store: Store,
+    private productsCategoriesService: ProductsCategoriesService
+) {}
 
   async getAllProducts(): Promise<ProductModel[]> {
     try {
@@ -53,6 +57,10 @@ export class ProductsService {
       console.log('Added new product:', newProduct);
       // Update the store with the new product's quantity
       this.store.dispatch(new UpdateProductQuantity({ productId: newProduct._id, quantity: newProduct.product_weight_grams }));
+      
+         // Add the new product to productCategoryRelations
+         await this.productsCategoriesService.addProductToCategories(newProduct._id);
+      
       return newProduct;
     } catch (error) {
       this.handleError(error);
@@ -69,6 +77,11 @@ export class ProductsService {
       console.log('Updated product:', updatedProduct);
       // Update the store with the updated product's quantity
       this.store.dispatch(new UpdateProductQuantity({ productId: updatedProduct._id, quantity: updatedProduct.product_weight_grams }));
+      
+      // Update the product in productCategoryRelations
+      await this.productsCategoriesService.updateProductCategories(updatedProduct._id, updatedProduct.categoryIds);
+
+      
       return updatedProduct;
     } catch (error) {
       this.handleError(error);
@@ -81,6 +94,10 @@ export class ProductsService {
       await lastValueFrom(this.http.delete<void>(`${appConfig.productsUrl}${id}`));
       console.log('Deleted product:', id);
       this.store.dispatch(new DeleteProduct(id));
+
+       // Remove the product from productCategoryRelations
+       await this.productsCategoriesService.removeProductFromCategories(id);
+
     } catch (error) {
       this.handleError(error);
       throw error;

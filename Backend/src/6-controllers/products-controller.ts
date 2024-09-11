@@ -2,7 +2,7 @@ import express, { NextFunction, Request, Response } from "express";
 import { StatusCode } from "../3-models/enums";
 import { productsService } from "../5-services/products-service";
 import { ValidationError } from "../3-models/client-errors";
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 import { IProductModel } from "../3-models/Iproduct-model";
 import { UploadedFile } from "express-fileupload";
 import { Conflict } from 'http-errors';
@@ -45,16 +45,15 @@ class ProductsController {
     // GET http://localhost:4000/api/products/:_id
     private async getOneProductById(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
-            const productToSearchFor = await productsService.getOneProductById(request.params._id);
-            //if 'productToSearchFor' was not found by its respective id...
+            const productId = new Types.ObjectId(request.params._id);
+            const productToSearchFor = await productsService.getOneProductById(productId);
             if (!productToSearchFor) {
                 response.status(StatusCode.NotFound).json({ message: "Product not found" });
-
+            } else {
+                response.json(productToSearchFor);
             }
-            response.json(productToSearchFor);
         }
         catch (err: any) { next(err); }
-
     }
 
 
@@ -132,9 +131,9 @@ class ProductsController {
     // DELETE http://localhost:4000/api/Products/:_id
     private async deleteProduct(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
-            const _id = request.params._id;
-            const deletedProduct = await productsService.deleteProduct(_id);
-            response.sendStatus(StatusCode.NoContent)
+            const _id = new Types.ObjectId(request.params._id);
+            await productsService.deleteProduct(_id);
+            response.sendStatus(StatusCode.NoContent);
         }
         catch (err: any) { next(err); }
     }

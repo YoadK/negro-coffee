@@ -2,10 +2,11 @@ import { fileSaver } from "uploaded-file-saver";
 import { environment } from "../../../Frontend/src/environments/environment";
 import { ResourceNotFoundError, ValidationError } from "../3-models/client-errors";
 import { IProductModel } from "../3-models/Iproduct-model";
-import mongoose, { ObjectId } from "mongoose";
+import mongoose, { ObjectId, Types } from "mongoose";
 import { UploadedFile } from "express-fileupload";
 import { Conflict } from 'http-errors';
 import { productsCategoriesService } from '../5-services/products-categories-service';
+import { ICategoryModel } from "../3-models/Icategory-model";
 
 
 class ProductsService {
@@ -34,7 +35,7 @@ class ProductsService {
     }
 
 
-    public async getOneProductById(id: string): Promise<IProductModel | null> {
+    public async getOneProductById(id: Types.ObjectId): Promise<IProductModel | null> {
         try {
             const product = await IProductModel.findById(id).exec();
             if (!product) {
@@ -59,7 +60,7 @@ class ProductsService {
     public async addProduct(product: IProductModel): Promise<IProductModel> {
         try {
             const newProduct = new IProductModel(product);//await this.getProductByName(product.name);
-            // Check if an image file is providedQ
+            // Check if an image file is provided
             if (product.image) {
                 // Save the image file
                 const imageFile = product.image as UploadedFile;
@@ -82,7 +83,14 @@ class ProductsService {
             // Save the new product to the database
             await newProduct.save();
 
-            
+            // Get all category IDs
+            const allCategoryIds = await ICategoryModel.find().distinct('_id');
+
+            // Add the new product to productCategoryRelations with all categories
+            await productsCategoriesService.addProductToCategories(newProduct._id, allCategoryIds);
+
+
+
             // Return the added product
             return newProduct;
         } catch (err: any) {
@@ -124,13 +132,22 @@ class ProductsService {
             await existingProduct.validate();
 
             // Save and return the updated product
-            const updatedProduct=  await existingProduct.save();
+            const updatedProduct = await existingProduct.save();
 
-            // Sync with 'ProductWithCategories' collection (through 'IProductWithCategories-model.ts' model)
-            await productsCategoriesService.syncProductWithCategories(product._id.toString());
 
+            // Get the current category associations for this product
+            const productCategories = await productsCategoriesService.getProductCategories(updatedProduct._id);
+
+            // If productCategories is null, it means this product doesn't have any category associations yet
+            if (productCategories) {
+                // Update the product's categories in productCategoryRelations
+                await productsCategoriesService.updateProductCategories(updatedProduct._id, productCategories.categoryIds);
+            } else {
+                // If there are no existing associations, add the product to all categories
+                const allCategoryIds = await ICategoryModel.find().distinct('_id');
+                await productsCategoriesService.addProductToCategories(updatedProduct._id, allCategoryIds);
+            }
             return updatedProduct;
-
         } catch (err: any) {
             console.error("Error updating product:", err);
             throw err;
@@ -175,7 +192,7 @@ class ProductsService {
     }
 
     //delete product:
-    public async deleteProduct(_id: string): Promise<void> {
+    public async deleteProduct(_id: Types.ObjectId): Promise<void> {
         try {
             // Find the product by ID
             const product = await IProductModel.findById(_id);
@@ -189,8 +206,13 @@ class ProductsService {
                 // Delete the product from the database
                 await IProductModel.findByIdAndDelete(_id).exec();
 
-              // After deleting the product, remove its category associations
-            await productsCategoriesService.handleProductDeletion(_id);
+                // Remove the product from productCategoryRelations
+                await productsCategoriesService.removeProductFromCategories(_id);
+
+
+                // New: Remove the product from productCategoryRelations
+                await productsCategoriesService.removeProductFromCategories(_id);
+
             }
         }
         catch (err: any) {
