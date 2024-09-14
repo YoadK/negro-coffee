@@ -1,1 +1,437 @@
-[]
+[{
+  "_id": {
+    "$oid": "66c0d597ee7855b80b10f690"
+  },
+  "productId": {
+    "$oid": "662cc027c27bf8f253c47135"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c0d68eee7855b80b10f692"
+  },
+  "productId": {
+    "$oid": "662ce622c27bf8f253c47137"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1a7baee7855b80b10f694"
+  },
+  "productId": {
+    "$oid": "662cf98ac27bf8f253c47139"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1a800ee7855b80b10f696"
+  },
+  "productId": {
+    "$oid": "662cf9fcc27bf8f253c4713b"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1a82dee7855b80b10f699"
+  },
+  "productId": {
+    "$oid": "662cfa37c27bf8f253c4713d"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1aa9bee7855b80b10f69c"
+  },
+  "productId": {
+    "$oid": "662cfa87c27bf8f253c4713f"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc8ecc27bf8f253c4712e"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1ab73ee7855b80b10f69e"
+  },
+  "productId": {
+    "$oid": "662cfadfc27bf8f253c47141"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1ac5cee7855b80b10f6a0"
+  },
+  "productId": {
+    "$oid": "662cfb1dc27bf8f253c47143"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1ad14ee7855b80b10f6a2"
+  },
+  "productId": {
+    "$oid": "662cfb49c27bf8f253c47145"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1ad82ee7855b80b10f6a4"
+  },
+  "productId": {
+    "$oid": "662cfb81c27bf8f253c47147"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1ae01ee7855b80b10f6a6"
+  },
+  "productId": {
+    "$oid": "662cfbbac27bf8f253c47149"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1ae60ee7855b80b10f6a8"
+  },
+  "productId": {
+    "$oid": "662cfbe7c27bf8f253c4714b"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1ae76ee7855b80b10f6aa"
+  },
+  "productId": {
+    "$oid": "662cfc0bc27bf8f253c4714d"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1aedeee7855b80b10f6ac"
+  },
+  "productId": {
+    "$oid": "662cfc2ac27bf8f253c4714f"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1af5bee7855b80b10f6ae"
+  },
+  "productId": {
+    "$oid": "662cfc70c27bf8f253c47151"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1aff9ee7855b80b10f6b0"
+  },
+  "productId": {
+    "$oid": "662cfc8dc27bf8f253c47153"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1b05dee7855b80b10f6b2"
+  },
+  "productId": {
+    "$oid": "662cfceec27bf8f253c47155"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1b0a4ee7855b80b10f6b4"
+  },
+  "productId": {
+    "$oid": "662cfd1dc27bf8f253c47157"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1b0eeee7855b80b10f6b6"
+  },
+  "productId": {
+    "$oid": "662cfd55c27bf8f253c47159"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c1b129ee7855b80b10f6b8"
+  },
+  "productId": {
+    "$oid": "662cfd79c27bf8f253c4715b"
+  },
+  "categoryIds": [
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+}]

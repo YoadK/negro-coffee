@@ -59,7 +59,7 @@ export class ProductsCategoriesService {
             console.error('Error removing product from categories:', error);
             this.handleError(error);
             throw error;
-            t
+            
         }
     }
 

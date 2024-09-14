@@ -1,8 +1,9 @@
-import { IProductModel } from '../3-models/Iproduct-model';
+
 import { ICategoryModel } from '../3-models/Icategory-model';
 import { IProductWithCategories, IProductWithCategoriesModel } from '../3-models/IProductWithCategories-model';
 import { ResourceNotFoundError } from '../3-models/client-errors';
 import mongoose, { Types } from 'mongoose';
+import { IProductModel } from '../3-models/Iproduct-model';
 
 
 class ProductsCategoriesService {
@@ -14,7 +15,7 @@ class ProductsCategoriesService {
 
     // New method to get product categories
     async getProductCategories(productId: Types.ObjectId): Promise<IProductWithCategories | null> {
-        return IProductWithCategoriesModel.findOne({ productId: new Types.ObjectId(productId) });
+        return IProductWithCategoriesModel.findOne({ productId });
     }
 
     // New method: Add a product to all categories
@@ -41,15 +42,15 @@ class ProductsCategoriesService {
         }
       
         // We're converting string IDs to ObjectId types using new Types.ObjectId(id).
-        const categoryObjectIds = categoryIds.map(id => new Types.ObjectId(id));
-        let productCategories: IProductWithCategories | null = await IProductWithCategoriesModel.findOne({ productId });
+        
+        let productCategories=  await IProductWithCategoriesModel.findOne({ productId });
         if (!productCategories) {
             productCategories = new IProductWithCategoriesModel({
                 productId,
                 categoryIds
             });
         } else {            
-            productCategories.categoryIds = categoryObjectIds;
+            productCategories.categoryIds = categoryIds;
         }
         await productCategories.save();
         return productCategories;
@@ -57,14 +58,14 @@ class ProductsCategoriesService {
 
     // New method: Remove a product from all categories
     async removeProductFromCategories(productId: Types.ObjectId): Promise<void> {
-        await IProductWithCategoriesModel.findOneAndDelete({ productId: new Types.ObjectId(productId) });
+        await IProductWithCategoriesModel.findOneAndDelete({ productId: productId });
     }
 
     // New method: Remove a category from all products
     async removeCategoryFromProducts(categoryId: Types.ObjectId): Promise<void> {
         await IProductWithCategoriesModel.updateMany(
-            { categoryIds: new Types.ObjectId(categoryId) },
-            { $pull: { categoryIds: new Types.ObjectId(categoryId) } }
+            { categoryIds: categoryId },
+            { $pull: { categoryIds: categoryId} }
         );
     }
 
@@ -73,7 +74,7 @@ class ProductsCategoriesService {
         if (!product) {
             throw new ResourceNotFoundError(productId.toString());
         }
-        let productCategories = await IProductWithCategoriesModel.findOne({ productId: new Types.ObjectId(productId) });
+        let productCategories = await IProductWithCategoriesModel.findOne({ productId:  Types.ObjectId });
         if (!productCategories) {
             // If it's a new product, associate it with all categories
             const allCategoryIds = await ICategoryModel.find().distinct('_id');
@@ -105,6 +106,9 @@ class ProductsCategoriesService {
             throw error;
         }
     }
+
+
+
 }
 
 export const productsCategoriesService = new ProductsCategoriesService();

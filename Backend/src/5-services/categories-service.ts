@@ -20,6 +20,15 @@ class CategoriesService {
             throw err;
         }
     }
+
+    
+    public async getAllCategoryIds(): Promise<Types.ObjectId[]> {
+        const categories = await ICategoryModel.find().select('_id');
+        // By explicitly casting category._id to Types.ObjectId, we ensure that
+        // the return type matches the method's signature.
+        return categories.map(category => category._id as Types.ObjectId);
+    }
+
     
 }//CategoriesService END
 

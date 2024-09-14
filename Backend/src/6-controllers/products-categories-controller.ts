@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import { productsCategoriesService } from '../5-services/products-categories-service';
 import { StatusCode } from '../3-models/enums';
 import { Types } from 'mongoose';
+import { categoriesService } from '../5-services/categories-service';
 
 class ProductsCategoriesController {
     public readonly router = express.Router();
@@ -29,8 +30,6 @@ class ProductsCategoriesController {
 
 
 
-
-
      //GET "http://localhost:4000/api/categories/:categoryId/products" 
      private async getAllProductCategoryAssociations(req: Request, res: Response, next: NextFunction) {
         try {
@@ -42,14 +41,24 @@ class ProductsCategoriesController {
         }
     }
 
-
     
     // TODO:  the 'updateProductCategories' method is meant for later Usage.
     // PUT "http://localhost:4000/api/products/:productId/categories"
     private async updateProductCategories(req: Request, res: Response, next: NextFunction) {
         try {
             console.info("updateProductCategories is being called")
+            if (!Types.ObjectId.isValid(req.params.productId)) {
+                return res.status(StatusCode.BadRequest).json({ message: "Invalid product ID." });
+            }
             const productId = new Types.ObjectId(req.params.productId);
+            
+            
+            
+              // Validate that categoryIds is an array
+        if (!Array.isArray(req.body.categoryIds)) {
+            return res.status(StatusCode.BadRequest).json({ message: "categoryIds must be an array of category IDs." });
+        }
+
             const categoryIds = req.body.categoryIds.map((id: string) => new Types.ObjectId(id));
             const updatedRelation = await productsCategoriesService.updateProductCategories(productId, categoryIds);
             res.json(updatedRelation);
@@ -58,16 +67,18 @@ class ProductsCategoriesController {
         }
     }
     
-
+    // POST "http://localhost:4000/api/products/categories/:productId"
     private async addProductToCategories(req: Request, res: Response, next: NextFunction) {
         try {
             const productId = new Types.ObjectId(req.params.productId);
-            await productsCategoriesService.addProductToCategories(productId);
+            const categoryIds = await categoriesService.getAllCategoryIds(); // Get all category IDs
+            await productsCategoriesService.addProductToCategories(productId, categoryIds);
             res.sendStatus(StatusCode.Created);
         } catch (error) {
             next(error);
         }
     }
+    // DELETE "http://localhost:4000/api/products/categories/:productId"
 
     private async removeProductFromCategories(req: Request, res: Response, next: NextFunction) {
         try {
@@ -78,7 +89,7 @@ class ProductsCategoriesController {
             next(error);
         }
     }
-
+    // DELETE "http://localhost:4000/api/categories/:categoryId/products"
     private async removeCategoryFromProducts(req: Request, res: Response, next: NextFunction) {
         try {
             const categoryId = new Types.ObjectId(req.params.categoryId);

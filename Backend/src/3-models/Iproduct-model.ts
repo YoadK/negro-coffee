@@ -4,23 +4,23 @@ import mongoose, { Document, ObjectId, Schema, model, Types } from "mongoose";
 
 // Interface for IProductModel
 export interface IProductModel extends Document {
-    _id: ObjectId;
+     _id: Types.ObjectId;
     name: string;
     description: string;
    product_weight_grams: number; // quantity in 'Grams'
     price: number; //price per one bag of coffee beans
-    image: UploadedFile;//the image file itself
-    imageName: string; // image name only, i.e: "13a41d43-14c8-4e6f-93dc-c652647991ef.jpg"
-    imageUrl: string; // full url of the image
+    image?: UploadedFile;//// the image file itself (optional)
+    imageName?: string; // image name only, i.e: "13a41d43-14c8-4e6f-93dc-c652647991ef.jpg"
+    imageUrl?: string; // full url of the image
 }
 
 // Schema for IProductModel
 export const ProductSchema = new Schema<IProductModel>({
-    _id: {
-        type: mongoose.Schema.ObjectId,
-        required: true,
-        auto: true,
-    },
+    // _id: {
+    //     type: mongoose.Schema.ObjectId,
+    //     required: true,
+    //     auto: true,
+    // },
     name: {
         type: String,
         required: [true, "Missing product name"],
@@ -43,14 +43,14 @@ export const ProductSchema = new Schema<IProductModel>({
         min: [1, "Price can't be negative"],
         max: [1000, "Price can't exceed 1000"],
     },
-    image: {
-        type: Object,
-        required: false,
-    },
+     // Removed 'image' field from the schema
+    // image: {
+    //     type: Object,
+    //     required: false,
+    // },
 
     imageName: {
-        type: String,
-        required: [false, "Missing product image name"],
+        type: String,       
         maxlength: [100, "Image name is too long"],
     },
     imageUrl: {

@@ -68,7 +68,7 @@ export class ProductsService {
     }
   }
 
-  async updateProduct(product: ProductModel): Promise<ProductModel> {
+  async updateProduct(product: ProductModel,categoryIds: string[]): Promise<ProductModel> {
     const formData = new FormData();
     this.appendProductData(formData, product);
 
@@ -79,7 +79,7 @@ export class ProductsService {
       this.store.dispatch(new UpdateProductQuantity({ productId: updatedProduct._id, quantity: updatedProduct.product_weight_grams }));
       
       // Update the product in productCategoryRelations
-      await this.productsCategoriesService.updateProductCategories(updatedProduct._id, updatedProduct.categoryIds);
+      await this.productsCategoriesService.updateProductCategories(updatedProduct._id, categoryIds);
 
       
       return updatedProduct;

@@ -2,12 +2,13 @@ import { fileSaver } from "uploaded-file-saver";
 import { environment } from "../../../Frontend/src/environments/environment";
 import { ResourceNotFoundError, ValidationError } from "../3-models/client-errors";
 import { IProductModel } from "../3-models/Iproduct-model";
-import mongoose, { ObjectId, Types } from "mongoose";
+import mongoose, { Types } from "mongoose";
 import { UploadedFile } from "express-fileupload";
 import { Conflict } from 'http-errors';
-import { productsCategoriesService } from '../5-services/products-categories-service';
+// import { productsCategoriesService } from '../5-services/products-categories-service';
 import { ICategoryModel } from "../3-models/Icategory-model";
-
+import { categoriesService } from "./categories-service";
+import { productsCategoriesService } from "./products-categories-service";
 
 class ProductsService {
 
@@ -82,14 +83,12 @@ class ProductsService {
             }
             // Save the new product to the database
             await newProduct.save();
-
             // Get all category IDs
-            const allCategoryIds = await ICategoryModel.find().distinct('_id');
+            const allCategoryIds = await categoriesService.getAllCategoryIds();
 
-            // Add the new product to productCategoryRelations with all categories
+
+            // Add the new product to productCategoryRelations with all categories            
             await productsCategoriesService.addProductToCategories(newProduct._id, allCategoryIds);
-
-
 
             // Return the added product
             return newProduct;
@@ -138,13 +137,16 @@ class ProductsService {
             // Get the current category associations for this product
             const productCategories = await productsCategoriesService.getProductCategories(updatedProduct._id);
 
+
             // If productCategories is null, it means this product doesn't have any category associations yet
             if (productCategories) {
+               
                 // Update the product's categories in productCategoryRelations
                 await productsCategoriesService.updateProductCategories(updatedProduct._id, productCategories.categoryIds);
+
             } else {
-                // If there are no existing associations, add the product to all categories
-                const allCategoryIds = await ICategoryModel.find().distinct('_id');
+               // If there are no existing associations, add the product to all categories
+                const allCategoryIds = await categoriesService.getAllCategoryIds();
                 await productsCategoriesService.addProductToCategories(updatedProduct._id, allCategoryIds);
             }
             return updatedProduct;
@@ -206,12 +208,9 @@ class ProductsService {
                 // Delete the product from the database
                 await IProductModel.findByIdAndDelete(_id).exec();
 
-                // Remove the product from productCategoryRelations
-                await productsCategoriesService.removeProductFromCategories(_id);
-
-
                 // New: Remove the product from productCategoryRelations
                 await productsCategoriesService.removeProductFromCategories(_id);
+
 
             }
         }
@@ -222,7 +221,7 @@ class ProductsService {
 
 
     //get image name from db
-    private async getImageName(_id: ObjectId): Promise<string> {
+    private async getImageName(_id: Types.ObjectId): Promise<string> {
         try {
             // Find the product by ID
             const product = await IProductModel.findById(_id).select('imageName').exec();
