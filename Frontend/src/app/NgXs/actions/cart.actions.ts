@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoose";
+
 import { ProductModel } from "../../models/product.model";
 
 
@@ -17,12 +17,12 @@ export class ToggleCartModal {
 
   export class RemoveFromCart {
     static readonly type = '[Cart] Remove From Cart';
-    constructor(public payload: { productId: ObjectId }) {}
+    constructor(public payload: { productId: string }) {}
   }
 
   export class UpdateCartItemQuantity {
     static readonly type = '[Cart] Update Cart Item Quantity';
-    constructor(public payload: { productId: ObjectId, quantity: number }) {}
+    constructor(public payload: { productId: string, quantity: number }) {}
   }
 
   // If you want to add a new action to update the entire cart item at once

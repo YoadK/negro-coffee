@@ -1,21 +1,20 @@
 import { fileSaver } from "uploaded-file-saver";
 import { environment } from "../../../Frontend/src/environments/environment";
 import { ResourceNotFoundError, ValidationError } from "../3-models/client-errors";
-import { IProductModel } from "../3-models/Iproduct-model";
+import { IProductModel, Product } from "../3-models/Iproduct-model";
 import mongoose, { Types } from "mongoose";
 import { UploadedFile } from "express-fileupload";
 import { Conflict } from 'http-errors';
-// import { productsCategoriesService } from '../5-services/products-categories-service';
-import { ICategoryModel } from "../3-models/Icategory-model";
-import { categoriesService } from "./categories-service";
-import { productsCategoriesService } from "./products-categories-service";
+
+
 
 class ProductsService {
 
     // get All products
     public async getAllProducts(): Promise<IProductModel[]> {
         try {
-            const products = await IProductModel.find().exec();
+            
+            const products=await Product.find().populate('categories').exec();
             return products.map(product => {
                 if (!product.imageName || !product.imageUrl) {
                     product.imageName = 'default-image.jpg';
@@ -32,13 +31,13 @@ class ProductsService {
 
     //get  a product by name
     public async getProductByName(name: string): Promise<IProductModel | null> {
-        return IProductModel.findOne({ name }).exec();
+        return Product.findOne({ name }).exec();
     }
 
 
     public async getOneProductById(id: Types.ObjectId): Promise<IProductModel | null> {
         try {
-            const product = await IProductModel.findById(id).exec();
+            const product = await Product.findById(id).populate('categories').exec();
             if (!product) {
                 throw new ValidationError("Product not found");
             }
@@ -52,15 +51,22 @@ class ProductsService {
 
 
     //Search products
-    public searchProducts(text: string): Promise<IProductModel[]> {
-        const regex = new RegExp(text, 'i');
-        return IProductModel.find({ name: { $regex: regex } }).exec();
+    public async searchProducts(text: string): Promise<IProductModel[]> {
+        const regex = new RegExp(text, 'i'); // Case-insensitive search
+        return await Product.find({
+            $or: [
+                { name: regex },
+                { description: regex },
+                // Include category names if necessary
+            ]
+        }).populate('categories').exec();
     }
+    
 
     //add product:
     public async addProduct(product: IProductModel): Promise<IProductModel> {
         try {
-            const newProduct = new IProductModel(product);//await this.getProductByName(product.name);
+            const newProduct = new Product(product); 
             // Check if an image file is provided
             if (product.image) {
                 // Save the image file
@@ -83,13 +89,7 @@ class ProductsService {
             }
             // Save the new product to the database
             await newProduct.save();
-            // Get all category IDs
-            const allCategoryIds = await categoriesService.getAllCategoryIds();
-
-
-            // Add the new product to productCategoryRelations with all categories            
-            await productsCategoriesService.addProductToCategories(newProduct._id, allCategoryIds);
-
+           
             // Return the added product
             return newProduct;
         } catch (err: any) {
@@ -103,7 +103,7 @@ class ProductsService {
             console.log("Updating product with ID:", product._id);
 
             // Fetch the existing product from the database
-            const existingProduct = await IProductModel.findById(product._id);
+            const existingProduct = await Product.findById(product._id);
 
             // If the product doesn't exist, throw a ResourceNotFoundError
             if (!existingProduct) throw new ResourceNotFoundError(product._id.toString());
@@ -115,7 +115,8 @@ class ProductsService {
                 name: product.name,
                 description: product.description,
                 product_weight_grams: product.product_weight_grams,
-                price: product.price
+                price: product.price,
+                categoryIds: product.categoryIds
             });
 
             // Handle image update
@@ -134,21 +135,7 @@ class ProductsService {
             const updatedProduct = await existingProduct.save();
 
 
-            // Get the current category associations for this product
-            const productCategories = await productsCategoriesService.getProductCategories(updatedProduct._id);
-
-
-            // If productCategories is null, it means this product doesn't have any category associations yet
-            if (productCategories) {
-               
-                // Update the product's categories in productCategoryRelations
-                await productsCategoriesService.updateProductCategories(updatedProduct._id, productCategories.categoryIds);
-
-            } else {
-               // If there are no existing associations, add the product to all categories
-                const allCategoryIds = await categoriesService.getAllCategoryIds();
-                await productsCategoriesService.addProductToCategories(updatedProduct._id, allCategoryIds);
-            }
+           
             return updatedProduct;
         } catch (err: any) {
             console.error("Error updating product:", err);
@@ -197,7 +184,7 @@ class ProductsService {
     public async deleteProduct(_id: Types.ObjectId): Promise<void> {
         try {
             // Find the product by ID
-            const product = await IProductModel.findById(_id);
+            const product = await Product.findById(_id);
 
             if (product) {
                 // Only delete the image if it's not the default image
@@ -206,25 +193,20 @@ class ProductsService {
                 }
 
                 // Delete the product from the database
-                await IProductModel.findByIdAndDelete(_id).exec();
-
-                // New: Remove the product from productCategoryRelations
-                await productsCategoriesService.removeProductFromCategories(_id);
-
-
-            }
+                await Product.findByIdAndDelete(_id).exec();
+                        }
         }
         catch (err: any) {
             throw err;
         }
     }
 
-
+//  TODO: find out why no method is using this functionality...
     //get image name from db
     private async getImageName(_id: Types.ObjectId): Promise<string> {
         try {
             // Find the product by ID
-            const product = await IProductModel.findById(_id).select('imageName').exec();
+            const product = await Product.findById(_id).select('imageName').exec();
 
             // If product doesn't exist, return null
             if (!product) {
@@ -240,7 +222,7 @@ class ProductsService {
             throw err;
         }
     }
-    //
+    
 
 }
 export const productsService = new ProductsService();

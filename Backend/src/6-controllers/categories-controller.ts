@@ -2,7 +2,8 @@ import express, { NextFunction, Request, Response } from "express";
 import { categoriesService } from "../5-services/categories-service";
 
 
-// Product controller:
+
+// Categories  controller:
 class CategoriesController {
 
     // Create a router object for listening to HTTP requests:
@@ -24,8 +25,7 @@ class CategoriesController {
     private async getAllCategories(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
             const categories = await categoriesService.getAllCategories();
-            console.log(categories);
-
+            console.info("Fetched categories: " + categories);
             response.json(categories);
         }
         catch (err: any) { next(err); }

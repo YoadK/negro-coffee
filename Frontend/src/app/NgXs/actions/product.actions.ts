@@ -10,7 +10,7 @@ export class AddToCart {
 
 export class UpdateProductQuantity {
   static readonly type = '[Product] Update Product Quantity';
-  constructor(public payload: { productId: ObjectId, quantity: number }) {}
+  constructor(public payload: { productId: string, quantity: number }) {}
 }
 
 export class AddProduct {

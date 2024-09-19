@@ -3,10 +3,12 @@ import { StatusCode } from "../3-models/enums";
 import { productsService } from "../5-services/products-service";
 import { ValidationError } from "../3-models/client-errors";
 import mongoose, { Types } from "mongoose";
-import { IProductModel } from "../3-models/Iproduct-model";
+import { Product, IProductModel } from "../3-models/Iproduct-model";
 import { UploadedFile } from "express-fileupload";
 import { Conflict } from 'http-errors';
 import { fileSaver } from "uploaded-file-saver";
+
+
 
 // Product controller:
 class ProductsController {
@@ -34,8 +36,8 @@ class ProductsController {
     // GET http://localhost:4000/api/products
     private async getAllProducts(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
-            const Products = await productsService.getAllProducts();
-            response.json(Products);
+            const products = await productsService.getAllProducts();
+            response.json(products);
         }
         catch (err: any) { next(err); }
 
@@ -62,8 +64,8 @@ class ProductsController {
     private async searchProducts(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
             const text = request.params.text.toLowerCase().trim();
-            const Products = await productsService.searchProducts(text);
-            response.json(Products);
+            const products = await productsService.searchProducts(text);
+            response.json(products);
         }
         catch (err: any) { next(err); }
     }
@@ -74,12 +76,26 @@ class ProductsController {
             console.log('Request Body:', request.body);
             console.log('Request Files:', request.files);
 
+            // Convert categoryIds to ObjectId array
+            // ensure that any categoryIds provided in the request body are converted to ObjectIds.
+            // Considering the fact that the frontend sends categoryIds as a JSON string in the form data.
+            //The backend needs to parse it and convert each ID to Types.ObjectId.
+            let categoryIds: Types.ObjectId[] = [];
+            if (request.body.categoryIds) {
+                if (Array.isArray(request.body.categoryIds)) {
+                    categoryIds = request.body.categoryIds.map((id: string) => new Types.ObjectId(id));
+                } else {
+                    categoryIds = [new Types.ObjectId(request.body.categoryIds)];
+                }
+            }
+
             const productData = {
                 ...request.body,
-                image: request.files?.image as UploadedFile // Include the uploaded image file
+                categoryIds: categoryIds,
+                image: request.files?.image as UploadedFile, // Include the uploaded image file
             };
 
-            const product = new IProductModel(productData);
+            const product = new Product(productData);
             const addedProduct = await productsService.addProduct(product);
             response.status(StatusCode.Created).json(addedProduct);
         }
@@ -92,24 +108,37 @@ class ProductsController {
         }
     }
 
-    // PUT http://localhost:4000/api/products/edit/:_id
-    private async updateProduct(request: Request, response: Response, next: NextFunction): Promise<void> {
 
+    // PUT http://localhost:4000/api/products/:_id
+    private async updateProduct(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
             const productId = request.params._id;
             console.log("product id is: " + productId);
+
+            // Convert categoryIds to ObjectId array
+            let categoryIds: Types.ObjectId[] = [];
+            if (request.body.categoryIds) {
+                if (Array.isArray(request.body.categoryIds)) {
+                    categoryIds = request.body.categoryIds.map((id: string) => new Types.ObjectId(id));
+                } else {
+                    categoryIds = [new Types.ObjectId(request.body.categoryIds)];
+                }
+            }
+
             const productData = {
                 ...request.body,
-                _id: new mongoose.Types.ObjectId(productId)
+                _id: new mongoose.Types.ObjectId(productId),
+                categoryIds: categoryIds,
             };
-            const product = new IProductModel(productData);
+            const product = new Product(productData);
 
             // Check if a new image file is provided
             if (request.files && request.files.image) {
                 const imageFile = request.files.image as UploadedFile;
-                product.image = imageFile;// Pass the image file to the service
-                product.imageName = imageFile.name;// Ensure imageName is passed
+                product.image = imageFile; // Pass the image file to the service
+                product.imageName = imageFile.name; // Ensure imageName is passed
             }
+
             // Pass the updated product data to the service
             const updatedProduct = await productsService.updateProduct(product);
             // Respond with the updated product
@@ -117,14 +146,13 @@ class ProductsController {
         }
         catch (err: any) {
             if (err instanceof ValidationError) {
-                // Handle the ValidationError
                 response.status(StatusCode.BadRequest).json({ message: err.message });
             } else {
-                // Pass other errors to the error handling middleware
                 next(err);
             }
         }
     }
+
 
 
 
@@ -140,6 +168,11 @@ class ProductsController {
 
 
     // GET http://localhost:4000/api/products/images/:imageName
+    // Functionality:
+    // It retrieves the imageName from the URL parameters.
+    // Uses fileSaver.getFilePath to locate the image file on the server's file system.
+    // Sends the image file in the HTTP response to the client.
+    // Requirement: Without this method, clients would have no way to request and receive image files stored on your server.
     private async getImageFile(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
             const imageName = request.params.imageName;

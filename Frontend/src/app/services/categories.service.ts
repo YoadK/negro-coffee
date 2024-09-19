@@ -7,7 +7,7 @@ import { Store } from '@ngxs/store';
 import { DeleteProduct, UpdateProductQuantity } from '../NgXs/actions/product.actions';
 import { notify } from '../Utils/Notify';
 import { CategoryModel } from '../models/category.model';
-import { ProductsCategoriesService } from './products-categories.service';
+
 
 
 @Injectable({
@@ -18,7 +18,7 @@ export class CategoriesService {
     constructor(
         private http: HttpClient, 
         private store: Store,
-        private productsCategoriesService: ProductsCategoriesService) { }
+       ) { }
 
 
     async getAllCategories(): Promise<CategoryModel[]> {
@@ -39,8 +39,7 @@ export class CategoriesService {
             await lastValueFrom(this.http.delete<void>(`${appConfig.categoriesUrl}${categoryId}`));
             console.log('Deleted category:', categoryId);
             
-            // Remove the category from all products in productCategoryRelations
-            await this.productsCategoriesService.handleCategoryDeletion(categoryId);
+           
         } catch (error) {
             this.handleError(error);
             throw error;

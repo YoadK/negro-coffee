@@ -1,5 +1,6 @@
 import { UploadedFile } from "express-fileupload";
 import mongoose, { Document, Schema, model, Types } from "mongoose";
+import { ICategoryModel } from "./Icategory-model"; // Adjust the path as necessary
 
 // Interface for IProductModel
 export interface IProductModel extends Document {
@@ -11,7 +12,8 @@ export interface IProductModel extends Document {
   image?: UploadedFile;
   imageName?: string;
   imageUrl?: string;
-  categoryIds?: Types.ObjectId[];
+  categoryIds?: Types.ObjectId[]; // me: should be filled up using 'populate' method (mongoose)
+  categories?: ICategoryModel[]; // Added for virtual field
 }
 
 // Schema for IProductModel
@@ -56,11 +58,19 @@ export const ProductSchema = new Schema<IProductModel>(
   },
   {
     versionKey: false,
-    toJSON: { virtuals: true },
+    toJSON: { virtuals: true }, // Include virtuals when converting to JSON
     toObject: { virtuals: true },
     id: false,
   }
 );
+
+// Add virtual field for categories
+ProductSchema.virtual('categories', {
+  ref: 'Category',
+  localField: 'categoryIds',
+  foreignField: '_id',
+  justOne: false,
+});
 
 // Model for IProductModel
 export const Product = model<IProductModel>("Product", ProductSchema, "products");

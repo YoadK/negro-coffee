@@ -9,8 +9,8 @@ import { productsRouter } from "./6-controllers/products-controller";
 import { dal } from "./2-utils/dal";
 import { authRouter } from "./6-controllers/auth-controller";
 import { categoriesRouter } from "./6-controllers/categories-controller";
-import {environment}  from '../../Frontend/src/environments/environment';
-import { productsCategoriesRouter } from "./6-controllers/products-categories-controller";
+import { environment } from '../../Frontend/src/environments/environment';
+
 
 // Main application class:
 class App {
@@ -33,11 +33,14 @@ class App {
         // Configure images folder: 
         fileSaver.config(path.join(__dirname, "1-assets", "images"));
 
+        
+
+
         // Register middleware:
         this.server.use(loggerMiddleware.logToConsole);
 
         // Connect any controller route to the server:
-        this.server.use("/api", authRouter, productsRouter, categoriesRouter, productsCategoriesRouter);
+        this.server.use("/api", authRouter, productsRouter, categoriesRouter);
 
         // Route not found middleware: 
         this.server.use(errorsMiddleware.routeNotFound);

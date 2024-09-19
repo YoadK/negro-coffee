@@ -1,7 +1,7 @@
-import { ObjectId } from "mongoose"
+
 
 export class CategoryModel {
-  _id: ObjectId
+  _id: string
  name: string
  description: string
 }

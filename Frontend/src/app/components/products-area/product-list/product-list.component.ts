@@ -5,9 +5,9 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 import { SpinnerComponent } from '../../SharedArea/spinner/spinner.component';
 import { SpinnerLoadingService } from '../../../services/spinner.loading.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ProductsCategoriesService } from '../../../services/products-categories.service';
+
 import { ProductModel } from '../../../models/product.model';
-import { ProductCategoryModel } from '../../../models/product.category.Model';
+
 import { ActivatedRoute } from '@angular/router';
 import { ProductsFilterComponent } from '../../SharedArea/products-filter/products-filter.component';
 import { CategoriesService } from '../../../services/categories.service';
@@ -24,7 +24,7 @@ import { ProductsService } from '../../../services/products.service';
 export class ProductListComponent implements OnInit {
     private productsSubject = new BehaviorSubject<ProductModel[]>([]);
     products$: Observable<ProductModel[]> = this.productsSubject.asObservable();
-    private allProductAssociations: ProductCategoryModel[] = [];
+  
     categoryId: string | null = null;
     productCount: number = 0;
     categories: any[] = [];
@@ -33,7 +33,7 @@ export class ProductListComponent implements OnInit {
 
     constructor(
         private title: Title,
-        private productsCategoriesService: ProductsCategoriesService,
+      
         private categoriesService: CategoriesService, 
         private productsService: ProductsService,  
         private spinnerLoadingService: SpinnerLoadingService,
@@ -51,10 +51,7 @@ export class ProductListComponent implements OnInit {
             this.categoryId = this.route.snapshot.paramMap.get('categoryId');
             console.log('Category ID from route:', this.categoryId);
 
-            // Fetch all product-category associations
-            this.allProductAssociations = await this.productsCategoriesService.getAllProductCategoryAssociations();
-            console.log('All product-category associations loaded:', this.allProductAssociations.length);
-
+           
             // Fetch categories and pass them to ProductsFilterComponent
             this.categories = await this.categoriesService.getAllCategories();
             console.log('Categories loaded:', this.categories.length);

@@ -9,6 +9,7 @@ import { Store } from '@ngxs/store';
 import { UpdateProductQuantity } from '../../../NgXs/actions/product.actions';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { CategoryModel } from '../../../models/category.model';
 
 @Component({
   selector: 'app-edit-product',
