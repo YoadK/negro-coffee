@@ -2193,3 +2193,632 @@ Message: Route /api/products/category/662bc88ec27bf8f253c4712c not found.
 Stack: undefined
 ---------------------------------------
 
+Time: Thu Sep 19 2024 09:32:26 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/categories not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Sep 19 2024 09:37:20 GMT+0300 (Israel Daylight Time)
+Message: Product validation failed: product_weight_grams: Missing product weight in grams
+Stack: ValidationError: Product validation failed: product_weight_grams: Missing product weight in grams
+    at model.Document.invalidate (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\mongoose\lib\document.js:3318:32)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\mongoose\lib\document.js:3079:17
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+---------------------------------------
+
+Time: Thu Sep 19 2024 09:38:11 GMT+0300 (Israel Daylight Time)
+Message: Route /favicon.ico not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Sep 19 2024 09:49:43 GMT+0300 (Israel Daylight Time)
+Message: Malformed part header
+Stack: Error: Malformed part header
+    at SBMH.ssCb [as _cb] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\busboy\lib\types\multipart.js:398:32)
+    at feed (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\streamsearch\lib\sbmh.js:219:14)
+    at SBMH.push (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:564:12)
+    at _write (node:internal/streams/writable:493:10)
+    at Multipart.Writable.write (node:internal/streams/writable:502:10)
+    at IncomingMessage.ondata (node:internal/streams/readable:1007:22)
+    at IncomingMessage.emit (node:events:518:28)
+    at IncomingMessage.emit (node:domain:488:12)
+---------------------------------------
+
+Time: Thu Sep 19 2024 09:54:46 GMT+0300 (Israel Daylight Time)
+Message: Malformed part header
+Stack: Error: Malformed part header
+    at SBMH.ssCb [as _cb] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\busboy\lib\types\multipart.js:398:32)
+    at feed (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\streamsearch\lib\sbmh.js:219:14)
+    at SBMH.push (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:564:12)
+    at _write (node:internal/streams/writable:493:10)
+    at Multipart.Writable.write (node:internal/streams/writable:502:10)
+    at IncomingMessage.ondata (node:internal/streams/readable:1007:22)
+    at IncomingMessage.emit (node:events:518:28)
+    at IncomingMessage.emit (node:domain:488:12)
+---------------------------------------
+
+Time: Thu Sep 19 2024 09:55:32 GMT+0300 (Israel Daylight Time)
+Message: Malformed part header
+Stack: Error: Malformed part header
+    at SBMH.ssCb [as _cb] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\busboy\lib\types\multipart.js:398:32)
+    at feed (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\streamsearch\lib\sbmh.js:219:14)
+    at SBMH.push (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:564:12)
+    at _write (node:internal/streams/writable:493:10)
+    at Multipart.Writable.write (node:internal/streams/writable:502:10)
+    at IncomingMessage.ondata (node:internal/streams/readable:1007:22)
+    at IncomingMessage.emit (node:events:518:28)
+    at IncomingMessage.emit (node:domain:488:12)
+---------------------------------------
+
+Time: Thu Sep 19 2024 09:55:37 GMT+0300 (Israel Daylight Time)
+Message: Malformed part header
+Stack: Error: Malformed part header
+    at SBMH.ssCb [as _cb] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\busboy\lib\types\multipart.js:398:32)
+    at feed (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\streamsearch\lib\sbmh.js:219:14)
+    at SBMH.push (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:564:12)
+    at _write (node:internal/streams/writable:493:10)
+    at Multipart.Writable.write (node:internal/streams/writable:502:10)
+    at IncomingMessage.ondata (node:internal/streams/readable:1007:22)
+    at IncomingMessage.emit (node:events:518:28)
+    at IncomingMessage.emit (node:domain:488:12)
+---------------------------------------
+
+Time: Thu Sep 19 2024 09:55:57 GMT+0300 (Israel Daylight Time)
+Message: Malformed part header
+Stack: Error: Malformed part header
+    at SBMH.ssCb [as _cb] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\busboy\lib\types\multipart.js:398:32)
+    at feed (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\streamsearch\lib\sbmh.js:219:14)
+    at SBMH.push (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:564:12)
+    at _write (node:internal/streams/writable:493:10)
+    at Multipart.Writable.write (node:internal/streams/writable:502:10)
+    at IncomingMessage.ondata (node:internal/streams/readable:1007:22)
+    at IncomingMessage.emit (node:events:518:28)
+    at IncomingMessage.emit (node:domain:488:12)
+---------------------------------------
+
+Time: Thu Sep 19 2024 09:56:08 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/662e4055c7498138952be6ec not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Sep 19 2024 09:56:39 GMT+0300 (Israel Daylight Time)
+Message: Product not found
+Stack: undefined
+---------------------------------------
+
+Time: Thu Sep 19 2024 09:57:37 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/662e4055c7498138952be6ec not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Sep 19 2024 09:58:20 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/:_id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Sep 19 2024 09:58:42 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/66ebc6c37a6a099160b79daa not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:00:39 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/66ebc6c37a6a099160b79daa not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:01:35 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/Edit/66ebc6c37a6a099160b79daa not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:05:42 GMT+0300 (Israel Daylight Time)
+Message: Product not found
+Stack: undefined
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:10:00 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:11:03 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:11:16 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:11:38 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:12:00 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:12:27 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:12:40 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:12:41 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:12:55 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:13:45 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:15:12 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:15:52 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:17:00 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:17:20 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:17:49 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:21:09 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:21:40 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:30:37 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:30:39 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:31:44 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:32:00 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:32:48 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:32:58 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:33:27 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:33:28 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:33:39 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:34:29 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:34:40 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:34:49 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 10:34:57 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:124:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 11:23:05 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:125:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 11:23:38 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:125:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+
+Time: Thu Sep 19 2024 11:27:18 GMT+0300 (Israel Daylight Time)
+Message: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at new ObjectId (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\bson\src\objectid.ts:118:15)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:125:36
+    at Generator.next (<anonymous>)
+    at C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:27:12)
+    at updateProduct (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\src\6-controllers\products-controller.ts:132:16)
+    at Layer.handle [as handle_request] (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
+---------------------------------------
+

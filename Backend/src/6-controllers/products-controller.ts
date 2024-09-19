@@ -27,7 +27,7 @@ class ProductsController {
         this.router.get("/products/:_id([0-9a-fA-F]{24})", this.getOneProductById);
         this.router.get("/products/search/:text", this.searchProducts);
         this.router.post("/products/new", this.addProduct);
-        this.router.put("/products/:_id([0-9a-fA-F]{24})", this.updateProduct);
+        this.router.put("/products/Edit/:_id([0-9a-fA-F]{24})", this.updateProduct);
         this.router.delete("/products/:_id([0-9a-fA-F]{24})", this.deleteProduct);
         this.router.get("/products/images/:imageName", this.getImageFile);
 
@@ -70,25 +70,40 @@ class ProductsController {
         catch (err: any) { next(err); }
     }
 
-    // POST http://localhost:4000/api/Products/new
+    // POST http://localhost:4000/api/products/new
     private async addProduct(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
             console.log('Request Body:', request.body);
             console.log('Request Files:', request.files);
 
-            // Convert categoryIds to ObjectId array
-            // ensure that any categoryIds provided in the request body are converted to ObjectIds.
+            // Initialize categoryIds array
             // Considering the fact that the frontend sends categoryIds as a JSON string in the form data.
             //The backend needs to parse it and convert each ID to Types.ObjectId.
             let categoryIds: Types.ObjectId[] = [];
+
+            // Check if categoryIds is provided
             if (request.body.categoryIds) {
-                if (Array.isArray(request.body.categoryIds)) {
+                // If categoryIds is a string
+                if (typeof request.body.categoryIds === 'string') {
+                    // Check if it's a JSON string representing an array
+                    if (request.body.categoryIds.startsWith('[') && request.body.categoryIds.endsWith(']')) {
+                        // Parse the JSON array
+                        const parsedIds = JSON.parse(request.body.categoryIds);
+                        categoryIds = parsedIds.map((id: string) => new Types.ObjectId(id));
+                    } else {
+                        // Single ID as string
+                        categoryIds = [new Types.ObjectId(request.body.categoryIds)];
+                    }
+                } else if (Array.isArray(request.body.categoryIds)) {
+                    // If categoryIds is already an array
                     categoryIds = request.body.categoryIds.map((id: string) => new Types.ObjectId(id));
                 } else {
+                    // Handle other cases
                     categoryIds = [new Types.ObjectId(request.body.categoryIds)];
                 }
             }
 
+            // Prepare product data
             const productData = {
                 ...request.body,
                 categoryIds: categoryIds,
@@ -97,6 +112,8 @@ class ProductsController {
 
             const product = new Product(productData);
             const addedProduct = await productsService.addProduct(product);
+
+            // Respond with the added product
             response.status(StatusCode.Created).json(addedProduct);
         }
         catch (err: any) {
@@ -109,22 +126,43 @@ class ProductsController {
     }
 
 
-    // PUT http://localhost:4000/api/products/:_id
+
+    // PUT http://localhost:4000/api/products/Edit/:_id
     private async updateProduct(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
             const productId = request.params._id;
             console.log("product id is: " + productId);
 
-            // Convert categoryIds to ObjectId array
+            // Initialize categoryIds array
             let categoryIds: Types.ObjectId[] = [];
+
+            // Check if categoryIds is provided
             if (request.body.categoryIds) {
-                if (Array.isArray(request.body.categoryIds)) {
+                // If 'categoryIds' is a string, parse it:
+                // This checks if categoryIds is a string, which could be the case when sent as a JSON string or a single ID.
+                if (typeof request.body.categoryIds === 'string') {
+                    // Check if it's a JSON string representing an array
+                    // If categoryIds starts with [ and ends with ], it's a JSON array string.
+                    if (request.body.categoryIds.startsWith('[') && request.body.categoryIds.endsWith(']')) {
+                        // Parse the JSON array 
+                        const parsedIds = JSON.parse(request.body.categoryIds);
+                        //'categoryIds' will be created as an array 'objectId's by using the 'parsedIds' (array of strings)
+                        categoryIds = parsedIds.map((id: string) => new Types.ObjectId(id));
+                    } else {
+                        //if categoryIds is a single ID string, wrap it in an array and convert it to Types.ObjectId.
+                        categoryIds = [new Types.ObjectId(request.body.categoryIds)];
+                    }
+                    //If categoryIds is already an array, map over it to convert each ID.
+                } else if (Array.isArray(request.body.categoryIds)) {
+                    // If categoryIds is already an array
                     categoryIds = request.body.categoryIds.map((id: string) => new Types.ObjectId(id));
                 } else {
+                    // Handle other cases (e.g., single ID not in array)
                     categoryIds = [new Types.ObjectId(request.body.categoryIds)];
                 }
             }
 
+            // Prepare product data
             const productData = {
                 ...request.body,
                 _id: new mongoose.Types.ObjectId(productId),
@@ -152,6 +190,7 @@ class ProductsController {
             }
         }
     }
+
 
 
 
