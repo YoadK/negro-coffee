@@ -75,6 +75,7 @@ class ProductsController {
         try {
             console.log('Request Body:', request.body);
             console.log('Request Files:', request.files);
+            console.log('Request.Files.image:', request.files.image);
 
             // Initialize categoryIds array
             // Considering the fact that the frontend sends categoryIds as a JSON string in the form data.
@@ -109,9 +110,14 @@ class ProductsController {
                 categoryIds: categoryIds,
                 image: request.files?.image as UploadedFile, // Include the uploaded image file
             };
+            console.log('Product Data:', productData);
 
-            const product = new Product(productData);
-            const addedProduct = await productsService.addProduct(product);
+            
+            // Pass productData directly to the service
+            const addedProduct = await productsService.addProduct(productData);
+
+            console.log('added product image name:', addedProduct.imageName);
+            console.log('added Product image url:', addedProduct.imageUrl);
 
             // Respond with the added product
             response.status(StatusCode.Created).json(addedProduct);

@@ -13,8 +13,8 @@ class ProductsService {
     // get All products
     public async getAllProducts(): Promise<IProductModel[]> {
         try {
-            
-            const products=await Product.find().populate('categories').exec();
+
+            const products = await Product.find().populate('categories').exec();
             return products.map(product => {
                 if (!product.imageName || !product.imageUrl) {
                     product.imageName = 'default-image.jpg';
@@ -61,35 +61,46 @@ class ProductsService {
             ]
         }).populate('categories').exec();
     }
-    
+
 
     //add product:
-    public async addProduct(product: IProductModel): Promise<IProductModel> {
+    public async addProduct(productData: any): Promise<IProductModel> {
         try {
-            const newProduct = new Product(product); 
+            //Extracting the image file first, then creating the Product instance.
+            //this removes the image from productData before creating the Mongoose model, 
+            // which aligns perfectly with the goal of preventing Mongoose from stripping off the image (this
+            //  way, no unexpected data is passed to Mongoose.
+
+            // Extract the image file
+            const imageFile = productData.image as UploadedFile;
+            delete productData.image; // Remove 'image' from productData to avoid Mongoose stripping it off
+
+            // Create a new Mongoose model instance with the remaining product data
+            const newProduct = new Product(productData);
+
+
             // Check if an image file is provided
-            if (product.image) {
+            if (imageFile) {
                 // Save the image file
-                const imageFile = product.image as UploadedFile;
+                // const imageFile = product.image as UploadedFile;
                 const imageName = await fileSaver.add(imageFile);
                 newProduct.imageName = imageName;
                 newProduct.imageUrl = environment.BASE_IMAGE_URL + imageName;
-                // newProduct.image = product.image;
-                console.log("image name is: " + newProduct.imageName);
-                console.log("image url  is: " + newProduct.imageUrl);
-
             } else {
-                // If no image is provided, assign a default image name
-                console.warn("else: image name set to: " + 'default-image.jpg');
-                console.log("else: image name is: " + product.imageName);
-                console.log("else: image url  is: " + product.imageUrl);
+                // Assign a default image if none is provided
+                console.warn("No image provided. Using default image.");
                 const defaultImageName = "default-image.jpg";
                 newProduct.imageName = defaultImageName;
                 newProduct.imageUrl = environment.BASE_IMAGE_URL + defaultImageName;
             }
             // Save the new product to the database
             await newProduct.save();
-           
+
+
+            // Log the image name and URL (to match controller expectations)
+            console.log("<product service> Added product image name:", newProduct.imageName);
+            console.log("<product service> Added product image URL:", newProduct.imageUrl);
+
             // Return the added product
             return newProduct;
         } catch (err: any) {
@@ -135,7 +146,7 @@ class ProductsService {
             const updatedProduct = await existingProduct.save();
 
 
-           
+
             return updatedProduct;
         } catch (err: any) {
             console.error("Error updating product:", err);
@@ -194,14 +205,14 @@ class ProductsService {
 
                 // Delete the product from the database
                 await Product.findByIdAndDelete(_id).exec();
-                        }
+            }
         }
         catch (err: any) {
             throw err;
         }
     }
 
-//  TODO: find out why no method is using this functionality...
+    //  TODO: find out why no method is using this functionality...
     //get image name from db
     private async getImageName(_id: Types.ObjectId): Promise<string> {
         try {
@@ -222,7 +233,7 @@ class ProductsService {
             throw err;
         }
     }
-    
+
 
 }
 export const productsService = new ProductsService();
