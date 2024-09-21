@@ -32,8 +32,7 @@ export class ProductListComponent implements OnInit {
      @ViewChild(ProductsFilterComponent) filterComponent: ProductsFilterComponent;    
 
     constructor(
-        private title: Title,
-      
+        private title: Title,      
         private categoriesService: CategoriesService, 
         private productsService: ProductsService,  
         private spinnerLoadingService: SpinnerLoadingService,
@@ -83,33 +82,23 @@ export class ProductListComponent implements OnInit {
         this.spinnerLoadingService.setLoading(true);
         
         try {
-            let relevantAssociations: ProductCategoryModel[];
+            let products: ProductModel[];
 
             if (categoryId === null) {
                 console.log('Showing all products');
-                relevantAssociations = this.allProductAssociations;
+                products = await this.productsService.getAllProducts();
             } else {
                 console.log('Filtering products for category:', categoryId);
-                relevantAssociations = this.allProductAssociations.filter(
-                    assoc => assoc.categoryIds.includes(categoryId)
-                );
+                products = await this.productsService.getProductsByCategoryId(categoryId);
             }
 
-            console.log('Relevant associations found:', relevantAssociations.length);
-
-            // Fetch product details for each relevant association
-            const productPromises = relevantAssociations.map(assoc =>
-                this.productsService.getOneProduct(assoc.productId)
-            );
-
-            const products = await Promise.all(productPromises);
-            console.log('Fetched product details:', products.length);
+            console.log('Fetched products:', products.length);
 
             // Update the BehaviorSubject with the new products
             this.productsSubject.next(products);
 
-             // Update the product count
-             this.productCount = products.length;
+            // Update the product count
+            this.productCount = products.length;
             
         } catch (error) {
             console.error('Error filtering and fetching products:', error);

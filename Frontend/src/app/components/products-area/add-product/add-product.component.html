@@ -33,11 +33,11 @@
   <div class="form-group">
     <label for="image">תמונה:</label>
     <input type="file" id="image" name="image" (change)="onFileSelected($event)" accept="image/*" #myImage required>
-    <div *ngIf="myForm.submitted && !product.image" class="error">תמונה היא שדה חובה.</div>
+    <div class="error" *ngIf="myForm.submitted && !product.image" class="error">תמונה היא שדה חובה.</div>
   </div>
 
-  <div *ngIf="imagePreview" class="image-preview">
-    <img [src]="imagePreview" alt="Image preview">
+  <div class="image-preview-container" *ngIf="imagePreview">
+    <img [src]="imagePreview" alt="Image preview" class="image-preview">
   </div>
 
   <button type="submit">הוסף מוצר</button>

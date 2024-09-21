@@ -234,6 +234,26 @@ class ProductsService {
         }
     }
 
+    public async getProductsByCategoryId(categoryId: Types.ObjectId): Promise<IProductModel[]> {
+        try {
+
+            const products = await Product.find({ categoryIds: categoryId })
+            .populate('categories')
+            .exec();
+
+            return products.map(product => {
+                if (!product.imageName || !product.imageUrl) {
+                    product.imageName = 'default-image.jpg';
+                    product.imageUrl = `${environment.BASE_IMAGE_URL}default-image.jpg`;
+                }
+                return product;
+            });
+        }
+        catch (err: any) {
+            console.error("Error getting all products:", err);
+            throw err;
+        }
+    }
 
 }
 export const productsService = new ProductsService();

@@ -2822,3 +2822,73 @@ Stack: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, o
     at Route.dispatch (C:\Users\YoadK\Dropbox\my_projects-portfolio\negro_coffee\Negro coffee - MongoDB Angular Full Stack\Backend\node_modules\express\lib\router\route.js:119:3)
 ---------------------------------------
 
+Time: Sat Sep 21 2024 15:18:28 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/category/66293bc08900f5681d2ab564 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Sep 21 2024 15:18:36 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/category/662bc8ecc27bf8f253c4712e not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Sep 21 2024 15:18:41 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/category/662bc3e8c27bf8f253c47124 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Sep 21 2024 15:19:31 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/66ec44515c31de0f0084d840 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Sep 21 2024 15:20:36 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/66ec42daf0e7d673e7175950 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Sep 21 2024 15:22:52 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/categories/:categoryId not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Sep 21 2024 15:23:05 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/categories/:id not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Sep 21 2024 15:25:41 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/66ec42daf0e7d673e7175950 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Sep 21 2024 16:02:39 GMT+0300 (Israel Daylight Time)
+Message: Product not found
+Stack: undefined
+---------------------------------------
+
+Time: Sat Sep 21 2024 16:02:46 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/category/66293bc08900f5681d2ab564 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Sep 21 2024 16:27:31 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/66eec95073e82db5647cf5d7 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Sep 21 2024 16:29:05 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/66eec52773e82db5647cf5b8 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Sep 21 2024 18:16:23 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/category/66293bc08900f5681d2ab564 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Sep 21 2024 18:25:42 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/category/66293bc08900f5681d2ab564 not found.
+Stack: undefined
+---------------------------------------
+

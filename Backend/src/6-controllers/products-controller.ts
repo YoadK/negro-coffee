@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from "express";
+import express, { NextFunction, Request, response, Response } from "express";
 import { StatusCode } from "../3-models/enums";
 import { productsService } from "../5-services/products-service";
 import { ValidationError } from "../3-models/client-errors";
@@ -27,11 +27,25 @@ class ProductsController {
         this.router.get("/products/:_id([0-9a-fA-F]{24})", this.getOneProductById);
         this.router.get("/products/search/:text", this.searchProducts);
         this.router.post("/products/new", this.addProduct);
-        this.router.put("/products/Edit/:_id([0-9a-fA-F]{24})", this.updateProduct);
+        this.router.put("/products/edit/:_id([0-9a-fA-F]{24})", this.updateProduct);
         this.router.delete("/products/:_id([0-9a-fA-F]{24})", this.deleteProduct);
         this.router.get("/products/images/:imageName", this.getImageFile);
+        this.router.get("/products/categories/:categoryId([0-9a-fA-F]{24})", this.getProductsByCategoryId);        
+        this.router.get("/products/category/:categoryId", this.getProductsByCategoryId);
 
     }
+    // GET http://localhost:4000/api//products/category/:categoryId
+    private async getProductsByCategoryId (request: Request, response: Response, next: NextFunction)
+    {
+        try {
+            const categoryId = new Types.ObjectId(request.params.categoryId);
+            const products = await productsService.getProductsByCategoryId (categoryId);
+            response.json(products);
+        }
+        catch (err: any) { next(err); }
+
+    }
+
 
     // GET http://localhost:4000/api/products
     private async getAllProducts(request: Request, response: Response, next: NextFunction): Promise<void> {
@@ -133,7 +147,7 @@ class ProductsController {
 
 
 
-    // PUT http://localhost:4000/api/products/Edit/:_id
+    // PUT http://localhost:4000/api/products/edit/:_id
     private async updateProduct(request: Request, response: Response, next: NextFunction): Promise<void> {
         try {
             const productId = request.params._id;

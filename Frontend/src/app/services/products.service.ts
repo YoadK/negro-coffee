@@ -7,7 +7,6 @@ import { Store } from '@ngxs/store';
 import { DeleteProduct, UpdateProductQuantity } from '../NgXs/actions/product.actions';
 import { notify } from '../Utils/Notify';
 
-
 @Injectable({
     providedIn: 'root'
 })
@@ -72,8 +71,8 @@ export class ProductsService {
         const formData = new FormData();
         this.appendProductData(formData, product);
 
-        try {
-            const updatedProduct = await lastValueFrom(this.http.put<ProductModel>(`${appConfig.productsUrl}${product._id}`, formData));
+        try {            
+            const updatedProduct = await lastValueFrom(this.http.put<ProductModel>(`${appConfig.productsUrl}edit/${product._id}`, formData));
             console.log('Updated product:', updatedProduct);
             // Update the store with the updated product's quantity
             this.store.dispatch(new UpdateProductQuantity({ productId: updatedProduct._id, quantity: updatedProduct.product_weight_grams }));
@@ -135,5 +134,24 @@ export class ProductsService {
         }
         console.error(errorMessage);
         notify.error(errorMessage);
+    }
+
+
+    public async getProductsByCategoryId(categoryId: string): Promise<ProductModel[]> {
+        try {
+            const products = await lastValueFrom(this.http.get<ProductModel[]>(`${appConfig.productsUrl}category/${categoryId}`));
+            console.log('Fetched products for category:', categoryId, 'Count:', products.length);
+            
+            // Update store for each product
+            products.forEach(product => {
+                this.store.dispatch(new UpdateProductQuantity({ productId: product._id, quantity: product.product_weight_grams }));
+            });
+            
+            return products;
+        } catch (error) {
+            console.error("Error getting products by category:", error);
+            this.handleError(error);
+            throw error;
+        }
     }
 }
