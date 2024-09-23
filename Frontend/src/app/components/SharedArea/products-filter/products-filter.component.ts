@@ -13,13 +13,14 @@ import { CategoryNames } from '../../../models/categoriesNames_enums';
 })
 export class ProductsFilterComponent {
     @Input() categories: any[] = [];
-    @Output() categorySelected = new EventEmitter<string>();
+    @Output() categorySelected = new EventEmitter<string | null>();
     @Input() productCount: number = 0;
     selectedCategory: string | null = null;
 
-    onCategoryClick(categoryId: string): void {
+    onCategoryClick(categoryId: string | null ): void {
         this.selectedCategory = categoryId;
         this.categorySelected.emit(categoryId);
+        console.log('Category clicked:', categoryId); // debugging
     }
 
     getIconClass(categoryName: string): string {

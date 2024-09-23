@@ -2892,3 +2892,8 @@ Message: Route /api/products/category/66293bc08900f5681d2ab564 not found.
 Stack: undefined
 ---------------------------------------
 
+Time: Mon Sep 23 2024 15:05:05 GMT+0300 (Israel Daylight Time)
+Message: Route /api/products/categories/:id not found.
+Stack: undefined
+---------------------------------------
+
