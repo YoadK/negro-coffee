@@ -53,6 +53,7 @@ export const ProductSchema = new Schema<IProductModel>(
       {
         type: Schema.Types.ObjectId,
         ref: "Category",
+        required: true, // Ensure it's required if necessary
       },
     ],
   },

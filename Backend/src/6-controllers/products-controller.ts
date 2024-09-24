@@ -30,16 +30,15 @@ class ProductsController {
         this.router.put("/products/edit/:_id([0-9a-fA-F]{24})", this.updateProduct);
         this.router.delete("/products/:_id([0-9a-fA-F]{24})", this.deleteProduct);
         this.router.get("/products/images/:imageName", this.getImageFile);
-        this.router.get("/products/categories/:categoryId([0-9a-fA-F]{24})", this.getProductsByCategoryId);        
+        this.router.get("/products/categories/:categoryId([0-9a-fA-F]{24})", this.getProductsByCategoryId);
         this.router.get("/products/category/:categoryId", this.getProductsByCategoryId);
 
     }
     // GET http://localhost:4000/api//products/category/:categoryId
-    private async getProductsByCategoryId (request: Request, response: Response, next: NextFunction)
-    {
+    private async getProductsByCategoryId(request: Request, response: Response, next: NextFunction) {
         try {
             const categoryId = new Types.ObjectId(request.params.categoryId);
-            const products = await productsService.getProductsByCategoryId (categoryId);
+            const products = await productsService.getProductsByCategoryId(categoryId);
             response.json(products);
         }
         catch (err: any) { next(err); }
@@ -97,6 +96,7 @@ class ProductsController {
             let categoryIds: Types.ObjectId[] = [];
 
             // Check if categoryIds is provided
+            // adding logic to parse categoryIds from the request body, considering various formats.
             if (request.body.categoryIds) {
                 // If categoryIds is a string
                 if (typeof request.body.categoryIds === 'string') {
@@ -126,7 +126,7 @@ class ProductsController {
             };
             console.log('Product Data:', productData);
 
-            
+
             // Pass productData directly to the service
             const addedProduct = await productsService.addProduct(productData);
 
@@ -157,6 +157,8 @@ class ProductsController {
             let categoryIds: Types.ObjectId[] = [];
 
             // Check if categoryIds is provided
+            // adding logic to parse categoryIds from the request body, considering various formats.
+
             if (request.body.categoryIds) {
                 // If 'categoryIds' is a string, parse it:
                 // This checks if categoryIds is a string, which could be the case when sent as a JSON string or a single ID.

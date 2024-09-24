@@ -5,6 +5,7 @@ import { IProductModel, Product } from "../3-models/Iproduct-model";
 import mongoose, { Types } from "mongoose";
 import { UploadedFile } from "express-fileupload";
 import { Conflict } from 'http-errors';
+import { Category } from "../3-models/Icategory-model";
 
 
 
@@ -66,6 +67,17 @@ class ProductsService {
     //add product:
     public async addProduct(productData: any): Promise<IProductModel> {
         try {
+
+            // Ensure categoryIds is an array of ObjectIds
+            if (productData.categoryIds && Array.isArray(productData.categoryIds)) {
+                productData.categoryIds = productData.categoryIds.map((id: string) => new Types.ObjectId(id));
+            } else {
+                throw new ValidationError("categoryIds must be an array of category IDs");
+            }
+
+            // Optionally, validate that all categoryIds exist in the database
+            // ...
+
             //Extracting the image file first, then creating the Product instance.
             //this removes the image from productData before creating the Mongoose model, 
             // which aligns perfectly with the goal of preventing Mongoose from stripping off the image (this
@@ -109,34 +121,51 @@ class ProductsService {
     }
 
     //update (edit) coffee product
-    public async updateProduct(product: IProductModel): Promise<IProductModel> {
+    public async updateProduct(productData: any): Promise<IProductModel> {
         try {
-            console.log("Updating product with ID:", product._id);
+            console.log("Updating product with ID:", productData._id);
 
             // Fetch the existing product from the database
-            const existingProduct = await Product.findById(product._id);
+            const existingProduct = await Product.findById(productData._id);
 
             // If the product doesn't exist, throw a ResourceNotFoundError
-            if (!existingProduct) throw new ResourceNotFoundError(product._id.toString());
+            if (!existingProduct) throw new ResourceNotFoundError(productData._id.toString());
 
             console.log("Existing product:", existingProduct);
 
+
+            // Ensure categoryIds is an array of ObjectIds
+            if (productData.categoryIds && Array.isArray(productData.categoryIds)) {
+                productData.categoryIds = productData.categoryIds.map((id: string) => new Types.ObjectId(id));
+            } else {
+                throw new ValidationError("categoryIds must be an array of category IDs");
+            }
+
             // Update basic product fields using Object.assign for cleaner code
             Object.assign(existingProduct, {
-                name: product.name,
-                description: product.description,
-                product_weight_grams: product.product_weight_grams,
-                price: product.price,
-                categoryIds: product.categoryIds
+                name: productData.name,
+                description: productData.description,
+                product_weight_grams: productData.product_weight_grams,
+                price: productData.price,
+                categoryIds: productData.categoryIds
             });
 
             // Handle image update
-            if (product.image && product.image instanceof Object && 'name' in product.image) {
+            if (productData.image && productData.image instanceof Object && 'name' in productData.image) {
                 // If a new image is provided, update the product's image
-                await this.updateProductImage(existingProduct, product.image as UploadedFile);
-            } else if (!product.image && existingProduct.imageName !== 'default-image.jpg') {
+                await this.updateProductImage(existingProduct, productData.image as UploadedFile);
+            } else if (!productData.image && existingProduct.imageName !== 'default-image.jpg') {
                 // If no new image is provided and the current image is not the default, revert to default
                 this.revertToDefaultImage(existingProduct);
+            }
+
+            // To ensure data integrity, you may want to validate that 
+            // all categoryIds correspond to existing categories in your database.
+            // In addProduct or updateProduct methods
+            // Validate categoryIds
+            const existingCategories = await Category.find({ _id: { $in: productData.categoryIds } });
+            if (existingCategories.length !== productData.categoryIds.length) {
+                throw new ValidationError("Some category IDs are invalid");
             }
 
             // Validate the updated product
@@ -238,8 +267,8 @@ class ProductsService {
         try {
 
             const products = await Product.find({ categoryIds: categoryId })
-            .populate('categories')
-            .exec();
+                .populate('categories')
+                .exec();
 
             return products.map(product => {
                 if (!product.imageName || !product.imageUrl) {

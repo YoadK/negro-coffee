@@ -5,6 +5,10 @@ import { ProductModel } from '../../../models/product.model';
 import { ProductsService } from '../../../services/products.service';
 import { notify } from '../../../Utils/Notify';
 import { CommonModule } from '@angular/common';
+import { CategoriesService } from '../../../services/categories.service';
+import { OnInit } from '@angular/core';
+import { CategoryModel } from '../../../models/category.model';
+
 
 @Component({
     selector: 'app-add-product',
@@ -13,12 +17,13 @@ import { CommonModule } from '@angular/common';
     templateUrl: './add-product.component.html',
     styleUrls: ['./add-product.component.module.scss']
 })
-export class AddProductComponent {
+export class AddProductComponent implements OnInit {
     @Output() productAdded = new EventEmitter<void>();
     
     public product = new ProductModel();
     public imagePreview: string | ArrayBuffer | null = null;
     public isSubmitting = false;
+    public categories: CategoryModel[] = [];
 
     @ViewChild("myImage")
     public myImage: ElementRef<HTMLInputElement>;
@@ -26,7 +31,35 @@ export class AddProductComponent {
     @ViewChild("myForm")
     public myForm: NgForm;
 
-    constructor(private productsService: ProductsService, private router: Router) { }
+    constructor(private productsService: ProductsService, private router: Router,private categoriesService: CategoriesService ) { }
+
+
+    public async ngOnInit(): Promise<void> {
+        try {
+            this.categories = await this.categoriesService.getAllCategories();
+            console.log('Categories loaded:', this.categories.length);
+        } catch (error) {
+            console.error('Error fetching categories:', error);
+            notify.error('Error fetching categories');
+        }
+    }
+
+    onCategoryChange(event: Event): void {
+        const input = event.target as HTMLInputElement;
+        const categoryId = input.value;
+    
+        if (input.checked) {
+              // Add the category ID to the product's categoryIds array
+            this.product.categoryIds.push(categoryId);
+        } else {
+             // Remove the category ID from the product's categoryIds array
+            const index = this.product.categoryIds.indexOf(categoryId);
+            if (index > -1) {
+                this.product.categoryIds.splice(index, 1);
+            }
+        }
+    }
+    
 
     public async send(): Promise<void> {
         if (this.isSubmitting) return;
@@ -107,6 +140,12 @@ export class AddProductComponent {
             notify.error('Product weight must be between 0 and 1000 grams');
             return false;
         }
+        if (!product.categoryIds || product.categoryIds.length === 0) {
+            notify.error('Please select at least one category');
+            return false;
+        }
+
+        
         return true;
     }
 
