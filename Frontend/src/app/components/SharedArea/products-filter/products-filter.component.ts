@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { CategoryNames } from '../../../models/categoriesNames_enums';
+import { SharedModule } from '../shared-module';
+
 
 
 @Component({
     selector: 'app-products-filter',
     standalone: true,
-    imports: [CommonModule, RouterModule],
+    imports: [CommonModule, RouterModule,SharedModule],
     templateUrl: './products-filter.component.html',
     styleUrls: ['./products-filter.component.module.scss']
 })
@@ -16,6 +17,7 @@ export class ProductsFilterComponent {
     @Output() categorySelected = new EventEmitter<string | null>();
     @Input() productCount: number = 0;
     selectedCategory: string | null = null;
+
 
     onCategoryClick(categoryId: string | null ): void {
         this.selectedCategory = categoryId;
@@ -31,9 +33,6 @@ export class ProductsFilterComponent {
         return categoryName.replace(/\s+/g, '-').toLowerCase();
     }
 
-    getTranslatedCategoryName(categoryName: string): string {
-        // cast categoryName as keyof typeof CategoryNames (which refers to the keys of the enum) 
-        return CategoryNames[categoryName as keyof typeof CategoryNames] || categoryName; // Map English to Hebrew, fallback to original if not found
-    }
+    
 
 }

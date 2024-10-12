@@ -16,7 +16,7 @@
                 (click)="onCategoryClick(category._id)"
                 [class.active]="category._id === selectedCategory">
             <div class="category-icon"></div>
-            <span>{{ getTranslatedCategoryName(category.name) }}</span>
+            <span>{{ category.name | translateCategoryName   }}</span>
         </button>
     </div>
 

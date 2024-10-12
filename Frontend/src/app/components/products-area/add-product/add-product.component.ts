@@ -8,12 +8,13 @@ import { CommonModule } from '@angular/common';
 import { CategoriesService } from '../../../services/categories.service';
 import { OnInit } from '@angular/core';
 import { CategoryModel } from '../../../models/category.model';
+import { SharedModule } from '../../SharedArea/shared-module';
 
 
 @Component({
     selector: 'app-add-product',
     standalone: true,
-    imports: [FormsModule, CommonModule],
+    imports: [FormsModule, CommonModule, SharedModule],
     templateUrl: './add-product.component.html',
     styleUrls: ['./add-product.component.module.scss']
 })
