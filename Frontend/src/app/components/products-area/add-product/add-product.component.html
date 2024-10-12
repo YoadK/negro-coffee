@@ -40,23 +40,25 @@
     <img [src]="imagePreview" alt="Image preview" class="image-preview">
   </div>
 
-  <label>קטגוריות:</label>
-  <div *ngFor="let category of categories">
-    <input
-      type="checkbox"
-      [id]="category._id"
-      [value]="category._id"
-      (change)="onCategoryChange($event)"
-      [checked]="product.categoryIds.includes(category._id)"
-    />
-    <label [for]="category._id">{{ category.name }}</label>
+  
+  <div class="form-group">
+    <label>קטגוריות:</label>
+    <div *ngFor="let category of categories">
+      <label>
+        <input type="checkbox" 
+               [value]="category._id" 
+               [checked]="product.categoryIds?.includes(category._id)"
+               (change)="onCategoryChange($event, category._id)">
+        {{ category.name }}
+      </label>
+    </div>
+    <div *ngIf="myForm.submitted && (!product.categoryIds || product.categoryIds.length === 0)" class="alert alert-danger">
+      Please select at least one category.
+    </div>
   </div>
-  <div
-    *ngIf="myForm.submitted && (!product.categoryIds || product.categoryIds.length === 0)"
-    class="error"
-  >
-    יש לבחור לפחות קטגוריה אחת.
-  </div>
+
+
+  
 
   <button type="submit">הוסף מוצר</button>
 </form>

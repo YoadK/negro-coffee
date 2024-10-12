@@ -35,6 +35,22 @@
         </div>
         <div *ngIf="!imagePreview">No preview image available</div>
       </div>
+
+      <div class="form-group">
+        <label>Categories:</label>
+        <div *ngFor="let category of categories">
+          <label>
+            <input type="checkbox" 
+                   [value]="category._id" 
+                   [checked]="product.categoryIds?.includes(category._id)"
+                   (change)="onCategoryChange($event, category._id)">
+            {{ category.name }}
+          </label>
+        </div>
+        <div *ngIf="myForm.submitted && (!product.categoryIds || product.categoryIds.length === 0)" class="alert alert-danger">
+          Please select at least one category.
+        </div>
+      </div>
   
       <button type="submit" [disabled]="myForm.form.invalid">Update Product</button>
     </form>

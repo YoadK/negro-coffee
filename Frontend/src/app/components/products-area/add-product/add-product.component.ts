@@ -19,7 +19,7 @@ import { CategoryModel } from '../../../models/category.model';
 })
 export class AddProductComponent implements OnInit {
     @Output() productAdded = new EventEmitter<void>();
-    
+
     public product = new ProductModel();
     public imagePreview: string | ArrayBuffer | null = null;
     public isSubmitting = false;
@@ -31,35 +31,58 @@ export class AddProductComponent implements OnInit {
     @ViewChild("myForm")
     public myForm: NgForm;
 
-    constructor(private productsService: ProductsService, private router: Router,private categoriesService: CategoriesService ) { }
+    constructor(
+        private productsService: ProductsService,
+        private router: Router,
+        private categoriesService: CategoriesService
+    ) { }
+
+
 
 
     public async ngOnInit(): Promise<void> {
         try {
-            this.categories = await this.categoriesService.getAllCategories();
-            console.log('Categories loaded:', this.categories.length);
+
+            await this.loadCategories();
         } catch (error) {
             console.error('Error fetching categories:', error);
             notify.error('Error fetching categories');
         }
     }
 
-    onCategoryChange(event: Event): void {
+
+    
+    async loadCategories() {
+        try {
+            this.categories = await this.categoriesService.getAllCategories();
+            console.log('<add> Categories loaded: ', this.categories.length);
+        } catch (error) {
+            console.error('Error loading categories:', error);
+            notify.error('Failed to load categories');
+        }
+    }
+
+
+
+    onCategoryChange(event: Event, categoryId: string): void {
         const input = event.target as HTMLInputElement;
-        const categoryId = input.value;
     
         if (input.checked) {
-              // Add the category ID to the product's categoryIds array
+            // Add the category ID to the product's categoryIds array
+            if (!this.product.categoryIds) {
+                this.product.categoryIds = [];
+            }
             this.product.categoryIds.push(categoryId);
         } else {
-             // Remove the category ID from the product's categoryIds array
-            const index = this.product.categoryIds.indexOf(categoryId);
-            if (index > -1) {
-                this.product.categoryIds.splice(index, 1);
+            // Remove the category ID from the product's categoryIds array
+            if (this.product.categoryIds) {
+                const index = this.product.categoryIds.indexOf(categoryId);
+                if (index > -1) {
+                    this.product.categoryIds.splice(index, 1);
+                }
             }
         }
     }
-    
 
     public async send(): Promise<void> {
         if (this.isSubmitting) return;
@@ -88,9 +111,9 @@ export class AddProductComponent implements OnInit {
             console.log('Product added successfully');
             this.resetForm();
         }
-        catch (err: any) { 
+        catch (err: any) {
             console.error('Error adding product:', err);
-            notify.error(err.message || 'Error adding product'); 
+            notify.error(err.message || 'Error adding product');
         }
         finally {
             this.isSubmitting = false;
@@ -145,9 +168,9 @@ export class AddProductComponent implements OnInit {
             return false;
         }
 
-        
+
         return true;
     }
 
-    
+
 }

@@ -10,6 +10,8 @@ import { UpdateProductQuantity } from '../../../NgXs/actions/product.actions';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CategoryModel } from '../../../models/category.model';
+import { CategoriesService } from '../../../services/categories.service';
+
 
 @Component({
   selector: 'app-edit-product',
@@ -21,6 +23,7 @@ import { CategoryModel } from '../../../models/category.model';
 export class EditProductComponent implements OnInit {
   product: ProductModel = new ProductModel();
   imagePreview: SafeUrl | null = null;
+  categories: CategoryModel[] = [];
 
   @ViewChild('imageInput') imageInput: ElementRef;
 
@@ -28,6 +31,7 @@ export class EditProductComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private productsService: ProductsService,
+    private categoriesService: CategoriesService,
     private sanitizer: DomSanitizer,
     private store: Store
   ) {}
@@ -36,6 +40,19 @@ export class EditProductComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       await this.loadProduct(id);
+    }
+
+    await this.loadCategories();
+  }
+
+
+  async loadCategories() {
+    try {
+      this.categories = await this.categoriesService.getAllCategories();
+      console.log('<edit/update> Categories loaded: ', this.categories.length);
+    } catch (error) {
+      console.error('Error loading categories:', error);
+      notify.error('Failed to load categories');
     }
   }
 
@@ -81,6 +98,19 @@ export class EditProductComponent implements OnInit {
       this.updateImagePreview();
     }
   }
+
+  onCategoryChange(event: Event, categoryId: string) {
+    const checkbox = event.target as HTMLInputElement;
+    if (!this.product.categoryIds) {
+      this.product.categoryIds = [];
+    }
+    if (checkbox.checked) {
+      this.product.categoryIds.push(categoryId);
+    } else {
+      this.product.categoryIds = this.product.categoryIds.filter(id => id !== categoryId);
+    }
+  }
+  
 
   private updateImagePreview() {
     if (this.product.image instanceof File) {
