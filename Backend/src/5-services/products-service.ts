@@ -70,9 +70,6 @@ class ProductsService {
             // Parse and convert categoryIds
             productData.categoryIds = this.parseCategoryIds(productData.categoryIds);
 
-           
-
-
 
 
             //Extracting the image file first, then creating the Product instance.
@@ -103,8 +100,7 @@ class ProductsService {
                 newProduct.imageUrl = environment.BASE_IMAGE_URL + defaultImageName;
             }
 
-            //validate that all categoryIds correspond to existing categories in your database
-            await this.validateCategoryIds(newProduct.categoryIds)
+         
             // Save the new product to the database
             await newProduct.save();
 
@@ -121,57 +117,33 @@ class ProductsService {
     }
 
 
-    //helper function:
-    // To ensure data integrity, you may want to validate that 
-    // all categoryIds correspond to existing categories in your database.
-    // In addProduct or updateProduct methods
-    // Validate categoryIds
-    private async validateCategoryIds(categoryIds: Types.ObjectId[]): Promise<void> {
-        const existingCategories = await Category.find({ _id: { $in: categoryIds } });
-        if (existingCategories.length !== categoryIds.length) {
-            throw new ValidationError("Some category IDs are invalid");
-        }
-    }
 
     //helper function
-    //handles the parsing and conversion of categoryIds to an array of Types.ObjectId:
-    //ensures that the categoryIds field, regardless of its format (single ID string, JSON array string, or an actual array), is converted into an array of Types.ObjectId before it's used to create a new product.
     // This allows the backend to properly associate the product with its category(ies).
     private parseCategoryIds(categoryIds: any): Types.ObjectId[] {
-        let parsedCategoryIds: Types.ObjectId[] = [];
+        console.log('Received categoryIds:', categoryIds);
+    
         if (!categoryIds) {
-            throw new ValidationError("categoryIds is required");
+            throw new ValidationError("categoryIds is required and cannot be empty");
         }
-        if (categoryIds) {
-            if (typeof categoryIds === 'string') {
-                // Check if it's a JSON string representing an array
-                if (categoryIds.startsWith('[') && categoryIds.endsWith(']')) {
-                    try {
-                        // Parse the JSON array
-                        const parsedIds = JSON.parse(categoryIds);
-                        parsedCategoryIds = parsedIds.map((id: string) => new Types.ObjectId(id));
-                    } catch (error) {
-                        throw new ValidationError("Invalid categoryIds format");
-                    }
-                } else {
-                    // Single ID as string
-                    parsedCategoryIds = [new Types.ObjectId(categoryIds)];
-                }
-            } else if (Array.isArray(categoryIds)) {
-                // If categoryIds is already an array
-                parsedCategoryIds = categoryIds.map((id: string) => new Types.ObjectId(id));
-            } else {
-                // Handle other cases (e.g., single ID not in array)
-                parsedCategoryIds = [new Types.ObjectId(categoryIds)];
+    
+        if (!Array.isArray(categoryIds)) {
+            // If it's a single ID, convert it to an array
+            categoryIds = [categoryIds];
+        }
+    
+        const parsedCategoryIds = categoryIds.map((id: any) => {
+            if (typeof id !== 'string' || !Types.ObjectId.isValid(id)) {
+                throw new ValidationError(`Invalid category ID: ${id}`);
             }
-
-        }
-
-        if (parsedCategoryIds.length === 0) {
-            throw new ValidationError("categoryIds must contain at least one category ID");
-        }
+            return new Types.ObjectId(id);
+        });
+    
         return parsedCategoryIds;
     }
+    
+    
+
 
 
 
@@ -191,7 +163,7 @@ class ProductsService {
             // Parse and convert categoryIds
             productData.categoryIds = await this.parseCategoryIds(productData.categoryIds);
 
-        
+
 
             // Update basic product fields using Object.assign for cleaner code
             Object.assign(existingProduct, {
@@ -211,8 +183,7 @@ class ProductsService {
                 this.revertToDefaultImage(existingProduct);
             }
 
-            //validate that all categoryIds correspond to existing categories in your database
-            await this.validateCategoryIds(existingProduct.categoryIds)
+            
 
             // Validate the updated product
             await existingProduct.validate();

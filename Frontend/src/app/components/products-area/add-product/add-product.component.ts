@@ -36,7 +36,10 @@ export class AddProductComponent implements OnInit {
         private productsService: ProductsService,
         private router: Router,
         private categoriesService: CategoriesService
-    ) { }
+    ) {
+        this.product = new ProductModel();
+        this.product.categoryIds = []; // Initialize the array
+    }
 
 
 
@@ -52,7 +55,7 @@ export class AddProductComponent implements OnInit {
     }
 
 
-    
+
     async loadCategories() {
         try {
             this.categories = await this.categoriesService.getAllCategories();
@@ -67,23 +70,27 @@ export class AddProductComponent implements OnInit {
 
     onCategoryChange(event: Event, categoryId: string): void {
         const input = event.target as HTMLInputElement;
-    
+
+        if (!this.product.categoryIds) {
+            this.product.categoryIds = [];
+        }
+
         if (input.checked) {
-            // Add the category ID to the product's categoryIds array
-            if (!this.product.categoryIds) {
-                this.product.categoryIds = [];
-            }
+            // Add the category ID to the product's categoryIds array          
             this.product.categoryIds.push(categoryId);
         } else {
-            // Remove the category ID from the product's categoryIds array
-            if (this.product.categoryIds) {
-                const index = this.product.categoryIds.indexOf(categoryId);
-                if (index > -1) {
-                    this.product.categoryIds.splice(index, 1);
-                }
+            // Remove the category ID from the product's categoryIds array           
+            const index = this.product.categoryIds.indexOf(categoryId);
+            if (index > -1) {
+                this.product.categoryIds.splice(index, 1);
             }
+
         }
+        console.log('Updated categories:', this.product.categoryIds);
     }
+
+
+
 
     public async send(): Promise<void> {
         if (this.isSubmitting) return;
@@ -106,10 +113,15 @@ export class AddProductComponent implements OnInit {
             if (!this.validateProduct(this.product)) {
                 return;
             }
-            await this.productsService.addProduct(this.product);
+            console.log('Sending product with categories:', this.product.categoryIds); // Add this line
+             // Ensure categoryIds are strings
+             this.product.categoryIds = this.product.categoryIds.map(id => id.toString());
+            
+             const addedProduct = await this.productsService.addProduct(this.product);
+             console.log('Product added successfully:', addedProduct);
             this.productAdded.emit();
             notify.success('Product added successfully');
-            console.log('Product added successfully');
+          
             this.resetForm();
         }
         catch (err: any) {
@@ -140,7 +152,9 @@ export class AddProductComponent implements OnInit {
 
     private resetForm(): void {
         this.product = new ProductModel();
+        this.product.categoryIds = []; // Reset categories
         this.imagePreview = null;
+
         if (this.myImage && this.myImage.nativeElement) {
             this.myImage.nativeElement.value = '';
         }
@@ -162,6 +176,10 @@ export class AddProductComponent implements OnInit {
         }
         if (product.product_weight_grams === undefined || product.product_weight_grams < 0 || product.product_weight_grams > 1000) {
             notify.error('Product weight must be between 0 and 1000 grams');
+            return false;
+        }
+        if (!product.categoryIds || product.categoryIds.length === 0) {
+            notify.error('Please select at least one category');
             return false;
         }
         if (!product.categoryIds || product.categoryIds.length === 0) {

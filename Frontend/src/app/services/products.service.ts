@@ -71,7 +71,7 @@ export class ProductsService {
         const formData = new FormData();
         this.appendProductData(formData, product);
 
-        try {            
+        try {
             const updatedProduct = await lastValueFrom(this.http.put<ProductModel>(`${appConfig.productsUrl}edit/${product._id}`, formData));
             console.log('Updated product:', updatedProduct);
             // Update the store with the updated product's quantity
@@ -107,7 +107,6 @@ export class ProductsService {
 
 
 
-
     private appendProductData(formData: FormData, product: ProductModel): void {
         formData.append('name', product.name);
         formData.append('description', product.description);
@@ -115,9 +114,18 @@ export class ProductsService {
         formData.append('product_weight_grams', product.product_weight_grams.toString());
 
 
-        // Append category IDs as a JSON string
+        // old:
+        // // Append category IDs as a JSON string
+        // if (product.categoryIds && product.categoryIds.length > 0) {
+        //     formData.append('categoryIds', JSON.stringify(product.categoryIds));
+        // }
+
+      
+        // Append categoryIds correctly
         if (product.categoryIds && product.categoryIds.length > 0) {
-            formData.append('categoryIds', JSON.stringify(product.categoryIds));
+            product.categoryIds.forEach((categoryId) => {
+                formData.append('categoryIds', categoryId);
+            });
         }
 
         if (product.image instanceof File) {
@@ -141,12 +149,12 @@ export class ProductsService {
         try {
             const products = await lastValueFrom(this.http.get<ProductModel[]>(`${appConfig.productsUrl}category/${categoryId}`));
             console.log('Fetched products for category:', categoryId, 'Count:', products.length);
-            
+
             // Update store for each product
             products.forEach(product => {
                 this.store.dispatch(new UpdateProductQuantity({ productId: product._id, quantity: product.product_weight_grams }));
             });
-            
+
             return products;
         } catch (error) {
             console.error("Error getting products by category:", error);

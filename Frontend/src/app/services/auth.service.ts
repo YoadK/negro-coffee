@@ -33,7 +33,7 @@ export class AuthService implements OnInit {
     loadStoredToken(): string | null {
         // Check if token is already cached
         if (this.cachedToken) {
-            console.log('Returning cached token');
+            //console.log('Returning cached token');
             return this.cachedToken;
         }
 

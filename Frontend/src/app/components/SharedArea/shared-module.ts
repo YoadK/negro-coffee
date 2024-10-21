@@ -13,13 +13,14 @@ import {  TranslateCategoryNamePipe } from './translate-category-name.pipe';
     TranslateCategoryNamePipe],
 
   imports: [
-    CommonModule // CommonModule if you use *ngFor, *ngIf, etc, in your shared components/pipes
+    CommonModule
   ],
 
   exports: [
-    HebrewQuantityPipe, // Exporting the pipe so it can be used in other parts of the app,
+    HebrewQuantityPipe, // Exporting the pipe so it can be used in other parts of the app
+    // TODO: dealing with spinner component
     //SpinnerComponent,
-    TranslateCategoryNamePipe
+    TranslateCategoryNamePipe // Exporting the pipe so it can be used in other parts of the app
   ],
 
   providers: [
