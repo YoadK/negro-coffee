@@ -113,18 +113,11 @@ export class ProductsService {
         formData.append('price', product.price.toString());
         formData.append('product_weight_grams', product.product_weight_grams.toString());
 
-
-        // old:
-        // // Append category IDs as a JSON string
-        // if (product.categoryIds && product.categoryIds.length > 0) {
-        //     formData.append('categoryIds', JSON.stringify(product.categoryIds));
-        // }
-
       
         // Append categoryIds correctly
         if (product.categoryIds && product.categoryIds.length > 0) {
             product.categoryIds.forEach((categoryId) => {
-                formData.append('categoryIds', categoryId);
+                formData.append('categoryIds', categoryId.toString());
             });
         }
 

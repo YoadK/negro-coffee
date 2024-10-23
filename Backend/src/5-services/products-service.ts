@@ -69,15 +69,13 @@ class ProductsService {
         try {
             // Parse and convert categoryIds
             productData.categoryIds = this.parseCategoryIds(productData.categoryIds);
-
-
+            console.log ("<in: products.service.ts (back)-> add Product> productData.categoryIds is: ",productData.categoryIds)
 
             //Extracting the image file first, then creating the Product instance.
             //this removes the image from productData before creating the Mongoose model, 
             // which aligns perfectly with the goal of preventing Mongoose from stripping off the image (this
             //  way, no unexpected data is passed to Mongoose.
-
-            // Extract the image file
+           
             const imageFile = productData.image as UploadedFile;
             delete productData.image; // Remove 'image' from productData to avoid Mongoose stripping it off
 
@@ -99,11 +97,9 @@ class ProductsService {
                 newProduct.imageName = defaultImageName;
                 newProduct.imageUrl = environment.BASE_IMAGE_URL + defaultImageName;
             }
-
          
             // Save the new product to the database
             await newProduct.save();
-
 
             // Log the image name and URL (to match controller expectations)
             console.log("<product service> Added product image name:", newProduct.imageName);
@@ -131,14 +127,19 @@ class ProductsService {
             // If it's a single ID, convert it to an array
             categoryIds = [categoryIds];
         }
-    
+         
+
         const parsedCategoryIds = categoryIds.map((id: any) => {
-            if (typeof id !== 'string' || !Types.ObjectId.isValid(id)) {
+            console.log(`Processing category ID: ${id} (Type: ${typeof id})`);
+            if (id instanceof Types.ObjectId) {
+                return id; // Already an ObjectId, return as is
+            } else if (typeof id === 'string' && Types.ObjectId.isValid(id)) {
+                return new Types.ObjectId(id);
+            } else {
                 throw new ValidationError(`Invalid category ID: ${id}`);
             }
-            return new Types.ObjectId(id);
         });
-    
+
         return parsedCategoryIds;
     }
     
@@ -150,6 +151,7 @@ class ProductsService {
     //update (edit) coffee product
     public async updateProduct(productData: any): Promise<IProductModel> {
         try {
+            console.log ("******* update product - START **********")
             console.log("Updating product with ID:", productData._id);
 
             // Fetch the existing product from the database
@@ -157,13 +159,14 @@ class ProductsService {
 
             // If the product doesn't exist, throw a ResourceNotFoundError
             if (!existingProduct) throw new ResourceNotFoundError(productData._id.toString());
+            console.log ("in: products-service.ts->update product ")
 
             console.log("Existing product:", existingProduct);
 
-            // Parse and convert categoryIds
+             // Parse, convert, and validate categoryIds
             productData.categoryIds = await this.parseCategoryIds(productData.categoryIds);
-
-
+            console.log ("<in: products.service.ts (back)-> update Product > productData.categoryIds is: ",productData.categoryIds)
+            console.log ("-------------------------------------------------------------------------------------------------");
 
             // Update basic product fields using Object.assign for cleaner code
             Object.assign(existingProduct, {
@@ -181,18 +184,14 @@ class ProductsService {
             } else if (!productData.image && existingProduct.imageName !== 'default-image.jpg') {
                 // If no new image is provided and the current image is not the default, revert to default
                 this.revertToDefaultImage(existingProduct);
-            }
-
-            
+            }            
 
             // Validate the updated product
             await existingProduct.validate();
 
             // Save and return the updated product
             const updatedProduct = await existingProduct.save();
-
-
-
+            console.log ("******* update product -END ********** ")
             return updatedProduct;
         } catch (err: any) {
             console.error("Error updating product:", err);

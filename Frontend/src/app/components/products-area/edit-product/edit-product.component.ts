@@ -56,9 +56,19 @@ export class EditProductComponent implements OnInit {
     }
   }
 
+  //loading the product data from the backend and initializing the product state in the component.
   async loadProduct(id: string) {
     try {
       this.product = await this.productsService.getOneProduct(id);
+     
+     // Convert categoryIds to strings
+     //converting the categoryIds to strings immediately after loading, 
+     // which maintains consistent data types throughout the component
+     if (this.product.categoryIds && this.product.categoryIds.length > 0) {
+        this.product.categoryIds = this.product.categoryIds.map(id => id.toString());
+    }
+     
+     
       this.updateImagePreview();
     } catch (error) {
       console.error('Error loading product', error);
@@ -105,9 +115,10 @@ export class EditProductComponent implements OnInit {
       this.product.categoryIds = [];
     }
     if (checkbox.checked) {
-      this.product.categoryIds.push(categoryId);
+      this.product.categoryIds.push(categoryId.toString());
+      
     } else {
-      this.product.categoryIds = this.product.categoryIds.filter(id => id !== categoryId);
+      this.product.categoryIds = this.product.categoryIds.filter(id => id !== categoryId.toString());
     }
   }
   
