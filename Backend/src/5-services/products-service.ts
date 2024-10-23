@@ -14,7 +14,6 @@ class ProductsService {
     // get All products
     public async getAllProducts(): Promise<IProductModel[]> {
         try {
-
             const products = await Product.find().populate('categories').exec();
             return products.map(product => this.assignDefaultImage(product));
         }
@@ -37,8 +36,8 @@ class ProductsService {
                 throw new ValidationError("Product not found");
             }
 
-               // Assign default image if imageName or imageUrl is missing
-        this.assignDefaultImage(product);
+            // Assign default image if imageName or imageUrl is missing
+            this.assignDefaultImage(product);
 
             return product;
         }
@@ -181,8 +180,8 @@ class ProductsService {
                 await this.updateProductImage(existingProduct, productData.image as UploadedFile);
             }
             // verifying that both imageName and imageUrl are present            
-            else if (!existingProduct.imageName || !existingProduct.imageUrl) {
-
+            else {
+                // 'assignDefaultImage' = Assigns a default image if necessary, includes a conditional check inside of it.
                 this.assignDefaultImage(existingProduct);
             }
 
@@ -278,18 +277,11 @@ class ProductsService {
 
     public async getProductsByCategoryId(categoryId: Types.ObjectId): Promise<IProductModel[]> {
         try {
-
             const products = await Product.find({ categoryIds: categoryId })
                 .populate('categories')
                 .exec();
 
-            return products.map(product => {
-                if (!product.imageName || !product.imageUrl) {
-                    console.warn(`Product ID ${product._id} has incomplete image data. Reverting to default image.`);
-                    this.assignDefaultImage(product);
-                }
-                return product;
-            });
+            return products.map(product => this.assignDefaultImage(product));
         }
         catch (err: any) {
             console.error("Error getting all products:", err);
@@ -300,12 +292,13 @@ class ProductsService {
     //  assign a default image to a product that lacks image data, typically during data retrieval.
     private assignDefaultImage(product: IProductModel): IProductModel {
         if (!product.imageName || !product.imageUrl) {
+            console.warn(`Product ID ${product._id} has incomplete image data. Reverting to default image.`);
             product.imageName = 'default-image.jpg';
             product.imageUrl = `${environment.BASE_IMAGE_URL}default-image.jpg`;
         }
         return product;
     }
-    
+
 
 }
 export const productsService = new ProductsService();
