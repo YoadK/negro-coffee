@@ -16,13 +16,7 @@ class ProductsService {
         try {
 
             const products = await Product.find().populate('categories').exec();
-            return products.map(product => {
-                if (!product.imageName || !product.imageUrl) {
-                    product.imageName = 'default-image.jpg';
-                    product.imageUrl = `${environment.BASE_IMAGE_URL}default-image.jpg`;
-                }
-                return product;
-            });
+            return products.map(product => this.assignDefaultImage(product));
         }
         catch (err: any) {
             console.error("Error getting all products:", err);
@@ -42,6 +36,10 @@ class ProductsService {
             if (!product) {
                 throw new ValidationError("Product not found");
             }
+
+               // Assign default image if imageName or imageUrl is missing
+        this.assignDefaultImage(product);
+
             return product;
         }
         catch (err: any) {
@@ -69,13 +67,13 @@ class ProductsService {
         try {
             // Parse and convert categoryIds
             productData.categoryIds = this.parseCategoryIds(productData.categoryIds);
-            console.log ("<in: products.service.ts (back)-> add Product> productData.categoryIds is: ",productData.categoryIds)
+            console.log("<in: products.service.ts (back)-> add Product> productData.categoryIds is: ", productData.categoryIds)
 
             //Extracting the image file first, then creating the Product instance.
             //this removes the image from productData before creating the Mongoose model, 
             // which aligns perfectly with the goal of preventing Mongoose from stripping off the image (this
             //  way, no unexpected data is passed to Mongoose.
-           
+
             const imageFile = productData.image as UploadedFile;
             delete productData.image; // Remove 'image' from productData to avoid Mongoose stripping it off
 
@@ -97,7 +95,7 @@ class ProductsService {
                 newProduct.imageName = defaultImageName;
                 newProduct.imageUrl = environment.BASE_IMAGE_URL + defaultImageName;
             }
-         
+
             // Save the new product to the database
             await newProduct.save();
 
@@ -118,16 +116,16 @@ class ProductsService {
     // This allows the backend to properly associate the product with its category(ies).
     private parseCategoryIds(categoryIds: any): Types.ObjectId[] {
         console.log('Received categoryIds:', categoryIds);
-    
+
         if (!categoryIds) {
             throw new ValidationError("categoryIds is required and cannot be empty");
         }
-    
+
         if (!Array.isArray(categoryIds)) {
             // If it's a single ID, convert it to an array
             categoryIds = [categoryIds];
         }
-         
+
 
         const parsedCategoryIds = categoryIds.map((id: any) => {
             console.log(`Processing category ID: ${id} (Type: ${typeof id})`);
@@ -142,8 +140,8 @@ class ProductsService {
 
         return parsedCategoryIds;
     }
-    
-    
+
+
 
 
 
@@ -151,7 +149,7 @@ class ProductsService {
     //update (edit) coffee product
     public async updateProduct(productData: any): Promise<IProductModel> {
         try {
-            console.log ("******* update product - START **********")
+            console.log("******* update product - START **********")
             console.log("Updating product with ID:", productData._id);
 
             // Fetch the existing product from the database
@@ -159,14 +157,14 @@ class ProductsService {
 
             // If the product doesn't exist, throw a ResourceNotFoundError
             if (!existingProduct) throw new ResourceNotFoundError(productData._id.toString());
-            console.log ("in: products-service.ts->update product ")
+            console.log("in: products-service.ts->update product ")
 
             console.log("Existing product:", existingProduct);
 
-             // Parse, convert, and validate categoryIds
+            // Parse, convert, and validate categoryIds
             productData.categoryIds = await this.parseCategoryIds(productData.categoryIds);
-            console.log ("<in: products.service.ts (back)-> update Product > productData.categoryIds is: ",productData.categoryIds)
-            console.log ("-------------------------------------------------------------------------------------------------");
+            console.log("<in: products.service.ts (back)-> update Product > productData.categoryIds is: ", productData.categoryIds)
+            console.log("-------------------------------------------------------------------------------------------------");
 
             // Update basic product fields using Object.assign for cleaner code
             Object.assign(existingProduct, {
@@ -181,17 +179,19 @@ class ProductsService {
             if (productData.image && productData.image instanceof Object && 'name' in productData.image) {
                 // If a new image is provided, update the product's image
                 await this.updateProductImage(existingProduct, productData.image as UploadedFile);
-            } else if (!productData.image && existingProduct.imageName !== 'default-image.jpg') {
-                // If no new image is provided and the current image is not the default, revert to default
-                this.revertToDefaultImage(existingProduct);
-            }            
+            }
+            // verifying that both imageName and imageUrl are present            
+            else if (!existingProduct.imageName || !existingProduct.imageUrl) {
+
+                this.assignDefaultImage(existingProduct);
+            }
 
             // Validate the updated product
             await existingProduct.validate();
 
             // Save and return the updated product
             const updatedProduct = await existingProduct.save();
-            console.log ("******* update product -END ********** ")
+            console.log("******* update product -END ********** ")
             return updatedProduct;
         } catch (err: any) {
             console.error("Error updating product:", err);
@@ -199,6 +199,8 @@ class ProductsService {
         }
     }
 
+    // responsible for updating the product's image when a new image is provided. It handles file 
+    // operations to add or update image files and updates the product's image properties accordingly.
     private async updateProductImage(existingProduct: IProductModel, imageFile: UploadedFile): Promise<void> {
         try {
             let imageName: string;
@@ -230,11 +232,6 @@ class ProductsService {
         }
     }
 
-    private revertToDefaultImage(existingProduct: IProductModel): void {
-        // Set the product's image to the default
-        existingProduct.imageName = 'default-image.jpg';
-        existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}default-image.jpg`;
-    }
 
     //delete product:
     public async deleteProduct(_id: Types.ObjectId): Promise<void> {
@@ -288,8 +285,8 @@ class ProductsService {
 
             return products.map(product => {
                 if (!product.imageName || !product.imageUrl) {
-                    product.imageName = 'default-image.jpg';
-                    product.imageUrl = `${environment.BASE_IMAGE_URL}default-image.jpg`;
+                    console.warn(`Product ID ${product._id} has incomplete image data. Reverting to default image.`);
+                    this.assignDefaultImage(product);
                 }
                 return product;
             });
@@ -299,6 +296,16 @@ class ProductsService {
             throw err;
         }
     }
+
+    //  assign a default image to a product that lacks image data, typically during data retrieval.
+    private assignDefaultImage(product: IProductModel): IProductModel {
+        if (!product.imageName || !product.imageUrl) {
+            product.imageName = 'default-image.jpg';
+            product.imageUrl = `${environment.BASE_IMAGE_URL}default-image.jpg`;
+        }
+        return product;
+    }
+    
 
 }
 export const productsService = new ProductsService();
