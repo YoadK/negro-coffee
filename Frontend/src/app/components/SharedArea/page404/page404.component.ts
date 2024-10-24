@@ -9,5 +9,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './page404.component.module.scss'
 })
 export class Page404Component {
-
+  constructor() {
+    console.log('404 page component initialized');
+  }
 }

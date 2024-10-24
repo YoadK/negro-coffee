@@ -4,7 +4,7 @@
             <button class="navbar-toggle" (click)="toggleNavbar()" aria-label="Toggle navigation">
                 <span class="navbar-toggle-icon"></span>
             </button>
-            <a class="navbar-item navbar-logo"  [routerLink]="">
+            <a class="navbar-item navbar-logo"  [routerLink]="['/home']">
                 <img src="assets/images/yoads_coffee_logo1.jpg"  alt="Logo">
             </a>
 
@@ -35,7 +35,7 @@
     <a class="side-navbar-item"  [routerLink]="['/home']">בית</a>
     <a class="side-navbar-item"  [routerLink]="['/products']">חנות קפה</a>
     <!-- <a class="side-navbar-item"  [routerLink]="['/articles']">מאמרים</a> -->
-    <a class="navbar-item navbar-logo" [routerLink]=""><img src="assets/images/yoads_coffee_logo1.jpg"></a>
+    <a class="navbar-item navbar-logo" [routerLink]="['/home']"><img src="assets/images/yoads_coffee_logo1.jpg"></a>
     
     <a class="side-navbar-item"  [routerLink]="['/about']">אודות</a>
     <a class="side-navbar-item"  [routerLink]="['/testimonials']">המלצות</a>

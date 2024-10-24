@@ -1,31 +1,178 @@
-div {
-    height: 100%;
+:host {
+    display: flex;
+    width: 100%;
+    flex: 1 1 auto;
+}
 
+.error-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    direction: rtl;
+    min-width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    background: linear-gradient(135deg, #f8f8f8 0%, #e6e6e6 100%);
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+}
+
+// Error Image Section
+.error-image-section {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .error-image-container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+
+        .error-image {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+        }
+    }
+}
+
+// Error Message Section
+.error-message-section {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding: 2rem 0 4rem;
     text-align: center;
 
+    .page-title {
+        color: #2c1810;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .subtitle {
+        color: #666;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    .home-button {
+        background: #ba946d;
+        color: white;
+        border: none;
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        animation: fadeIn 0.8s ease-out;
+
+        &:hover {
+            background: darken(#ba946d, 10%);
+            transform: scale(1.05);
+        }
+    }
 }
 
-.error-image-container {
-    position: relative;
-    display: inline-block;
+// Animations
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.error-image-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('/Frontend/src/assets/images/bg-error.png');
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.error-image {
-    // Adjust the width and height as needed
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 0 1rem;
+    }
+
+    .error-image-section {
+        padding: 2rem 0;
+    }
+
+    .error-message-section {
+        padding: 1.5rem 0 3rem;
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            padding: 0 1rem;
+        }
+
+        .home-button {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+        }
+    }
+}
+
+// Print styles
+@media print {
+    .error-page {
+        background: white;
+    }
+
+    .home-button {
+        display: none;
+    }
 }
