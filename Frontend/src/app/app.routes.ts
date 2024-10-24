@@ -13,6 +13,7 @@ import {MyAccountComponent} from './components/my-account-area/my-account/my-acc
 import { AuthGuard } from './services/guards/auth.guard';
 import { ProductsManagementComponent } from './components/products-area/products-management/products-management.component';
 import {  TestimonialsAreaComponent } from './components/testimonials-area/testimonials-area.component';
+import { AboutComponent } from './components/about-area/about.component';
 
 
 export const routes: Routes = [
@@ -26,6 +27,7 @@ export const routes: Routes = [
     { path: "register", component: RegisterComponent },   
     { path: "my-account", component: MyAccountComponent, canActivate: [AuthGuard]}, 
     { path: "testimonials", component: TestimonialsAreaComponent}, 
+    { path: "about", component: AboutComponent}, 
 
     { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "**", component: Page404Component },
