@@ -1,78 +1,63 @@
-<section class="testimonials-section">
-    <!-- Background Pattern Overlay -->
-    <div class="background-pattern"></div>
-    
-    <div class="testimonials-container">
-      <!-- Title Section -->
-      <div class="title-section">
-        <h1>מה הלקוחות אומרים עלינו</h1>
-        <div class="coffee-divider">
-          <span class="coffee-bean">☕</span>
-        </div>
-      </div>
-  
-      <div class="testimonial-wrapper">
-        <!-- Quote Icon -->
-        <div class="quote-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/>
-            <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>
-          </svg>
-        </div>
-  
-        <!-- Testimonial Content -->
-        <div class="testimonial-content" [class.animating]="isAnimating">
-          <p class="testimonial-quote">
-            "{{ testimonials[currentIndex].quote }}"
-          </p>
-          
-          <div class="testimonial-author">
-            <img 
-              [src]="testimonials[currentIndex].image" 
-              [alt]="testimonials[currentIndex].name"
-              class="author-image"
-            />
-            <h3 class="author-name">
-              {{ testimonials[currentIndex].name }}
-            </h3>
-            <p class="author-role">
-              {{ testimonials[currentIndex].role }}
-            </p>
-          </div>
-        </div>
-  
-        <!-- Navigation Buttons -->
-        <div class="navigation-buttons">
-          <button 
-            (click)="previousTestimonial()"
-            class="nav-button prev"
-            aria-label="Previous testimonial"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
-          <button 
-            (click)="nextTestimonial()"
-            class="nav-button next"
-            aria-label="Next testimonial"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
-        </div>
-  
-        <!-- Dots Navigation -->
-        <div class="dots-navigation">
-          <button
-            *ngFor="let testimonial of testimonials; let i = index"
-            (click)="goToTestimonial(i)"
-            class="dot"
-            [class.active]="currentIndex === i"
-            [attr.aria-label]="'Go to testimonial ' + (i + 1)"
-          ></button>
-        </div>
-      </div>
+<div class="testimonials-page">
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="content-wrapper">
+                <h1>חווית לקוחות</h1>
+                <div class="coffee-divider">
+                    <span class="coffee-bean">☕</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Carousel Section -->
+        <section class="testimonials-section">
+            <div class="content-wrapper">
+                <div class="testimonials-carousel">
+                    <!-- Navigation Buttons -->
+                    <button class="nav-button prev" (click)="previousTestimonial()">
+                        <span>❮</span>
+                    </button>
+
+                    <div class="testimonial-card">
+                        <div class="quote-icon">❝</div>
+                        <p class="quote">{{ testimonials[currentIndex].quote }}</p>
+                        <div class="author-info">
+                            <div class="author-image">
+                                <img [src]="testimonials[currentIndex].image" [alt]="testimonials[currentIndex].name">
+                            </div>
+                            <div class="author-details">
+                                <h3>{{ testimonials[currentIndex].name }}</h3>
+                                <p>{{ testimonials[currentIndex].role }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="nav-button next" (click)="nextTestimonial()">
+                        <span>❯</span>
+                    </button>
+                </div>
+
+                <!-- Dots Navigation -->
+                <div class="dots-navigation">
+                    <button 
+                        *ngFor="let testimonial of testimonials; let i = index"
+                        class="dot"
+                        [class.active]="i === currentIndex"
+                        (click)="goToTestimonial(i)"
+                        [attr.aria-label]="'Go to testimonial ' + (i + 1)">
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="content-wrapper">
+                <h2>רוצים להיות חלק מהחוויה?</h2>
+                <p>הצטרפו למשפחת הלקוחות המרוצים שלנו</p>
+                <button class="cta-button" routerLink="/products">לחנות שלנו</button>
+            </div>
+        </section>
     </div>
-  </section>
+</div>
