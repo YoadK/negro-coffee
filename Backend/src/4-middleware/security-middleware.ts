@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { StatusCode } from "../3-models/enums";
 import { cyber } from "../2-utils/cyber";
-import { UnauthorizedError } from "../3-models/client-errors";
+import { ForbiddenError, UnauthorizedError } from "../3-models/client-errors";
 import striptags from "striptags";
 
 class SecurityMiddleware {
@@ -52,10 +52,13 @@ class SecurityMiddleware {
         // Get the token:
         const token = authorizationHeader?.substring(7); // 7 --> token index
 
+        // If not logged in:
+        if (!cyber.isTokenValid(token)) {
+            next(new UnauthorizedError("You are not logged in."));
+        }
         // If user is not admin:
-        if (!cyber.isAdmin(token)) {
-            const err = new UnauthorizedError("You are not authorized.");
-            next(err);
+        else if (!cyber.isAdmin(token)) {
+            next(new ForbiddenError("You are not authorized."));
         }
         else {
             next();
@@ -72,6 +75,7 @@ class SecurityMiddleware {
 
         //Run on request body
         for (const prop in request.body){
+            if (prop === "password") continue; // Never alter passwords - they're hashed, not displayed.
             if (typeof request.body[prop] === "string"){
                 request.body[prop] = striptags(request.body[prop]); // <h1>Hello</h1> ==> Hello
             }

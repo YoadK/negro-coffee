@@ -45,15 +45,16 @@ class Cyber {
 
     // Check if user is admin:
     public isAdmin(token: string): boolean {
+        try {
+            // Verify signature and extract container from token (jwt.decode alone would trust a forged token):
+            const container = jwt.verify(token, appConfig.JWT_SECRET_KEY) as { user: IUserModel };
 
-        // Extract container from token:
-        const container = jwt.decode(token) as { user: IUserModel };
-
-        // Extract user from container:
-        const user = container.user;
-
-        // Return true if user is Admin:
-        return user.roleId === RoleModel.Admin;
+            // Return true if user is Admin:
+            return container.user?.roleId === RoleModel.Admin;
+        }
+        catch (err: any) { // Token is not valid.
+            return false;
+        }
     }
 
     // Hash password:

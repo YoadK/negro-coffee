@@ -7,6 +7,7 @@ import { Product, IProductModel } from "../3-models/Iproduct-model";
 import { UploadedFile } from "express-fileupload";
 import { Conflict } from 'http-errors';
 import { fileSaver } from "uploaded-file-saver";
+import { securityMiddleware } from "../4-middleware/security-middleware";
 
 
 
@@ -26,9 +27,9 @@ class ProductsController {
         this.router.get("/products", this.getAllProducts);
         this.router.get("/products/:_id([0-9a-fA-F]{24})", this.getOneProductById);
         this.router.get("/products/search/:text", this.searchProducts);
-        this.router.post("/products/new", this.addProduct);
-        this.router.put("/products/edit/:_id([0-9a-fA-F]{24})", this.updateProduct);
-        this.router.delete("/products/:_id([0-9a-fA-F]{24})", this.deleteProduct);
+        this.router.post("/products/new", securityMiddleware.verifyAdmin, this.addProduct);
+        this.router.put("/products/edit/:_id([0-9a-fA-F]{24})", securityMiddleware.verifyAdmin, this.updateProduct);
+        this.router.delete("/products/:_id([0-9a-fA-F]{24})", securityMiddleware.verifyAdmin, this.deleteProduct);
         this.router.get("/products/images/:imageName", this.getImageFile);
         this.router.get("/products/categories/:categoryId([0-9a-fA-F]{24})", this.getProductsByCategoryId);
         this.router.get("/products/category/:categoryId", this.getProductsByCategoryId);

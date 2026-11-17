@@ -38,3 +38,10 @@ export class UnauthorizedError extends ClientError {
         super(message, StatusCode.Unauthorized);
     }
 }
+
+// Forbidden error (logged in, but not allowed):
+export class ForbiddenError extends ClientError {
+    public constructor(message: string) {
+        super(message, StatusCode.Forbidden);
+    }
+}
