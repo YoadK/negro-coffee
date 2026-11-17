@@ -77,6 +77,13 @@ class Cyber {
         // Compare hashed passwords:
         return hash === hashedPassword;
     }
+
+    // Check if a password was hashed with the old (leaked) salt - such hashes get upgraded on login:
+    public isLegacyPassword(plainText: string, hashedPassword: string): boolean {
+        if (!appConfig.OLD_PASSWORD_SALT) return false;
+        const hash = crypto.createHmac("sha512", appConfig.OLD_PASSWORD_SALT).update(plainText).digest("hex");
+        return hash === hashedPassword;
+    }
 }
 
 export const cyber = new Cyber();

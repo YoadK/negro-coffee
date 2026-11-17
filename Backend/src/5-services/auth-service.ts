@@ -69,15 +69,25 @@ class AuthService {
                         observer.error(new UnauthorizedError("User not found."));
                         return;
                     }
-                    const isPasswordValid = cyber.validatePassword(credentials.password, user.password);
-                    if (!isPasswordValid) {
-                        observer.error(new UnauthorizedError("Invalid password."));
+                    const finishLogin = () => {
+                        const token = cyber.getNewToken(user);
+                        console.info('<auth service (backend)> Logged in user: ', user); // Add this line
+                        observer.next({ token, user });
+                        observer.complete();
+                    };
+                    if (cyber.validatePassword(credentials.password, user.password)) {
+                        finishLogin();
                         return;
                     }
-                    const token = cyber.getNewToken(user);
-                    console.info('<auth service (backend)> Logged in user: ', user); // Add this line
-                    observer.next({ token, user });
-                    observer.complete();
+                    // Password hashed with the old salt - re-hash it with the new salt, then log in:
+                    if (cyber.isLegacyPassword(credentials.password, user.password)) {
+                        user.password = cyber.hashPassword(credentials.password);
+                        user.save()
+                            .then(finishLogin)
+                            .catch(error => observer.error(error));
+                        return;
+                    }
+                    observer.error(new UnauthorizedError("Invalid password."));
                 },
                 error => {
                     observer.error(error);

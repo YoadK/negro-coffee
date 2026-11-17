@@ -31,3 +31,5 @@ Thumbs.db
 
 # Code coverage
 frontend/coverage/
+# Database user exports (personal data + password hashes)
+Database/**/*users*.json

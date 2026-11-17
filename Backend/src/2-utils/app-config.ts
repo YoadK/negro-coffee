@@ -19,6 +19,8 @@ class AppConfig {
     public readonly MONGODB_CONNECTION_STRING = required("MONGODB_CONNECTION_STRING");
     public readonly JWT_SECRET_KEY = required("JWT_SECRET_KEY");
     public readonly PASSWORD_SALT = required("PASSWORD_SALT");
+    // Optional - the previous (leaked) salt, used only to upgrade old password hashes on login:
+    public readonly OLD_PASSWORD_SALT = process.env.OLD_PASSWORD_SALT || "";
     public readonly BASE_IMAGE_URL = process.env.BASE_IMAGE_URL || `http://localhost:${this.PORT}/api/products/images/`;
 }
 
