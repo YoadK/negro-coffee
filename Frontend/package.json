@@ -29,7 +29,6 @@
     "notyf": "^3.10.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "update": "^0.7.4",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
