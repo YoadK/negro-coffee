@@ -1,7 +1,7 @@
 // updateExistingProducts.ts
 
 import mongoose from 'mongoose';
-import { IProductModel } from '../src/3-models/Iproduct-model';
+import { Product } from '../src/3-models/Iproduct-model';
 import { appConfig } from '../src/2-utils/app-config';
 
 async function updateExistingProducts() {
@@ -11,7 +11,7 @@ async function updateExistingProducts() {
     console.log('Connected to MongoDB');
 
     // Fetch all products
-    const products = await IProductModel.find();
+    const products = await Product.find();
     console.log(`Found ${products.length} products`);
 
     // Update products

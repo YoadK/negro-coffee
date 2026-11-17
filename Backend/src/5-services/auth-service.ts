@@ -31,8 +31,6 @@ class AuthService {
                     newUser.save()
                         .then(() => {
                             const token = cyber.getNewToken(newUser);
-                            console.log ("token is: ", token);
-                            console.log ("is token valid? "+ cyber.isTokenValid(token) ? "true" : "false");
                             observer.next(token);
                             observer.complete();
                         })
@@ -71,7 +69,7 @@ class AuthService {
                     }
                     const finishLogin = () => {
                         const token = cyber.getNewToken(user);
-                        console.info('<auth service (backend)> Logged in user: ', user); // Add this line
+                        console.info('<auth service (backend)> Logged in user: ', user.email);
                         observer.next({ token, user });
                         observer.complete();
                     };

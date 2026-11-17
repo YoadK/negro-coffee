@@ -42,7 +42,7 @@ export class AuthService implements OnInit {
         console.log('AuthService.loadStoredToken called');
         try {
             const token: string | null = localStorage.getItem('token')?.toString();
-            console.log('Loaded token from localStorage:', token);
+            console.log('Loaded token from localStorage');
             if (token) {
                 const decodedToken = jwtDecode<{ user: UserModel }>(token);
                 const loggedInUser = decodedToken.user;
@@ -79,7 +79,7 @@ export class AuthService implements OnInit {
                     const loggedInUser = response.user;
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(loggedInUser));
-                    console.log('Token stored in localStorage:', token);
+                    console.log('Token stored in localStorage');
                     console.log('User stored in localStorage:', loggedInUser);
                     this.store.dispatch(new AuthSuccess({ user: response.user, token: response.token }));
                     // NEW: Update cached token
@@ -110,7 +110,7 @@ export class AuthService implements OnInit {
                         const loggedInUser = response.user;
                         localStorage.setItem('token', token);
                         localStorage.setItem('user', JSON.stringify(loggedInUser));
-                        console.log('Token stored in localStorage:', token);
+                        console.log('Token stored in localStorage');
                         console.log('User stored in localStorage:', loggedInUser);
                         this.store.dispatch(new AuthSuccess({ user: response.user, token: response.token }));
                         // NEW: Update cached token
@@ -185,7 +185,7 @@ export class AuthService implements OnInit {
             return this.cachedToken;
         }
         const token = localStorage.getItem('token');
-        console.log('Token retrieved from localStorage:', token);
+        console.log('Token retrieved from localStorage');
         return token;
     }
 

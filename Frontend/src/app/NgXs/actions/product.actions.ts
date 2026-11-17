@@ -1,4 +1,3 @@
-import { ObjectId } from "mongoose";
 import { ProductModel } from "../../models/product.model";
 
 type CartItem = ProductModel & { quantity: number };
