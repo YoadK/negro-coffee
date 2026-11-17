@@ -5,10 +5,7 @@
 export const environment = {
     PRODUCTION: false,
     ENVIRONMENT: 'development',
-    PORT: 4000,
-    MONGODB_CONNECTION_STRING: 'mongodb://127.0.0.1:27017/negro_coffee-db',
-    JWT_SECRET_KEY: 'The Amazing Full Stack App!',
-    PASSWORD_SALT: '!עם ישראל חי',
+    // Backend secrets live in Backend/.env - never put them here (this file ships to the browser):
     BASE_IMAGE_URL: 'http://localhost:4000/api/products/images/'
   };
 

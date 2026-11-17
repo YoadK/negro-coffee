@@ -4,7 +4,7 @@ import mongoose, { Schema, Document, model } from 'mongoose';
 
 // Import your existing Product model
 import { Product } from '../src/3-models/Iproduct-model'; // Adjust the path as necessary
-import { environment } from '../../Frontend/src/environments/environment';
+import { appConfig } from '../src/2-utils/app-config';
 
 // Define the interface for the relation
 interface IProductCategoryRelation extends Document {
@@ -38,7 +38,7 @@ const ProductCategoryRelation = model<IProductCategoryRelation>(
 );
 
 // Connect to MongoDB
-const dbUri = environment.MONGODB_CONNECTION_STRING; // Replace with your actual DB URI
+const dbUri = appConfig.MONGODB_CONNECTION_STRING; // Replace with your actual DB URI
 
 mongoose
   .connect(dbUri)

@@ -1,5 +1,5 @@
 import { fileSaver } from "uploaded-file-saver";
-import { environment } from "../../../Frontend/src/environments/environment";
+import { appConfig } from "../2-utils/app-config";
 import { ResourceNotFoundError, ValidationError } from "../3-models/client-errors";
 import { IProductModel, Product } from "../3-models/Iproduct-model";
 import mongoose, { Types } from "mongoose";
@@ -86,13 +86,13 @@ class ProductsService {
                 // const imageFile = product.image as UploadedFile;
                 const imageName = await fileSaver.add(imageFile);
                 newProduct.imageName = imageName;
-                newProduct.imageUrl = environment.BASE_IMAGE_URL + imageName;
+                newProduct.imageUrl = appConfig.BASE_IMAGE_URL + imageName;
             } else {
                 // Assign a default image if none is provided
                 console.warn("No image provided. Using default image.");
                 const defaultImageName = "default-image.jpg";
                 newProduct.imageName = defaultImageName;
-                newProduct.imageUrl = environment.BASE_IMAGE_URL + defaultImageName;
+                newProduct.imageUrl = appConfig.BASE_IMAGE_URL + defaultImageName;
             }
 
             // Save the new product to the database
@@ -214,7 +214,7 @@ class ProductsService {
 
             // Update the product with the new image details
             existingProduct.imageName = imageName;
-            existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}${imageName}`;
+            existingProduct.imageUrl = `${appConfig.BASE_IMAGE_URL}${imageName}`;
         } catch (err) {
             console.error(`Failed to update/add image for ${existingProduct.imageName}:`, err);
 
@@ -222,7 +222,7 @@ class ProductsService {
             try {
                 const newImageName = await fileSaver.add(imageFile);
                 existingProduct.imageName = newImageName;
-                existingProduct.imageUrl = `${environment.BASE_IMAGE_URL}${newImageName}`;
+                existingProduct.imageUrl = `${appConfig.BASE_IMAGE_URL}${newImageName}`;
             } catch (addErr) {
                 console.error(`Failed to add new image:`, addErr);
                 // If adding also fails, throw an error
@@ -294,7 +294,7 @@ class ProductsService {
         if (!product.imageName || !product.imageUrl) {
             console.warn(`Product ID ${product._id} has incomplete image data. Reverting to default image.`);
             product.imageName = 'default-image.jpg';
-            product.imageUrl = `${environment.BASE_IMAGE_URL}default-image.jpg`;
+            product.imageUrl = `${appConfig.BASE_IMAGE_URL}default-image.jpg`;
         }
         return product;
     }

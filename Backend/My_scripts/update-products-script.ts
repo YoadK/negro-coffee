@@ -2,12 +2,12 @@
 
 import mongoose from 'mongoose';
 import { IProductModel } from '../src/3-models/Iproduct-model';
-import { environment } from '../../Frontend/src/environments/environment';
+import { appConfig } from '../src/2-utils/app-config';
 
 async function updateExistingProducts() {
   try {
     // Connect to MongoDB
-    await mongoose.connect(environment.MONGODB_CONNECTION_STRING);
+    await mongoose.connect(appConfig.MONGODB_CONNECTION_STRING);
     console.log('Connected to MongoDB');
 
     // Fetch all products
@@ -18,7 +18,7 @@ async function updateExistingProducts() {
     for (const product of products) {
       if (!product.imageName || !product.imageUrl) {
         product.imageName = 'default-image.jpg';
-        product.imageUrl = `${environment.BASE_IMAGE_URL}default-image.jpg`;
+        product.imageUrl = `${appConfig.BASE_IMAGE_URL}default-image.jpg`;
         await product.save();
         console.log(`Updated product: ${product._id}`);
       }

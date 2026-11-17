@@ -9,7 +9,7 @@ import { productsRouter } from "./6-controllers/products-controller";
 import { dal } from "./2-utils/dal";
 import { authRouter } from "./6-controllers/auth-controller";
 import { categoriesRouter } from "./6-controllers/categories-controller";
-import { environment } from '../../Frontend/src/environments/environment';
+import { appConfig } from './2-utils/app-config';
 
 
 // Main application class:
@@ -52,7 +52,7 @@ class App {
         await dal.connect();
 
         // Run server:
-        this.server.listen(environment.PORT, () => console.log("Listening on http://localhost:" + environment.PORT));
+        this.server.listen(appConfig.PORT, () => console.log("Listening on http://localhost:" + appConfig.PORT));
     }
 
 }
