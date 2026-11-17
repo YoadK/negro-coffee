@@ -1,0 +1,667 @@
+[{
+  "_id": {
+    "$oid": "662cc027c27bf8f253c47135"
+  },
+  "name": "Colombian D-CAF",
+  "description": "נטול קפאין קולומביאני",
+  "product_weight_grams": "250",
+  "price": "40",
+  "imageName": "3b1338f7-6d01-4a03-b213-8efe649e3174.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/3b1338f7-6d01-4a03-b213-8efe649e3174.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662ce622c27bf8f253c47137"
+  },
+  "name": "Antonio Saldaña",
+  "description": "אנטוניו סלדנה – מהדורה פירותית",
+  "product_weight_grams": "250",
+  "price": "40",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cf98ac27bf8f253c47139"
+  },
+  "name": "Rachel",
+  "description": "רחל – מהדורה פירותית",
+  "product_weight_grams": "250",
+  "price": "40",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cf9fcc27bf8f253c4713b"
+  },
+  "name": "Grégoire Kayibanda",
+  "description": "גרגואר קייבנדה – מהדורה מוגבלת",
+  "product_weight_grams": "500",
+  "price": "70",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfa37c27bf8f253c4713d"
+  },
+  "name": "Wayan Koster",
+  "description": "וואיין קוסטר – מהדורה מוגבלת",
+  "product_weight_grams": "500",
+  "price": "70",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfa87c27bf8f253c4713f"
+  },
+  "name": "Negro Espresso Cup",
+  "description": "כוס אספרסו איטלקית- (לרוכשים קפה)",
+  "product_weight_grams": "10",
+  "price": "40",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc8ecc27bf8f253c4712e"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfadfc27bf8f253c47141"
+  },
+  "name": "Three Worlds",
+  "description": "שלושה עולמות – המלצה להזמנה ראשונה",
+  "product_weight_grams": "1500",
+  "price": "195",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfb1dc27bf8f253c47143"
+  },
+  "name": "Crazy Ling",
+  "description": "לינג המשוגע – מהדורה מוגבלת",
+  "product_weight_grams": "500",
+  "price": "75",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfb49c27bf8f253c47145"
+  },
+  "name": "Colombiana",
+  "description": "קולומביאנה פולים",
+  "product_weight_grams": "500",
+  "price": "60",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfb81c27bf8f253c47147"
+  },
+  "name": "Ethiopian Chocolate",
+  "description": "שוקולד אתיופי",
+  "product_weight_grams": "500",
+  "price": "65",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfbbac27bf8f253c47149"
+  },
+  "name": "Papua Kakadu",
+  "description": "פפואה קקדו – מהדורה מוגבלת",
+  "product_weight_grams": "500",
+  "price": "75",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfbe7c27bf8f253c4714b"
+  },
+  "name": "black & Cardamom",
+  "description": "קפה שחור טחון – קולומביאנה והל אתיופי",
+  "product_weight_grams": "500",
+  "price": "60",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfc0bc27bf8f253c4714d"
+  },
+  "name": "Black Colombiana",
+  "description": "קפה שחור טחון – קולומביאנה",
+  "product_weight_grams": "500",
+  "price": "60",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc88ec27bf8f253c4712c"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfc2ac27bf8f253c4714f"
+  },
+  "name": "Yirgacheffe Blueberry",
+  "description": "יירגשף בלוברי",
+  "product_weight_grams": "500",
+  "price": "70",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfc70c27bf8f253c47151"
+  },
+  "name": "Very Ancient Special Blend",
+  "description": "תערובת עתיקת יומין",
+  "product_weight_grams": "500",
+  "price": "70",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfc8dc27bf8f253c47153"
+  },
+  "name": "Sumatrian Warrior",
+  "description": "הלוחם מסומטרה",
+  "product_weight_grams": "500",
+  "price": "75",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    },
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfceec27bf8f253c47155"
+  },
+  "name": "Pablo Escobar",
+  "description": "פאבלו אסקובר",
+  "product_weight_grams": "500",
+  "price": "65",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfd1dc27bf8f253c47157"
+  },
+  "name": "Negro Roastery House Blend",
+  "description": "תערובת הבית",
+  "product_weight_grams": "500",
+  "price": "60",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc7f2c27bf8f253c47128"
+    },
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfd55c27bf8f253c47159"
+  },
+  "name": "Little Italy Blend",
+  "description": "איטליה הקטנה",
+  "product_weight_grams": "500",
+  "price": "75",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "662cfd79c27bf8f253c4715b"
+  },
+  "name": "Brazilian Touch",
+  "description": "מגע ברזילאי",
+  "product_weight_grams": "500",
+  "price": "55",
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg",
+  "categoryIds": [
+    {
+      "$oid": "662bc3e8c27bf8f253c47124"
+    },
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    },
+    {
+      "$oid": "662bc78bc27bf8f253c47126"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66ebea1a347fd8f60555ac16"
+  },
+  "name": "piza4",
+  "description": "pizza coffee4",
+  "product_weight_grams": 500,
+  "price": 80,
+  "categoryIds": [
+    {
+      "$oid": "662bc8ecc27bf8f253c4712e"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    }
+  ],
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg"
+},
+{
+  "_id": {
+    "$oid": "66ec0d5c3cf2a2912a225bd0"
+  },
+  "name": "piza6",
+  "description": "pizza coffee6",
+  "product_weight_grams": 500,
+  "price": 80,
+  "categoryIds": [
+    {
+      "$oid": "662bc8ecc27bf8f253c4712e"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    }
+  ],
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg"
+},
+{
+  "_id": {
+    "$oid": "66ec257e3cf2a2912a225bd3"
+  },
+  "name": "piza7",
+  "description": "pizza coffee7",
+  "product_weight_grams": 500,
+  "price": 80,
+  "categoryIds": [
+    {
+      "$oid": "662bc8ecc27bf8f253c4712e"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    }
+  ],
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg"
+},
+{
+  "_id": {
+    "$oid": "66ec25de2575efe38743a24f"
+  },
+  "name": "piza8",
+  "description": "pizza coffee8",
+  "product_weight_grams": 500,
+  "price": 80,
+  "categoryIds": [
+    {
+      "$oid": "662bc8ecc27bf8f253c4712e"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    }
+  ],
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg"
+},
+{
+  "_id": {
+    "$oid": "66ec26222575efe38743a252"
+  },
+  "name": "piza9",
+  "description": "pizza coffee9",
+  "product_weight_grams": 500,
+  "price": 80,
+  "categoryIds": [
+    {
+      "$oid": "662bc8ecc27bf8f253c4712e"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    }
+  ],
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg"
+},
+{
+  "_id": {
+    "$oid": "66ec42daf0e7d673e7175950"
+  },
+  "name": "piza10",
+  "description": "pizza coffee10",
+  "product_weight_grams": 500,
+  "price": 80,
+  "categoryIds": [
+    {
+      "$oid": "662bc8ecc27bf8f253c4712e"
+    },
+    {
+      "$oid": "662bc86dc27bf8f253c4712a"
+    }
+  ],
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg"
+},
+{
+  "_id": {
+    "$oid": "66eec52773e82db5647cf5b8"
+  },
+  "name": "piza13",
+  "description": "pizza coffee 13",
+  "product_weight_grams": 13,
+  "price": 13,
+  "categoryIds": [],
+  "imageName": "2192560d-b3ea-4f4c-9ee0-541d9b957557.webp",
+  "imageUrl": "http://localhost:4000/api/products/images/2192560d-b3ea-4f4c-9ee0-541d9b957557.webp"
+},
+{
+  "_id": {
+    "$oid": "66eec95073e82db5647cf5d7"
+  },
+  "name": "PIZZA 16",
+  "description": "PIZZA 16 COFFEE",
+  "product_weight_grams": 16,
+  "price": 16,
+  "categoryIds": [],
+  "imageName": "37a89125-63f9-4223-ad0c-bf109107d9cc.webp",
+  "imageUrl": "http://localhost:4000/api/products/images/37a89125-63f9-4223-ad0c-bf109107d9cc.webp"
+},
+{
+  "_id": {
+    "$oid": "67167b018e557885a616e39b"
+  },
+  "name": "קפה כזה 21102024",
+  "description": "קפה כזה 21102024",
+  "product_weight_grams": 21,
+  "price": 21,
+  "categoryIds": [
+    {
+      "$oid": "66293bc08900f5681d2ab564"
+    }
+  ],
+  "imageName": "8c1b178e-f318-46b9-b8b9-7d0be1a365bf.webp",
+  "imageUrl": "http://localhost:4000/api/products/images/8c1b178e-f318-46b9-b8b9-7d0be1a365bf.webp"
+},
+{
+  "_id": {
+    "$oid": "67167cd68e557885a616e3af"
+  },
+  "name": "קפה כזה 23102024a 2",
+  "description": "קפה כזה 23102024a 2",
+  "product_weight_grams": 232,
+  "price": 232,
+  "categoryIds": [
+    {
+      "$oid": "662bc8ecc27bf8f253c4712e"
+    }
+  ],
+  "imageName": "default-image.jpg",
+  "imageUrl": "http://localhost:4000/api/products/images/default-image.jpg"
+}]

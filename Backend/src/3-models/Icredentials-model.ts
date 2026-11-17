@@ -5,7 +5,7 @@ export interface ICredentialsModel {
     password: string;
   }
 
-  // Schema for ICategoryModel
+  // Schema for ICredentialsModel
 export const CredentialsSchema = new Schema<ICredentialsModel>({
     email: {
       type: String,
